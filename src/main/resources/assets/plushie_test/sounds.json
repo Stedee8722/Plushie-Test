@@ -1,0 +1,10 @@
+{
+    "plushie_use": {
+        "subtitle": "sounds.plushie_test.plushie_use",
+        "sounds": [
+            "plushie_test:squeak1",
+            "plushie_test:squeak2",
+            "plushie_test:squeak3"
+        ]
+    }
+}

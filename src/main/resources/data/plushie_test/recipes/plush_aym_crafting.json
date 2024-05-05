@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "SCS",
+    "LWL"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:soul_lantern"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "item": "minecraft:cookie"
+    },
+    "L": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  },
+  "result": {
+    "item": "plushie_test:plush_aym",
+    "count": 1
+  },
+  "group": "Hat"
+}
