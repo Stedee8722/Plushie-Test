@@ -1,28 +1,28 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "pattern": [
-      "SCS",
-      "LWL",
-      "   "
-    ],
-    "key": {
-      "S": {
-        "item": "minecraft:yellow_wool"
-      },
-      "C": {
-        "item": "minecraft:pink_wool"
-      },
-      "L": {
-        "item": "minecraft:stick"
-      },
-      "W": {
-        "item": "minecraft:cooked_beef"
-      }
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SCS",
+    "LWL",
+    "   "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:yellow_wool"
     },
-    "result": {
-      "item": "plushie_test:nova_ears",
-      "count": 1
+    "C": {
+      "item": "minecraft:pink_wool"
     },
-    "group": "Hat"
-  }
+    "L": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:cooked_beef"
+    }
+  },
+  "result": {
+    "item": "plushie_test:nova_ears",
+    "count": 1
+  },
+  "group": "Hat"
+}
