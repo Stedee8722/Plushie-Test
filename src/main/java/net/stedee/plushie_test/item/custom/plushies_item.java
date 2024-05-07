@@ -39,15 +39,8 @@ public class plushies_item extends Item implements Equipable {
 
     @SuppressWarnings("null")
     @Override
-    public int getUseDuration(ItemStack $$0) {
-        return 5000;
-    }
-
-    @SuppressWarnings("null")
-    @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack pItem = pPlayer.getItemInHand(pUsedHand);
-        pPlayer.startUsingItem(pUsedHand);
         if (this.canSqueak) {
             pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), plushies_sounds.PLUSHIE_USE.get(), SoundSource.NEUTRAL, 1f, 1f);
             return InteractionResultHolder.consume(pItem);
