@@ -18,6 +18,9 @@ public class plushies {
     public static final RegistryObject<plushies_item> nova_ears = ITEMS.register("nova_ears",
             () -> new plushies_item(false));
 
+    public static final RegistryObject<plushies_item> plush_rat = ITEMS.register("plush_rat",
+            () -> new plushies_item(true));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

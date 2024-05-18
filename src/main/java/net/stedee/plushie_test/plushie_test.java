@@ -49,6 +49,7 @@ public class plushie_test {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(plushies.plush_aym);
             event.accept(plushies.nova_ears);
+            event.accept(plushies.plush_rat);
         }
     }
 

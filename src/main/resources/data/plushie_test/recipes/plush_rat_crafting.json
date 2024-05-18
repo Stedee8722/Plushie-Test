@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  A",
+    "BCD",
+    "EFG"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:cooked_beef"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C": {
+      "item": "minecraft:yellow_dye"
+    },
+    "D": {
+      "item": "minecraft:black_dye"
+    },
+    "E": {
+      "item": "minecraft:pink_dye"
+    },
+    "F": {
+      "item": "minecraft:white_wool"
+    },
+    "G": {
+      "item": "minecraft:purple_dye"
+    }
+  },
+  "result": {
+    "item": "plushie_test:plush_rat",
+    "count": 1
+  },
+  "group": "Hat"
+}
