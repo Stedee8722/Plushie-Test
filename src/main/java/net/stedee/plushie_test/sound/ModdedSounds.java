@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.plushie_test;
 
-public class plushies_sounds {
+public class ModdedSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = 
         DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, plushie_test.MOD_ID);
 

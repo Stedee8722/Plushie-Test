@@ -12,8 +12,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.stedee.plushie_test.item.plushies;
-import net.stedee.plushie_test.sound.plushies_sounds;
+import net.stedee.plushie_test.item.ModdedItems;
+import net.stedee.plushie_test.sound.ModdedSounds;
 
 import org.slf4j.Logger;
 
@@ -29,9 +29,9 @@ public class plushie_test {
     public plushie_test() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        plushies.register(modEventBus);
+        ModdedItems.register(modEventBus);
 
-        plushies_sounds.register(modEventBus);
+        ModdedSounds.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         
@@ -47,14 +47,14 @@ public class plushie_test {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(plushies.PLUSH_AYM);
-            event.accept(plushies.PLUSH_RAT);
-            event.accept(plushies.PLUSH_ACID);
-            event.accept(plushies.PLUSH_RATACID);
-            event.accept(plushies.PLUSH_BRENZY);
-            event.accept(plushies.PLUSH_PYLA);
-            event.accept(plushies.NOVA_EARS);
-            event.accept(plushies.HYPNO_NOVA_EARS);
+            event.accept(ModdedItems.PLUSH_AYM);
+            event.accept(ModdedItems.PLUSH_RAT);
+            event.accept(ModdedItems.PLUSH_ACID);
+            event.accept(ModdedItems.PLUSH_RATACID);
+            event.accept(ModdedItems.PLUSH_BRENZY);
+            event.accept(ModdedItems.PLUSH_PYLA);
+            event.accept(ModdedItems.NOVA_EARS);
+            event.accept(ModdedItems.HYPNO_NOVA_EARS);
         }
     }
 

@@ -16,13 +16,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.stedee.plushie_test.sound.plushies_sounds;
+import net.stedee.plushie_test.sound.ModdedSounds;
 
-public class plushies_item extends Item implements Equipable {
+public class PlushiesItem extends Item implements Equipable {
 
     protected final boolean canSqueak;
 
-    public plushies_item(Boolean canSqueak) {
+    public PlushiesItem(Boolean canSqueak) {
         super(new Item.Properties()
             .stacksTo(1)
             .rarity(Rarity.EPIC)
@@ -42,7 +42,7 @@ public class plushies_item extends Item implements Equipable {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack pItem = pPlayer.getItemInHand(pUsedHand);
         if (this.canSqueak) {
-            pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), plushies_sounds.PLUSHIE_USE.get(), SoundSource.NEUTRAL, 1f, 1f);
+            pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModdedSounds.PLUSHIE_USE.get(), SoundSource.NEUTRAL, 1f, 1f);
             return InteractionResultHolder.consume(pItem);
         }
         else {
