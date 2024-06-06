@@ -36,6 +36,9 @@ public class ModdedItems {
     public static final RegistryObject<PlushiesItem> PLUSH_PYLA = ITEMS.register("plush_pyla",
             () -> new PlushiesItem(true));
 
+    public static final RegistryObject<PlushiesItem> PLUSH_TEALET = ITEMS.register("plush_tealet",
+            () -> new PlushiesItem(true));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

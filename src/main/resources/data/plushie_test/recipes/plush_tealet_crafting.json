@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "LBL",
+    "OUO"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:leather_helmet"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "B": {
+      "item": "minecraft:bone_meal"
+    },
+    "O": {
+      "tag": "minecraft:leaves"
+    },
+    "U": {
+      "item": "minecraft:leather_boots"
+    }
+  },
+  "result": {
+    "item": "plushie_test:plush_tealet",
+    "count": 1
+  },
+  "category": "misc"
+}

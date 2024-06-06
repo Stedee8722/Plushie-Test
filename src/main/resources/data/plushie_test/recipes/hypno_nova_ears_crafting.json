@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "plushie_test:nova_ears"
+        },
+        {
+            "item": "minecraft:end_crystal"
+        }
+    ],
+    "result": {
+        "item": "plushie_test:hypno_nova_ears",
+        "count": 1
+    },
+    "category": "misc"
+}

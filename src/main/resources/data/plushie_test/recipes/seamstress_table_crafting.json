@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "PBP",
+    "BLB"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blue_carpet"
+    },
+    "P": {
+      "item": "minecraft:purple_wool"
+    },
+    "B": {
+      "item": "minecraft:black_wool"
+    },
+    "L": {
+      "item": "minecraft:loom"
+    }
+  },
+  "result": {
+    "item": "plushie_test:seamstress_table",
+    "count": 1
+  },
+  "category": "misc"
+}

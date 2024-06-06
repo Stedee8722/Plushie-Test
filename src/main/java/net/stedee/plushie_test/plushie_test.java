@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.item.ModdedItems;
 import net.stedee.plushie_test.sound.ModdedSounds;
 
@@ -30,6 +31,7 @@ public class plushie_test {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModdedItems.register(modEventBus);
+        ModdedBlocks.register(modEventBus);
 
         ModdedSounds.register(modEventBus);
 
@@ -53,8 +55,10 @@ public class plushie_test {
             event.accept(ModdedItems.PLUSH_RATACID);
             event.accept(ModdedItems.PLUSH_BRENZY);
             event.accept(ModdedItems.PLUSH_PYLA);
+            event.accept(ModdedItems.PLUSH_TEALET);
             event.accept(ModdedItems.NOVA_EARS);
             event.accept(ModdedItems.HYPNO_NOVA_EARS);
+            event.accept(ModdedBlocks.SEAMSTRESS_TABLE.get());
         }
     }
 
