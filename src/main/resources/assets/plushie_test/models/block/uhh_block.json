@@ -4,6 +4,7 @@
 		"1": "plushie_test:block/uhh_block",
 		"particle": "plushie_test:block/uhh_block"
 	},
+	"gui_light": "front",
 	"elements": [
 		{
 			"from": [0, 0, 0],

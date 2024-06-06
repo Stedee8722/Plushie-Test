@@ -5,6 +5,7 @@
 		"0": "plushie_test:item/plush_tealet",
 		"particle": "plushie_test:item/plush_tealet"
 	},
+	"gui_light": "front",
 	"elements": [
 		{
 			"from": [0.75, 6.25, 4.75],
