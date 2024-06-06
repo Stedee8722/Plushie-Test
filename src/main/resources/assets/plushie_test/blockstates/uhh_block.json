@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "plushie_test:block/uhh_block",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "plushie_test:block/uhh_block",
+      "y": 180
+    },
+    "facing=south": {
       "model": "plushie_test:block/uhh_block"
+    },
+    "facing=west": {
+      "model": "plushie_test:block/uhh_block",
+      "y": 90
     }
   }
 }
