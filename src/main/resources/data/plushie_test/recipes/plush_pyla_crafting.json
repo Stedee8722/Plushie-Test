@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#i#",
+        "APA",
+        " L "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:prismarine_shard"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "A": {
+            "item": "minecraft:amethyst_shard"
+        },
+        "P": {
+            "item": "minecraft:purple_glazed_terracotta"
+        },
+        "L": {
+            "item": "minecraft:lightning_rod"
+        }
+    },
+    "result": {
+        "item": "plushie_test:plush_pyla",
+        "count": 1
+    },
+    "category": "misc"
+}

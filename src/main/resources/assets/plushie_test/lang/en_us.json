@@ -1,11 +1,21 @@
 {
     "item.plushie_test.plush_aym": "Plush Aym",
-    "item.plushie_test.nova_ears": "Nova's Ear",
+    "item.plushie_test.nova_ears": "Nova's Ears",
     "item.plushie_test.plush_rat": "Plush Rat",
+    "item.plushie_test.plush_acid": "Plush Acid",
+    "item.plushie_test.hypno_nova_ears": "Hypno Nova's Ears",
+    "item.plushie_test.plush_ratacid": "Plush Rat Acid",
+    "item.plushie_test.plush_brenzy": "Plush Brenzy",
+    "item.plushie_test.plush_pyla": "Plush Pyla",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
     "item.plushie_test.nova_ears.tooltip": "Ears of the §4Sin §rof §6Gluttony",
     "item.plushie_test.plush_rat.tooltip": "§dFunny Plush §rof the Glutton Rat",
+    "item.plushie_test.plush_acid.tooltip": "Place§4holder",
+    "item.plushie_test.hypno_nova_ears.tooltip": "Place§4holder",
+    "item.plushie_test.plush_ratacid.tooltip": "Place§4holder",
+    "item.plushie_test.plush_brenzy.tooltip": "Place§4holder",
+    "item.plushie_test.plush_pyla.tooltip": "Place§4holder",  
 
     "sounds.plushie_test.plushie_use": "Plushie squeaks"
 }

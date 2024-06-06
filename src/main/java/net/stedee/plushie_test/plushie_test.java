@@ -47,9 +47,14 @@ public class plushie_test {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(plushies.plush_aym);
-            event.accept(plushies.nova_ears);
-            event.accept(plushies.plush_rat);
+            event.accept(plushies.PLUSH_AYM);
+            event.accept(plushies.PLUSH_RAT);
+            event.accept(plushies.PLUSH_ACID);
+            event.accept(plushies.PLUSH_RATACID);
+            event.accept(plushies.PLUSH_BRENZY);
+            event.accept(plushies.PLUSH_PYLA);
+            event.accept(plushies.NOVA_EARS);
+            event.accept(plushies.HYPNO_NOVA_EARS);
         }
     }
 

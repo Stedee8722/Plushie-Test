@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#c#",
+        "RBR",
+        " F "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:redstone"
+        },
+        "c": {
+            "item": "minecraft:copper_ingot"
+        },
+        "R": {
+            "item": "minecraft:raw_copper"
+        },
+        "B": {
+            "item": "minecraft:blaze_powder"
+        },
+        "F": {
+            "item": "minecraft:flint_and_steel"
+        }
+    },
+    "result": {
+        "item": "plushie_test:plush_brenzy",
+        "count": 1
+    },
+    "category": "misc"
+}
