@@ -13,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.plushie_test;
-import net.stedee.plushie_test.block.custom.TransparentModdedBlocks;
+import net.stedee.plushie_test.block.custom.SeamstressTableBlock;
 import net.stedee.plushie_test.block.custom.UhhBlock;
 import net.stedee.plushie_test.item.ModdedItems;
 
@@ -24,7 +24,7 @@ public class ModdedBlocks {
         DeferredRegister.create(ForgeRegistries.BLOCKS, plushie_test.MOD_ID);
 
     public static final RegistryObject<Block> SEAMSTRESS_TABLE = registerBlock("seamstress_table",
-        () -> new TransparentModdedBlocks(BlockBehaviour.Properties.of().mapColor(MapColor.NONE).noOcclusion().instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD)));
+        () -> new SeamstressTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE).noOcclusion().instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD)));
     
     public static final RegistryObject<Block> UHH_BLOCK = registerBlock("uhh_block",
         () -> new UhhBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE).noOcclusion().instrument(NoteBlockInstrument.BIT).strength(2.5F).sound(SoundType.METAL)));

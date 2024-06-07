@@ -15,9 +15,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class TransparentModdedBlocks extends Block {
+public class SeamstressTableBlock extends Block {
 
-    public TransparentModdedBlocks(Properties pProperties) {
+    public SeamstressTableBlock(Properties pProperties) {
         super(pProperties);
     }
 
