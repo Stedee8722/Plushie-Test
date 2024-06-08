@@ -25,5 +25,7 @@
     "block.plushie_test.seamstress_table.tooltip": "Table of a §amythical seamstress§r, used to §acombine §rplushies into one and §aseperate §rthem",
     "block.plushie_test.uhh_block.tooltip": "§mDon't ask why this is here...",
 
-    "sounds.plushie_test.plushie_use": "Plushie squeaks"
+    "sounds.plushie_test.plushie_use": "Plushie squeaks",
+
+    "container.plushie_test.seamstress_table": "Combine Plushies"
 }

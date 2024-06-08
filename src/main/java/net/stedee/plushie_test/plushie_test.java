@@ -1,5 +1,6 @@
 package net.stedee.plushie_test;
 
+import net.minecraft.client.gui.screens.MenuScreens;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -12,7 +13,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
+import net.stedee.plushie_test.client.SeamstressTableScreen;
+import net.stedee.plushie_test.inventory.ModdedMenuTypes;
+import net.stedee.plushie_test.inventory.custom.SeamstressContainer;
 import net.stedee.plushie_test.item.ModdedItems;
 import net.stedee.plushie_test.sound.ModdedSounds;
 
@@ -33,6 +38,9 @@ public class plushie_test {
         ModdedItems.register(modEventBus);
         ModdedBlocks.register(modEventBus);
 
+        ModdedBlockEntities.register(modEventBus);
+        ModdedMenuTypes.register(modEventBus);
+
         ModdedSounds.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
@@ -42,8 +50,9 @@ public class plushie_test {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
-        //LOGGER.info("HELLO FROM COMMON SETUP");
+        event.enqueueWork(() -> {
+            MenuScreens.register(ModdedMenuTypes.SEAMSTRESS_CONTAINER.get(), (MenuScreens.ScreenConstructor<SeamstressContainer, SeamstressTableScreen>) SeamstressTableScreen::new);
+        });
     }
 
     // Add the example block item to the building blocks tab
