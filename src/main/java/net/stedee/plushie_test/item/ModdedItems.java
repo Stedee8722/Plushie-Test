@@ -1,11 +1,14 @@
 package net.stedee.plushie_test.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.plushie_test;
+import net.stedee.plushie_test.item.custom.CleaverItem;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
 
 public class ModdedItems {
@@ -38,6 +41,9 @@ public class ModdedItems {
 
     public static final RegistryObject<PlushiesItem> PLUSH_TEALET = ITEMS.register("plush_tealet",
             () -> new PlushiesItem(true));
+
+    public static final RegistryObject<CleaverItem> CLEAVER = ITEMS.register("cleaver",
+            () -> new CleaverItem(Tiers.NETHERITE, 5.0F, -2.4F, (new Item.Properties()).durability(1016).rarity(Rarity.EPIC)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

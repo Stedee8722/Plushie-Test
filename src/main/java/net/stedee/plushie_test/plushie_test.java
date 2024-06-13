@@ -74,6 +74,9 @@ public class plushie_test {
             event.accept(ModdedItems.HYPNO_NOVA_EARS);
             event.accept(ModdedBlocks.SEAMSTRESS_TABLE.get());
         }
+        else if(event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModdedItems.CLEAVER);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

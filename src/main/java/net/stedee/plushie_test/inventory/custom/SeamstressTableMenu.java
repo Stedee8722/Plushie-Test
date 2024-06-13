@@ -114,7 +114,6 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
-        System.out.println(pIndex);
         Slot sourceSlot = slots.get(pIndex);
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
