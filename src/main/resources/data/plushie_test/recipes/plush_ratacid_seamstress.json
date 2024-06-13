@@ -1,0 +1,16 @@
+{
+  "type": "plushie_test:seamstress",
+  "ingredients": [
+    {
+      "item": "plushie_test:plush_rat"
+    },
+    {
+      "item": "plushie_test:plush_acid"
+    }
+  ],
+  "result": {
+    "item": "plushie_test:plush_ratacid",
+    "count": 1
+  },
+  "category": "misc"
+}

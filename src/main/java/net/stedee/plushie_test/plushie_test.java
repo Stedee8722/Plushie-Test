@@ -17,8 +17,10 @@ import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.client.SeamstressTableScreen;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
-import net.stedee.plushie_test.inventory.custom.SeamstressContainer;
+import net.stedee.plushie_test.inventory.custom.SeamstressTableMenu;
 import net.stedee.plushie_test.item.ModdedItems;
+import net.stedee.plushie_test.network.PacketHandler;
+import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.sound.ModdedSounds;
 
 import org.slf4j.Logger;
@@ -43,6 +45,8 @@ public class plushie_test {
 
         ModdedSounds.register(modEventBus);
 
+        ModdedRecipes.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
         
         MinecraftForge.EVENT_BUS.register(this);
@@ -51,7 +55,8 @@ public class plushie_test {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            MenuScreens.register(ModdedMenuTypes.SEAMSTRESS_CONTAINER.get(), (MenuScreens.ScreenConstructor<SeamstressContainer, SeamstressTableScreen>) SeamstressTableScreen::new);
+            PacketHandler.registerMessages(MOD_ID);
+            MenuScreens.register(ModdedMenuTypes.SEAMSTRESS_MENU_TYPE.get(), (MenuScreens.ScreenConstructor<SeamstressTableMenu, SeamstressTableScreen>) SeamstressTableScreen::new);
         });
     }
 

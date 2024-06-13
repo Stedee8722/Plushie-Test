@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import java.util.stream.IntStream;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -11,9 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -26,26 +26,34 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
-import net.stedee.plushie_test.inventory.custom.SeamstressContainer;
+import net.minecraft.world.Containers;;
 
-public class SeamstressTableBlock extends Block implements EntityBlock {
+public class SeamstressTableBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
 
+    public static final Component CONTAINER_TITLE = Component.translatable("container.plushie_test.seamstress_table");
+
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final VoxelShape SEAMSTRESS_TABLE_SHAPE = makeShape();
-    private static final Component CONTAINER_TITLE = Component.translatable("container.plushie_test.seamstress_table");
 
     public SeamstressTableBlock(Properties pProperties) {
         super(pProperties);
+        this.stateDefinition.any().setValue(WATERLOGGED, false);
     }
 
     @SuppressWarnings("null")
@@ -59,14 +67,17 @@ public class SeamstressTableBlock extends Block implements EntityBlock {
     @SuppressWarnings("null")
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING);
+        pBuilder.add(FACING, WATERLOGGED);
     }
 
     @SuppressWarnings("null")
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+        LevelAccessor level = pContext.getLevel();
+        BlockPos pos = pContext.getClickedPos();
+        boolean water = level.getFluidState(pos).getType() == Fluids.WATER;
+        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, water);
     }
     
     @SuppressWarnings("null")
@@ -113,46 +124,47 @@ public class SeamstressTableBlock extends Block implements EntityBlock {
 
     @SuppressWarnings("null")
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult trace) {
-        if (!level.isClientSide) {
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof SeamstressTableBlockEntity) {
-                MenuProvider containerProvider = new MenuProvider() {
-                    @Override
-                    public Component getDisplayName() {
-                        return CONTAINER_TITLE;
-                    }
-
-                    @Override
-                    public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player playerEntity) {
-                        return new SeamstressContainer(windowId, playerEntity, pos);
-                    }
-                };
-                NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());
-            } else {
-                throw new IllegalStateException("Our named container provider is missing!");
-            }
-        }
-        return InteractionResult.SUCCESS;
-    }
-
-    @SuppressWarnings("null")
-    @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new SeamstressTableBlockEntity(pPos, pState);
     }
 
+    @SuppressWarnings("null")
     @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
+            BlockHitResult pHit) {
+        if (!pLevel.isClientSide) {
+            BlockEntity tEntity = pLevel.getBlockEntity(pPos);
+            if (tEntity instanceof MenuProvider) {
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, (MenuProvider) tEntity, tEntity.getBlockPos());
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+    
+    @SuppressWarnings("null")
+    @Override
+    @Nullable
+    public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
+        BlockEntity be = pLevel.getBlockEntity(pPos);
+        return be instanceof SeamstressTableBlockEntity ? (MenuProvider) be : null;
+    }
+
     @SuppressWarnings({ "null", "deprecation" })
+    @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof SeamstressTableBlockEntity) {
-                ((SeamstressTableBlockEntity) blockEntity).drops();
+            if (blockEntity instanceof SeamstressTableBlockEntity seamstressTableBlock) {
+                dropItems(seamstressTableBlock.input, pLevel, pPos);
+                pLevel.updateNeighbourForOutputSignal(pPos, this);
             }
+            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
         }
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    public static void dropItems(IItemHandler inv, Level pLevel, BlockPos pos) {
+        IntStream.range(0, inv.getSlots()).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
 
 }
