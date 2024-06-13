@@ -45,6 +45,12 @@ public class ModdedItems {
     public static final RegistryObject<CleaverItem> CLEAVER = ITEMS.register("cleaver",
             () -> new CleaverItem(Tiers.NETHERITE, 5.0F, -2.4F, (new Item.Properties()).durability(1016).rarity(Rarity.EPIC)));
 
+    public static final RegistryObject<PlushiesItem> PLUSH_NETH = ITEMS.register("plush_neth",
+            () -> new PlushiesItem(true));
+
+    public static final RegistryObject<PlushiesItem> PLUSH_BRENNETH = ITEMS.register("plush_brenneth",
+            () -> new PlushiesItem(true));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

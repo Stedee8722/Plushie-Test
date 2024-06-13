@@ -1,0 +1,16 @@
+{
+    "type": "plushie_test:seamstress",
+    "ingredients": [
+      {
+        "item": "plushie_test:plush_neth"
+      },
+      {
+        "item": "plushie_test:plush_brenzy"
+      }
+    ],
+    "result": {
+      "item": "plushie_test:plush_brenneth",
+      "count": 1
+    },
+    "category": "misc"
+  }

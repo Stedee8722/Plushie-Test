@@ -8,6 +8,8 @@
     "item.plushie_test.plush_brenzy": "Plush Brenzy",
     "item.plushie_test.plush_pyla": "Plush Pyla",
     "item.plushie_test.plush_tealet": "Plush Tealet",
+    "item.plushie_test.plush_neth": "Plush Neth",
+    "item.plushie_test.plush_brenneth": "Plush Brenneth",
     "item.plushie_test.cleaver": "Cleaver",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
@@ -18,7 +20,9 @@
     "item.plushie_test.plush_ratacid.tooltip": "§5Rat §rand §bAcid§r, Cuddling and sleeping, nice and cozy",
     "item.plushie_test.plush_brenzy.tooltip": "§6A plush rendition of a great dragun who will stop at nothing to keep §bher Rider §6safe",
     "item.plushie_test.plush_pyla.tooltip": "§bLightning Storm §rfrom §4hell§r, Localised entirely in a plushie",
-    "item.plushie_test.plush_tealet.tooltip": "Place§4holder",
+    "item.plushie_test.plush_tealet.tooltip": "",
+    "item.plushie_test.plush_neth.tooltip": "",
+    "item.plushie_test.plush_brenneth.tooltip": "",
     "item.plushie_test.cleaver.tooltip": "Cleaver of the §4sin §rof §6gluttony§r, imbued with a §3hunger §rfor §c§llife",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",

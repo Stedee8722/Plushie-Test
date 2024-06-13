@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iSi",
+    "XPI",
+    "cCc"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:salmon"
+    },
+    "X": {
+      "item": "minecraft:shield"
+    },
+    "P": {
+      "item": "minecraft:potato"
+    },
+    "I": {
+      "item": "minecraft:iron_axe"
+    },
+    "c": {
+      "item": "minecraft:copper_ingot"
+    },
+    "C": {
+      "item": "minecraft:purple_dye"
+    }
+  },
+  "result": {
+    "item": "plushie_test:plush_neth"
+  }
+}

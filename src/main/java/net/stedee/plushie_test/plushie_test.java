@@ -70,6 +70,8 @@ public class plushie_test {
             event.accept(ModdedItems.PLUSH_BRENZY);
             event.accept(ModdedItems.PLUSH_PYLA);
             event.accept(ModdedItems.PLUSH_TEALET);
+            event.accept(ModdedItems.PLUSH_NETH);
+            event.accept(ModdedItems.PLUSH_BRENNETH);
             event.accept(ModdedItems.NOVA_EARS);
             event.accept(ModdedItems.HYPNO_NOVA_EARS);
             event.accept(ModdedBlocks.SEAMSTRESS_TABLE.get());
