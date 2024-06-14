@@ -4,8 +4,6 @@ import com.google.gson.JsonArray;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -25,13 +23,13 @@ import net.stedee.plushie_test.block.ModdedBlocks;
 
 public class SeamstressRecipe implements Recipe<Container> {
 
-    private final List<Ingredient> inputItems;
+    private final NonNullList<Ingredient> inputItems;
     private final ItemStack outputItem;
     private final ResourceLocation id;
 
     //public static final RecipeType<SeamstressRecipe> RECIPE_TYPE = new RecipeType<>(){};
 
-    public SeamstressRecipe(List<Ingredient> inputItems, ItemStack outputItem, ResourceLocation id) {
+    public SeamstressRecipe(NonNullList<Ingredient> inputItems, ItemStack outputItem, ResourceLocation id) {
         this.inputItems = inputItems;
         this.outputItem = outputItem;
         this.id = id;
@@ -67,6 +65,11 @@ public class SeamstressRecipe implements Recipe<Container> {
     @Override
     public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
         return outputItem.copy();
+    }
+
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return this.inputItems;
     }
 
     @Override

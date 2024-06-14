@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class SeamstressInventoryPersistent extends TransientCraftingContainer {
 
-    protected final SeamstressTableItemHandler inv;
+    public final SeamstressTableItemHandler inv;
     private boolean doNotCallUpdates;
     private AbstractContainerMenu menu;
 

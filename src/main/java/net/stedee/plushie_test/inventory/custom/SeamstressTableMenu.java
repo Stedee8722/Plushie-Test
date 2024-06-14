@@ -339,12 +339,6 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         return slot.container != craftResult && super.canTakeItemForPickAll(stack, slot);
     }
 
-    @Override
-    public void broadcastChanges() {
-        slotsChanged(craftMatrix);
-        super.broadcastChanges();
-    }
-
     public void updateLastRecipeFromServer(SeamstressRecipe r) {
         lastRecipe = r;
         // if no recipe, set to empty to prevent ghost outputs when another player grabs the result

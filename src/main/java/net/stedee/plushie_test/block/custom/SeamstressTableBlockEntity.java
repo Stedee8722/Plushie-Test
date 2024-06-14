@@ -10,7 +10,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
@@ -21,28 +20,10 @@ import net.stedee.plushie_test.inventory.custom.SeamstressTableMenu;
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public SeamstressTableItemHandler input;
-    private int currentContainer = 0;
-
-    ContainerData data = new ContainerData() {
-        @Override
-        public int get(int pIndex) {
-            return currentContainer;
-        }
-
-        @Override
-        public void set(int pIndex, int pValue) {
-            currentContainer = pValue;
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
-    };
 
     public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
-        this.input = new SeamstressTableItemHandler(2);
+        this.input = new SeamstressTableItemHandler(3);
     }
 
     @SuppressWarnings("null")
