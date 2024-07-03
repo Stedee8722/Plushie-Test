@@ -58,6 +58,12 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
 
     @SuppressWarnings("null")
     @Override
+	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+		return 15;
+	}
+
+    @SuppressWarnings("null")
+    @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip,
             TooltipFlag pFlag) {
         pTooltip.add(Component.translatable(pStack.getDescriptionId() + ".tooltip"));
@@ -156,7 +162,7 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof SeamstressTableBlockEntity seamstressTableBlock) {
-                dropItems(seamstressTableBlock.input, pLevel, pPos);
+                dropItems(seamstressTableBlock.itemHandler, pLevel, pPos);
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
             }
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);

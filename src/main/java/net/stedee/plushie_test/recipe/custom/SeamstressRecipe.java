@@ -27,8 +27,6 @@ public class SeamstressRecipe implements Recipe<Container> {
     private final ItemStack outputItem;
     private final ResourceLocation id;
 
-    //public static final RecipeType<SeamstressRecipe> RECIPE_TYPE = new RecipeType<>(){};
-
     public SeamstressRecipe(NonNullList<Ingredient> inputItems, ItemStack outputItem, ResourceLocation id) {
         this.inputItems = inputItems;
         this.outputItem = outputItem;
@@ -70,6 +68,10 @@ public class SeamstressRecipe implements Recipe<Container> {
     @Override
     public NonNullList<Ingredient> getIngredients() {
         return this.inputItems;
+    }
+
+    public ItemStack getInputItem(int index) {
+        return inputItems.get(index).getItems()[0];
     }
 
     @Override

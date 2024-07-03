@@ -33,5 +33,10 @@
 
     "sounds.plushie_test.plushie_use": "Thú bông kêu chít",
 
-    "container.plushie_test.seamstress_table": "Kết hợp thú bông"
+    "container.plushie_test.seamstress_table": "Kết hợp thú bông",
+    
+    "gui.plushie_test.seamstress_table_screen.button.switch": "Đổi",
+    "gui.plushie_test.seamstress_table_screen.button.text.switch": "Đổi",
+
+    "creativetab.plushie_test.plushies.text": "Thú bông"
 }

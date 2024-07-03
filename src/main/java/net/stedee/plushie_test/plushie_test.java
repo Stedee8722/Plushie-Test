@@ -15,8 +15,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
+import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
-import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.sound.ModdedSounds;
 
@@ -33,6 +33,8 @@ public class plushie_test {
 
     public plushie_test() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModdedCreativeTabs.register(modEventBus);
 
         ModdedItems.register(modEventBus);
         ModdedBlocks.register(modEventBus);
@@ -51,24 +53,12 @@ public class plushie_test {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        PacketHandler.registerMessages(MOD_ID);
     }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(ModdedItems.PLUSH_AYM);
-            event.accept(ModdedItems.PLUSH_RAT);
-            event.accept(ModdedItems.PLUSH_ACID);
-            event.accept(ModdedItems.PLUSH_RATACID);
-            event.accept(ModdedItems.PLUSH_BRENZY);
-            event.accept(ModdedItems.PLUSH_PYLA);
-            event.accept(ModdedItems.PLUSH_TEALET);
-            event.accept(ModdedItems.PLUSH_NETH);
-            event.accept(ModdedItems.PLUSH_BRENNETH);
-            event.accept(ModdedItems.NOVA_EARS);
-            event.accept(ModdedItems.HYPNO_NOVA_EARS);
-            event.accept(ModdedBlocks.SEAMSTRESS_TABLE.get());
+            event.accept(ModdedBlocks.SEAMSTRESS_TABLE);
         }
         else if(event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModdedItems.CLEAVER);
