@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -19,6 +20,12 @@ public class UhhBlock extends HorizontalDirectionalBlock {
     public UhhBlock(Properties pProperties) {
         super(pProperties);
     }
+
+    @SuppressWarnings("null")
+    @Override
+	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+		return 15;
+	}
 
     @SuppressWarnings("null")
     @Override
