@@ -17,6 +17,7 @@ import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
+import net.stedee.plushie_test.painting.ModdedPaintings;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.sound.ModdedSounds;
 
@@ -45,6 +46,8 @@ public class plushie_test {
         ModdedSounds.register(modEventBus);
 
         ModdedRecipes.register(modEventBus);
+
+        ModdedPaintings.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
