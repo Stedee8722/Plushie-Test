@@ -16,7 +16,7 @@ public class C2SClearPacket {
         ctx.get().enqueueWork(() -> {
         AbstractContainerMenu container = player.containerMenu;
         if (container instanceof SeamstressTableMenu seamstressTableMenu) {
-            for (int i = 1; i < 10;i++)
+            for (int i = 36; i < 38; i++)
             seamstressTableMenu.quickMoveStack(player,i);
         }
         });
