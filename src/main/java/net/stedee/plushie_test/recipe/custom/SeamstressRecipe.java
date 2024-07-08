@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -78,6 +79,10 @@ public class SeamstressRecipe implements Recipe<Container> {
     public ResourceLocation getId() {
         return id;
     }
+
+    public CraftingBookCategory category() {
+      return CraftingBookCategory.MISC;
+   }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
