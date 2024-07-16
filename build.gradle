@@ -116,8 +116,6 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    
-    maven { url "https://maven.shedaniel.me/" }
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
@@ -129,7 +127,6 @@ repositories {
 }
 
 dependencies {
-    api fg.deobf("me.shedaniel.cloth:cloth-config-forge:11.1.118")
     // Specify the version of Minecraft to use.
     // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
     // The "userdev" classifier will be requested and setup by ForgeGradle.
