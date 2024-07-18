@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "plushie_test:plush_rat"
+        },
+        {
+            "item": "minecraft:end_crystal"
+        }
+    ],
+    "result": {
+        "item": "plushie_test:plush_hypno_nova",
+        "count": 1
+    },
+    "category": "misc"
+}
