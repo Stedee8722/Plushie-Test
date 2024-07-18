@@ -10,6 +10,7 @@
     "item.plushie_test.plush_tealet": "Plush Tealet",
     "item.plushie_test.plush_neth": "Plush Neth",
     "item.plushie_test.plush_brenneth": "Plush Brenneth",
+    "item.plushie_test.plush_hypno_nova": "Plush Hypno Nova",
     "item.plushie_test.cleaver": "Cleaver",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
@@ -23,6 +24,7 @@
     "item.plushie_test.plush_tealet.tooltip": "",
     "item.plushie_test.plush_neth.tooltip": "",
     "item.plushie_test.plush_brenneth.tooltip": "",
+    "item.plushie_test.plush_hypno_nova.tooltip": "",
     "item.plushie_test.cleaver.tooltip": "Cleaver of the §4sin §rof §6gluttony§r, imbued with a §3hunger §rfor §c§llife",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
@@ -40,5 +42,7 @@
     "creativetab.plushie_test.plushies.text": "Plushies",
 
     "painting.plushie_test.creature.title": "BeelzTBH",
-    "painting.plushie_test.creature.author": "Rat Beelz"
+    "painting.plushie_test.creature.author": "Rat Beelz",
+    
+    "text.craftingstation.config.displayitemsintable": "Display Item?"
 }

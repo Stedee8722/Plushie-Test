@@ -30,6 +30,9 @@ public class ModdedItems {
     public static final RegistryObject<PlushiesItem> HYPNO_NOVA_EARS = ITEMS.register("hypno_nova_ears",
             () -> new PlushiesItem(false));
 
+    public static final RegistryObject<PlushiesItem> PLUSH_HYPNO_NOVA = ITEMS.register("plush_hypno_nova",
+            () -> new PlushiesItem(true));
+
     public static final RegistryObject<PlushiesItem> PLUSH_RATACID = ITEMS.register("plush_ratacid",
             () -> new PlushiesItem(true));
 

@@ -28,6 +28,7 @@ public class ModdedCreativeTabs {
                 pOutput.accept(ModdedItems.PLUSH_BRENNETH.get());
                 pOutput.accept(ModdedItems.NOVA_EARS.get());
                 pOutput.accept(ModdedItems.HYPNO_NOVA_EARS.get());
+                pOutput.accept(ModdedItems.PLUSH_HYPNO_NOVA.get());
             })
             .build());
 

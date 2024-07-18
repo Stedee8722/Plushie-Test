@@ -10,6 +10,7 @@
     "item.plushie_test.plush_tealet": "Thú bông Tealet",
     "item.plushie_test.plush_neth": "Thú bông Neth",
     "item.plushie_test.plush_brenneth": "Thú bông Brenneth",
+    "item.plushie_test.plush_hypno_nova": "Thú bông Hypno Nova",
     "item.plushie_test.cleaver": "Dao phay",
 
     "item.plushie_test.plush_aym.tooltip": "§4Con trai thứ hai §rcủa §7Forneus§r, §mDễ thương :3",
@@ -23,6 +24,7 @@
     "item.plushie_test.plush_tealet.tooltip": "",
     "item.plushie_test.plush_neth.tooltip": "",
     "item.plushie_test.plush_brenneth.tooltop": "",
+    "item.plushie_test.plush_hypno_nova.tooltip": "",
     "item.plushie_test.cleaver.tooltip": "Dao phay của §4Tội đồ §6Tham ăn§r, trao §3nạn đói, §rđổi §c§lmạng",
 
     "block.plushie_test.seamstress_table": "Bàn may vá",
@@ -41,5 +43,7 @@
     "creativetab.plushie_test.plushies.text": "Thú bông",
 
     "painting.plushie_test.creature.title": "BeelzTBH",
-    "painting.plushie_test.creature.author": "Rat Beelz"
+    "painting.plushie_test.creature.author": "Rat Beelz",
+
+    "text.craftingstation.config.displayitemsintable": "Hiện vật phẩm?"
 }
