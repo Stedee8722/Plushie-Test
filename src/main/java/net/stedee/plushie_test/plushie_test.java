@@ -29,8 +29,7 @@ public class plushie_test {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "plushie_test";
     // Directly reference a slf4j logger
-    @SuppressWarnings("unused")
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public plushie_test() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

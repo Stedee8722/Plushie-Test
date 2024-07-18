@@ -20,6 +20,7 @@ import net.stedee.plushie_test.inventory.custom.SeamstressTableMenu;
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public SeamstressTableItemHandler input;
+    public boolean fromResult;
 
     public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);

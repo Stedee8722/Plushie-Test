@@ -41,7 +41,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     private Player player;
     public SeamstressRecipe lastRecipe;
     private Level world;
-    private SeamstressTableBlockEntity tileEntity;
+    public SeamstressTableBlockEntity tileEntity;
     public final SeamstressInventoryPersistent craftMatrix;
     protected SeamstressRecipe lastLastRecipe;
 
