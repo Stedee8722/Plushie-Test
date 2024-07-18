@@ -20,6 +20,7 @@ import net.stedee.plushie_test.inventory.custom.SeamstressTableMenu;
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public SeamstressTableItemHandler input;
+    public boolean fromResult;
 
     public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -43,6 +44,7 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     public void saveAdditional(CompoundTag tag) {
         CompoundTag compound = this.input.serializeNBT();
         tag.put("seamstress_inv", compound);
+        tag.putBoolean("from_result", this.fromResult);
     }
 
     @SuppressWarnings("null")
@@ -50,6 +52,7 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     public void load(CompoundTag tag) {
         CompoundTag invTag = tag.getCompound("seamstress_inv");
         this.input.deserializeNBT(invTag);
+        this.fromResult = tag.getBoolean("from_result");
         super.load(tag);
     }
 

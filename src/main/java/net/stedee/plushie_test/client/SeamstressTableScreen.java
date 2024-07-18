@@ -20,12 +20,14 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
     private Button button;
     private SeamstressTableMenu pMenu;
     private SeamstressTableBlockEntity blockEntity;
+    private Inventory playerInv;
 
     private static final Component SWITCH_BUTTON =
             Component.translatable("gui." + plushie_test.MOD_ID + ".seamstress_table_screen.button.text.switch");
 
     public SeamstressTableScreen(SeamstressTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
+        this.playerInv = pPlayerInventory;
         this.inventoryLabelY = imageHeight - 93;
         this.inventoryLabelX = 9;
         this.titleLabelX = 9;
@@ -62,8 +64,10 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
     }
 
     private void handleSwitchButton(Button button) {
+        this.blockEntity.fromResult = !this.blockEntity.fromResult;
+        this.blockEntity.setChanged();
         PacketHandler.INSTANCE.sendToServer(new C2SClearPacket());
-        this.pMenu.tileEntity.fromResult = !this.pMenu.tileEntity.fromResult;
+        //pMenu.switchResult(this.blockEntity.fromResult);
         return;
     }
 
@@ -83,7 +87,7 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
     }
 
     private void renderArrow(GuiGraphics pGuiGraphics) {
-        if (!this.pMenu.tileEntity.fromResult) {
+        if (!this.blockEntity.fromResult) {
             pGuiGraphics.blit(GUI, leftPos+99, topPos+34, 182, 0, 17, 11);
         } else {
             pGuiGraphics.blit(GUI, leftPos+98, topPos+34, 182, 14, 17, 11);
