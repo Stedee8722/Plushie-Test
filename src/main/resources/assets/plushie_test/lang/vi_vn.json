@@ -44,6 +44,9 @@
 
     "painting.plushie_test.creature.title": "BeelzTBH",
     "painting.plushie_test.creature.author": "Rat Beelz",
+    
+    "text.autoconfig.plushie_test.option.displayitemsintable": "Hiện vật phẩm trên bàn?",
+    "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Hiện vật phẩm trên bàn may vá khi đang chế tạo",
 
-    "text.craftingstation.config.displayitemsintable": "Hiện vật phẩm?"
+    "text.autoconfig.plushie_test.title": "Cài đặt mod"
 }

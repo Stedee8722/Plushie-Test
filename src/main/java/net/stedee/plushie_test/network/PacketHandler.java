@@ -9,14 +9,17 @@ public class PacketHandler {
 
     public static SimpleChannel INSTANCE;
 
+    private static final String PROTOCOL_VERSION = "1.0";
+
     public static void registerMessages(String channelName) {
-        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(plushie_test.MOD_ID, channelName), () -> "1.0", s -> true, s -> true);
+        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(plushie_test.MOD_ID, channelName), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
+        
         INSTANCE.registerMessage(0, S2CLastRecipePacket.class,
                 S2CLastRecipePacket::encode,
                 S2CLastRecipePacket::new,
                 S2CLastRecipePacket::handle);
 
-        INSTANCE.registerMessage(4, C2SClearPacket.class,
+        INSTANCE.registerMessage(1, C2SClearPacket.class,
                 (c2SClearPacket, buffer) -> {},
                 buffer -> new C2SClearPacket(),
                 C2SClearPacket::handle);

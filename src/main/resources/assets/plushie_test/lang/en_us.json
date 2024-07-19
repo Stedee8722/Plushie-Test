@@ -44,5 +44,8 @@
     "painting.plushie_test.creature.title": "BeelzTBH",
     "painting.plushie_test.creature.author": "Rat Beelz",
     
-    "text.craftingstation.config.displayitemsintable": "Display Item?"
+    "text.autoconfig.plushie_test.option.displayitemsintable": "Display item in table?",
+    "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Display item on the seamstress table while crafting",
+
+    "text.autoconfig.plushie_test.title": "Plushie Test's configs"
 }
