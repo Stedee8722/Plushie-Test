@@ -7,7 +7,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraftforge.network.NetworkEvent;
-import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.client.SeamstressTableScreen;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 

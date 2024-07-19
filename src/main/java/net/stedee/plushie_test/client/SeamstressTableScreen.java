@@ -20,14 +20,11 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
     private Button button;
     private SeamstressTableMenu pMenu;
     private SeamstressTableBlockEntity blockEntity;
-    private Inventory playerInv;
-
     private static final Component SWITCH_BUTTON =
             Component.translatable("gui." + plushie_test.MOD_ID + ".seamstress_table_screen.button.text.switch");
 
     public SeamstressTableScreen(SeamstressTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
-        this.playerInv = pPlayerInventory;
         this.inventoryLabelY = imageHeight - 93;
         this.inventoryLabelX = 9;
         this.titleLabelX = 9;

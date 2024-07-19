@@ -1,7 +1,5 @@
 package net.stedee.plushie_test.client;
 
-import java.io.IOException;
-
 import org.joml.Quaternionf;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -18,7 +16,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
@@ -30,8 +27,6 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
 
     private float _blockScale = 0.25f;
     private float _itemScale = 0.125f;
-    private boolean isClient;
-
     public SeamstressTableBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }
 
