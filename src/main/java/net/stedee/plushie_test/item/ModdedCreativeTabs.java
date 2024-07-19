@@ -19,6 +19,7 @@ public class ModdedCreativeTabs {
             .displayItems((pParameter, pOutput) -> {
                 pOutput.accept(ModdedItems.PLUSH_AYM.get());
                 pOutput.accept(ModdedItems.PLUSH_RAT.get());
+                pOutput.accept(ModdedItems.PLUSH_HYPNO_NOVA.get());
                 pOutput.accept(ModdedItems.PLUSH_ACID.get());
                 pOutput.accept(ModdedItems.PLUSH_RATACID.get());
                 pOutput.accept(ModdedItems.PLUSH_BRENZY.get());
@@ -28,7 +29,6 @@ public class ModdedCreativeTabs {
                 pOutput.accept(ModdedItems.PLUSH_BRENNETH.get());
                 pOutput.accept(ModdedItems.NOVA_EARS.get());
                 pOutput.accept(ModdedItems.HYPNO_NOVA_EARS.get());
-                pOutput.accept(ModdedItems.PLUSH_HYPNO_NOVA.get());
             })
             .build());
 
