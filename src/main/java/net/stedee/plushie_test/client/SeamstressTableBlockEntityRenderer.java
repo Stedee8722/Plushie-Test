@@ -1,9 +1,12 @@
 package net.stedee.plushie_test.client;
 
+import java.io.IOException;
+
 import org.joml.Quaternionf;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,17 +18,19 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlock;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
-import net.stedee.plushie_test.config.PlushieTestClientConfig;
+import net.stedee.plushie_test.config.ClientConfig;
 
 public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<SeamstressTableBlockEntity> {
 
     private float _blockScale = 0.25f;
     private float _itemScale = 0.125f;
+    private boolean isClient;
 
     public SeamstressTableBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }
@@ -34,8 +39,13 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
     @Override
     public void render(SeamstressTableBlockEntity blockEntity, float var2, PoseStack matrixStack,
             MultiBufferSource iRenderTypeBuffer, int light, int var6) {
-        
-        if (!PlushieTestClientConfig.SHOW_ITEMS_IN_TABLE.get() || blockEntity.input.isEmpty()) 
+        ClientConfig config = AutoConfig.getConfigHolder(ClientConfig.class).getConfig();
+        //try(Level level = blockEntity.getLevel()) {
+        //    isClient = level.isClientSide;
+        //} catch(IOException err)
+        //{System.out.println(err);}
+
+        if (!config.displayitemsintable || blockEntity.input.isEmpty())// || !isClient) 
             return;
 
         BlockState state = blockEntity.getBlockState();
@@ -46,8 +56,8 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
         final double offset = .31;
         //translate x,y,z
         matrixStack.translate(0,.0625 + height, 0);
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 2; j++) {
                     ItemStack item = blockEntity.input.getStackInSlot(j + 3 * i);
                     if (item.isEmpty()) continue;
 
