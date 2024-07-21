@@ -15,15 +15,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.inventory.custom.ModdedItemHandler;
-import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
+import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
 
-public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
+public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public ModdedItemHandler input;
     public boolean fromResult;
 
-    public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
+    public AlchemicalTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModdedBlockEntities.ALCHEMICAL_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
         this.input = new ModdedItemHandler(3);
     }
 
@@ -31,28 +31,26 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     @Override
     @Nullable
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new SeamstressTableMenu(pContainerId, pPlayerInventory, this);
+        return new AlchemicalTableMenu(pContainerId, pPlayerInventory, this);
     }
 
     @Override
     public Component getDisplayName() {
-        return SeamstressTableBlock.CONTAINER_TITLE;
+        return AlchemicalTableBlock.CONTAINER_TITLE;
     }
 
     @SuppressWarnings("null")
     @Override
     public void saveAdditional(CompoundTag tag) {
         CompoundTag compound = this.input.serializeNBT();
-        tag.put("seamstress_inv", compound);
-        tag.putBoolean("from_result", this.fromResult);
+        tag.put("alchemical_inv", compound);
     }
 
     @SuppressWarnings("null")
     @Override
     public void load(CompoundTag tag) {
-        CompoundTag invTag = tag.getCompound("seamstress_inv");
+        CompoundTag invTag = tag.getCompound("alchemical_inv");
         this.input.deserializeNBT(invTag);
-        this.fromResult = tag.getBoolean("from_result");
         super.load(tag);
     }
 
@@ -71,3 +69,4 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
         return this.input;
     }
 }
+

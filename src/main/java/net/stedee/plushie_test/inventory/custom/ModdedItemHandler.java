@@ -4,9 +4,9 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class SeamstressTableItemHandler extends ItemStackHandler {
+public class ModdedItemHandler extends ItemStackHandler {
 
-    public SeamstressTableItemHandler(int size) {
+    public ModdedItemHandler(int size) {
         super(size);
     }
 

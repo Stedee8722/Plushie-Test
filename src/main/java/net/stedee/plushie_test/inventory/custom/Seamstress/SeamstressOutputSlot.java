@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.inventory.custom;
+package net.stedee.plushie_test.inventory.custom.Seamstress;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -7,15 +7,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.stedee.plushie_test.plushie_test;
+import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 
 public class SeamstressOutputSlot extends Slot {
     
     private final SeamstressTableMenu container;
-    protected SeamstressInventoryPersistent seamstressInventoryPersistent;
+    protected TableInventoryPersistent seamstressInventoryPersistent;
     private Player player;
-    private SeamstressInventoryPersistent craftSlots;
+    private TableInventoryPersistent craftSlots;
 
-    public SeamstressOutputSlot(SeamstressTableMenu container, SeamstressInventoryPersistent seamstressInventoryPersistent, int slotIndex, int xPosition, int yPosition, Player player) {
+    public SeamstressOutputSlot(SeamstressTableMenu container, TableInventoryPersistent seamstressInventoryPersistent, int slotIndex, int xPosition, int yPosition, Player player) {
         //remove player if not needed
         super(seamstressInventoryPersistent, slotIndex, xPosition, yPosition);
         this.container = container;

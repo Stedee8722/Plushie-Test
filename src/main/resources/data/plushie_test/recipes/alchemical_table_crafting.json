@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "PBP",
+    "BLB"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone"
+    },
+    "P": {
+      "item": "minecraft:red_wool"
+    },
+    "B": {
+      "tag": "plushie_test:table_crafting_mats"
+    },
+    "L": {
+      "item": "minecraft:loom"
+    }
+  },
+  "result": {
+    "item": "plushie_test:seamstress_table",
+    "count": 1
+  },
+  "category": "misc"
+}

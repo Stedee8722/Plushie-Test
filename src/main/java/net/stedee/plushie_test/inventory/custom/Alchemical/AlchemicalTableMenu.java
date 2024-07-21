@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.inventory.custom;
+package net.stedee.plushie_test.inventory.custom.Alchemical;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
@@ -20,8 +20,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkDirection;
 import net.stedee.plushie_test.block.ModdedBlocks;
-import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
+import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
+import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
@@ -39,34 +40,34 @@ import org.jetbrains.annotations.NotNull;
 
 import com.mojang.logging.LogUtils;
 
-public class SeamstressTableMenu extends AbstractContainerMenu {
+public class AlchemicalTableMenu extends AbstractContainerMenu {
 
     private ResultContainer craftResult = new ResultContainer();
     private ContainerLevelAccess access;
     private Player player;
     public SeamstressRecipe lastRecipe;
     private Level world;
-    public SeamstressTableBlockEntity tileEntity;
-    public final SeamstressInventoryPersistent craftMatrix;
+    public AlchemicalTableBlockEntity tileEntity;
+    public final TableInventoryPersistent craftMatrix;
     protected SeamstressRecipe lastLastRecipe;
 
-    public SeamstressTableMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+    public AlchemicalTableMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
     @SuppressWarnings("null")
-    public SeamstressTableMenu(int id, Inventory inv, BlockEntity entity) {
-        super(ModdedMenuTypes.SEAMSTRESS_MENU_TYPE.get(), id);
+    public AlchemicalTableMenu(int id, Inventory inv, BlockEntity entity) {
+        super(ModdedMenuTypes.ALCHEMICAL_MENU_TYPE.get(), id);
         this.player = inv.player;
         this.world = player.level();
-        if (entity instanceof SeamstressTableBlockEntity be) {
+        if (entity instanceof AlchemicalTableBlockEntity be) {
             this.tileEntity = be;
         }
         else {
-            throw new IllegalStateException("Incorrect block entity class (%s) passed into SeamstressTableMenu".formatted(entity.getClass().getCanonicalName()));
+            throw new IllegalStateException("Incorrect block entity class (%s) passed into AlchemicalTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new SeamstressInventoryPersistent(this, tileEntity.input, 3, 1);
+        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.input, 3, 1);
         
         this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
@@ -84,19 +85,19 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
                 return true;
             }
         });
-        this.addSlot(new Slot(craftMatrix, 1, 76, 31){
-            @Override
-            public void setChanged() {
-                slotsChanged(inv);
-                super.setChanged();
-            }
-
-            @Override
-            public boolean mayPlace(@NotNull ItemStack stack) {
-                return true;
-            }
-        });
-        this.addSlot(new SeamstressOutputSlot(this, this.craftMatrix, 2, 123, 31, player));
+        //this.addSlot(new Slot(craftMatrix, 1, 76, 31){
+        //    @Override
+        //    public void setChanged() {
+        //        slotsChanged(inv);
+        //        super.setChanged();
+        //    }
+        //    @Override
+        //    public boolean mayPlace(@NotNull ItemStack stack) {
+        //        return true;
+        //    }
+        //});
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 1, 76, 31, player));
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 2, 123, 31, player));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -115,7 +116,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 1;  // must be the number of slots you have!
     @SuppressWarnings("null")
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
@@ -153,7 +154,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(this.access, player, ModdedBlocks.SEAMSTRESS_TABLE.get());
+        return stillValid(this.access, player, ModdedBlocks.ALCHEMICAL_TABLE.get());
     }
 
     private int addSlotRange(Container playerInventory, int index, int x, int y, int amount, int dx) {
@@ -182,11 +183,11 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
     }
 
-    public SeamstressTableBlockEntity getTileEntity() {
+    public AlchemicalTableBlockEntity getTileEntity() {
         return tileEntity;
     }
 
-    public static SeamstressRecipe findRecipe(SeamstressTableMenu menu, CraftingContainer inv, Level world, Player player) {
+    public static SeamstressRecipe findRecipe(AlchemicalTableMenu menu, CraftingContainer inv, Level world, Player player) {
         return world.getRecipeManager().getRecipeFor(ModdedRecipes.SEAMSTRESS_RECIPE.get(),inv,world).stream().findFirst().orElse(null);
     }
 
@@ -234,7 +235,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     private void syncRecipeToAllOpenWindows(final SeamstressRecipe lastRecipe, List<ServerPlayer> players) {
         players.forEach(otherPlayer -> {
             // safe cast since hasSameContainerOpen does class checks
-            ((SeamstressTableMenu) otherPlayer.containerMenu).lastRecipe = lastRecipe;
+            ((AlchemicalTableMenu) otherPlayer.containerMenu).lastRecipe = lastRecipe;
             PacketHandler.INSTANCE.sendTo(new S2CLastRecipePacket(lastRecipe), otherPlayer.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
         });
     }
@@ -248,19 +249,19 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         this.craftMatrix.setDoNotCallUpdates(false);
     }
 
-    public List<ServerPlayer> getAllPlayersWithThisContainerOpen(SeamstressTableMenu container, ServerLevel server) {
+    public List<ServerPlayer> getAllPlayersWithThisContainerOpen(AlchemicalTableMenu container, ServerLevel server) {
         return server.players().stream()
                 .filter(player -> hasSameContainerOpen(container, player))
                 .collect(Collectors.toList());
     }
 
-    private boolean hasSameContainerOpen(SeamstressTableMenu container, ServerPlayer playerToCheck) {
+    private boolean hasSameContainerOpen(AlchemicalTableMenu container, ServerPlayer playerToCheck) {
         return playerToCheck instanceof ServerPlayer &&
                 playerToCheck.containerMenu.getClass().isAssignableFrom(container.getClass()) &&
-                this.sameGui((SeamstressTableMenu) playerToCheck.containerMenu);
+                this.sameGui((AlchemicalTableMenu) playerToCheck.containerMenu);
     }
 
-    public boolean sameGui(SeamstressTableMenu otherContainer) {
+    public boolean sameGui(AlchemicalTableMenu otherContainer) {
         return this.tileEntity == otherContainer.tileEntity;
     }
 

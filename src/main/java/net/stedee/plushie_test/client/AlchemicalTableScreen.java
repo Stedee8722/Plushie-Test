@@ -9,21 +9,21 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.stedee.plushie_test.plushie_test;
-import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
-import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
+import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
+import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
 import net.stedee.plushie_test.network.C2SClearPacket;
 import net.stedee.plushie_test.network.PacketHandler;
 
-public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTableMenu> {
+public class AlchemicalTableScreen extends AbstractContainerScreen<AlchemicalTableMenu> {
 
     private final ResourceLocation GUI = new ResourceLocation(plushie_test.MOD_ID, "textures/gui/seamstress_table_gui.png");
     private Button button;
-    private SeamstressTableMenu pMenu;
-    private SeamstressTableBlockEntity blockEntity;
+    private AlchemicalTableMenu pMenu;
+    private AlchemicalTableBlockEntity blockEntity;
     private static final Component SWITCH_BUTTON =
             Component.translatable("gui." + plushie_test.MOD_ID + ".seamstress_table_screen.button.text.switch");
 
-    public SeamstressTableScreen(SeamstressTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+    public AlchemicalTableScreen(AlchemicalTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
         this.inventoryLabelY = imageHeight - 93;
         this.inventoryLabelX = 9;
@@ -42,7 +42,7 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
         this.topPos = (this.height - this.imageHeight) / 2;
 
         BlockEntity be = this.pMenu.tileEntity;
-        if(be instanceof SeamstressTableBlockEntity blockEntity) {
+        if(be instanceof AlchemicalTableBlockEntity blockEntity) {
             this.blockEntity = blockEntity;
         } else {
             plushie_test.LOGGER.error("BlockEntity at %s is not of type!\n", this.blockEntity.getBlockPos()); // debug

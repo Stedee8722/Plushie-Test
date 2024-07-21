@@ -46,6 +46,7 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
         BlockState state = blockEntity.getBlockState();
 
         double height = state.hasProperty(SlabBlock.TYPE) ? state.getValue(SlabBlock.TYPE) == SlabType.BOTTOM ?.5:1:1;
+        // get type of block
 
         final double spacing = .189;
         final double offset = .31;

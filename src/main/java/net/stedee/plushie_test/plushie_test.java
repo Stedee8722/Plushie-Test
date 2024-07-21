@@ -88,6 +88,7 @@ public class plushie_test {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModdedBlocks.SEAMSTRESS_TABLE);
+            event.accept(ModdedBlocks.ALCHEMICAL_TABLE);
         }
         else if(event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModdedItems.CLEAVER);

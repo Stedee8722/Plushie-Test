@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraftforge.network.NetworkEvent;
-import net.stedee.plushie_test.inventory.custom.SeamstressTableMenu;
+import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
 
 public class C2SClearPacket {
     public void handle(Supplier<NetworkEvent.Context> ctx) {

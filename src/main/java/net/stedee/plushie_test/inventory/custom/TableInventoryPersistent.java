@@ -9,13 +9,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.item.ItemStack;
 
-public class SeamstressInventoryPersistent extends TransientCraftingContainer {
+public class TableInventoryPersistent extends TransientCraftingContainer {
 
-    public final SeamstressTableItemHandler inv;
+    public final ModdedItemHandler inv;
     private boolean doNotCallUpdates;
     private AbstractContainerMenu menu;
 
-    public SeamstressInventoryPersistent(AbstractContainerMenu pMenu, SeamstressTableItemHandler itemHandler, int pWidth, int pHeight) {
+    public TableInventoryPersistent(AbstractContainerMenu pMenu, ModdedItemHandler itemHandler, int pWidth, int pHeight) {
         super(pMenu, pWidth, pHeight);
         this.inv = itemHandler;
         this.menu = pMenu;

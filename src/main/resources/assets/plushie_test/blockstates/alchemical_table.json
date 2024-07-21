@@ -1,0 +1,19 @@
+{
+    "variants": {
+      "facing=east": {
+        "model": "plushie_test:block/alchemical_table",
+        "y": 270
+      },
+      "facing=north": {
+        "model": "plushie_test:block/alchemical_table",
+        "y": 180
+      },
+      "facing=south": {
+        "model": "plushie_test:block/alchemical_table"
+      },
+      "facing=west": {
+        "model": "plushie_test:block/alchemical_table",
+        "y": 90
+      }
+    }
+  }
