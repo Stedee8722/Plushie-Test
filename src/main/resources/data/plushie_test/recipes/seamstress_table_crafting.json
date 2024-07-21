@@ -13,7 +13,7 @@
       "item": "minecraft:purple_wool"
     },
     "B": {
-      "item": "minecraft:black_wool"
+      "tag": "plushie_test:table_crafting_mats"
     },
     "L": {
       "item": "minecraft:loom"
