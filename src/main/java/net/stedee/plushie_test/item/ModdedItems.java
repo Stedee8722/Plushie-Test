@@ -55,7 +55,7 @@ public class ModdedItems {
     public static final RegistryObject<PlushiesItem> PLUSH_BRENNETH = ITEMS.register("plush_brenneth",
             () -> new PlushiesItem(true));
 
-    public static final RegistryObject<MaskItem> MASK_NETH = ITEMS.register("mask_neth",
+    public static final RegistryObject<MaskItem> MASK_VAPOREON = ITEMS.register("mask_vaporeon",
             () -> new MaskItem(new Item.Properties()
                                         .fireResistant()
                                         .defaultDurability(275)

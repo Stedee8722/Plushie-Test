@@ -12,7 +12,7 @@
     "item.plushie_test.plush_brenneth": "Plush Brenneth",
     "item.plushie_test.plush_hypno_nova": "Plush Hypno Nova",
     "item.plushie_test.cleaver": "Cleaver",
-    "item.plushie_test.mask_neth": "Vaporeon Mask",
+    "item.plushie_test.mask_vaporeon": "Vaporeon Mask",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
     "item.plushie_test.nova_ears.tooltip": "Ears of the §4Sin §rof §6Gluttony",
@@ -27,7 +27,7 @@
     "item.plushie_test.plush_brenneth.tooltip": "§6Dragun §4and §bRider§4. Intertwined until the end of eternity.",
     "item.plushie_test.plush_hypno_nova.tooltip": "§mScawy§r §dFunny Plush §rof the Glutton Rat",
     "item.plushie_test.cleaver.tooltip": "Cleaver of the §4sin §rof §6gluttony§r, imbued with a §3hunger §rfor §c§llife",
-    "item.plushie_test.mask_neth.tooltip": "Something smells §bfishy§r, Mask of A §6Dragun Rider",
+    "item.plushie_test.mask_vaporeon.tooltip": "Something smells §bfishy§r, Mask of A §6Dragun Rider",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
     "block.plushie_test.uhh_block": "Uhhhhhhh...",
@@ -38,10 +38,9 @@
     "sounds.plushie_test.plushie_use": "Plushie squeaks",
 
     "container.plushie_test.seamstress_table": "Combine Plushies",
-    
-    "gui.plushie_test.seamstress_table_screen.button.text.switch": "Switch",
 
     "creativetab.plushie_test.plushies.text": "Plushies",
+    "creativetab.plushie_test.masks.text": "Masks",
 
     "painting.plushie_test.creature.title": "BeelzTBH",
     "painting.plushie_test.creature.author": "Rat Beelz",
