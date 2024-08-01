@@ -1,5 +1,7 @@
 package net.stedee.plushie_test.item;
 
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
@@ -11,6 +13,7 @@ import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.item.custom.CleaverItem;
 import net.stedee.plushie_test.item.custom.MaskItem;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
+import net.stedee.plushie_test.item.custom_armor_materials.CustomMaskMaterial;
 
 public class ModdedItems {
     public static final DeferredRegister<Item> ITEMS = 
@@ -59,7 +62,7 @@ public class ModdedItems {
             () -> new MaskItem(new Item.Properties()
                                         .fireResistant()
                                         .defaultDurability(275)
-                                        .rarity(Rarity.EPIC)));
+                                        .rarity(Rarity.EPIC), CustomMaskMaterial.EEVEELUTION_MASK, MobEffects.WATER_BREATHING));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
