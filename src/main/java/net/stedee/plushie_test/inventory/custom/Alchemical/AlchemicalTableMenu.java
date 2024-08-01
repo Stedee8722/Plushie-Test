@@ -71,9 +71,9 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         
         this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
-        layoutPlayerInventorySlots(player.getInventory(), 8, 84);
+        layoutPlayerInventorySlots(player.getInventory(), 8, 94);
 
-        this.addSlot(new Slot(craftMatrix, 0, 38, 31) {
+        this.addSlot(new Slot(craftMatrix, 0, 80, 19) {
             @Override
             public void setChanged() {
                 slotsChanged(inv);
@@ -96,8 +96,8 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         //        return true;
         //    }
         //});
-        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 1, 76, 31, player));
-        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 2, 123, 31, player));
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 1, 55, 59, player));
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 2, 104, 59, player));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
