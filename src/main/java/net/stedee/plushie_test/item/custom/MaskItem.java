@@ -5,9 +5,14 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
+
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -44,7 +49,20 @@ public class MaskItem extends ArmorItem {
     @SuppressWarnings("null")
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(null);
+        consumer.accept(() -> new InnerMaskItem());
+    }
+
+    /**
+     * InnerMaskItem
+     */
+    public class InnerMaskItem implements IClientItemExtensions {
+        @Override
+        public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack,
+                EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+            
+            return IClientItemExtensions.super.getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
+        }
+
     }
 
 }
