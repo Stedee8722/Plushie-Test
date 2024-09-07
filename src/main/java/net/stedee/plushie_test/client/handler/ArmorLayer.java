@@ -22,6 +22,7 @@ public class ArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extend
         this.renderLayerParent = renderer;
     }
 
+    @SuppressWarnings("null")
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int light, T entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (plushie_test.itemRenderer == null) {

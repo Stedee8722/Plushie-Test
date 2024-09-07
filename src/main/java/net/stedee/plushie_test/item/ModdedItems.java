@@ -1,7 +1,6 @@
 package net.stedee.plushie_test.item;
 
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
