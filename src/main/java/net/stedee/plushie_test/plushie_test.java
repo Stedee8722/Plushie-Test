@@ -4,9 +4,16 @@ import com.mojang.logging.LogUtils;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -19,6 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
+import net.stedee.plushie_test.client.handler.ArmorLayer;
 import net.stedee.plushie_test.config.ClientConfig;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
@@ -39,6 +47,10 @@ public class plushie_test {
     public static final Logger LOGGER = LogUtils.getLogger();
     
     public static ClientConfig CONFIG = new ClientConfig();;
+
+
+    public static Minecraft minecraft;
+    public static ItemRenderer itemRenderer;
 
     public plushie_test() {
 
@@ -75,6 +87,7 @@ public class plushie_test {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         PacketHandler.registerMessages(MOD_ID);
+
     }
 
     private static void initConfig() {
@@ -102,11 +115,32 @@ public class plushie_test {
         //LOGGER.info("HELLO from server starting");
     }
 
+    @SubscribeEvent
+    public void addLayers(EntityRenderersEvent.AddLayers evt) {
+        for (String skin : evt.getSkins()) {
+            addPlayerLayer(evt, skin);
+        }
+    }
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private static void addPlayerLayer(EntityRenderersEvent.AddLayers evt, String model) {
+        EntityRenderer<? extends Player> renderer = evt.getSkin(model);
+
+        if (renderer instanceof LivingEntityRenderer livingRenderer) {
+            livingRenderer.addLayer(new ArmorLayer(livingRenderer));
+        }
+    }
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            minecraft = Minecraft.getInstance();
+            itemRenderer = minecraft.getItemRenderer();
+
             // Some client setup code
             //LOGGER.info("HELLO FROM CLIENT SETUP");
             //LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

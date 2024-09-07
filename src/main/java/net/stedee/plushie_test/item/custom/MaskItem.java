@@ -46,23 +46,4 @@ public class MaskItem extends ArmorItem {
         super.onArmorTick(stack, level, player);
     }
 
-    @SuppressWarnings("null")
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(() -> new InnerMaskItem());
-    }
-
-    /**
-     * InnerMaskItem
-     */
-    public class InnerMaskItem implements IClientItemExtensions {
-        @Override
-        public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack,
-                EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
-            
-            return IClientItemExtensions.super.getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
-        }
-
-    }
-
 }
