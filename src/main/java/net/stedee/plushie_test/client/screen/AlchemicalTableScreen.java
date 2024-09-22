@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.client;
+package net.stedee.plushie_test.client.screen;
 
 import net.minecraft.client.gui.GuiGraphics;
 //import net.minecraft.client.gui.components.Button;

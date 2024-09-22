@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.client;
+package net.stedee.plushie_test.client.renderer;
 
 import org.joml.Quaternionf;
 
@@ -25,9 +25,12 @@ import net.stedee.plushie_test.config.ClientConfig;
 
 public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<SeamstressTableBlockEntity> {
 
-    private float _blockScale = 0.25f;
-    private float _itemScale = 0.125f;
+    private final float _blockScale = 0.25f;
+    private final float _itemScale = 0.125f;
+    private final BlockEntityRendererProvider.Context context;
+
     public SeamstressTableBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
+        this.context = context;
     }
 
     @SuppressWarnings("null")

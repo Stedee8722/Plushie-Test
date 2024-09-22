@@ -8,9 +8,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
-import net.stedee.plushie_test.client.SeamstressTableBlockEntityRenderer;
-import net.stedee.plushie_test.client.AlchemicalTableScreen;
-import net.stedee.plushie_test.client.SeamstressTableScreen;
+import net.stedee.plushie_test.client.renderer.SeamstressTableBlockEntityRenderer;
+import net.stedee.plushie_test.client.screen.AlchemicalTableScreen;
+import net.stedee.plushie_test.client.screen.SeamstressTableScreen;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 
 @Mod.EventBusSubscriber(modid = plushie_test.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
