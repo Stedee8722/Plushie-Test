@@ -12,6 +12,7 @@ public class ModdedPaintings {
         DeferredRegister.create(ForgeRegistries.PAINTING_VARIANTS, plushie_test.MOD_ID);
 
     public static final RegistryObject<PaintingVariant> CREATURE = PAINTING_VARIANTS.register("creature", () -> new PaintingVariant(64, 64));
+    public static final RegistryObject<PaintingVariant> TEA = PAINTING_VARIANTS.register("tea", () -> new PaintingVariant(64, 64));
 
     public static void register(IEventBus eventBus) {
         PAINTING_VARIANTS.register(eventBus);
