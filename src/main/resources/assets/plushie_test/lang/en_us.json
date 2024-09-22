@@ -30,14 +30,17 @@
     "item.plushie_test.mask_vaporeon.tooltip": "Something smells §bfishy§r, Mask of A §6Dragun Rider",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
+    "block.plushie_test.alchemical_table": "Alchemical Table",
     "block.plushie_test.uhh_block": "Uhhhhhhh...",
     
-    "block.plushie_test.seamstress_table.tooltip": "Table of a §amythical seamstress§r, used to §acombine §rplushies into one and §aseperate §rthem",
+    "block.plushie_test.seamstress_table.tooltip": "Table of a §amythical seamstress§r, used to §acombine §rplushies into one.",
+    "block.plushie_test.alchemical_table.tooltip": "Table of a §4mythical alchemical§r, used to §4seperate §rplushies combined.",
     "block.plushie_test.uhh_block.tooltip": "§mDon't ask why this is here...",
 
     "sounds.plushie_test.plushie_use": "Plushie squeaks",
 
     "container.plushie_test.seamstress_table": "Combine Plushies",
+    "container.plushie_test.alchemical_table": "Separate Plushies",
 
     "creativetab.plushie_test.plushies.text": "Plushies",
     "creativetab.plushie_test.masks.text": "Masks",
