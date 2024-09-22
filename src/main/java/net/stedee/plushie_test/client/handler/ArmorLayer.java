@@ -15,11 +15,11 @@ import net.stedee.plushie_test.item.custom.MaskItem;
 import net.stedee.plushie_test.plushie_test;
 
 public class ArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
-    private final RenderLayerParent<T, M> renderLayerParent;
+    //private final RenderLayerParent<T, M> renderLayerParent;
 
     public ArmorLayer(RenderLayerParent<T, M> renderer) {
         super(renderer);
-        this.renderLayerParent = renderer;
+        //this.renderLayerParent = renderer;
     }
 
     @SuppressWarnings("null")

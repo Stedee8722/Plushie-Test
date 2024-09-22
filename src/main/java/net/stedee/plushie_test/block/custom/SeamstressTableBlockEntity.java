@@ -16,6 +16,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.inventory.custom.ModdedItemHandler;
 import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
+import org.jetbrains.annotations.NotNull;
 
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -30,12 +31,12 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     @SuppressWarnings("null")
     @Override
     @Nullable
-    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+    public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
         return new SeamstressTableMenu(pContainerId, pPlayerInventory, this);
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return SeamstressTableBlock.CONTAINER_TITLE;
     }
 
@@ -57,7 +58,7 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
     }
 

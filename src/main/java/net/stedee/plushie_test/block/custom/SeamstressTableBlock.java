@@ -183,5 +183,9 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
         IntStream.range(0, 2).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
 
+    public @NotNull FluidState getFluidState(BlockState $$0) {
+        return (Boolean)$$0.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState($$0);
+    }
+
     //inv.getSlots()
 }
