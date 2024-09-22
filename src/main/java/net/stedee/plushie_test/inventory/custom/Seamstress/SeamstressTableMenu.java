@@ -67,7 +67,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Incorrect block entity class (%s) passed into SeamstressTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.input, 3, 1);
+        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 3, 1);
         
         this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 

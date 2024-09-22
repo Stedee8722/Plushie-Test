@@ -172,7 +172,7 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof SeamstressTableBlockEntity seamstressTableBlock) {
-                dropItems(seamstressTableBlock.input, pLevel, pPos);
+                dropItems(seamstressTableBlock.inventory, pLevel, pPos);
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
             }
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);

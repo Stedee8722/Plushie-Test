@@ -20,12 +20,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
-    public ModdedItemHandler input;
+    public ModdedItemHandler inventory;
     public boolean fromResult;
 
     public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
-        this.input = new ModdedItemHandler(3);
+        this.inventory = new ModdedItemHandler(3);
     }
 
     @SuppressWarnings("null")
@@ -43,7 +43,7 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     @SuppressWarnings("null")
     @Override
     public void saveAdditional(CompoundTag tag) {
-        CompoundTag compound = this.input.serializeNBT();
+        CompoundTag compound = this.inventory.serializeNBT();
         tag.put("seamstress_inv", compound);
         tag.putBoolean("from_result", this.fromResult);
     }
@@ -52,7 +52,7 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     @Override
     public void load(CompoundTag tag) {
         CompoundTag invTag = tag.getCompound("seamstress_inv");
-        this.input.deserializeNBT(invTag);
+        this.inventory.deserializeNBT(invTag);
         this.fromResult = tag.getBoolean("from_result");
         super.load(tag);
     }
@@ -69,6 +69,6 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     }
 
     public ItemStackHandler getInventory() {
-        return this.input;
+        return this.inventory;
     }
 }
