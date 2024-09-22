@@ -24,10 +24,13 @@ import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
 import net.stedee.plushie_test.config.ClientConfig;
 
 public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<SeamstressTableBlockEntity> {
+    private final BlockEntityRendererProvider.Context context;
 
     private float _blockScale = 0.25f;
     private float _itemScale = 0.125f;
+
     public SeamstressTableBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
+        this.context = context;
     }
 
     @SuppressWarnings("null")

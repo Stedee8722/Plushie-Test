@@ -1,5 +1,5 @@
 {
-  "type": "plushie_test:seamstress",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "plushie_test:plush_rat"
@@ -11,5 +11,6 @@
   "result": {
     "item": "plushie_test:plush_ratacid",
     "count": 1
-  }
+  },
+  "category": "misc"
 }

@@ -10,9 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.item.custom.CleaverItem;
-import net.stedee.plushie_test.item.custom.MaskItem;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
-import net.stedee.plushie_test.item.custom_armor_materials.CustomMaskMaterial;
 
 public class ModdedItems {
     public static final DeferredRegister<Item> ITEMS = 
@@ -57,11 +55,11 @@ public class ModdedItems {
     public static final RegistryObject<PlushiesItem> PLUSH_BRENNETH = ITEMS.register("plush_brenneth",
             () -> new PlushiesItem(true));
 
-    public static final RegistryObject<MaskItem> MASK_VAPOREON = ITEMS.register("mask_vaporeon",
-            () -> new MaskItem(new Item.Properties()
-                                        .fireResistant()
-                                        .defaultDurability(275)
-                                        .rarity(Rarity.EPIC), CustomMaskMaterial.EEVEELUTION_MASK, MobEffects.WATER_BREATHING));
+    //public static final RegistryObject<MaskItem> MASK_VAPOREON = ITEMS.register("mask_vaporeon",
+    //        () -> new MaskItem(new Item.Properties()
+    //                                    .fireResistant()
+    //                                    .defaultDurability(275)
+    //                                    .rarity(Rarity.EPIC), CustomMaskMaterial.EEVEELUTION_MASK, MobEffects.WATER_BREATHING));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
