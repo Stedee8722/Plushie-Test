@@ -117,8 +117,16 @@ public class AlchemicalTableBlock extends Block implements SimpleWaterloggedBloc
     @SuppressWarnings({ "deprecation", "null" })
     @Override
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState,
-            LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-                return pDirection == Direction.DOWN && !this.canSurvive(pState, pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+                                  LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        if ((pDirection == Direction.DOWN) && !this.canSurvive(pState, pLevel, pCurrentPos)) {
+            return Blocks.AIR.defaultBlockState();
+        } else {
+            if ((boolean) pState.getValue(WATERLOGGED)) {
+                pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+            }
+
+            return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        }
     }
 
     @SuppressWarnings("null")
@@ -169,7 +177,9 @@ public class AlchemicalTableBlock extends Block implements SimpleWaterloggedBloc
     }
 
     public static void dropItems(IItemHandler inv, Level pLevel, BlockPos pos) {
-        IntStream.range(0, inv.getSlots()).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
+        IntStream.range(0, 1).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
+
+    //inv.getSlots()
 
 }
