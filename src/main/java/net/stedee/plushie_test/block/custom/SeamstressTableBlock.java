@@ -33,6 +33,7 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -41,7 +42,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
-import net.minecraft.world.Containers;;
+import net.minecraft.world.Containers;
+import org.jetbrains.annotations.NotNull;;
 
 public class SeamstressTableBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
 
@@ -119,7 +121,15 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
     @Override
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState,
             LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-                return pDirection == Direction.DOWN && !this.canSurvive(pState, pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        if ((pDirection == Direction.DOWN) && !this.canSurvive(pState, pLevel, pCurrentPos)) {
+            return Blocks.AIR.defaultBlockState();
+        } else {
+            if ((boolean) pState.getValue(WATERLOGGED)) {
+                pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+            }
+
+            return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        }
     }
 
     @SuppressWarnings("null")
@@ -170,7 +180,12 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
     }
 
     public static void dropItems(IItemHandler inv, Level pLevel, BlockPos pos) {
-        IntStream.range(0, inv.getSlots()).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
+        IntStream.range(0, 2).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
 
+    public @NotNull FluidState getFluidState(BlockState $$0) {
+        return (Boolean)$$0.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState($$0);
+    }
+
+    //inv.getSlots()
 }
