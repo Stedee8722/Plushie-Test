@@ -42,11 +42,11 @@ import com.mojang.logging.LogUtils;
 
 public class SeamstressTableMenu extends AbstractContainerMenu {
 
-    private ResultContainer craftResult = new ResultContainer();
-    private ContainerLevelAccess access;
-    private Player player;
+    private final ResultContainer craftResult = new ResultContainer();
+    private final ContainerLevelAccess access;
+    private final Player player;
     public SeamstressRecipe lastRecipe;
-    private Level world;
+    private final Level world;
     public SeamstressTableBlockEntity tileEntity;
     public final TableInventoryPersistent craftMatrix;
     protected SeamstressRecipe lastLastRecipe;

@@ -68,7 +68,6 @@ public class SeamstressOutputSlot extends Slot {
     @SuppressWarnings("null")
     @Override
     public boolean mayPlace(@NotNull ItemStack stack) {
-        plushie_test.LOGGER.debug("Trying to place: " + container.tileEntity.fromResult);
-        return container.tileEntity.fromResult;
+        return false;
     }
 }

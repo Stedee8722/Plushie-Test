@@ -42,11 +42,11 @@ import com.mojang.logging.LogUtils;
 
 public class AlchemicalTableMenu extends AbstractContainerMenu {
 
-    private ResultContainer craftResult = new ResultContainer();
-    private ContainerLevelAccess access;
-    private Player player;
+    private final ResultContainer craftResult = new ResultContainer();
+    private final ContainerLevelAccess access;
+    private final Player player;
     public SeamstressRecipe lastRecipe;
-    private Level world;
+    private final Level world;
     public AlchemicalTableBlockEntity tileEntity;
     public final TableInventoryPersistent craftMatrix;
     protected SeamstressRecipe lastLastRecipe;
@@ -119,7 +119,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_SLOT_COUNT = 1;  // must be the number of slots you have!
     @SuppressWarnings("null")
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
@@ -153,7 +153,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
     @SuppressWarnings("null")
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return stillValid(this.access, player, ModdedBlocks.ALCHEMICAL_TABLE.get());
     }
 
@@ -193,24 +193,27 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
     @SuppressWarnings("null")
     @Override
-    public void slotsChanged(Container pContainer) {
+    public void slotsChanged(@NotNull Container pContainer) {
         this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult, tileEntity.fromResult);
     }
 
 
     protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ResultContainer result, boolean fromResult) {
-        ItemStack itemstack = ItemStack.EMPTY;
+        ItemStack itemstack_1 = ItemStack.EMPTY;
+        ItemStack itemstack_2 = ItemStack.EMPTY;
         // if the recipe is no longer valid, update it
         if (lastRecipe == null || !lastRecipe.matches(inv, world)) {
-            lastRecipe = findRecipe(this, inv, world, player);
+            lastRecipe = (SeamstressRecipe) searchRecipe(inv.getItem(0), world.getRecipeManager());
         }
 
         // if we have a recipe, fetch its result
         if (lastRecipe != null) {
-            itemstack = lastRecipe.assemble(inv,world.registryAccess());
+            itemstack_1 = lastRecipe.getInputItem(0);
+            itemstack_2 = lastRecipe.getInputItem(1);
         }
         // set the slot on both sides, client is for display/so the client knows about the recipe
-        result.setItem(0, itemstack);
+        result.setItem(0, itemstack_1);
+        result.setItem(1, itemstack_2);
 
         // update recipe on server
         if (!world.isClientSide) {
@@ -221,7 +224,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
             // sync result to all serverside inventories to prevent duplications/recipes being blocked
             // need to do this every time as otherwise taking items of the result causes desync
-            syncResultToAllOpenWindows(itemstack, relevantPlayers);
+            syncResultToAllOpenWindows(itemstack_1, itemstack_2, relevantPlayers);
 
             // if the recipe changed, update clients last recipe
             // this also updates the client side display when the recipe is added
@@ -240,10 +243,11 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         });
     }
 
-    private void syncResultToAllOpenWindows(final ItemStack stack, List<ServerPlayer> players) {
+    private void syncResultToAllOpenWindows(final ItemStack stack_1, final ItemStack stack_2, List<ServerPlayer> players) {
         this.craftMatrix.setDoNotCallUpdates(true);
         players.forEach(otherPlayer -> {
-            otherPlayer.containerMenu.setItem(38,this.getStateId(), stack);
+            otherPlayer.containerMenu.setItem(37,this.getStateId(), stack_1);
+            otherPlayer.containerMenu.setItem(38,this.getStateId(), stack_2);
             //otherPlayer.connection.sendPacket(new SPacketSetSlot(otherPlayer.openContainer.windowId, SLOT_RESULT, stack));
         });
         this.craftMatrix.setDoNotCallUpdates(false);
