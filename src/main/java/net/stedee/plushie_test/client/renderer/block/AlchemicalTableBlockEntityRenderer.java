@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.client.renderer;
+package net.stedee.plushie_test.client.renderer.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -61,7 +61,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         matrixStack.translate(0.5, 0, 0.5);
         matrixStack.rotateAround((new Quaternionf()).rotationY(getRotation(blockEntity.getBlockState().getValue(AlchemicalTableBlock.FACING)) * ((float)Math.PI / 180F)), (float)0, (float)0, (float)0);
         matrixStack.translate(-0.5, 0, -0.5);
-        matrixStack.translate(0.245, 1.05, 0.245);
+        matrixStack.translate(0.5, 1.05, 0.245);
         matrixStack.scale(_itemScale, _itemScale, _itemScale);
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));
@@ -85,7 +85,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         matrixStack.translate(0.5, 0, 0.5);
         matrixStack.rotateAround((new Quaternionf()).rotationY(getRotation(blockEntity.getBlockState().getValue(AlchemicalTableBlock.FACING)) * ((float)Math.PI / 180F)), (float)0, (float)0, (float)0);
         matrixStack.translate(-0.5, 0, -0.5);
-        matrixStack.translate(0.755, 1.05, 0.245);
+        matrixStack.translate(0.245, 1.05, 0.7);
         matrixStack.scale(_itemScale, _itemScale, _itemScale);
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));
@@ -109,7 +109,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         matrixStack.translate(0.5, 0, 0.5);
         matrixStack.rotateAround((new Quaternionf()).rotationY(getRotation(blockEntity.getBlockState().getValue(AlchemicalTableBlock.FACING)) * ((float)Math.PI / 180F)), (float)0, (float)0, (float)0);
         matrixStack.translate(-0.5, 0, -0.5);
-        matrixStack.translate(0.5, 1.05, 0.7);
+        matrixStack.translate(0.755, 1.05, 0.7);
         matrixStack.scale(_itemScale, _itemScale, _itemScale);
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));

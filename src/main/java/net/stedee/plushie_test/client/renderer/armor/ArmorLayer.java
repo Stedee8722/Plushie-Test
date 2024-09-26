@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.client.handler;
+package net.stedee.plushie_test.client.renderer.armor;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

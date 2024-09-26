@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.client.renderer;
+package net.stedee.plushie_test.client.renderer.block;
 
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.LightTexture;
