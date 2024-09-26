@@ -9,6 +9,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.client.renderer.SeamstressTableBlockEntityRenderer;
+import net.stedee.plushie_test.client.renderer.AlchemicalTableBlockEntityRenderer;
 import net.stedee.plushie_test.client.screen.AlchemicalTableScreen;
 import net.stedee.plushie_test.client.screen.SeamstressTableScreen;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
@@ -21,6 +22,7 @@ public class ClientModHandler {
             MenuScreens.register(ModdedMenuTypes.SEAMSTRESS_MENU_TYPE.get(), SeamstressTableScreen::new);
             MenuScreens.register(ModdedMenuTypes.ALCHEMICAL_MENU_TYPE.get(), AlchemicalTableScreen::new);
             BlockEntityRenderers.register(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), SeamstressTableBlockEntityRenderer::new);
+            BlockEntityRenderers.register(ModdedBlockEntities.ALCHEMICAL_TABLE_BLOCK_ENTITY.get(), AlchemicalTableBlockEntityRenderer::new);
         });
     }
 }
