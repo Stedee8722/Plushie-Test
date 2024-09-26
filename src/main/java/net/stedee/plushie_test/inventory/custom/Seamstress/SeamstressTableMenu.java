@@ -193,11 +193,11 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public void slotsChanged(Container pContainer) {
-        this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult, tileEntity.fromResult);
+        this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
     }
 
 
-    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ResultContainer result, boolean fromResult) {
+    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ResultContainer result) {
         ItemStack itemstack = ItemStack.EMPTY;
         // if the recipe is no longer valid, update it
         if (lastRecipe == null || !lastRecipe.matches(inv, world)) {
@@ -349,12 +349,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     public void updateLastRecipeFromServer(SeamstressRecipe r) {
         lastRecipe = r;
         // if no recipe, set to empty to prevent ghost outputs when another player grabs the result
-        if (!this.tileEntity.fromResult) {
-            this.craftResult.setItem(0, r != null ? r.assemble(craftMatrix, world.registryAccess()) : ItemStack.EMPTY);
-        } else {
-            this.craftMatrix.setItem(0, r != null ? r.getInputItem(0) : ItemStack.EMPTY);
-            this.craftMatrix.setItem(1, r != null ? r.getInputItem(1) : ItemStack.EMPTY);
-        }
+        this.craftResult.setItem(0, r != null ? r.assemble(craftMatrix, world.registryAccess()) : ItemStack.EMPTY);
     }
 
     public NonNullList<ItemStack> getRemainingItems() {

@@ -21,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public ModdedItemHandler inventory;
-    public boolean fromResult;
 
     public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -45,7 +44,6 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     public void saveAdditional(CompoundTag tag) {
         CompoundTag compound = this.inventory.serializeNBT();
         tag.put("seamstress_inv", compound);
-        tag.putBoolean("from_result", this.fromResult);
     }
 
     @SuppressWarnings("null")
@@ -53,7 +51,6 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     public void load(CompoundTag tag) {
         CompoundTag invTag = tag.getCompound("seamstress_inv");
         this.inventory.deserializeNBT(invTag);
-        this.fromResult = tag.getBoolean("from_result");
         super.load(tag);
     }
 
