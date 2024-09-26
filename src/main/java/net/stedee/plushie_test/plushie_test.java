@@ -25,7 +25,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
-import net.stedee.plushie_test.client.handler.ArmorLayer;
+import net.stedee.plushie_test.client.renderer.armor.ArmorLayer;
 import net.stedee.plushie_test.config.ClientConfig;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
@@ -114,23 +114,6 @@ public class plushie_test {
         //LOGGER.info("HELLO from server starting");
     }
 
-    @SubscribeEvent
-    public void addLayers(EntityRenderersEvent.AddLayers evt) {
-        for (String skin : evt.getSkins()) {
-            addPlayerLayer(evt, skin);
-        }
-    }
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    private static void addPlayerLayer(EntityRenderersEvent.AddLayers evt, String model) {
-        EntityRenderer<? extends Player> renderer = evt.getSkin(model);
-
-        if (renderer instanceof LivingEntityRenderer livingRenderer) {
-            livingRenderer.addLayer(new ArmorLayer(livingRenderer));
-        }
-    }
-
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
@@ -143,6 +126,22 @@ public class plushie_test {
             // Some client setup code
             //LOGGER.info("HELLO FROM CLIENT SETUP");
             //LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        }
+
+        @SubscribeEvent
+        public void addLayers(EntityRenderersEvent.AddLayers evt) {
+            for (String skin : evt.getSkins()) {
+                addPlayerLayer(evt, skin);
+            }
+        }
+
+        @SuppressWarnings({ "unchecked", "rawtypes" })
+        private static void addPlayerLayer(EntityRenderersEvent.AddLayers evt, String model) {
+            EntityRenderer<? extends Player> renderer = evt.getSkin(model);
+
+            if (renderer instanceof LivingEntityRenderer livingRenderer) {
+                livingRenderer.addLayer(new ArmorLayer(livingRenderer));
+            }
         }
     }
 }
