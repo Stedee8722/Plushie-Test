@@ -40,7 +40,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         //} catch(IOException err)
         //{System.out.println(err);}
 
-        if (!config.displayitemsintable || blockEntity.input.isEmpty())
+        if (!config.displayitemsintable || blockEntity.inventory.isEmpty())
             return;
 
         ItemStack stack1 = blockEntity.getInventory().getStackInSlot(0);

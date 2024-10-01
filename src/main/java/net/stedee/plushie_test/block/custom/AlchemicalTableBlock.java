@@ -171,7 +171,7 @@ public class AlchemicalTableBlock extends Block implements SimpleWaterloggedBloc
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof AlchemicalTableBlockEntity alchemicalTableBlock) {
-                dropItems(alchemicalTableBlock.input, pLevel, pPos);
+                dropItems(alchemicalTableBlock.inventory, pLevel, pPos);
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
             }
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);

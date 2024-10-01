@@ -16,33 +16,34 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.inventory.custom.ModdedItemHandler;
 import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
+import org.jetbrains.annotations.NotNull;
 
 public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvider {
 
-    public ModdedItemHandler input;
+    public ModdedItemHandler inventory;
     public boolean fromResult;
 
     public AlchemicalTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.ALCHEMICAL_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
-        this.input = new ModdedItemHandler(3);
+        this.inventory = new ModdedItemHandler(3);
     }
 
     @SuppressWarnings("null")
     @Override
     @Nullable
-    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+    public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
         return new AlchemicalTableMenu(pContainerId, pPlayerInventory, this);
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return AlchemicalTableBlock.CONTAINER_TITLE;
     }
 
     @SuppressWarnings("null")
     @Override
     public void saveAdditional(CompoundTag tag) {
-        CompoundTag compound = this.input.serializeNBT();
+        CompoundTag compound = this.inventory.serializeNBT();
         tag.put("alchemical_inv", compound);
     }
 
@@ -50,12 +51,12 @@ public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvi
     @Override
     public void load(CompoundTag tag) {
         CompoundTag invTag = tag.getCompound("alchemical_inv");
-        this.input.deserializeNBT(invTag);
+        this.inventory.deserializeNBT(invTag);
         super.load(tag);
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
     }
 
@@ -66,7 +67,7 @@ public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvi
     }
 
     public ItemStackHandler getInventory() {
-        return this.input;
+        return this.inventory;
     }
 }
 
