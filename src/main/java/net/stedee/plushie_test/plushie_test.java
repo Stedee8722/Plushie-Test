@@ -38,6 +38,7 @@ import net.stedee.plushie_test.sound.ModdedSounds;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
+@SuppressWarnings("removal")
 @Mod(plushie_test.MOD_ID)
 public class plushie_test {
     // Define mod id in a common place for everything to reference
@@ -45,7 +46,7 @@ public class plushie_test {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     
-    public static ClientConfig CONFIG = new ClientConfig();;
+    public static ClientConfig CONFIG = new ClientConfig();
 
 
     public static Minecraft minecraft;
