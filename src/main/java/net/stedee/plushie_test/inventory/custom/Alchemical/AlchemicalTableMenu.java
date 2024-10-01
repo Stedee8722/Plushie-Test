@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingContainer;
-import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,6 +25,7 @@ import net.stedee.plushie_test.inventory.custom.ItemContainer;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
+import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
@@ -69,7 +69,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Incorrect block entity class (%s) passed into AlchemicalTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.input, 3, 1);
+        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 3, 1);
         
         this.access = ContainerLevelAccess.create(Objects.requireNonNull(tileEntity.getLevel()), tileEntity.getBlockPos());
 
@@ -118,12 +118,12 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 1;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @SuppressWarnings("null")
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -140,7 +140,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
                 return ItemStack.EMPTY;
             }
         } else {
-            System.out.println("Invalid slotIndex:" + pIndex);
+            System.out.println("Invalid slotIndex: " + pIndex + "\n check 1 " + (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) + "\ncheck 2 " + (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT));
             return ItemStack.EMPTY;
         }
         // If stack size == 0 (the entire stack was moved) set slot contents to null
@@ -196,16 +196,18 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public void slotsChanged(@NotNull Container pContainer) {
-        this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult, tileEntity.fromResult);
+        this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
     }
 
 
-    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ItemContainer result, boolean fromResult) {
+    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ItemContainer result) {
         ItemStack itemstack_1 = ItemStack.EMPTY;
         ItemStack itemstack_2 = ItemStack.EMPTY;
+
         // if the recipe is no longer valid, update it
         if (lastRecipe == null || !lastRecipe.matches(inv, world)) {
             lastRecipe = (SeamstressRecipe) searchRecipe(inv.getItem(0), world.getRecipeManager());
+            plushie_test.LOGGER.debug("Last recipe: " + lastRecipe);
         }
 
         // if we have a recipe, fetch its result

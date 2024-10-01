@@ -44,6 +44,7 @@ public class AlchemicalOutputSlot extends Slot {
       
             if (!stackInSlot.isEmpty()) {
                 this.craftSlots.removeItem(i, 1);
+                plushie_test.LOGGER.debug("Removed slot, cur: " + this.craftSlots.getItem(i).toString());
                 stackInSlot = this.craftSlots.getItem(i);
             }
       
@@ -68,6 +69,7 @@ public class AlchemicalOutputSlot extends Slot {
     @SuppressWarnings("null")
     @Override
     public boolean mayPlace(@NotNull ItemStack stack) {
+        plushie_test.LOGGER.debug("taking {}", this.getItem().toString());
         return false;
     }
 }

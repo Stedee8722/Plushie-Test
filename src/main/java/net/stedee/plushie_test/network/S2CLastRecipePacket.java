@@ -7,6 +7,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraftforge.network.NetworkEvent;
+import net.stedee.plushie_test.client.screen.AlchemicalTableScreen;
 import net.stedee.plushie_test.client.screen.SeamstressTableScreen;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
@@ -41,6 +42,10 @@ public class S2CLastRecipePacket {
             if (instance.screen instanceof SeamstressTableScreen) {
                 Recipe<?> r = instance.level.getRecipeManager().byKey(rec).orElse(null);
                 ((SeamstressTableScreen) instance.screen).getMenu().updateLastRecipeFromServer((SeamstressRecipe) r);
+            }
+            if (instance.screen instanceof AlchemicalTableScreen) {
+                Recipe<?> r = instance.level.getRecipeManager().byKey(rec).orElse(null);
+                ((AlchemicalTableScreen) instance.screen).getMenu().updateLastRecipeFromServer((SeamstressRecipe) r);
             }
         });
         ctx.get().setPacketHandled(true);

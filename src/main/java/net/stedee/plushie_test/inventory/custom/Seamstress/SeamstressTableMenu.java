@@ -25,6 +25,7 @@ import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
+import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
@@ -116,12 +117,12 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @SuppressWarnings("null")
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -138,6 +139,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
                 return ItemStack.EMPTY;
             }
         } else {
+            System.out.println("Invalid slotIndex: " + pIndex);
             return ItemStack.EMPTY;
         }
         // If stack size == 0 (the entire stack was moved) set slot contents to null
@@ -203,6 +205,8 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         if (lastRecipe == null || !lastRecipe.matches(inv, world)) {
             lastRecipe = findRecipe(this, inv, world, player);
         }
+
+        plushie_test.LOGGER.debug("Last recipe: " + lastRecipe);
 
         // if we have a recipe, fetch its result
         if (lastRecipe != null) {
