@@ -1,5 +1,8 @@
-package net.stedee.plushie_test.inventory.custom.Alchemical;
+package net.stedee.plushie_test.inventory.custom;
 
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.stedee.plushie_test.recipe.ModdedRecipes;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.core.NonNullList;
@@ -7,16 +10,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.stedee.plushie_test.plushie_test;
-import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 
-public class AlchemicalOutputSlot extends Slot {
+public class CustomOutputSlot extends Slot {
     
-    private final AlchemicalTableMenu container;
+    private final AbstractContainerMenu container;
     protected TableInventoryPersistent tableInventoryPersistent;
     private Player player;
     private TableInventoryPersistent craftSlots;
 
-    public AlchemicalOutputSlot(AlchemicalTableMenu container, TableInventoryPersistent tableInventoryPersistent, int slotIndex, int xPosition, int yPosition, Player player) {
+    public CustomOutputSlot(AbstractContainerMenu container, TableInventoryPersistent tableInventoryPersistent, int slotIndex, int xPosition, int yPosition, Player player) {
         //remove player if not needed
         super(tableInventoryPersistent, slotIndex, xPosition, yPosition);
         this.container = container;
@@ -31,7 +33,7 @@ public class AlchemicalOutputSlot extends Slot {
         //this.checkTakeAchievements(craftingResult);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(thePlayer);
         /* CHANGE BEGINS HERE */
-        NonNullList<ItemStack> nonnulllist = container.getRemainingItems();
+        NonNullList<ItemStack> nonnulllist = thePlayer.level().getRecipeManager().getRemainingItemsFor(ModdedRecipes.SEAMSTRESS_RECIPE.get(), this.craftSlots, thePlayer.level());
         /* END OF CHANGE */
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(null);
     

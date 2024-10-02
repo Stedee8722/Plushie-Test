@@ -21,6 +21,7 @@ import net.minecraftforge.network.NetworkDirection;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
+import net.stedee.plushie_test.inventory.custom.CustomOutputSlot;
 import net.stedee.plushie_test.inventory.custom.ItemContainer;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.network.PacketHandler;
@@ -98,8 +99,8 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         //        return true;
         //    }
         //});
-        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 1, 55, 59, player));
-        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, 2, 104, 59, player));
+        this.addSlot(new CustomOutputSlot(this, this.craftMatrix, 1, 55, 59, player));
+        this.addSlot(new CustomOutputSlot(this, this.craftMatrix, 2, 104, 59, player));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
