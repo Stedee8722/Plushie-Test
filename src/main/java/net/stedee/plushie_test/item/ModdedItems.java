@@ -60,6 +60,7 @@ public class ModdedItems {
     public static final RegistryObject<MaskItem> MASK_VAPOREON = ITEMS.register("mask_vaporeon",
             () -> new MaskItem(new Item.Properties()
                                         .fireResistant()
+                                        .stacksTo(1)
                                         .defaultDurability(275)
                                         .rarity(Rarity.EPIC), CustomMaskMaterial.EEVEELUTION_MASK, MobEffects.WATER_BREATHING));
 
