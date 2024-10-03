@@ -24,6 +24,7 @@ import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.inventory.custom.CustomOutputSlot;
 import net.stedee.plushie_test.inventory.custom.ItemContainer;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
+import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
 import net.stedee.plushie_test.plushie_test;
@@ -85,7 +86,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                return true;
+                return stack.getItem() instanceof PlushiesItem;
             }
         });
         //this.addSlot(new Slot(craftMatrix, 1, 76, 31){
@@ -197,6 +198,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public void slotsChanged(@NotNull Container pContainer) {
+        world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
         this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
     }
 

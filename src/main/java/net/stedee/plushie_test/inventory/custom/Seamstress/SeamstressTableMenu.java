@@ -24,6 +24,7 @@ import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.inventory.custom.CustomOutputSlot;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
+import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
 import net.stedee.plushie_test.plushie_test;
@@ -84,7 +85,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
 
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                return true;
+                return stack.getItem() instanceof PlushiesItem;
             }
         });
         this.addSlot(new Slot(craftMatrix, 1, 104, 19){
@@ -96,7 +97,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
 
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                return true;
+                return stack.getItem() instanceof PlushiesItem;
             }
         });
         this.addSlot(new CustomOutputSlot(this, this.craftMatrix, 2, 80, 59, player));
@@ -196,6 +197,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public void slotsChanged(Container pContainer) {
+        world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
         this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
     }
 
