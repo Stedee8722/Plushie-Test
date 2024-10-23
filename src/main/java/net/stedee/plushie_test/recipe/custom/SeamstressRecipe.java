@@ -71,6 +71,7 @@ public class SeamstressRecipe implements Recipe<Container> {
         return this.inputItems;
     }
 
+    // It is important to copy item even if it's input or output
     public ItemStack getInputItem(int index) {
         return inputItems.get(index).getItems()[0].copy();
     }
