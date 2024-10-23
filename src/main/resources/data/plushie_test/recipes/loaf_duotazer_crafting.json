@@ -1,0 +1,15 @@
+{
+    "type": "plushie_test:seamstress",
+    "ingredients": [
+      {
+        "item": "plushie_test:loaf_pyla"
+      },
+      {
+        "item": "plushie_test:loaf_bren"
+      }
+    ],
+    "result": {
+      "item": "plushie_test:loaf_duotazer",
+      "count": 1
+    }
+  }

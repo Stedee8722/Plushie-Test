@@ -29,6 +29,11 @@ public class ModdedCreativeTabs {
                 pOutput.accept(ModdedItems.PLUSH_BRENNETH.get());
                 pOutput.accept(ModdedItems.NOVA_EARS.get());
                 pOutput.accept(ModdedItems.HYPNO_NOVA_EARS.get());
+                pOutput.accept(ModdedItems.LOAF_BREN.get());
+                pOutput.accept(ModdedItems.LOAF_MONO.get());
+                pOutput.accept(ModdedItems.LOAF_PYLA.get());
+                pOutput.accept(ModdedItems.LOAF_DUOTAZER.get());
+                pOutput.accept(ModdedItems.LOAF_TRIODERG.get());
             })
             .build());
 

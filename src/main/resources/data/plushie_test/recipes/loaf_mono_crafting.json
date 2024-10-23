@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#B#",
+        "#G#",
+        "#E#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:packed_ice"
+        },
+        "B": {
+            "item": "minecraft:blue_ice"
+        },
+        "G": {
+            "item": "minecraft:bread"
+        },
+        "E": {
+            "item": "minecraft:egg"
+        }
+    },
+    "result": {
+        "item": "plushie_test:loaf_mono",
+        "count": 1
+    },
+    "category": "misc"
+}

@@ -57,6 +57,21 @@ public class ModdedItems {
     public static final RegistryObject<PlushiesItem> PLUSH_BRENNETH = ITEMS.register("plush_brenneth",
             () -> new PlushiesItem(true));
 
+    public static final RegistryObject<PlushiesItem> LOAF_BREN = ITEMS.register("loaf_bren",
+            () -> new PlushiesItem(true));
+
+    public static final RegistryObject<PlushiesItem> LOAF_MONO = ITEMS.register("loaf_mono",
+            () -> new PlushiesItem(true));
+
+    public static final RegistryObject<PlushiesItem> LOAF_PYLA = ITEMS.register("loaf_pyla",
+            () -> new PlushiesItem(true));
+
+    public static final RegistryObject<PlushiesItem> LOAF_DUOTAZER = ITEMS.register("loaf_duotazer",
+            () -> new PlushiesItem(true));
+
+    public static final RegistryObject<PlushiesItem> LOAF_TRIODERG = ITEMS.register("loaf_trioderg",
+            () -> new PlushiesItem(true));
+
     public static final RegistryObject<MaskItem> MASK_VAPOREON = ITEMS.register("mask_vaporeon",
             () -> new MaskItem(new Item.Properties()
                                         .fireResistant()

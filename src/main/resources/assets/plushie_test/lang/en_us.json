@@ -11,6 +11,11 @@
     "item.plushie_test.plush_neth": "Plush Neth",
     "item.plushie_test.plush_brenneth": "Plush Brenneth",
     "item.plushie_test.plush_hypno_nova": "Plush Hypno Nova",
+    "item.plushie_test.loaf_bren": "Brenzy Loaf",
+    "item.plushie_test.loaf_mono": "Monolith Loaf",
+    "item.plushie_test.loaf_pyla": "Pyla Loaf",
+    "item.plushie_test.loaf_duotazer": "Dragon Sisters Loaf-Stack",
+    "item.plushie_test.loaf_trioderg": "Draconic Siblings Loaf-Stack",
     "item.plushie_test.cleaver": "Cleaver",
     "item.plushie_test.mask_vaporeon": "Vaporeon Mask",
 
@@ -26,6 +31,11 @@
     "item.plushie_test.plush_neth.tooltip": "§bA powerful Rider in plush form. Loves being near §6his Dragun",
     "item.plushie_test.plush_brenneth.tooltip": "§6Dragun §4and §bRider§4. Intertwined until the end of eternity.",
     "item.plushie_test.plush_hypno_nova.tooltip": "§mScawy§r §dFunny Plush §rof the Glutton Rat",
+    "item.plushie_test.loaf_bren.tooltip": "Loaf'd §6Dragun §rof §bNeþerite",
+    "item.plushie_test.loaf_mono.tooltip": "Loaf'd §bWyvern §rof §2TeaTree",
+    "item.plushie_test.loaf_pyla.tooltip": "Loaf'd §bDragon §rof §5Beelzebub",
+    "item.plushie_test.loaf_duotazer.tooltip": "Is this a §eStun§r-§6Gun?",
+    "item.plushie_test.loaf_trioderg.tooltip": "§5The §6sisters§r, §bprecariously §5stacked §6in §ba §5pile §6of §bcuteness",
     "item.plushie_test.cleaver.tooltip": "Cleaver of the §4sin §rof §6gluttony§r, imbued with a §3hunger §rfor §c§llife",
     "item.plushie_test.mask_vaporeon.tooltip": "Something smells §bfishy§r, Mask of A §6Dragun Rider",
 

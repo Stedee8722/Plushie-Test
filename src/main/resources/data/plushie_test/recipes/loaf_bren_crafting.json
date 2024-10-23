@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "CRC",
+        "CBC",
+        "CEC"
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:raw_copper_block"
+        },
+        "B": {
+            "item": "minecraft:bread"
+        },
+        "E": {
+            "item": "minecraft:egg"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "result": {
+        "item": "plushie_test:loaf_bren",
+        "count": 1
+    },
+    "category": "misc"
+}
