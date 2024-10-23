@@ -179,7 +179,12 @@ public class AlchemicalTableBlock extends Block implements SimpleWaterloggedBloc
     }
 
     public static void dropItems(IItemHandler inv, Level pLevel, BlockPos pos) {
-        IntStream.range(0, 1).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
+        if (!inv.getStackInSlot(0).isEmpty()) {
+            Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), inv.getStackInSlot(0));
+        } else {
+            Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), inv.getStackInSlot(1));
+            Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), inv.getStackInSlot(2));
+        }
     }
 
     public @NotNull FluidState getFluidState(BlockState $$0) {

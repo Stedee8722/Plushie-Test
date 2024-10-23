@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -14,14 +15,18 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
+import net.stedee.plushie_test.inventory.custom.MultipleResultItemContainer;
 import net.stedee.plushie_test.inventory.custom.ModdedItemHandler;
 import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public ModdedItemHandler inventory;
-    public boolean fromResult;
+    public final Container craftResult = new MultipleResultItemContainer();
+    private AlchemicalTableMenu menu;
 
     public AlchemicalTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.ALCHEMICAL_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -32,7 +37,8 @@ public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvi
     @Override
     @Nullable
     public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
-        return new AlchemicalTableMenu(pContainerId, pPlayerInventory, this);
+        menu = new AlchemicalTableMenu(pContainerId, pPlayerInventory, this);
+        return menu;
     }
 
     @Override
@@ -69,5 +75,6 @@ public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvi
     public ItemStackHandler getInventory() {
         return this.inventory;
     }
+    public Container getOutputs() { return craftResult; }
 }
 

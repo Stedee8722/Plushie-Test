@@ -1,6 +1,6 @@
 package net.stedee.plushie_test.inventory.custom.Alchemical;
 
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,8 +21,6 @@ import net.minecraftforge.network.NetworkDirection;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
-import net.stedee.plushie_test.inventory.custom.CustomOutputSlot;
-import net.stedee.plushie_test.inventory.custom.ItemContainer;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
@@ -42,11 +40,9 @@ import java.util.Optional;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.mojang.logging.LogUtils;
-
 public class AlchemicalTableMenu extends AbstractContainerMenu {
 
-    private final ItemContainer craftResult = new ItemContainer();
+    private final Container craftResult;
     private final ContainerLevelAccess access;
     private final Player player;
     public SeamstressRecipe lastRecipe;
@@ -71,8 +67,8 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Incorrect block entity class (%s) passed into AlchemicalTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 3, 1);
-        
+        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 1, 1);
+        this.craftResult = tileEntity.craftResult;
         this.access = ContainerLevelAccess.create(Objects.requireNonNull(tileEntity.getLevel()), tileEntity.getBlockPos());
 
         layoutPlayerInventorySlots(player.getInventory(), 8, 94);
@@ -86,6 +82,10 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
+                if (!craftResult.isEmpty() && craftMatrix.isEmpty()) {
+                    quickMoveStack(player, 37);
+                    quickMoveStack(player, 38);
+                }
                 return stack.getItem() instanceof PlushiesItem;
             }
         });
@@ -100,8 +100,9 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         //        return true;
         //    }
         //});
-        this.addSlot(new CustomOutputSlot(this, this.craftMatrix, 1, 55, 59, player));
-        this.addSlot(new CustomOutputSlot(this, this.craftMatrix, 2, 104, 59, player));
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, this.craftResult, 0, 55, 59, player));
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, this.craftResult, 1, 104, 59, player));
+        slotsChanged(craftMatrix);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -187,28 +188,21 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
     }
 
-    public AlchemicalTableBlockEntity getTileEntity() {
-        return tileEntity;
-    }
-
-    public static SeamstressRecipe findRecipe(AlchemicalTableMenu menu, CraftingContainer inv, Level world, Player player) {
-        return world.getRecipeManager().getRecipeFor(ModdedRecipes.SEAMSTRESS_RECIPE.get(),inv,world).stream().findFirst().orElse(null);
-    }
-
     @SuppressWarnings("null")
     @Override
     public void slotsChanged(@NotNull Container pContainer) {
         world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
+        tileEntity.setChanged();
         this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
     }
 
 
-    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ItemContainer result) {
+    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, Container result) {
         ItemStack itemstack_1 = ItemStack.EMPTY;
         ItemStack itemstack_2 = ItemStack.EMPTY;
 
         // if the recipe is no longer valid, update it
-        if (lastRecipe == null || !lastRecipe.matches(inv, world)) {
+        if (lastRecipe == null || !lastRecipe.getResultItem(RegistryAccess.EMPTY).is(inv.getItem(0).getItem())) {
             lastRecipe = (SeamstressRecipe) searchRecipe(inv.getItem(0), world.getRecipeManager());
             plushie_test.LOGGER.debug("Last recipe: " + lastRecipe);
         }
@@ -253,8 +247,8 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     private void syncResultToAllOpenWindows(final ItemStack stack_1, final ItemStack stack_2, List<ServerPlayer> players) {
         this.craftMatrix.setDoNotCallUpdates(true);
         players.forEach(otherPlayer -> {
-            otherPlayer.containerMenu.setItem(37,this.getStateId(), stack_1);
-            otherPlayer.containerMenu.setItem(38,this.getStateId(), stack_2);
+            otherPlayer.containerMenu.setItem(37, this.getStateId(), stack_1);
+            otherPlayer.containerMenu.setItem(38, this.getStateId(), stack_2);
             //otherPlayer.connection.sendPacket(new SPacketSetSlot(otherPlayer.openContainer.windowId, SLOT_RESULT, stack));
         });
         this.craftMatrix.setDoNotCallUpdates(false);
@@ -363,11 +357,6 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         // if no recipe, set to empty to prevent ghost outputs when another player grabs the result
         this.craftResult.setItem(0, r != null ? r.getInputItem(0) : ItemStack.EMPTY);
         this.craftResult.setItem(1, r != null ? r.getInputItem(1) : ItemStack.EMPTY);
-    }
-
-    public NonNullList<ItemStack> getRemainingItems() {
-        LogUtils.getLogger().info("From getRemainingItems " + craftMatrix.getStackList().size());
-        return lastRecipe != null && lastRecipe.matches(craftMatrix, world) ? lastRecipe.getRemainingItems(craftMatrix) : craftMatrix.getStackList();
     }
 
     @SuppressWarnings("null")

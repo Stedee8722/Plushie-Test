@@ -47,7 +47,7 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
 
         ItemStack stack1 = blockEntity.getInventory().getStackInSlot(0);
         ItemStack stack2 = blockEntity.getInventory().getStackInSlot(1);
-        ItemStack stack_out = blockEntity.getInventory().getStackInSlot(2);
+        ItemStack stack_out = blockEntity.getOutputs().getItem(0);
 
         if (stack1.isEmpty() && stack2.isEmpty())
             return;

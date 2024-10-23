@@ -44,10 +44,10 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
             return;
 
         ItemStack stack1 = blockEntity.getInventory().getStackInSlot(0);
-        ItemStack stack2 = blockEntity.getInventory().getStackInSlot(1);
-        ItemStack stack_out = blockEntity.getInventory().getStackInSlot(2);
+        ItemStack stack_out1 = blockEntity.getOutputs().getItem(0);
+        ItemStack stack_out2 = blockEntity.getOutputs().getItem(1);
 
-        if (stack1.isEmpty() && stack2.isEmpty())
+        if (stack1.isEmpty() && stack_out1.isEmpty())
             return;
 
         Level level = blockEntity.getLevel();
@@ -90,7 +90,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));
         this.context.getItemRenderer().renderStatic(
-                stack2,
+                stack_out1,
                 ItemDisplayContext.FIXED,
                 LightTexture.pack(
                         level.getBrightness(LightLayer.BLOCK, pos),
@@ -114,7 +114,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));
         this.context.getItemRenderer().renderStatic(
-                stack_out,
+                stack_out2,
                 ItemDisplayContext.FIXED,
                 LightTexture.pack(
                         level.getBrightness(LightLayer.BLOCK, pos),

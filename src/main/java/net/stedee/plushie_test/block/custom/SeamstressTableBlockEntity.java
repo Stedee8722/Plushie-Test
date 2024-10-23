@@ -6,10 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
@@ -21,10 +23,11 @@ import org.jetbrains.annotations.NotNull;
 public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public ModdedItemHandler inventory;
+    public final ResultContainer craftResult = new ResultContainer();
 
     public SeamstressTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.SEAMSTRESS_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
-        this.inventory = new ModdedItemHandler(3);
+        this.inventory = new ModdedItemHandler(2);
     }
 
     @SuppressWarnings("null")
@@ -68,4 +71,5 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     public ItemStackHandler getInventory() {
         return this.inventory;
     }
+    public Container getOutputs() { return craftResult; }
 }

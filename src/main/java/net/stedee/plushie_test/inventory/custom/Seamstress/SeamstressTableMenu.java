@@ -22,7 +22,6 @@ import net.minecraftforge.network.NetworkDirection;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
-import net.stedee.plushie_test.inventory.custom.CustomOutputSlot;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
@@ -45,11 +44,11 @@ import com.mojang.logging.LogUtils;
 
 public class SeamstressTableMenu extends AbstractContainerMenu {
 
-    private final ResultContainer craftResult = new ResultContainer();
+    private final ResultContainer craftResult;
     private final ContainerLevelAccess access;
     private final Player player;
     public SeamstressRecipe lastRecipe;
-    private final Level world;
+    private Level world;
     public SeamstressTableBlockEntity tileEntity;
     public final TableInventoryPersistent craftMatrix;
     protected SeamstressRecipe lastLastRecipe;
@@ -70,8 +69,8 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Incorrect block entity class (%s) passed into SeamstressTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 3, 1);
-        
+        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 2, 1);
+        this.craftResult = tileEntity.craftResult;
         this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
 
         layoutPlayerInventorySlots(player.getInventory(), 8, 94);
@@ -100,7 +99,8 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
                 return stack.getItem() instanceof PlushiesItem;
             }
         });
-        this.addSlot(new CustomOutputSlot(this, this.craftMatrix, 2, 80, 59, player));
+        this.addSlot(new SeamstressOutputSlot(this, this.craftMatrix, this.craftResult, 0, 80, 59, player));
+        slotsChanged(craftMatrix);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -198,6 +198,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     @Override
     public void slotsChanged(Container pContainer) {
         world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
+        tileEntity.setChanged();
         this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
     }
 
@@ -354,7 +355,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     }
 
     public void updateLastRecipeFromServer(SeamstressRecipe r) {
-        lastRecipe = r;
+        this.lastRecipe = r;
         // if no recipe, set to empty to prevent ghost outputs when another player grabs the result
         this.craftResult.setItem(0, r != null ? r.assemble(craftMatrix, world.registryAccess()) : ItemStack.EMPTY);
     }

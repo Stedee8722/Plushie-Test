@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class ItemContainer implements Container, RecipeHolder {
+public class MultipleResultItemContainer implements Container, RecipeHolder {
     private final NonNullList<ItemStack> itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
     @Nullable
     private Recipe<?> recipeUsed;
@@ -49,7 +49,7 @@ public class ItemContainer implements Container, RecipeHolder {
 
     @Override
     public void setItem(int pSlot, @NotNull ItemStack pStack) {
-        this.itemStacks.set(0, pStack);
+        this.itemStacks.set(pSlot, pStack);
     }
 
     @Override
