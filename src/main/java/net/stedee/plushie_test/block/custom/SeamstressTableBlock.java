@@ -180,7 +180,7 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
     }
 
     public static void dropItems(IItemHandler inv, Level pLevel, BlockPos pos) {
-        IntStream.range(0, 1).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
+        IntStream.range(0, 2).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
 
     public @NotNull FluidState getFluidState(BlockState $$0) {
