@@ -61,7 +61,7 @@
     "painting.plushie_test.tea.author": "Unknown",
     
     "text.autoconfig.plushie_test.option.displayitemsintable": "Display item in table?",
-    "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Display item on the seamstress table while crafting",
+    "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Display item on the seamstress and alchemical table while crafting",
 
     "text.autoconfig.plushie_test.title": "Plushie Test's configs"
 }
