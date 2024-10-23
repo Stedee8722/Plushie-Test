@@ -111,7 +111,7 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
         matrixStack.translate(0.5, 0, 0.5);
         matrixStack.rotateAround((new Quaternionf()).rotationY(getRotation(blockEntity.getBlockState().getValue(SeamstressTableBlock.FACING)) * ((float)Math.PI / 180F)), (float)0, (float)0, (float)0);
         matrixStack.translate(-0.5, 0, -0.5);
-        matrixStack.translate(0.5, 1.05, 0.7);
+        matrixStack.translate(0.5, 1.05, 0.755);
         matrixStack.scale(_itemScale, _itemScale, _itemScale);
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));
