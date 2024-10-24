@@ -3,18 +3,21 @@ package net.stedee.plushie_test.client.renderer.armor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.stedee.plushie_test.item.custom.MaskItem;
 import net.stedee.plushie_test.plushie_test;
 
-public class ArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
+public class ArmorLayer<T extends LivingEntity, M extends EntityModel<T> & HeadedModel> extends RenderLayer<T, M> {
     //private final RenderLayerParent<T, M> renderLayerParent;
 
     public ArmorLayer(RenderLayerParent<T, M> renderer) {
@@ -37,19 +40,20 @@ public class ArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extend
                 BakedModel model = plushie_test.itemRenderer.getModel(item, entity.level(), entity, 200);
                 poseStack.pushPose();
 
-                poseStack.scale(1.1F, 1.1F, 1.1F);
+                poseStack.scale(1.0F, 1.0F, 1.0F);
+                boolean flag = entity instanceof Villager || entity instanceof ZombieVillager;
 
-                // Rotate the model to match the player's head rotation
-                poseStack.mulPose(Axis.YP.rotationDegrees(netHeadYaw));
-                poseStack.mulPose(Axis.XP.rotationDegrees(headPitch));
+                if (entity.isBaby() && !(entity instanceof Villager)) {
+                    float f = 2.0F;
+                    float f1 = 1.4F;
+                    poseStack.translate(0.0F, 0.03125F, 0.0F);
+                    poseStack.scale(0.7F, 0.7F, 0.7F);
+                    poseStack.translate(0.0F, 1.0F, 0.0F);
+                }
 
-                // Flip the model upside down if needed
-                poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-                poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+                this.getParentModel().getHead().translateAndRotate(poseStack);
 
-                // Additional fine-tuning translations if needed
-                poseStack.translate(-0.5F, -0.35F, -0.95F); // Adjust the Y value as needed
-
+                translateToHead(poseStack, flag);
                 // Render the model
                 plushie_test.itemRenderer.render(item,
                         ItemDisplayContext.HEAD,
@@ -62,6 +66,16 @@ public class ArmorLayer<T extends LivingEntity, M extends EntityModel<T>> extend
 
                 poseStack.popPose();
             }
+        }
+    }
+
+    public static void translateToHead(PoseStack pPoseStack, boolean pIsVillager) {
+        float f = 0.625F;
+        pPoseStack.translate(0.0F, -0.25F, 0.0F);
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+        pPoseStack.scale(0.625F, -0.625F, -0.625F);
+        if (pIsVillager) {
+            pPoseStack.translate(0.0F, 0.1875F, 0.0F);
         }
     }
 }

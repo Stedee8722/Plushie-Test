@@ -18,6 +18,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.stedee.plushie_test.sound.ModdedSounds;
+import org.jetbrains.annotations.NotNull;
 
 public class PlushiesItem extends Item implements Equipable {
 
@@ -64,7 +65,7 @@ public class PlushiesItem extends Item implements Equipable {
     }
 
     @Override
-    public EquipmentSlot getEquipmentSlot() {
+    public @NotNull EquipmentSlot getEquipmentSlot() {
         return EquipmentSlot.HEAD;
     }
 

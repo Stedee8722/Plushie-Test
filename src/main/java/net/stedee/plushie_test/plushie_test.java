@@ -8,13 +8,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -30,6 +33,7 @@ import net.stedee.plushie_test.config.ClientConfig;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
+import net.stedee.plushie_test.item.custom.MaskItem;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.painting.ModdedPaintings;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
@@ -127,22 +131,6 @@ public class plushie_test {
             // Some client setup code
             //LOGGER.info("HELLO FROM CLIENT SETUP");
             //LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
-
-        @SubscribeEvent
-        public void addLayers(EntityRenderersEvent.AddLayers evt) {
-            for (String skin : evt.getSkins()) {
-                addPlayerLayer(evt, skin);
-            }
-        }
-
-        @SuppressWarnings({ "unchecked", "rawtypes" })
-        private static void addPlayerLayer(EntityRenderersEvent.AddLayers evt, String model) {
-            EntityRenderer<? extends Player> renderer = evt.getSkin(model);
-
-            if (renderer instanceof LivingEntityRenderer livingRenderer) {
-                livingRenderer.addLayer(new ArmorLayer(livingRenderer));
-            }
         }
     }
 }

@@ -2,10 +2,16 @@ package net.stedee.plushie_test.client.handler;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.stedee.plushie_test.client.renderer.armor.ArmorLayer;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.client.renderer.block.SeamstressTableBlockEntityRenderer;
