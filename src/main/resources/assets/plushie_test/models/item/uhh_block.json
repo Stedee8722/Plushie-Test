@@ -1,111 +1,44 @@
 {
   "parent": "plushie_test:block/uhh_block",
+  "gui_light": "front",
   "display": {
     "thirdperson_righthand": {
-      "rotation": [
-        24,
-        45,
-        2
-      ],
-      "translation": [
-        0,
-        0,
-        -3
-      ],
-      "scale": [
-        0.41,
-        0.41,
-        0.41
-      ]
+      "rotation": [75, 45, 0],
+      "translation": [0, 0.25, -0.75],
+      "scale": [0.375, 0.375, 0.375]
     },
     "thirdperson_lefthand": {
-      "rotation": [
-        24,
-        45,
-        2
-      ],
-      "translation": [
-        0,
-        0,
-        -3
-      ],
-      "scale": [
-        0.41,
-        0.41,
-        0.41
-      ]
+      "rotation": [75, 45, 0],
+      "translation": [0, 0.25, -0.75],
+      "scale": [0.375, 0.375, 0.375]
     },
     "firstperson_righthand": {
-      "rotation": [
-        0,
-        24,
-        12
-      ],
-      "scale": [
-        0.5,
-        0.5,
-        0.5
-      ]
+      "rotation": [59, 2, 26],
+      "translation": [0.5, -1.25, 0],
+      "scale": [0.5, 0.5, 0.5]
     },
     "firstperson_lefthand": {
-      "rotation": [
-        0,
-        24,
-        12
-      ],
-      "scale": [
-        0.5,
-        0.5,
-        0.5
-      ]
+      "rotation": [59, 2, 26],
+      "translation": [0.5, -1.25, 0],
+      "scale": [0.5, 0.5, 0.5]
     },
     "ground": {
-      "scale": [
-        0.52,
-        0.52,
-        0.52
-      ]
+      "translation": [0, 3, 0],
+      "scale": [0.25, 0.25, 0.25]
     },
     "gui": {
-      "rotation": [
-        90,
-        0,
-        0
-      ],
-      "scale": [
-        0.91,
-        0.91,
-        0.91
-      ]
+      "rotation": [90, 0, 0],
+      "scale": [0.79, 0.79, 0.79]
     },
     "head": {
-      "rotation": [
-        -90,
-        180,
-        0
-      ],
-      "scale": [
-        0.81,
-        0.81,
-        0.81
-      ]
+      "rotation": [-90, 180, 0],
+      "translation": [0, 0.5, 0],
+      "scale": [0.89, 0.89, 0.89]
     },
     "fixed": {
-      "rotation": [
-        -90,
-        180,
-        0
-      ],
-      "translation": [
-        0,
-        0,
-        -1.5
-      ],
-      "scale": [
-        0.78,
-        0.78,
-        0.78
-      ]
+      "rotation": [-90, 180, 0],
+      "translation": [0, 0, -1.5],
+      "scale": [0.78, 0.78, 0.78]
     }
   }
 }

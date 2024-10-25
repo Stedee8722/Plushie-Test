@@ -75,7 +75,6 @@ public class AlchemicalOutputSlot extends Slot {
     @SuppressWarnings("null")
     @Override
     public boolean mayPlace(@NotNull ItemStack stack) {
-        plushie_test.LOGGER.debug("taking from container {}, slotId {}, taking {}", this.container, this.id, this.getItem());
         return false;
     }
 }

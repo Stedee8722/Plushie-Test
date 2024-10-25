@@ -1,6 +1,6 @@
 {
   "parent": "plushie_test:block/alchemical_table",
-  "display": {
+	"display": {
 		"thirdperson_righthand": {
 			"translation": [0, -2, -0.25],
 			"scale": [0.37, 0.37, 0.37]
@@ -9,29 +9,23 @@
 			"translation": [0, -2, -0.25],
 			"scale": [0.37, 0.37, 0.37]
 		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"translation": [1, 0, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 45, 0],
+			"translation": [1, 0, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
 		"ground": {
-			"translation": [0, 2, 0],
-			"scale": [0.72, 0.72, 0.72]
+			"translation": [0, 2.5, 0],
+			"scale": [0.25, 0.25, 0.25]
 		},
 		"gui": {
-			"rotation": [20, -37, 0],
-			"scale": [0.7, 0.7, 0.7]
-		},
-	  "firstperson_righthand": {
-		  "rotation": [0, 45, 0],
-		  "scale": [0.4, 0.4, 0.4]
-	  },
-	  "firstperson_lefthand": {
-		  "rotation": [
-			  0,
-			  225,
-			  0
-		  ],
-		  "scale": [
-			  0.4,
-			  0.4,
-			  0.4
-		  ]
-	  }
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
 	}
 }

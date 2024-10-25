@@ -1,6 +1,5 @@
 package net.stedee.plushie_test.inventory.custom.Seamstress;
 
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,10 +11,7 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkDirection;
@@ -26,21 +22,16 @@ import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
-import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.jetbrains.annotations.NotNull;
-
-import com.mojang.logging.LogUtils;
 
 public class SeamstressTableMenu extends AbstractContainerMenu {
 
@@ -210,8 +201,6 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
             lastRecipe = findRecipe(this, inv, world, player);
         }
 
-        plushie_test.LOGGER.debug("Last recipe: " + lastRecipe);
-
         // if we have a recipe, fetch its result
         if (lastRecipe != null) {
             itemstack = lastRecipe.assemble(inv,world.registryAccess());
@@ -359,21 +348,4 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         // if no recipe, set to empty to prevent ghost outputs when another player grabs the result
         this.craftResult.setItem(0, r != null ? r.assemble(craftMatrix, world.registryAccess()) : ItemStack.EMPTY);
     }
-
-    public NonNullList<ItemStack> getRemainingItems() {
-        LogUtils.getLogger().info("From getRemainingItems " + craftMatrix.getStackList().size());
-        return lastRecipe != null && lastRecipe.matches(craftMatrix, world) ? lastRecipe.getRemainingItems(craftMatrix) : craftMatrix.getStackList();
-    }
-
-    @SuppressWarnings("null")
-    @Nullable
-	public static Recipe<?> searchRecipe(ItemStack input, RecipeManager recipeManager) {
-		Item inputItem = input.getItem();
-		Optional<Recipe<?>> optionalRecipe = recipeManager.getRecipes().stream()
-				.filter(recipe -> recipe.getType().equals(ModdedRecipes.SEAMSTRESS_RECIPE.get()))
-				.filter(recipe -> recipe.getResultItem(null).getItem() == inputItem
-						&& !recipe.getIngredients().isEmpty())
-				.findAny();
-		return optionalRecipe.orElse(null);
-	}
 }

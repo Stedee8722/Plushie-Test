@@ -44,10 +44,6 @@ public class plushie_test {
     
     public static ClientConfig CONFIG = new ClientConfig();
 
-
-    public static Minecraft minecraft;
-    public static ItemRenderer itemRenderer;
-
     public plushie_test() {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -120,8 +116,6 @@ public class plushie_test {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            minecraft = Minecraft.getInstance();
-            itemRenderer = minecraft.getItemRenderer();
 
             // Some client setup code
             //LOGGER.info("HELLO FROM CLIENT SETUP");

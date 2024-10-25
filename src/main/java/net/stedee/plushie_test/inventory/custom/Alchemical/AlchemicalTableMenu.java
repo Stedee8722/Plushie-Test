@@ -25,7 +25,6 @@ import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.network.S2CLastRecipePacket;
-import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
@@ -204,7 +203,6 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         // if the recipe is no longer valid, update it
         if (lastRecipe == null || !lastRecipe.getResultItem(RegistryAccess.EMPTY).is(inv.getItem(0).getItem())) {
             lastRecipe = (SeamstressRecipe) searchRecipe(inv.getItem(0), world.getRecipeManager());
-            plushie_test.LOGGER.debug("Last recipe: " + lastRecipe);
         }
 
         // if we have a recipe, fetch its result

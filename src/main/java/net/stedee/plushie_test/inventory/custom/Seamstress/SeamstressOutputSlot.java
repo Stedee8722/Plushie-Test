@@ -17,7 +17,6 @@ public class SeamstressOutputSlot extends Slot {
     private final Player player;
     private final TableInventoryPersistent craftSlots;
     private final AbstractContainerMenu container;
-    private NonNullList<ItemStack> nonnulllist = NonNullList.withSize(1, ItemStack.EMPTY);
     private int id;
     private Container resultContainer;
 
@@ -50,7 +49,6 @@ public class SeamstressOutputSlot extends Slot {
       
             if (!stackInSlot.isEmpty()) {
                 this.craftSlots.removeItem(i, 1);
-                plushie_test.LOGGER.debug("Removed slot, cur: " + this.craftSlots.getItem(i).toString());
                 stackInSlot = this.craftSlots.getItem(i);
             }
       
@@ -75,7 +73,6 @@ public class SeamstressOutputSlot extends Slot {
     @SuppressWarnings("null")
     @Override
     public boolean mayPlace(@NotNull ItemStack stack) {
-        plushie_test.LOGGER.debug("taking from container {}, slotId {}, taking {}", this.container, this.id, this.getItem());
         return false;
     }
 }
