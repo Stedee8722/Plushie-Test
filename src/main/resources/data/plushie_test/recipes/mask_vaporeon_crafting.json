@@ -1,25 +1,14 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "minecraft:crafting_shapeless",
     "category": "equipment",
-    "pattern": [
-        " # ",
-        "ESE",
-        " L "
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:cyan_dye"
+    "ingredients": [
+        {
+            "item": "plushie_test:mask_eevee"
         },
-        "E": {
-            "item": "minecraft:ender_eye"
-        },
-        "S": {
-            "item": "minecraft:salmon"
-        },
-        "L": {
-            "item": "minecraft:light_blue_dye"
+        {
+            "item": "minecraft:heart_of_the_sea"
         }
-    },
+    ],
     "result": {
         "item": "plushie_test:mask_vaporeon",
         "count": 1

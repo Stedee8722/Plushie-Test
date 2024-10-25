@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        "I",
+        "L",
+        "B"
+    ],
+    "key": {
+        "I": {
+            "item": "minecraft:iron_helmet"
+        },
+        "B": {
+            "item": "minecraft:brown_dye"
+        },
+        "L": {
+            "item": "minecraft:leather"
+        }
+    },
+    "result": {
+        "item": "plushie_test:mask_eevee",
+        "count": 1
+    }
+}

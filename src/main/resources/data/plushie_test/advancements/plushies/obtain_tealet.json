@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_tealet"
+    },
+    "title": {
+      "translate": "advancements.masks.obtain_tealet.title"
+    },
+    "description": {
+      "translate": "advancements.masks.obtain_tealet.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "plushie_test:masks/make_a_mask",
+  "criteria": {
+    "obtain_tealet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_tealet"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_tealet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

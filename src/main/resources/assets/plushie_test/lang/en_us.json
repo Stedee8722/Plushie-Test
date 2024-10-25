@@ -18,6 +18,7 @@
     "item.plushie_test.loaf_trioderg": "Draconic Siblings Loaf-Stack",
     "item.plushie_test.cleaver": "Cleaver",
     "item.plushie_test.mask_vaporeon": "Vaporeon Mask",
+    "item.plushie_test.mask_eevee": "Eevee Mask",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
     "item.plushie_test.nova_ears.tooltip": "Ears of the §4Sin §rof §6Gluttony",
@@ -38,6 +39,7 @@
     "item.plushie_test.loaf_trioderg.tooltip": "§5The §6sisters§r, §bprecariously §5stacked §6in §ba §5pile §6of §bcuteness",
     "item.plushie_test.cleaver.tooltip": "Cleaver of the §4sin §rof §6gluttony§r, imbued with a §3hunger §rfor §c§llife",
     "item.plushie_test.mask_vaporeon.tooltip": "Something smells §bfishy§r, Mask of A §6Dragun Rider",
+    "item.plushie_test.mask_eevee.tooltip": "Eevee Mask",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
     "block.plushie_test.alchemical_table": "Alchemical Table",
@@ -63,5 +65,12 @@
     "text.autoconfig.plushie_test.option.displayitemsintable": "Display item in table?",
     "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Display item on the seamstress and alchemical table while crafting",
 
-    "text.autoconfig.plushie_test.title": "Plushie Test's configs"
+    "text.autoconfig.plushie_test.title": "Plushie Test's configs",
+
+    "advancements.masks.make_a_mask.title": "Make a Mask",
+    "advancements.masks.make_a_mask.description": "That's what the point of the mask is.",
+    "advancements.masks.obtain_uhh_block.title": "wHaT?!",
+    "advancements.masks.obtain_uhh_block.description": "Where did you get that? You're not supposed to have it.",
+    "advancements.masks.obtain_tealet.title": "Living Plushie",
+    "advancements.masks.obtain_tealet.description": "Is this breathing?"
 }

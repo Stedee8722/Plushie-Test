@@ -18,6 +18,7 @@
     "item.plushie_test.loaf_trioderg": "Draconic Siblings Loaf-Stack",
     "item.plushie_test.cleaver": "Dao phay",
     "item.plushie_test.mask_vaporeon": "Mặt nạ Vaporeon",
+    "item.plushie_test.mask_eevee": "Mặt nạ Eevee",
 
     "item.plushie_test.plush_aym.tooltip": "§4Con trai thứ hai §rcủa §7Forneus§r, §mDễ thương :3",
     "item.plushie_test.nova_ears.tooltip": "Đôi tai của §4Tội đồ §6Tham ăn",
@@ -38,6 +39,7 @@
     "item.plushie_test.loaf_trioderg.tooltip": "§5The §6sisters§r, §bprecariously §5stacked §6in §ba §5pile §6of §bcuteness",
     "item.plushie_test.cleaver.tooltip": "Dao phay của §4Tội đồ §6Tham ăn§r, trao §3nạn đói, §rđổi §c§lmạng",
     "item.plushie_test.mask_vaporeon.tooltip": "Có mùi gì đó hơi §btanh§r, Mặt nạ của một §6Kỵ sĩ cưỡi Rồng",
+    "item.plushie_test.mask_eevee.tooltip": "Eevee Mask",
 
     "block.plushie_test.seamstress_table": "Bàn may vá",
     "block.plushie_test.alchemical_table": "Bàn tách rời",
@@ -63,5 +65,12 @@
     "text.autoconfig.plushie_test.option.displayitemsintable": "Hiện vật phẩm trên bàn?",
     "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Hiện vật phẩm trên bàn chế tạo thú bông khi đang chế tạo",
 
-    "text.autoconfig.plushie_test.title": "Cài đặt mod"
+    "text.autoconfig.plushie_test.title": "Cài đặt mod",
+
+    "advancements.masks.make_a_mask.title": "Làm một cái mặt nạ",
+    "advancements.masks.make_a_mask.description": "Đó là lý do của cái mặt nạ~ (Dream's \"Mask\" song, meme)",
+    "advancements.masks.obtain_uhh_block.title": "CáI J z tR?!",
+    "advancements.masks.obtain_uhh_block.description": "Sao m tìm được cái này z, lẽ ra m không nên có nó.",
+    "advancements.masks.obtain_tealet.title": "Thú bông sống",
+    "advancements.masks.obtain_tealet.description": "Nó đang thở à?"
 }

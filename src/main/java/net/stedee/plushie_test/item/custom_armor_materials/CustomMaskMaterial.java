@@ -6,16 +6,18 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.item.ModdedItems;
 
 public enum CustomMaskMaterial implements ArmorMaterial {
-    EEVEELUTION_MASK("eeveelution_mask", 37, new int[]{ 5, 7, 5, 4 }, 25,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 1f, 0f, () -> Ingredient.of(ModdedItems.MASK_VAPOREON.get())),
-    
-    EEVEE_MASK("eevee_mask", 37, new int[]{ 5, 7, 5, 4 }, 25,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 1f, 0f, () -> Ingredient.of(ModdedItems.MASK_VAPOREON.get()));
+    MASK_VAPOREON_MATS("mask_vaporeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+        SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.HEART_OF_THE_SEA)),
+
+    MASK_EEVEE_MATS("mask_eevee_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
+        SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER));
 
     private final String name;
     private final int durabilityMultiplier;

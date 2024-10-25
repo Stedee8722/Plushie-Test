@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:mask_eevee"
+    },
+    "title": {
+      "translate": "advancements.masks.make_a_mask.title"
+    },
+    "description": {
+      "translate": "advancements.masks.make_a_mask.description"
+    },
+    "background": "plushie_test:textures/gui/config_bg.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_eevee_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_eevee_crafting"
+      }
+    },
+    "craft_vaporeon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_vaporeon_crafting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_eevee_mask",
+      "craft_vaporeon_mask"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

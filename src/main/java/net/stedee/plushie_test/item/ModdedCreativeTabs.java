@@ -38,10 +38,11 @@ public class ModdedCreativeTabs {
             .build());
 
     public static final RegistryObject<CreativeModeTab> MASKS_TAB = CREATIVE_TABS.register("masks",
-        () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.MASK_VAPOREON.get()))
+        () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.MASK_EEVEE.get()))
             .title(Component.translatable("creativetab.plushie_test.masks.text"))
             .displayItems((pParameter, pOutput) -> {
                 pOutput.accept(ModdedItems.MASK_VAPOREON.get());
+                pOutput.accept(ModdedItems.MASK_EEVEE.get());
             })
             .build());
 
