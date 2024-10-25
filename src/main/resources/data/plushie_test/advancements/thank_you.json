@@ -1,0 +1,90 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_aym"
+    },
+    "title": {
+      "translate": "advancements.root.thank_you.title"
+    },
+    "description": {
+      "translate": "advancements.root.thank_you.title"
+    },
+    "background": "plushie_test:textures/gui/config_bg.png",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "have_ears": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:ears"
+          }
+        ]
+      }
+    },
+    "have_loaf_plushies": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:loaf_plushies"
+          }
+        ]
+      }
+    },
+    "have_masks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:masks"
+          }
+        ]
+      }
+    },
+    "have_modded_blocks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:modded_blocks"
+          }
+        ]
+      }
+    },
+    "have_plushies": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:plushies"
+          }
+        ]
+      }
+    },
+    "have_weapons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:weapons"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "have_ears",
+      "have_loaf_plushies",
+      "have_masks",
+      "have_modded_blocks",
+      "have_plushies",
+      "have_weapons"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

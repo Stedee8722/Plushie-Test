@@ -25,6 +25,7 @@ import net.stedee.plushie_test.network.S2CLastRecipePacket;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -39,7 +40,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
     private final Player player;
     public SeamstressRecipe lastRecipe;
-    private Level world;
+    private final Level world;
     public SeamstressTableBlockEntity tileEntity;
     public final TableInventoryPersistent craftMatrix;
     protected SeamstressRecipe lastLastRecipe;
@@ -62,7 +63,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
 
         this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 2, 1);
         this.craftResult = tileEntity.craftResult;
-        this.access = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+        this.access = ContainerLevelAccess.create(Objects.requireNonNull(tileEntity.getLevel()), tileEntity.getBlockPos());
 
         layoutPlayerInventorySlots(player.getInventory(), 8, 94);
 
@@ -147,7 +148,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
 
     @SuppressWarnings("null")
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return stillValid(this.access, player, ModdedBlocks.SEAMSTRESS_TABLE.get());
     }
 
@@ -160,12 +161,11 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         return index;
     }
 
-    private int addSlotBox(Container playerInventory, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
+    private void addSlotBox(Container playerInventory, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
         for (int j = 0 ; j < verAmount ; j++) {
             index = addSlotRange(playerInventory, index, x, y, horAmount, dx);
             y += dy;
         }
-        return index;
     }
 
     private void layoutPlayerInventorySlots(Container playerInventory, int leftCol, int topRow) {
@@ -177,17 +177,13 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
     }
 
-    public SeamstressTableBlockEntity getTileEntity() {
-        return tileEntity;
-    }
-
     public static SeamstressRecipe findRecipe(SeamstressTableMenu menu, CraftingContainer inv, Level world, Player player) {
         return world.getRecipeManager().getRecipeFor(ModdedRecipes.SEAMSTRESS_RECIPE.get(),inv,world).stream().findFirst().orElse(null);
     }
 
     @SuppressWarnings("null")
     @Override
-    public void slotsChanged(Container pContainer) {
+    public void slotsChanged(@NotNull Container pContainer) {
         world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
         tileEntity.setChanged();
         this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
@@ -204,6 +200,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         // if we have a recipe, fetch its result
         if (lastRecipe != null) {
             itemstack = lastRecipe.assemble(inv,world.registryAccess());
+            this.craftResult.setRecipeUsed(lastRecipe);
         }
         // set the slot on both sides, client is for display/so the client knows about the recipe
         result.setItem(0, itemstack);
@@ -339,7 +336,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
 
     @SuppressWarnings("null")
     @Override
-    public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
+    public boolean canTakeItemForPickAll(@NotNull ItemStack stack, Slot slot) {
         return slot.container != craftResult && super.canTakeItemForPickAll(stack, slot);
     }
 

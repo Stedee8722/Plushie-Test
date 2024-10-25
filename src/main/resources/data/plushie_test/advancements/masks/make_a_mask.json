@@ -9,11 +9,11 @@
     "description": {
       "translate": "advancements.masks.make_a_mask.description"
     },
-    "background": "plushie_test:textures/gui/config_bg.png",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
+  "parent": "plushie_test:thank_you",
   "criteria": {
     "craft_eevee_mask": {
       "trigger": "minecraft:recipe_crafted",
@@ -35,7 +35,7 @@
     ]
   ],
   "rewards": {
-    "experience": 10
+    "experience": 50
   },
   "sends_telemetry_event": true
 }

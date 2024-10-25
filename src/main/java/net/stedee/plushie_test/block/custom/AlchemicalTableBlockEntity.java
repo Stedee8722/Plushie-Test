@@ -20,13 +20,10 @@ import net.stedee.plushie_test.inventory.custom.ModdedItemHandler;
 import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvider {
 
     public ModdedItemHandler inventory;
-    public final Container craftResult = new MultipleResultItemContainer();
-    private AlchemicalTableMenu menu;
+    public final MultipleResultItemContainer craftResult = new MultipleResultItemContainer();
 
     public AlchemicalTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModdedBlockEntities.ALCHEMICAL_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -37,8 +34,7 @@ public class AlchemicalTableBlockEntity extends BlockEntity implements MenuProvi
     @Override
     @Nullable
     public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
-        menu = new AlchemicalTableMenu(pContainerId, pPlayerInventory, this);
-        return menu;
+        return new AlchemicalTableMenu(pContainerId, pPlayerInventory, this);
     }
 
     @Override

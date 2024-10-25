@@ -1,0 +1,97 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_hypno_nova"
+    },
+    "title": {
+      "translate": "advancements.collector.gluttonous_outfitting.title"
+    },
+    "description": {
+      "translate": "advancements.collector.gluttonous_outfitting.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:collector/gluttonous_armaments",
+  "criteria": {
+    "obtain_cleaver": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:cleaver"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_rat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_rat"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_nova_ears": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:nova_ears"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_hypno_nova_ears": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:hypno_nova_ears"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_hypno_nova": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_hypno_nova"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_plush_rat"
+    ],
+    [
+      "obtain_cleaver"
+    ],
+    [
+      "obtain_nova_ears"
+    ],
+    [
+      "obtain_hypno_nova_ears"
+    ],
+    [
+      "obtain_plush_hypno_nova"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

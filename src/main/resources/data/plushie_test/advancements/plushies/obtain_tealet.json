@@ -4,16 +4,16 @@
       "item": "plushie_test:plush_tealet"
     },
     "title": {
-      "translate": "advancements.masks.obtain_tealet.title"
+      "translate": "advancements.plushies.obtain_tealet.title"
     },
     "description": {
-      "translate": "advancements.masks.obtain_tealet.description"
+      "translate": "advancements.plushies.obtain_tealet.description"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "plushie_test:masks/make_a_mask",
+  "parent": "plushie_test:plushies/make_a_plushie",
   "criteria": {
     "obtain_tealet": {
       "trigger": "minecraft:inventory_changed",

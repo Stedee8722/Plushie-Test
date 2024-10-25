@@ -1,0 +1,250 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_rat"
+    },
+    "title": {
+      "translate": "advancements.plushies.collect_all_plushies.title"
+    },
+    "description": {
+      "translate": "advancements.plushies.collect_all_plushies.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:plushies/make_a_plushie",
+  "criteria": {
+    "obtain_plush_rat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_rat"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_aym": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_aym"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_acid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_acid"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_brenneth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_brenneth"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_brenzy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_brenzy"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_hypno_nova": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_hypno_nova"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_neth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_neth"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_pyla": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_pyla"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_ratacid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_ratacid"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_plush_tealet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_tealet"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_bren": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_bren"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_duotazer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_duotazer"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_mono": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_mono"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_pyla": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_pyla"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_trioderg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_trioderg"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_plush_acid"
+    ],
+    [
+      "obtain_plush_aym"
+    ],
+    [
+      "obtain_plush_brenneth"
+    ],
+    [
+      "obtain_plush_brenzy"
+    ],
+    [
+      "obtain_plush_hypno_nova"
+    ],
+    [
+      "obtain_plush_neth"
+    ],
+    [
+      "obtain_plush_pyla"
+    ],
+    [
+      "obtain_plush_rat"
+    ],
+    [
+      "obtain_plush_ratacid"
+    ],
+    [
+      "obtain_plush_tealet"
+    ],
+    [
+      "obtain_loaf_bren"
+    ],
+    [
+      "obtain_loaf_duotazer"
+    ],
+    [
+      "obtain_loaf_mono"
+    ],
+    [
+      "obtain_loaf_pyla"
+    ],
+    [
+      "obtain_loaf_trioderg"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

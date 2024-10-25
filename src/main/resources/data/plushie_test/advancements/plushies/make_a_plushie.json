@@ -1,0 +1,132 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_rat"
+    },
+    "title": {
+      "translate": "advancements.plushies.make_a_plushie.title"
+    },
+    "description": {
+      "translate": "advancements.plushies.make_a_plushie.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:thank_you",
+  "criteria": {
+    "craft_plush_rat": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_rat_crafting"
+      }
+    },
+    "craft_plush_aym": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_aym_crafting"
+      }
+    },
+    "craft_plush_acid": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_acid_crafting"
+      }
+    },
+    "craft_plush_brenneth": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_brenneth_seamstress"
+      }
+    },
+    "craft_plush_brenzy": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_brenzy_crafting"
+      }
+    },
+    "craft_plush_hypno_nova": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_hypno_nova"
+      }
+    },
+    "craft_plush_neth": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_neth_crafting"
+      }
+    },
+    "craft_plush_pyla": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_pyla_crafting"
+      }
+    },
+    "craft_plush_ratacid": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_ratacid_seamstress"
+      }
+    },
+    "craft_plush_tealet": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_tealet_crafting"
+      }
+    },
+    "craft_loaf_bren": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:loaf_bren_crafting"
+      }
+    },
+    "craft_loaf_duotazer": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:loaf_duotazer_crafting"
+      }
+    },
+    "craft_loaf_mono": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:loaf_mono_crafting"
+      }
+    },
+    "craft_loaf_pyla": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:loaf_pyla_crafting"
+      }
+    },
+    "craft_loaf_trioderg": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:loaf_trioderg_crafting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_plush_acid",
+      "craft_plush_aym",
+      "craft_plush_brenneth",
+      "craft_plush_brenzy",
+      "craft_plush_hypno_nova",
+      "craft_plush_neth",
+      "craft_plush_pyla",
+      "craft_plush_rat",
+      "craft_plush_ratacid",
+      "craft_plush_tealet",
+      "craft_loaf_bren",
+      "craft_loaf_duotazer",
+      "craft_loaf_mono",
+      "craft_loaf_pyla",
+      "craft_loaf_trioderg"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

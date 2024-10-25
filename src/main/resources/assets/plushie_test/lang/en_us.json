@@ -67,10 +67,21 @@
 
     "text.autoconfig.plushie_test.title": "Plushie Test's configs",
 
+    "advancements.blocks.obtain_uhh_block.title": "wHaT?!",
+    "advancements.blocks.obtain_uhh_block.description": "Where did you get that? You're not supposed to have it.",
+    "advancements.collector.gluttonous_outfitting.title": "Gluttonous Outfitting",
+    "advancements.collector.gluttonous_outfitting.description": "Collect all the Rat Memorabilia? You must be a super fan",
+    "advancements.collector.gluttonous_armaments.title": "Gluttonous Armaments",
+    "advancements.collector.gluttonous_armaments.description": "Geared up for Gluttony",
     "advancements.masks.make_a_mask.title": "Make a Mask",
     "advancements.masks.make_a_mask.description": "That's what the point of the mask is.",
-    "advancements.masks.obtain_uhh_block.title": "wHaT?!",
-    "advancements.masks.obtain_uhh_block.description": "Where did you get that? You're not supposed to have it.",
-    "advancements.masks.obtain_tealet.title": "Living Plushie",
-    "advancements.masks.obtain_tealet.description": "Is this breathing?"
+    "advancements.plushies.obtain_tealet.title": "Living Plushie",
+    "advancements.plushies.obtain_tealet.description": "Is this breathing?",
+    "advancements.plushies.make_a_plushie.title": "Make a Plushie",
+    "advancements.plushies.make_a_plushie.description": "This is sooooo cute!",
+    "advancements.plushies.collect_all_plushies.title": "Plushie Collector",
+    "advancements.plushies.collect_all_plushies.description": "Get all plushies",
+    "advancements.root.thank_you.title": "Plushie Test",
+    "advancements.root.thank_you.description": "Thank you for using my mod!"
+
 }

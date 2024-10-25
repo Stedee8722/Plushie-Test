@@ -4,10 +4,10 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.RecipeHolder;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
-import net.stedee.plushie_test.plushie_test;
 import org.jetbrains.annotations.NotNull;
 
 public class AlchemicalOutputSlot extends Slot {
@@ -16,8 +16,8 @@ public class AlchemicalOutputSlot extends Slot {
     private final TableInventoryPersistent craftSlots;
     private final AbstractContainerMenu container;
     private final NonNullList<ItemStack> nonnulllist = NonNullList.withSize(1, ItemStack.EMPTY);
-    private final int id;
-    private Container resultContainer;
+    private final Container resultContainer;
+    private int removeCount;
 
     public AlchemicalOutputSlot(AbstractContainerMenu container, TableInventoryPersistent tableInventoryPersistent, Container resultContainer, int slotIndex, int xPosition, int yPosition, Player player) {
         //remove player if not needed
@@ -26,13 +26,25 @@ public class AlchemicalOutputSlot extends Slot {
         this.resultContainer = resultContainer;
         this.player = player;
         this.craftSlots = tableInventoryPersistent;
-        this.id = slotIndex;
+    }
+
+    @Override
+    protected void checkTakeAchievements(@NotNull ItemStack itemStack) {
+        if (this.removeCount > 0) {
+            itemStack.onCraftedBy(this.player.level(), this.player, this.removeCount);
+        }
+        if (resultContainer instanceof RecipeHolder recipe) {
+
+            recipe.awardUsedRecipes(this.player, this.craftSlots.getItems());
+        }
+
+        this.removeCount = 0;
     }
 
     @SuppressWarnings("null")
     @Override
     public void onTake(@NotNull Player thePlayer, @NotNull ItemStack craftingResult) {
-        //this.checkTakeAchievements(craftingResult);
+        this.checkTakeAchievements(craftingResult);
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(thePlayer);
         /* CHANGE BEGINS HERE */
 
@@ -48,7 +60,6 @@ public class AlchemicalOutputSlot extends Slot {
       
             if (!stackInSlot.isEmpty()) {
                 this.craftSlots.removeItem(i, 1);
-                plushie_test.LOGGER.debug("Removed slot, cur: {}", this.craftSlots.getItem(i));
                 stackInSlot = this.craftSlots.getItem(i);
             }
       

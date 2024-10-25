@@ -1,0 +1,67 @@
+{
+    "display": {
+        "icon": {
+            "item": "plushie_test:plush_rat"
+        },
+        "title": {
+            "translate": "advancements.collector.gluttonous_armaments.title"
+        },
+        "description": {
+            "translate": "advancements.collector.gluttonous_armaments.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "plushie_test:thank_you",
+    "criteria": {
+        "obtain_cleaver": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "plushie_test:cleaver"
+                        ]
+                    }
+                ]
+            }
+        },
+        "obtain_plush_rat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "plushie_test:plush_rat"
+                        ]
+                    }
+                ]
+            }
+        },
+        "obtain_nova_ears": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "plushie_test:nova_ears"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "obtain_plush_rat"
+        ],
+        [
+            "obtain_cleaver"
+        ],
+        [
+            "obtain_nova_ears"
+        ]
+    ],
+    "sends_telemetry_event": true
+}

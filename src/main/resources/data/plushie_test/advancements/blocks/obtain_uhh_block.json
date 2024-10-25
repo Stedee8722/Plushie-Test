@@ -4,16 +4,16 @@
       "item": "plushie_test:uhh_block"
     },
     "title": {
-      "translate": "advancements.masks.obtain_uhh_block.title"
+      "translate": "advancements.blocks.obtain_uhh_block.title"
     },
     "description": {
-      "translate": "advancements.masks.obtain_uhh_block.description"
+      "translate": "advancements.blocks.obtain_uhh_block.description"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "plushie_test:masks/make_a_mask",
+  "parent": "plushie_test:thank_you",
   "criteria": {
     "obtain_uhh_block": {
       "trigger": "minecraft:inventory_changed",

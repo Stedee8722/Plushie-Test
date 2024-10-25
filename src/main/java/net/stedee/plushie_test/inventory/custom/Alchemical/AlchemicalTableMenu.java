@@ -21,6 +21,7 @@ import net.minecraftforge.network.NetworkDirection;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
+import net.stedee.plushie_test.inventory.custom.MultipleResultItemContainer;
 import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.network.PacketHandler;
@@ -41,7 +42,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AlchemicalTableMenu extends AbstractContainerMenu {
 
-    private final Container craftResult;
+    private final MultipleResultItemContainer craftResult;
     private final ContainerLevelAccess access;
     private final Player player;
     public SeamstressRecipe lastRecipe;
@@ -170,12 +171,11 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         return index;
     }
 
-    private int addSlotBox(Container playerInventory, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
+    private void addSlotBox(Container playerInventory, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
         for (int j = 0 ; j < verAmount ; j++) {
             index = addSlotRange(playerInventory, index, x, y, horAmount, dx);
             y += dy;
         }
-        return index;
     }
 
     private void layoutPlayerInventorySlots(Container playerInventory, int leftCol, int topRow) {
@@ -209,6 +209,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         if (lastRecipe != null) {
             itemstack_1 = lastRecipe.getInputItem(0);
             itemstack_2 = lastRecipe.getInputItem(1);
+            this.craftResult.setRecipeUsed(lastRecipe);
         }
         // set the slot on both sides, client is for display/so the client knows about the recipe
         result.setItem(0, itemstack_1);
@@ -346,7 +347,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
     @SuppressWarnings("null")
     @Override
-    public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
+    public boolean canTakeItemForPickAll(@NotNull ItemStack stack, Slot slot) {
         return slot.container != craftResult && super.canTakeItemForPickAll(stack, slot);
     }
 
@@ -363,7 +364,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 		Item inputItem = input.getItem();
 		Optional<Recipe<?>> optionalRecipe = recipeManager.getRecipes().stream()
 				.filter(recipe -> recipe.getType().equals(ModdedRecipes.SEAMSTRESS_RECIPE.get()))
-				.filter(recipe -> recipe.getResultItem(null).getItem() == inputItem
+				.filter(recipe -> recipe.getResultItem(RegistryAccess.EMPTY).getItem() == inputItem
 						&& !recipe.getIngredients().isEmpty())
 				.findAny();
 		return optionalRecipe.orElse(null);

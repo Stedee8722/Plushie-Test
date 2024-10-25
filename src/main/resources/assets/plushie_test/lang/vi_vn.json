@@ -67,10 +67,22 @@
 
     "text.autoconfig.plushie_test.title": "Cài đặt mod",
 
+    "advancements.blocks.obtain_uhh_block.title": "CáI J z tR?!",
+    "advancements.blocks.obtain_uhh_block.description": "Sao m tìm được cái này z, lẽ ra m không nên có nó.",
+    "advancements.collector.gluttonous_outfitting.title": "Gluttonous Outfitting",
+    "advancements.collector.gluttonous_outfitting.description": "Collect all the Rat Memorabilia? You must be a super fan",
+    "advancements.collector.gluttonous_armaments.title": "Gluttonous Armaments",
+    "advancements.collector.gluttonous_armaments.description": "Geared up for Gluttony",
     "advancements.masks.make_a_mask.title": "Làm một cái mặt nạ",
     "advancements.masks.make_a_mask.description": "Đó là lý do của cái mặt nạ~ (Dream's \"Mask\" song, meme)",
-    "advancements.masks.obtain_uhh_block.title": "CáI J z tR?!",
-    "advancements.masks.obtain_uhh_block.description": "Sao m tìm được cái này z, lẽ ra m không nên có nó.",
-    "advancements.masks.obtain_tealet.title": "Thú bông sống",
-    "advancements.masks.obtain_tealet.description": "Nó đang thở à?"
+    "advancements.plushies.obtain_tealet.title": "Thú bông sống",
+    "advancements.plushies.obtain_tealet.description": "Nó đang thở à?",
+    "advancements.plushies.make_a_plushie.title": "Tạo một thú bông",
+    "advancements.plushies.make_a_plushie.description": "Dễ thương quá tr!",
+    "advancements.plushies.collect_all_plushies.title": "Người thu thập Thú bông",
+    "advancements.plushies.collect_all_plushies.description": "Thu thập tất cả Thú bông",
+    "advancements.root.thank_you.title": "Plushie Test",
+    "advancements.root.thank_you.description": "Cảm ơn đã sử dụng mod mà tôi mất rất nhiều công sức để tạo ra!"
+
+
 }
