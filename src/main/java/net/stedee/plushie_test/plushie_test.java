@@ -5,19 +5,12 @@ import com.mojang.logging.LogUtils;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,16 +21,15 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
-import net.stedee.plushie_test.client.renderer.armor.ArmorLayer;
 import net.stedee.plushie_test.config.ClientConfig;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
-import net.stedee.plushie_test.item.custom.MaskItem;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.painting.ModdedPaintings;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.sound.ModdedSounds;
+import software.bernie.geckolib.GeckoLib;
 
 import org.slf4j.Logger;
 
@@ -74,17 +66,20 @@ public class plushie_test {
 
         ModdedPaintings.register(modEventBus);
 
+        GeckoLib.initialize();
+
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
         
         initConfig();
 
         //ModLoadingContext.get().registerConfig(Type.CLIENT, PlushieTestClientConfig.SPEC, MOD_ID + "-client.toml");
-        ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> {
-            return new ConfigScreenHandler.ConfigScreenFactory((minecraft, screen) -> {
-                return AutoConfig.getConfigScreen(ClientConfig.class, screen).get();
-            });
-        });
+        ModLoadingContext.get().registerExtensionPoint(
+            ConfigScreenHandler.ConfigScreenFactory.class,
+                () -> new ConfigScreenHandler.ConfigScreenFactory(
+                    (minecraft, screen) -> AutoConfig.getConfigScreen(ClientConfig.class, screen).get()
+                )
+        );
 
         MinecraftForge.EVENT_BUS.register(modEventBus);
     }

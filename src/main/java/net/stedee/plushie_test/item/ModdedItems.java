@@ -79,6 +79,13 @@ public class ModdedItems {
                                         .defaultDurability(275)
                                         .rarity(Rarity.EPIC), CustomMaskMaterial.EEVEELUTION_MASK, MobEffects.WATER_BREATHING));
 
+    public static final RegistryObject<MaskItem> MASK_EEVEE = ITEMS.register("mask_eevee",
+            () -> new MaskItem(new Item.Properties()
+                    .fireResistant()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.EEVEELUTION_MASK, null));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
