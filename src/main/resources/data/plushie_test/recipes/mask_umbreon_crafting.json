@@ -14,11 +14,11 @@
             "item": "plushie_test:mask_eevee"
         },
         "D": {
-            "item": "minecraft:magenta_dye"
+            "item": "minecraft:black_dye"
         }
     },
     "result": {
-        "item": "plushie_test:mask_espeon",
+        "item": "plushie_test:mask_umbreon",
         "count": 1
     }
 }

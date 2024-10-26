@@ -20,16 +20,27 @@ public enum CustomMaskMaterial implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.CLOCK)),
 
     MASK_FLAREON_MATS("mask_flareon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIRE_CHARGE)),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIRE_CHARGE, Items.LEATHER, Items.IRON_BARS)),
 
     MASK_GLACEON_MATS("mask_glaceon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.ICE)),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.ICE, Items.LEATHER, Items.IRON_BARS)),
 
     MASK_LEAFEON_MATS("mask_leafeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(ItemTags.LEAVES)),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> {
+        return (Ingredient) Ingredient.of(ItemTags.LEAVES).and(Ingredient.of(Items.LEATHER, Items.IRON_BARS));
+    }),
+
+    MASK_JOLTEON_MATS("mask_jolteon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIREWORK_STAR, Items.LEATHER, Items.IRON_BARS)),
+
+    MASK_SYLVEON_MATS("mask_sylveon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.LEATHER, Items.IRON_BARS)),
+
+    MASK_UMBREON_MATS("mask_umbreon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.CLOCK, Items.LEATHER, Items.IRON_BARS)),
 
     MASK_EEVEE_MATS("mask_eevee_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER));
+            SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER, Items.IRON_BARS));
 
     private final String name;
     private final int durabilityMultiplier;

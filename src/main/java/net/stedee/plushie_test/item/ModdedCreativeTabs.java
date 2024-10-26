@@ -47,6 +47,9 @@ public class ModdedCreativeTabs {
                 pOutput.accept(ModdedItems.MASK_FLAREON.get());
                 pOutput.accept(ModdedItems.MASK_GLACEON.get());
                 pOutput.accept(ModdedItems.MASK_LEAFEON.get());
+                pOutput.accept(ModdedItems.MASK_UMBREON.get());
+                pOutput.accept(ModdedItems.MASK_JOLTEON.get());
+                pOutput.accept(ModdedItems.MASK_SYLVEON.get());
             })
             .build());
 

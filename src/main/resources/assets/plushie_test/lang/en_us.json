@@ -23,6 +23,9 @@
     "item.plushie_test.mask_flareon": "Flareon Mask",
     "item.plushie_test.mask_glaceon": "Glaceon Mask",
     "item.plushie_test.mask_leafeon": "Leafeon Mask",
+    "item.plushie_test.mask_sylveon": "Sylveon Mask",
+    "item.plushie_test.mask_umbreon": "Umbreon Mask",
+    "item.plushie_test.mask_jolteon": "Jolteon Mask",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
     "item.plushie_test.nova_ears.tooltip": "Ears of the §4Sin §rof §6Gluttony",
@@ -48,6 +51,9 @@
     "item.plushie_test.mask_flareon.tooltip": "Grant §4fire resistance §rwhen worn",
     "item.plushie_test.mask_glaceon.tooltip": "Grant §2jump boost §rwhen worn",
     "item.plushie_test.mask_leafeon.tooltip": "Grant §bhaste §rwhen worn",
+    "item.plushie_test.mask_sylveon.tooltip": "Grant §bregeneration §rwhen worn",
+    "item.plushie_test.mask_umbreon.tooltip": "Grant §bnight vision §rwhen worn",
+    "item.plushie_test.mask_jolteon.tooltip": "Grant §bspeed §rwhen worn",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
     "block.plushie_test.alchemical_table": "Alchemical Table",

@@ -107,7 +107,25 @@ public class ModdedItems {
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_LEAFEON_MATS, MobEffects.MOVEMENT_SPEED,2, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_LEAFEON_MATS, MobEffects.DIG_SPEED,2, 0));
+
+    public static final RegistryObject<MaskItem> MASK_JOLTEON = ITEMS.register("mask_jolteon",
+            () -> new MaskItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_JOLTEON_MATS, MobEffects.MOVEMENT_SPEED,2, 1));
+
+    public static final RegistryObject<MaskItem> MASK_SYLVEON = ITEMS.register("mask_sylveon",
+            () -> new MaskItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_SYLVEON_MATS, MobEffects.REGENERATION,2, 1));
+
+    public static final RegistryObject<MaskItem> MASK_UMBREON = ITEMS.register("mask_umbreon",
+            () -> new MaskItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_UMBREON_MATS, MobEffects.NIGHT_VISION,2, 0));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -5,6 +5,9 @@
         "plushie_test:mask_espeon",
         "plushie_test:mask_flareon",
         "plushie_test:mask_glaceon",
-        "plushie_test:mask_leafeon"
+        "plushie_test:mask_leafeon",
+        "plushie_test:mask_jolteon",
+        "plushie_test:mask_sylveon",
+        "plushie_test:mask_umbreon"
     ]
 }

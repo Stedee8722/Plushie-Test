@@ -8,17 +8,17 @@
     ],
     "key": {
         "C": {
-            "item": "minecraft:clock"
+            "item": "minecraft:pink_petals"
         },
         "M": {
             "item": "plushie_test:mask_eevee"
         },
         "D": {
-            "item": "minecraft:magenta_dye"
+            "item": "minecraft:blue_orchid"
         }
     },
     "result": {
-        "item": "plushie_test:mask_espeon",
+        "item": "plushie_test:mask_sylveon",
         "count": 1
     }
 }

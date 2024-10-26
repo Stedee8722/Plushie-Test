@@ -50,6 +50,24 @@
       "conditions": {
         "recipe_id": "plushie_test:mask_leafeon_crafting"
       }
+    },
+    "craft_jolteon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_jolteon_crafting"
+      }
+    },
+    "craft_umbreon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_umbreon_crafting"
+      }
+    },
+    "craft_sylveon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_sylveon_crafting"
+      }
     }
   },
   "requirements": [
@@ -59,7 +77,10 @@
       "craft_espeon_mask",
       "craft_flareon_mask",
       "craft_glaceon_mask",
-      "craft_leafeon_mask"
+      "craft_leafeon_mask",
+      "craft_jolteon_mask",
+      "craft_sylveon_mask",
+      "craft_umbreon_mask"
     ]
   ],
   "rewards": {

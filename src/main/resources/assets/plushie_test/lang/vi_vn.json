@@ -23,6 +23,9 @@
     "item.plushie_test.mask_flareon": "Mặt nạ Flareon",
     "item.plushie_test.mask_glaceon": "Mặt nạ Glaceon",
     "item.plushie_test.mask_leafeon": "Mặt nạ Leafeon",
+    "item.plushie_test.mask_sylveon": "Mặt nạ Sylveon",
+    "item.plushie_test.mask_umbreon": "Mặt nạ Umbreon",
+    "item.plushie_test.mask_jolteon": "Mặt nạ Jolteon",
 
     "item.plushie_test.plush_aym.tooltip": "§4Con trai thứ hai §rcủa §7Forneus§r, §mDễ thương :3",
     "item.plushie_test.nova_ears.tooltip": "Đôi tai của §4Tội đồ §6Tham ăn",
@@ -47,7 +50,11 @@
     "item.plushie_test.mask_espeon.tooltip": "Nhận §7hiệu ứng rơi chậm §rkhi đeo",
     "item.plushie_test.mask_flareon.tooltip": "Nhận §4hiệu ứng chống cháy §rkhi đeo",
     "item.plushie_test.mask_glaceon.tooltip": "Nhận §2hiệu ứng nhảy cao §rkhi đeo",
-    "item.plushie_test.mask_leafeon.tooltip": "Nhận §2hiệu ứng tốc độ §rkhi đeo",
+    "item.plushie_test.mask_leafeon.tooltip": "Nhận §2hiệu ứng đào nhanh §rkhi đeo",
+    "item.plushie_test.mask_sylveon.tooltip": "Nhận §4hiệu ứng hồi máu §rkhi đeo",
+    "item.plushie_test.mask_umbreon.tooltip": "Nhận §2hiệu ứng nhìn đêm §rkhi đeo",
+    "item.plushie_test.mask_jolteon.tooltip": "Nhận §2hiệu ứng tốc độ §rkhi đeo",
+
 
 
     "block.plushie_test.seamstress_table": "Bàn may vá",

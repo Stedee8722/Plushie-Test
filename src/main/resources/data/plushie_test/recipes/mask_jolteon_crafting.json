@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "equipment",
+    "ingredients": [
+        {
+            "item": "plushie_test:mask_eevee"
+        },
+        {
+            "item": "minecraft:firework_star"
+        }
+    ],
+    "result": {
+        "item": "plushie_test:mask_jolteon",
+        "count": 1
+    }
+}
