@@ -4,7 +4,8 @@
   "package": "net.stedee.plushie_test.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AnvilMenuMixin"
+    "AnvilMenuMixin",
+    "PlayerMixin"
   ],
   "client": [],
   "injectors": {
