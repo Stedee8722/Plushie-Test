@@ -88,20 +88,20 @@ public class ModdedItems {
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_ESPEON_MATS, MobEffects.SLOW_FALLING,5, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_ESPEON_MATS, MobEffects.SLOW_FALLING,5, 0));
 
     public static final RegistryObject<MaskItem> MASK_FLAREON = ITEMS.register("mask_flareon",
             () -> new MaskItem(new Item.Properties()
                     .fireResistant()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.FIRE_RESISTANCE,10, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.FIRE_RESISTANCE,10, 0));
 
     public static final RegistryObject<MaskItem> MASK_GLACEON = ITEMS.register("mask_glaceon",
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.JUMP,2, 2));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.JUMP,2, 1));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

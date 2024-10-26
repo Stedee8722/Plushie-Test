@@ -41,8 +41,8 @@ public class ModdedCreativeTabs {
         () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.MASK_EEVEE.get()))
             .title(Component.translatable("creativetab.plushie_test.masks.text"))
             .displayItems((pParameter, pOutput) -> {
-                pOutput.accept(ModdedItems.MASK_VAPOREON.get());
                 pOutput.accept(ModdedItems.MASK_EEVEE.get());
+                pOutput.accept(ModdedItems.MASK_VAPOREON.get());
                 pOutput.accept(ModdedItems.MASK_ESPEON.get());
                 pOutput.accept(ModdedItems.MASK_FLAREON.get());
                 pOutput.accept(ModdedItems.MASK_GLACEON.get());
