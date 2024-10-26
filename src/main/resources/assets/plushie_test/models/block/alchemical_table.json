@@ -136,23 +136,5 @@
 				"down": {"uv": [7.5, 0, 6, 1.5], "texture": "#0"}
 			}
 		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, -2, -0.25],
-			"scale": [0.37, 0.37, 0.37]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, -2, -0.25],
-			"scale": [0.37, 0.37, 0.37]
-		},
-		"ground": {
-			"translation": [0, 2, 0],
-			"scale": [0.72, 0.72, 0.72]
-		},
-		"gui": {
-			"rotation": [20, 37, 0],
-			"scale": [0.7, 0.7, 0.7]
-		}
-	}
+	]
 }
