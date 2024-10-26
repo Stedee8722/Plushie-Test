@@ -21,6 +21,7 @@
     "item.plushie_test.mask_eevee": "Eevee Mask",
     "item.plushie_test.mask_espeon": "Espeon Mask",
     "item.plushie_test.mask_flareon": "Flareon Mask",
+    "item.plushie_test.mask_glaceon": "Glaceon Mask",
 
     "item.plushie_test.plush_aym.tooltip": "§4Second Son §rof §7Forneus§r, §mCutie Patootie :3",
     "item.plushie_test.nova_ears.tooltip": "Ears of the §4Sin §rof §6Gluttony",
@@ -44,6 +45,7 @@
     "item.plushie_test.mask_eevee.tooltip": "For crafting and repairing other §6Masks",
     "item.plushie_test.mask_espeon.tooltip": "Grant §7slow falling §rwhen worn",
     "item.plushie_test.mask_flareon.tooltip": "Grant §4fire resistance §rwhen worn",
+    "item.plushie_test.mask_glaceon.tooltip": "Grant §2jump boost §rwhen worn",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
     "block.plushie_test.alchemical_table": "Alchemical Table",

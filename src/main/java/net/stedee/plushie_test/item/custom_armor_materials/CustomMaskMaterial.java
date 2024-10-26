@@ -21,6 +21,9 @@ public enum CustomMaskMaterial implements ArmorMaterial {
     MASK_FLAREON_MATS("mask_flareon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIRE_CHARGE)),
 
+    MASK_GLACEON_MATS("mask_glaceon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.ICE)),
+
     MASK_EEVEE_MATS("mask_eevee_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
             SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER));
 

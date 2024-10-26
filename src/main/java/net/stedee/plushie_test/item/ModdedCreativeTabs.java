@@ -12,7 +12,7 @@ import net.stedee.plushie_test.plushie_test;
 public class ModdedCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = 
         DeferredRegister.create(Registries.CREATIVE_MODE_TAB, plushie_test.MOD_ID);
-    
+
     public static final RegistryObject<CreativeModeTab> PLUSHIES_TAB = CREATIVE_TABS.register("plushies",
         () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.PLUSH_AYM.get()))
             .title(Component.translatable("creativetab.plushie_test.plushies.text"))
@@ -45,6 +45,7 @@ public class ModdedCreativeTabs {
                 pOutput.accept(ModdedItems.MASK_EEVEE.get());
                 pOutput.accept(ModdedItems.MASK_ESPEON.get());
                 pOutput.accept(ModdedItems.MASK_FLAREON.get());
+                pOutput.accept(ModdedItems.MASK_GLACEON.get());
             })
             .build());
 
