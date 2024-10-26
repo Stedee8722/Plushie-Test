@@ -101,7 +101,13 @@ public class ModdedItems {
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.JUMP,2, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_GLACEON_MATS, MobEffects.JUMP,2, 1));
+
+    public static final RegistryObject<MaskItem> MASK_LEAFEON = ITEMS.register("mask_leafeon",
+            () -> new MaskItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_LEAFEON_MATS, MobEffects.MOVEMENT_SPEED,2, 1));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

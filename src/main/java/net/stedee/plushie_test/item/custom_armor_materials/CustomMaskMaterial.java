@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
@@ -23,6 +24,9 @@ public enum CustomMaskMaterial implements ArmorMaterial {
 
     MASK_GLACEON_MATS("mask_glaceon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.ICE)),
+
+    MASK_LEAFEON_MATS("mask_leafeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(ItemTags.LEAVES)),
 
     MASK_EEVEE_MATS("mask_eevee_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
             SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER));

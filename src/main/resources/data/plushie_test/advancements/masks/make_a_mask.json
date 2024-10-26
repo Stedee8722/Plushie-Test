@@ -44,6 +44,12 @@
       "conditions": {
         "recipe_id": "plushie_test:mask_glaceon_crafting"
       }
+    },
+    "craft_leafeon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_leafeon_crafting"
+      }
     }
   },
   "requirements": [
@@ -52,7 +58,8 @@
       "craft_vaporeon_mask",
       "craft_espeon_mask",
       "craft_flareon_mask",
-      "craft_glaceon_mask"
+      "craft_glaceon_mask",
+      "craft_leafeon_mask"
     ]
   ],
   "rewards": {
