@@ -2,6 +2,7 @@ package net.stedee.plushie_test.item.custom_armor_materials;
 
 import java.util.function.Supplier;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -26,7 +27,7 @@ public enum CustomMaskMaterial implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.ICE, Items.LEATHER, Items.IRON_INGOT)),
 
     MASK_LEAFEON_MATS("mask_leafeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> (Ingredient) Ingredient.of(ItemTags.LEAVES).and(Ingredient.of(Items.LEATHER, Items.IRON_INGOT))),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.LEATHER, Items.IRON_INGOT, Items.ACACIA_LEAVES, Items.AZALEA_LEAVES, Items.BIRCH_LEAVES, Items.CHERRY_LEAVES, Items.FLOWERING_AZALEA_LEAVES, Items.DARK_OAK_LEAVES, Items.JUNGLE_LEAVES, Items.MANGROVE_LEAVES, Items.OAK_LEAVES, Items.SPRUCE_LEAVES)),
 
     MASK_JOLTEON_MATS("mask_jolteon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIREWORK_STAR, Items.LEATHER, Items.IRON_INGOT)),
