@@ -29,10 +29,14 @@ public class MaskItem extends ArmorItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private final MobEffect effect;
+    private final int dur;
+    private final int amp;
 
-    public MaskItem(Properties pProperties, CustomMaskMaterial mats, MobEffect effect) {
+    public MaskItem(Properties pProperties, CustomMaskMaterial mats, MobEffect effect, int dur, int amp) {
         super(mats, net.minecraft.world.item.ArmorItem.Type.HELMET, pProperties);
         this.effect = effect;
+        this.dur = dur;
+        this.amp = amp;
     }
 
     @SuppressWarnings("null")
@@ -46,7 +50,7 @@ public class MaskItem extends ArmorItem implements GeoItem {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if (effect != null) {
-            player.addEffect(new MobEffectInstance(effect, 2, 0, false, false, true));
+            player.addEffect(new MobEffectInstance(effect, dur, amp, false, false, true));
         }
         super.onArmorTick(stack, level, player);
     }
@@ -81,17 +85,7 @@ public class MaskItem extends ArmorItem implements GeoItem {
     }
 
     //@Override
-    //public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-    //    consumer.accept(new IClientItemExtensions() {
-    //        private ItemRenderer renderer;
-    //        @Override
-    //        public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
-    //            if (this.renderer == null) {
-    //                this.renderer = new AmethystArmorRenderer();
-    //            }
-    //            this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
-    //            return this.renderer;
-    //        }
-    //    });
+    //public boolean onDroppedByPlayer(ItemStack item, Player player) {
+    //    return super.onDroppedByPlayer(item, player);
     //}
 }

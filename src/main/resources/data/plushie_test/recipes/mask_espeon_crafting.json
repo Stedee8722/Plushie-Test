@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        "C",
+        "M",
+        "D"
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:clock"
+        },
+        "M": {
+            "item": "plushie_test:mask_eevee"
+        },
+        "D": {
+            "item": "minecraft:black_dye"
+        }
+    },
+    "result": {
+        "item": "plushie_test:mask_espeon",
+        "count": 1
+    }
+}

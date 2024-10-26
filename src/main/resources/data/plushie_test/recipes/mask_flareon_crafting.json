@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "equipment",
+    "ingredients": [
+        {
+            "item": "plushie_test:mask_eevee"
+        },
+        {
+            "item": "minecraft:fire_charge"
+        }
+    ],
+    "result": {
+        "item": "plushie_test:mask_flareon",
+        "count": 1
+    }
+}

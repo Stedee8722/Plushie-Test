@@ -1,6 +1,8 @@
 {
     "values": [
         "plushie_test:mask_eevee",
-        "plushie_test:mask_vaporeon"
+        "plushie_test:mask_vaporeon",
+        "plushie_test:mask_espeon",
+        "plushie_test:mask_flareon"
     ]
 }

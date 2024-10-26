@@ -8,16 +8,21 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.stedee.plushie_test.plushie_test;
-import net.stedee.plushie_test.item.ModdedItems;
+import org.jetbrains.annotations.NotNull;
 
 public enum CustomMaskMaterial implements ArmorMaterial {
     MASK_VAPOREON_MATS("mask_vaporeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-        SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.HEART_OF_THE_SEA)),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.HEART_OF_THE_SEA)),
+
+    MASK_ESPEON_MATS("mask_espeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.CLOCK)),
+
+    MASK_FLAREON_MATS("mask_flareon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIRE_CHARGE)),
 
     MASK_EEVEE_MATS("mask_eevee_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
-        SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER));
+            SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.LEATHER));
 
     private final String name;
     private final int durabilityMultiplier;
@@ -60,17 +65,17 @@ public enum CustomMaskMaterial implements ArmorMaterial {
     }
 
     @Override
-    public SoundEvent getEquipSound() {
+    public @NotNull SoundEvent getEquipSound() {
         return this.equipSound;
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return plushie_test.MOD_ID + ":" + this.name;
     }
 

@@ -43,6 +43,8 @@ public class ModdedCreativeTabs {
             .displayItems((pParameter, pOutput) -> {
                 pOutput.accept(ModdedItems.MASK_VAPOREON.get());
                 pOutput.accept(ModdedItems.MASK_EEVEE.get());
+                pOutput.accept(ModdedItems.MASK_ESPEON.get());
+                pOutput.accept(ModdedItems.MASK_FLAREON.get());
             })
             .build());
 
