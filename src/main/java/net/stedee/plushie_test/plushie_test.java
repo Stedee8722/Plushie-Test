@@ -4,8 +4,6 @@ import com.mojang.logging.LogUtils;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
@@ -100,6 +98,7 @@ public class plushie_test {
         }
         else if(event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModdedItems.CLEAVER);
+            event.accept(ModdedItems.MOON_STAFF);
         }
     }
 

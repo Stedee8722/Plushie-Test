@@ -8,6 +8,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.stedee.plushie_test.item.custom.MoonStaffItem;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.item.custom.CleaverItem;
 import net.stedee.plushie_test.item.custom.MaskItem;
@@ -50,6 +51,9 @@ public class ModdedItems {
 
     public static final RegistryObject<CleaverItem> CLEAVER = ITEMS.register("cleaver",
             () -> new CleaverItem(Tiers.NETHERITE, 5.0F, -2.4F, (new Item.Properties()).defaultDurability(1016).rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<MoonStaffItem> MOON_STAFF = ITEMS.register("moon_staff",
+            () -> new MoonStaffItem(Tiers.NETHERITE, 5, -2.4F, (new Item.Properties()).defaultDurability(753).rarity(Rarity.EPIC)));
 
     public static final RegistryObject<PlushiesItem> PLUSH_NETH = ITEMS.register("plush_neth",
             () -> new PlushiesItem(true));

@@ -16,8 +16,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class CleaverItem extends AxeItem {
 
@@ -28,30 +28,28 @@ public class CleaverItem extends AxeItem {
 
     @SuppressWarnings("null")
     @Override
-    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-            pStack.hurtAndBreak(1, pAttacker, (pOnBroken) -> {
-               pOnBroken.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
+            pStack.hurtAndBreak(1, pAttacker, (pOnBroken) -> pOnBroken.broadcastBreakEvent(EquipmentSlot.MAINHAND));
             pTarget.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 1));
             return true;
     }
 
     @SuppressWarnings("null")
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack pStack) {
         return super.getUseAnimation(pStack);
     }
 
     @SuppressWarnings("null")
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable(pStack.getDescriptionId() + ".tooltip"));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
     @SuppressWarnings("null")
     @Override
-    public boolean isValidRepairItem(ItemStack pToRepair, ItemStack pRepair) {
-        return Ingredient.of(new ItemLike[]{Items.ROTTEN_FLESH}).test(pRepair) || Ingredient.of(new ItemLike[]{Items.IRON_INGOT}).test(pRepair);
+    public boolean isValidRepairItem(@NotNull ItemStack pToRepair, @NotNull ItemStack pRepair) {
+        return Ingredient.of(Items.ROTTEN_FLESH).test(pRepair) || Ingredient.of(Items.IRON_INGOT).test(pRepair);
     }
 }
