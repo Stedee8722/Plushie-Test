@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 
 public enum CustomMaskMaterial implements ArmorMaterial {
     MASK_VAPOREON_MATS("mask_vaporeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.HEART_OF_THE_SEA)),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.HEART_OF_THE_SEA, Items.LEATHER, Items.IRON_BARS)),
 
     MASK_ESPEON_MATS("mask_espeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.CLOCK)),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.CLOCK, Items.LEATHER, Items.IRON_BARS)),
 
     MASK_FLAREON_MATS("mask_flareon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIRE_CHARGE, Items.LEATHER, Items.IRON_BARS)),
@@ -26,9 +26,7 @@ public enum CustomMaskMaterial implements ArmorMaterial {
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.ICE, Items.LEATHER, Items.IRON_BARS)),
 
     MASK_LEAFEON_MATS("mask_leafeon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
-            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> {
-        return (Ingredient) Ingredient.of(ItemTags.LEAVES).and(Ingredient.of(Items.LEATHER, Items.IRON_BARS));
-    }),
+            SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> (Ingredient) Ingredient.of(ItemTags.LEAVES).and(Ingredient.of(Items.LEATHER, Items.IRON_BARS))),
 
     MASK_JOLTEON_MATS("mask_jolteon_mats", 37, new int[]{ 3, 6, 8, 3 }, 15,
             SoundEvents.ARMOR_EQUIP_GENERIC, 3f, 0.1f, () -> Ingredient.of(Items.FIREWORK_STAR, Items.LEATHER, Items.IRON_BARS)),
