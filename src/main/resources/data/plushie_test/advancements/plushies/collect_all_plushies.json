@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "plushie_test:plushies/make_a_plushie",
+  "parent": "plushie_test:plushies/collect_all_loafs",
   "criteria": {
     "obtain_plush_rat": {
       "trigger": "minecraft:inventory_changed",

@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:loaf_trioderg"
+    },
+    "title": {
+      "translate": "advancements.plushies.obtain_the_stack.title"
+    },
+    "description": {
+      "translate": "advancements.plushies.obtain_the_stack.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:plushies/make_a_plushie",
+  "criteria": {
+    "obtain_loaf_trioderg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_trioderg"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_loaf_trioderg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

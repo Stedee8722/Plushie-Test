@@ -26,12 +26,26 @@
       "conditions": {
         "recipe_id": "plushie_test:mask_vaporeon_crafting"
       }
+    },
+    "craft_espeon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_espeon_crafting"
+      }
+    },
+    "craft_flareon_mask": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:mask_flareon_crafting"
+      }
     }
   },
   "requirements": [
     [
       "craft_eevee_mask",
-      "craft_vaporeon_mask"
+      "craft_vaporeon_mask",
+      "craft_espeon_mask",
+      "craft_flareon_mask"
     ]
   ],
   "rewards": {

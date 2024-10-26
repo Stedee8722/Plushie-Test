@@ -1,0 +1,100 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:dragon_egg"
+    },
+    "title": {
+      "translate": "advancements.plushies.collect_all_loafs.title"
+    },
+    "description": {
+      "translate": "advancements.plushies.collect_all_loafs.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:plushies/obtain_the_stack",
+  "criteria": {
+    "obtain_loaf_bren": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_bren"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_duotazer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_duotazer"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_mono": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_mono"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_pyla": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_pyla"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_loaf_trioderg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:loaf_trioderg"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_loaf_bren"
+    ],
+    [
+      "obtain_loaf_duotazer"
+    ],
+    [
+      "obtain_loaf_mono"
+    ],
+    [
+      "obtain_loaf_pyla"
+    ],
+    [
+      "obtain_loaf_trioderg"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}
