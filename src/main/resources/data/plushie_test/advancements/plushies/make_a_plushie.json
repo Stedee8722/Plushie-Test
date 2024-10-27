@@ -84,7 +84,7 @@
     "craft_loaf_duotazer": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe_id": "plushie_test:loaf_duotazer_crafting"
+        "recipe_id": "plushie_test:loaf_duotazer_seamstress"
       }
     },
     "craft_loaf_mono": {
@@ -102,7 +102,7 @@
     "craft_loaf_trioderg": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe_id": "plushie_test:loaf_trioderg_crafting"
+        "recipe_id": "plushie_test:loaf_trioderg_seamstress"
       }
     },
     "craft_plush_brela": {

@@ -2,6 +2,7 @@ package net.stedee.plushie_test.recipe.custom;
 
 import com.google.gson.JsonArray;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonObject;
@@ -12,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -35,13 +35,13 @@ public class SeamstressRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getToastSymbol() {
+    public @NotNull ItemStack getToastSymbol() {
         return new ItemStack(ModdedBlocks.SEAMSTRESS_TABLE.get());
     }
     
     @SuppressWarnings("null")
     @Override
-    public boolean matches(Container pContainer, Level pLevel) {
+    public boolean matches(@NotNull Container pContainer, Level pLevel) {
         if(pLevel.isClientSide()){
             return false;
         }
@@ -51,7 +51,7 @@ public class SeamstressRecipe implements Recipe<Container> {
 
     @SuppressWarnings("null")
     @Override
-    public ItemStack assemble(Container pContainer, RegistryAccess pRegistryAccess) {
+    public @NotNull ItemStack assemble(@NotNull Container pContainer, @NotNull RegistryAccess pRegistryAccess) {
         return outputItem.copy();
     }
 
@@ -62,12 +62,12 @@ public class SeamstressRecipe implements Recipe<Container> {
 
     @SuppressWarnings("null")
     @Override
-    public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
+    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess pRegistryAccess) {
         return outputItem.copy();
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         return this.inputItems;
     }
 
@@ -77,21 +77,17 @@ public class SeamstressRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
-    public CraftingBookCategory category() {
-      return CraftingBookCategory.MISC;
-   }
-
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return Type.INSTANCE;
     }
 
@@ -106,7 +102,7 @@ public class SeamstressRecipe implements Recipe<Container> {
 
         @SuppressWarnings("null")
         @Override
-        public SeamstressRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
+        public @NotNull SeamstressRecipe fromJson(@NotNull ResourceLocation pRecipeId, @NotNull JsonObject pSerializedRecipe) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "result"));
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
 
@@ -121,12 +117,10 @@ public class SeamstressRecipe implements Recipe<Container> {
 
         @SuppressWarnings("null")
         @Override
-        public @Nullable SeamstressRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
+        public @Nullable SeamstressRecipe fromNetwork(@NotNull ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
 
-            for(int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(pBuffer));
-            }
+            inputs.replaceAll(ignored -> Ingredient.fromNetwork(pBuffer));
 
             ItemStack output = pBuffer.readItem();
             return new SeamstressRecipe(inputs, output, pRecipeId);
@@ -141,7 +135,7 @@ public class SeamstressRecipe implements Recipe<Container> {
                 ingredient.toNetwork(pBuffer);
             }
 
-            pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
+            pBuffer.writeItemStack(pRecipe.getResultItem(RegistryAccess.EMPTY), false);
         }
     }
 }
