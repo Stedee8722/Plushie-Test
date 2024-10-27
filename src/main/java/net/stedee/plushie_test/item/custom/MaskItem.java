@@ -31,12 +31,14 @@ public class MaskItem extends ArmorItem implements GeoItem {
     private final MobEffect effect;
     private final int dur;
     private final int amp;
+    private final boolean applyConstantly;
 
-    public MaskItem(Properties pProperties, CustomMaskMaterial mats, MobEffect effect, int dur, int amp) {
+    public MaskItem(Properties pProperties, CustomMaskMaterial mats, MobEffect effect, int dur, int amp, boolean applyConstantly) {
         super(mats, net.minecraft.world.item.ArmorItem.Type.HELMET, pProperties);
         this.effect = effect;
         this.dur = dur;
         this.amp = amp;
+        this.applyConstantly = applyConstantly;
     }
 
     @SuppressWarnings("null")
@@ -50,7 +52,9 @@ public class MaskItem extends ArmorItem implements GeoItem {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if (effect != null) {
-            player.addEffect(new MobEffectInstance(effect, dur, amp, false, false, true));
+            if (!(player.hasEffect(effect) && !applyConstantly)) {
+                player.addEffect(new MobEffectInstance(effect, dur, amp, false, false, true));
+            }
         }
         super.onArmorTick(stack, level, player);
     }
