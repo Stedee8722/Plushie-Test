@@ -265,8 +265,8 @@
 			"translation": [0, 14.75, -1.25]
 		},
 		"fixed": {
-			"rotation": [-90, 21.25, 0],
-			"translation": [0, -3.25, -15],
+			"rotation": [-90, 0, 0],
+			"translation": [-0.25, 1.75, -16.5],
 			"scale": [2.01, 2.01, 2.01]
 		}
 	}

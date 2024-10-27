@@ -14,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.stedee.plushie_test.sound.ModdedSounds;
@@ -25,24 +24,21 @@ public class PlushiesItem extends Item implements Equipable {
     protected final boolean canSqueak;
     protected boolean squeakUsed = false;
 
-    public PlushiesItem(Boolean canSqueak) {
-        super(new Item.Properties()
-            .stacksTo(1)
-            .rarity(Rarity.EPIC)
-        );
+    public PlushiesItem(Properties properties, Boolean canSqueak) {
+        super(properties);
         this.canSqueak = canSqueak;
     }
 
     @SuppressWarnings("null")
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable(pStack.getDescriptionId() + ".tooltip"));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
     @SuppressWarnings("null")
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, Player pPlayer, @NotNull InteractionHand pUsedHand) {
         ItemStack pItem = pPlayer.getItemInHand(pUsedHand);
         if (this.canSqueak) {
             if (!this.squeakUsed && !pLevel.isClientSide) {
@@ -60,7 +56,7 @@ public class PlushiesItem extends Item implements Equipable {
 
     @SuppressWarnings("null")
     @Override
-    public int getUseDuration(ItemStack pStack) {
+    public int getUseDuration(@NotNull ItemStack pStack) {
         return 100000;
     }
 
@@ -71,7 +67,7 @@ public class PlushiesItem extends Item implements Equipable {
 
     @SuppressWarnings("null")
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
+    public void releaseUsing(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pLivingEntity, int pTimeCharged) {
         this.squeakUsed = false;
         super.releaseUsing(pStack, pLevel, pLivingEntity, pTimeCharged);
     }
