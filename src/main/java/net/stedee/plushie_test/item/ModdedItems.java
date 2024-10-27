@@ -80,7 +80,7 @@ public class ModdedItems {
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_VAPOREON_MATS, MobEffects.WATER_BREATHING, 2, 0));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_VAPOREON_MATS, MobEffects.WATER_BREATHING, 40, 0));
 
     public static final RegistryObject<MaskItem> MASK_EEVEE = ITEMS.register("mask_eevee",
             () -> new MaskItem(new Item.Properties()
@@ -92,44 +92,44 @@ public class ModdedItems {
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_ESPEON_MATS, MobEffects.SLOW_FALLING,5, 0));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_ESPEON_MATS, MobEffects.SLOW_FALLING,100, 0));
 
     public static final RegistryObject<MaskItem> MASK_FLAREON = ITEMS.register("mask_flareon",
             () -> new MaskItem(new Item.Properties()
                     .fireResistant()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.FIRE_RESISTANCE,10, 0));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.FIRE_RESISTANCE,200, 0));
 
     public static final RegistryObject<MaskItem> MASK_GLACEON = ITEMS.register("mask_glaceon",
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_GLACEON_MATS, MobEffects.JUMP,2, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_GLACEON_MATS, MobEffects.JUMP,40, 1));
 
     public static final RegistryObject<MaskItem> MASK_LEAFEON = ITEMS.register("mask_leafeon",
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_LEAFEON_MATS, MobEffects.DIG_SPEED,2, 0));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_LEAFEON_MATS, MobEffects.DIG_SPEED,40, 0));
 
     public static final RegistryObject<MaskItem> MASK_JOLTEON = ITEMS.register("mask_jolteon",
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_JOLTEON_MATS, MobEffects.MOVEMENT_SPEED,2, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_JOLTEON_MATS, MobEffects.MOVEMENT_SPEED,40, 1));
 
     public static final RegistryObject<MaskItem> MASK_SYLVEON = ITEMS.register("mask_sylveon",
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_SYLVEON_MATS, MobEffects.REGENERATION,2, 1));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_SYLVEON_MATS, MobEffects.REGENERATION,40, 1));
 
     public static final RegistryObject<MaskItem> MASK_UMBREON = ITEMS.register("mask_umbreon",
             () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_UMBREON_MATS, MobEffects.NIGHT_VISION,2, 0));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_UMBREON_MATS, MobEffects.NIGHT_VISION,220, 0));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
