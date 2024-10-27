@@ -61,6 +61,9 @@ public class ModdedItems {
     public static final RegistryObject<PlushiesItem> PLUSH_BRENNETH = ITEMS.register("plush_brenneth",
             () -> new PlushiesItem(true));
 
+    public static final RegistryObject<PlushiesItem> PLUSH_BRELA = ITEMS.register("plush_brela",
+            () -> new PlushiesItem(true));
+
     public static final RegistryObject<PlushiesItem> LOAF_BREN = ITEMS.register("loaf_bren",
             () -> new PlushiesItem(true));
 

@@ -193,6 +193,18 @@
             ]
           }
         ]
+      },
+      "obtain_plush_brela": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:plush_brela"
+              ]
+            }
+          ]
+        }
       }
     }
   },
@@ -241,6 +253,9 @@
     ],
     [
       "obtain_loaf_trioderg"
+    ],
+    [
+      "obtain_plush_brela"
     ]
   ],
   "rewards": {

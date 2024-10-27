@@ -104,6 +104,12 @@
       "conditions": {
         "recipe_id": "plushie_test:loaf_trioderg_crafting"
       }
+    },
+    "craft_plush_brela": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:plush_brela_seamstress"
+      }
     }
   },
   "requirements": [
@@ -122,7 +128,8 @@
       "craft_loaf_duotazer",
       "craft_loaf_mono",
       "craft_loaf_pyla",
-      "craft_loaf_trioderg"
+      "craft_loaf_trioderg",
+      "craft_plush_brela"
     ]
   ],
   "rewards": {
