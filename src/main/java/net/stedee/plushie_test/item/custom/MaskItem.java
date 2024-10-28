@@ -71,6 +71,9 @@ public class MaskItem extends ArmorItem implements GeoItem {
 
                 // This prepares our GeoArmorRenderer for the current render frame.
                 // These parameters may be null however, so we don't do anything further with them
+                if (livingEntity.isCrouching()) {
+                    original.head.y = (float) (original.head.y + 2);
+                }
                 this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
                 this.renderer.withScale(0.7F);
 
