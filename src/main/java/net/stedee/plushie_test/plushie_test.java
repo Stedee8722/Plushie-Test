@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.stedee.plushie_test.advancement.ModdedAdvancements;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.config.ClientConfig;
@@ -80,7 +81,7 @@ public class plushie_test {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         PacketHandler.registerMessages(MOD_ID);
-
+        ModdedAdvancements.init();
     }
 
     private static void initConfig() {

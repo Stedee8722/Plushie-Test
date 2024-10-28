@@ -193,18 +193,18 @@
             ]
           }
         ]
-      },
-      "obtain_plush_brela": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-          "items": [
-            {
-              "items": [
-                "plushie_test:plush_brela"
-              ]
-            }
-          ]
-        }
+      }
+    },
+    "obtain_plush_brela": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:plush_brela"
+            ]
+          }
+        ]
       }
     }
   },

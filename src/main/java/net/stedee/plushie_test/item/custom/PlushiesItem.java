@@ -8,14 +8,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.stedee.plushie_test.advancement.ModdedAdvancements;
 import net.stedee.plushie_test.sound.ModdedSounds;
 import org.jetbrains.annotations.NotNull;
 
@@ -76,5 +79,14 @@ public class PlushiesItem extends Item implements Equipable {
     public void onStopUsing(ItemStack stack, LivingEntity entity, int count) {
         this.squeakUsed = false;
         super.onStopUsing(stack, entity, count);
+    }
+
+    @Override
+    public void onDestroyed(ItemEntity itemEntity, DamageSource damageSource) {
+        if (itemEntity.getOwner() == null) {
+            return;
+        }
+        ModdedAdvancements.PLAYER_DROP_ITEM.trigger(itemEntity.getOwner(), itemEntity, damageSource);
+        super.onDestroyed(itemEntity, damageSource);
     }
 }
