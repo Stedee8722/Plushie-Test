@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.nbt.IntTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.AxeItem;
@@ -27,6 +29,14 @@ public class CleaverItem extends AxeItem {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
         this.effects = effects;
         this.isUnbreakable = isUnbreakable;
+    }
+
+    @Override
+    public void inventoryTick(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if (isUnbreakable && pStack.getTag() != null && !pStack.getTag().contains("Unbreakable")) {
+            pStack.addTagElement("Unbreakable", IntTag.valueOf(1));
+        }
+        super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
     }
 
     @SuppressWarnings("null")
