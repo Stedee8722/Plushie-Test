@@ -31,6 +31,12 @@ public class ModdedItems {
                     .rarity(Rarity.EPIC)
                     ,false));
 
+    public static final RegistryObject<PlushiesItem> AYM_EARS = ITEMS.register("aym_ears",
+            () -> new PlushiesItem(new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)
+                    ,false));
+
     public static final RegistryObject<PlushiesItem> PLUSH_RAT = ITEMS.register("plush_rat",
                 () -> new PlushiesItem(new Item.Properties()
                     .stacksTo(1)

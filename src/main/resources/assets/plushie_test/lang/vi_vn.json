@@ -1,6 +1,7 @@
 {
     "item.plushie_test.plush_aym": "Thú bông Aym",
     "item.plushie_test.nova_ears": "Đôi tai của Nova",
+    "item.plushie_test.aym_ears": "Đôi tai của Aym",
     "item.plushie_test.plush_rat": "Thú bông Rat",
     "item.plushie_test.plush_acid": "Thú bông Acid",
     "item.plushie_test.hypno_nova_ears": "Đôi tai của Hypno Nova",
@@ -33,6 +34,7 @@
 
     "item.plushie_test.plush_aym.tooltip": "§4Con trai thứ hai §rcủa §7Forneus§r, §mDễ thương :3",
     "item.plushie_test.nova_ears.tooltip": "Đôi tai của §4Tội đồ §6Tham ăn",
+    "item.plushie_test.aym_ears.tooltip": "Meo :3",
     "item.plushie_test.plush_rat.tooltip": "§dThú bông dễ thương §rcủa chú chuột tham ăn",
     "item.plushie_test.plush_acid.tooltip": "Một §bthú bông chim §rtạo thành từ §blông §rvà §5tố chất làm vợ",
     "item.plushie_test.hypno_nova_ears.tooltip": "§rĐôi tai §rcủa §5Chuột tham ăn §rsau khi thực hiện một §4quyết định tồi tệ",
@@ -121,6 +123,4 @@
     "advancements.plushies.collect_all_plushies.description": "Thu thập tất cả Thú bông",
     "advancements.root.thank_you.title": "Plushie Test",
     "advancements.root.thank_you.description": "Cảm ơn đã sử dụng mod mà tôi mất rất nhiều công sức để tạo ra!"
-
-
 }
