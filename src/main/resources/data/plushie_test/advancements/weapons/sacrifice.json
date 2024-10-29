@@ -4,17 +4,17 @@
       "item": "plushie_test:plush_aym"
     },
     "title": {
-      "translate": "advancements.plushies.sacrifice.title"
+      "translate": "advancements.weapons.sacrifice.title"
     },
     "description": {
-      "translate": "advancements.plushies.sacrifice.description.dark_red",
+      "translate": "advancements.weapons.sacrifice.description.dark_red",
       "fallback": "Sacrifices",
       "color": "dark_red",
       "bold": true,
       "underlined": true,
       "extra": [
         {
-          "translate": "advancements.plushies.sacrifice.description.gold",
+          "translate": "advancements.weapons.sacrifice.description.gold",
           "fallback": " must be made",
           "color": "gold",
           "bold": false,
@@ -26,7 +26,7 @@
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "plushie_test:plushies/make_a_plushie",
+  "parent": "plushie_test:thank_you",
   "criteria": {
     "sacrifice": {
       "trigger": "plushie_test:dropped_item",

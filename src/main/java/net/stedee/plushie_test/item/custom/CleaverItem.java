@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.AxeItem;
@@ -20,17 +20,20 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class CleaverItem extends AxeItem {
-
+    protected MobEffect effects;
     
-    public CleaverItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
+    public CleaverItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, MobEffect effects, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        this.effects = effects;
     }
 
     @SuppressWarnings("null")
     @Override
-    public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
+    public boolean hurtEnemy(ItemStack pStack, @NotNull LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
             pStack.hurtAndBreak(1, pAttacker, (pOnBroken) -> pOnBroken.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-            pTarget.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 1));
+            if (effects != null) {
+                pTarget.addEffect(new MobEffectInstance(effects, 100, 1));
+            }
             return true;
     }
 

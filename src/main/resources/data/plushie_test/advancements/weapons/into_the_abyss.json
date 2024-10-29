@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_aym"
+    },
+    "title": {
+      "translate": "advancements.weapons.into_the_abyss.title"
+    },
+    "description": {
+      "translate": "advancements.weapons.into_the_abyss.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:thank_you",
+  "criteria": {
+    "into_the_abyss": {
+      "trigger": "plushie_test:dropped_item",
+      "conditions": {
+        "items": [
+          "minecraft:nether_star"
+        ],
+        "dimension": "minecraft:the_end",
+        "damage_type": "outofworld"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "into_the_abyss"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "plushie_test:items/into_the_abyss"
+    ]
+  },
+  "sends_telemetry_event": false
+}

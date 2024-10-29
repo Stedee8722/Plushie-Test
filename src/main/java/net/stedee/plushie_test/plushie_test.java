@@ -99,6 +99,8 @@ public class plushie_test {
         }
         else if(event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModdedItems.CLEAVER);
+            event.accept(ModdedItems.WORN_CLEAVER);
+            event.accept(ModdedItems.GODLY_CLEAVER);
             event.accept(ModdedItems.MOON_STAFF);
         }
     }
