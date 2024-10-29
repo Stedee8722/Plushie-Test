@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:cleaver"
+    },
+    "title": {
+      "translate": "advancements.weapons.make_cleaver.title"
+    },
+    "description": {
+      "translate": "advancements.weapons.make_cleaver.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:thank_you",
+  "criteria": {
+    "craft_cleaver": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "plushie_test:cleaver_crafting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_cleaver"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

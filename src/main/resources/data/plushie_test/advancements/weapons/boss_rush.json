@@ -1,0 +1,79 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:godly_cleaver"
+    },
+    "title": {
+      "translate": "advancements.weapons.boss_rush.title"
+    },
+    "description": {
+      "translate": "advancements.weapons.boss_rush.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "parent": "plushie_test:weapons/into_the_abyss",
+  "criteria": {
+    "kill_wither": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:wither"
+            }
+          }
+        ]
+      }
+    },
+    "kill_warden": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:warden"
+            }
+          }
+        ]
+      }
+    },
+    "kill_ender_dragon": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:ender_dragon"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill_wither"
+    ],
+    [
+      "kill_ender_dragon"
+    ],
+    [
+      "kill_warden"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "plushie_test:items/boss_rush"
+    ]
+  },
+  "sends_telemetry_event": false
+}

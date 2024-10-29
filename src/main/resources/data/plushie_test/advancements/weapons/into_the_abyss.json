@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "plushie_test:plush_aym"
+      "item": "plushie_test:worn_cleaver"
     },
     "title": {
       "translate": "advancements.weapons.into_the_abyss.title"
@@ -11,9 +11,10 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": true,
+    "frame": "challenge"
   },
-  "parent": "plushie_test:thank_you",
+  "parent": "plushie_test:weapons/make_cleaver",
   "criteria": {
     "into_the_abyss": {
       "trigger": "plushie_test:dropped_item",

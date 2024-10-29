@@ -21,10 +21,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class CleaverItem extends AxeItem {
     protected MobEffect effects;
+    protected boolean isUnbreakable;
     
-    public CleaverItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, MobEffect effects, Properties pProperties) {
+    public CleaverItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, MobEffect effects, Properties pProperties, boolean isUnbreakable) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
         this.effects = effects;
+        this.isUnbreakable = isUnbreakable;
     }
 
     @SuppressWarnings("null")

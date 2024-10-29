@@ -81,13 +81,13 @@ public class ModdedItems {
                     ,true));
 
     public static final RegistryObject<CleaverItem> CLEAVER = ITEMS.register("cleaver",
-            () -> new CleaverItem(Tiers.IRON, 6.5F, -2.4F, null, (new Item.Properties()).defaultDurability(508).rarity(Rarity.UNCOMMON)));
+            () -> new CleaverItem(Tiers.IRON, 6.5F, -2.4F, null, (new Item.Properties()).defaultDurability(508).rarity(Rarity.UNCOMMON), false));
 
     public static final RegistryObject<CleaverItem> WORN_CLEAVER = ITEMS.register("worn_cleaver",
-            () -> new CleaverItem(Tiers.NETHERITE, 5.0F, -2.4F, null, (new Item.Properties()).defaultDurability(762).rarity(Rarity.RARE)));
+            () -> new CleaverItem(Tiers.DIAMOND, 6.0F, -2.4F, null, (new Item.Properties()).defaultDurability(762).rarity(Rarity.RARE), true));
 
     public static final RegistryObject<CleaverItem> GODLY_CLEAVER = ITEMS.register("godly_cleaver",
-            () -> new CleaverItem(Tiers.NETHERITE, 5.0F, -2.4F, MobEffects.HUNGER, (new Item.Properties()).defaultDurability(1016).rarity(Rarity.EPIC)));
+            () -> new CleaverItem(Tiers.NETHERITE, 6.0F, -2.4F, MobEffects.HUNGER, (new Item.Properties()).defaultDurability(1016).rarity(Rarity.EPIC), true));
 
     public static final RegistryObject<MoonStaffItem> MOON_STAFF = ITEMS.register("moon_staff",
             () -> new MoonStaffItem(Tiers.NETHERITE, 5, -2.4F, (new Item.Properties()).defaultDurability(753).rarity(Rarity.EPIC)));

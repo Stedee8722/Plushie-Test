@@ -11,7 +11,8 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": false,
+    "frame": "challenge"
   },
   "parent": "plushie_test:collector/gluttonous_armaments",
   "criteria": {

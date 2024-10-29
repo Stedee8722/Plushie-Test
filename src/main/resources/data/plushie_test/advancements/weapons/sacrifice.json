@@ -24,7 +24,8 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": true
+    "hidden": true,
+    "frame": "challenge"
   },
   "parent": "plushie_test:thank_you",
   "criteria": {
