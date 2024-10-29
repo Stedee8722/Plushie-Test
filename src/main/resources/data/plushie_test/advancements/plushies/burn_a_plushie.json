@@ -1,0 +1,51 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "title": {
+      "translate": "advancements.plushies.burn_a_plushie.title"
+    },
+    "description": {
+      "translate": "advancements.plushies.burn_a_plushie.description",
+      "color": "dark_red",
+      "bold": true
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "parent": "plushie_test:plushies/make_a_plushie",
+  "criteria": {
+    "burn_a_plushie": {
+      "trigger": "plushie_test:dropped_item",
+      "conditions": {
+        "items": [
+          {
+            "tags": "plushie_test:plushies"
+          }
+        ],
+        "damage_type": "infire"
+      }
+    },
+    "burn_a_loaf_plushie": {
+      "trigger": "plushie_test:dropped_item",
+      "conditions": {
+        "items": [
+          {
+            "tags": "plushie_test:loaf_plushies"
+          }
+        ],
+        "damage_type": "infire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "burn_a_plushie",
+      "burn_a_loaf_plushie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
