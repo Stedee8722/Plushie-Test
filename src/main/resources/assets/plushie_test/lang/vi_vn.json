@@ -122,5 +122,7 @@
     "advancements.plushies.collect_all_plushies.title": "Người thu thập Thú bông",
     "advancements.plushies.collect_all_plushies.description": "Thu thập tất cả Thú bông",
     "advancements.root.thank_you.title": "Plushie Test",
-    "advancements.root.thank_you.description": "Cảm ơn đã sử dụng mod mà tôi mất rất nhiều công sức để tạo ra!"
+    "advancements.root.thank_you.description": "Cảm ơn đã sử dụng mod mà tôi mất rất nhiều công sức để tạo ra!",
+
+    "enchantment.plushie_test.bigger_fireball": "Cầu lửa To"
 }

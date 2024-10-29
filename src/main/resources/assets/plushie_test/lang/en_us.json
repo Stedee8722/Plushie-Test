@@ -122,5 +122,7 @@
     "advancements.plushies.collect_all_plushies.title": "Plushie Collector",
     "advancements.plushies.collect_all_plushies.description": "Get all plushies",
     "advancements.root.thank_you.title": "Plushie Test",
-    "advancements.root.thank_you.description": "Thank you for using my mod!"
+    "advancements.root.thank_you.description": "Thank you for using my mod!",
+
+    "enchantment.plushie_test.bigger_fireball": "Bigger Fireball"
 }

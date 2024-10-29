@@ -9,8 +9,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -60,7 +62,7 @@ public class MoonStaffItem extends SwordItem {
         pPlayer.getCooldowns().addCooldown(this, 200);
         if (!pLevel.isClientSide) {
             Vec3 look = pPlayer.getViewVector(1F);
-            LargeFireball fireball = new LargeFireball(pLevel, pPlayer, 0, 0, 0, 1);
+            LargeFireball fireball = new LargeFireball(pLevel, pPlayer, 0, 0, 0, 1 + EnchantmentHelper.getEnchantmentLevel(ModdedEnchantments.BIGGER_FIREBALL.get(), pPlayer));
             fireball.setPos(pPlayer.getX() + look.x * 0.5, pPlayer.getY() + 1.25, pPlayer.getZ() + look.z * 0.5);
             Vec3 vec3 = pPlayer.getLookAngle();
             fireball.setDeltaMovement(vec3);
