@@ -17,12 +17,12 @@ public class ModdedEnchantments {
 
     public static RegistryObject<Enchantment> BIGGER_FIREBALL =
             ENCHANTMENTS.register("bigger_fireball",
-                    () -> new BiggerFireballEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new BiggerFireballEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 
     public static RegistryObject<Enchantment> FIREBALL_ALL_AROUND =
             ENCHANTMENTS.register("fireball_all_around",
-                    () -> new FireballAllAroundEnchantment(Enchantment.Rarity.UNCOMMON,
+                    () -> new FireballAllAroundEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 
     public static void register(IEventBus eventBus) {
