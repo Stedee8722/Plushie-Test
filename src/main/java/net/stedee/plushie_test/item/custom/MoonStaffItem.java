@@ -7,6 +7,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -59,18 +60,42 @@ public class MoonStaffItem extends SwordItem {
         ItemStack pItem = pPlayer.getItemInHand(pUsedHand);
         pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1F, 1F);
 
-        pPlayer.getCooldowns().addCooldown(this, 200);
+        pPlayer.getCooldowns().addCooldown(this, 10);
         if (!pLevel.isClientSide) {
-            Vec3 look = pPlayer.getViewVector(1F);
-            LargeFireball fireball = new LargeFireball(pLevel, pPlayer, 0, 0, 0, 1 + EnchantmentHelper.getEnchantmentLevel(ModdedEnchantments.BIGGER_FIREBALL.get(), pPlayer));
-            fireball.setPos(pPlayer.getX() + look.x * 0.5, pPlayer.getY() + 1.25, pPlayer.getZ() + look.z * 0.5);
-            Vec3 vec3 = pPlayer.getLookAngle();
-            fireball.setDeltaMovement(vec3);
-            fireball.xPower = vec3.x * 0.1D;
-            fireball.yPower = vec3.y * 0.1D;
-            fireball.zPower = vec3.z * 0.1D;
-            pLevel.addFreshEntity(fireball);
-            pItem.hurtAndBreak(3, pPlayer, (pOnBroken) -> pOnBroken.broadcastBreakEvent(pUsedHand));
+            int level = EnchantmentHelper.getEnchantmentLevel(ModdedEnchantments.FIREBALL_ALL_AROUND.get(), pPlayer);
+            if (level != 0) {
+                Vec3 look = pPlayer.getViewVector(1F);
+                double x = pPlayer.getX();
+                double y = pPlayer.getY();
+                double z = pPlayer.getZ();
+                int fireball_amount = level*3 + 4;
+                if (look.y == 1 || look.y == -1) {
+                    look = new Vec3(1, 0, 0);
+                }
+                for (int j = 0; j < fireball_amount; j++) {
+                    SmallFireball fireball = new SmallFireball(pLevel, pPlayer, 0, 0, 0);
+                    double sin = Math.sin((2 * Math.PI * j) / fireball_amount);
+                    double cos = Math.cos((2 * Math.PI * j) / fireball_amount);
+                    fireball.setPos(x + 2*(look.x*cos - look.z*sin), y + 1.25, z + 2*(look.x*sin + look.z*cos));
+                    Vec3 vec3 = new Vec3(fireball.getX() - pPlayer.getX(), 0, fireball.getZ() - pPlayer.getZ());
+                    fireball.xPower = vec3.x * 0.1D;
+                    fireball.yPower = vec3.y * 0.1D;
+                    fireball.zPower = vec3.z * 0.1D;
+                    pLevel.addFreshEntity(fireball);
+                }
+                pItem.hurtAndBreak(3+level, pPlayer, (pOnBroken) -> pOnBroken.broadcastBreakEvent(pUsedHand));
+            } else {
+                Vec3 look = pPlayer.getViewVector(1F);
+                LargeFireball fireball = new LargeFireball(pLevel, pPlayer, 0, 0, 0, 1 + EnchantmentHelper.getEnchantmentLevel(ModdedEnchantments.BIGGER_FIREBALL.get(), pPlayer));
+                fireball.setPos(pPlayer.getX() + look.x * 0.5, pPlayer.getY() + 1.25, pPlayer.getZ() + look.z * 0.5);
+                Vec3 vec3 = pPlayer.getLookAngle();
+                fireball.setDeltaMovement(vec3);
+                fireball.xPower = vec3.x * 0.1D;
+                fireball.yPower = vec3.y * 0.1D;
+                fireball.zPower = vec3.z * 0.1D;
+                pLevel.addFreshEntity(fireball);
+                pItem.hurtAndBreak(3, pPlayer, (pOnBroken) -> pOnBroken.broadcastBreakEvent(pUsedHand));
+            }
         }
         return InteractionResultHolder.sidedSuccess(pItem, pLevel.isClientSide());
     }
