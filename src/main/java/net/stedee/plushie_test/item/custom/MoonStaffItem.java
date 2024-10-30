@@ -60,7 +60,7 @@ public class MoonStaffItem extends SwordItem {
         ItemStack pItem = pPlayer.getItemInHand(pUsedHand);
         pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1F, 1F);
 
-        pPlayer.getCooldowns().addCooldown(this, 10);
+        pPlayer.getCooldowns().addCooldown(this, 200);
         if (!pLevel.isClientSide) {
             int level = EnchantmentHelper.getEnchantmentLevel(ModdedEnchantments.FIREBALL_ALL_AROUND.get(), pPlayer);
             if (level != 0) {
