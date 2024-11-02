@@ -125,5 +125,7 @@
     "advancements.root.thank_you.description": "Cảm ơn đã sử dụng mod mà tôi mất rất nhiều công sức để tạo ra!",
 
     "enchantment.plushie_test.bigger_fireball": "Cầu lửa To",
-    "enchantment.plushie_test.fireball_all_around": "Vòng tròn Cầu lửa"
+    "enchantment.plushie_test.fireball_all_around": "Vòng tròn Cầu lửa",
+
+    "effect.plushie_test.bloodloss": "Chảy máu"
 }

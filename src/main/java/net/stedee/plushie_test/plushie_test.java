@@ -21,6 +21,7 @@ import net.stedee.plushie_test.advancement.ModdedAdvancements;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.config.ClientConfig;
+import net.stedee.plushie_test.effect.ModdedEffects;
 import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
@@ -63,6 +64,7 @@ public class plushie_test {
         ModdedPaintings.register(modEventBus);
 
         ModdedEnchantments.register(modEventBus);
+        ModdedEffects.register(modEventBus);
 
         GeckoLib.initialize();
 

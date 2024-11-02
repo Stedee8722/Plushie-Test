@@ -125,5 +125,7 @@
     "advancements.root.thank_you.description": "Thank you for using my mod!",
 
     "enchantment.plushie_test.bigger_fireball": "Bigger Fireball",
-    "enchantment.plushie_test.fireball_all_around": "Fireball All Around"
+    "enchantment.plushie_test.fireball_all_around": "Fireball All Around",
+
+    "effect.plushie_test.bloodloss": "Bloodloss"
 }
