@@ -14,7 +14,7 @@ public class ModdedEffects {
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, plushie_test.MOD_ID);
 
     public static final RegistryObject<MobEffect> BLOODLOSS = MOB_EFFECTS.register("bloodloss",
-            () -> new BloodlossEffect(MobEffectCategory.HARMFUL, 3124687));
+            () -> new BloodlossEffect(MobEffectCategory.HARMFUL, 8323072));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

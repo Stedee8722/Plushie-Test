@@ -1,5 +1,6 @@
 package net.stedee.plushie_test.item.custom;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -18,14 +19,18 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.stedee.plushie_test.effect.ModdedEffects;
+import net.stedee.plushie_test.effect.custom.BloodlossEffect;
+import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import org.jetbrains.annotations.NotNull;
 
 public class CleaverItem extends AxeItem {
-    protected MobEffect effects;
+    protected MobEffect[] effects;
     protected boolean isUnbreakable;
     
-    public CleaverItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, MobEffect effects, Properties pProperties, boolean isUnbreakable) {
+    public CleaverItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, boolean isUnbreakable, MobEffect... effects) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
         this.effects = effects;
         this.isUnbreakable = isUnbreakable;
@@ -44,7 +49,18 @@ public class CleaverItem extends AxeItem {
     public boolean hurtEnemy(ItemStack pStack, @NotNull LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
             pStack.hurtAndBreak(1, pAttacker, (pOnBroken) -> pOnBroken.broadcastBreakEvent(EquipmentSlot.MAINHAND));
             if (effects != null) {
-                pTarget.addEffect(new MobEffectInstance(effects, 100, 1));
+                Arrays.stream(effects).forEach((effect) -> {
+                    if (!(effect instanceof BloodlossEffect)) {
+                        pTarget.addEffect(new MobEffectInstance(effect, 100, 0));
+                    } else {
+                        MobEffectInstance mobEffect = pTarget.getEffect(ModdedEffects.BLOODLOSS.get());
+                        if (mobEffect != null) {
+                            pTarget.addEffect(new MobEffectInstance(effect, 1200, Math.min(mobEffect.getAmplifier() + 1, EnchantmentHelper.getEnchantmentLevel(ModdedEnchantments.SERRATED.get(), pAttacker))));
+                        } else {
+                            pTarget.addEffect(new MobEffectInstance(effect, 1200, 0));
+                        }
+                    }
+                });
             }
             return true;
     }

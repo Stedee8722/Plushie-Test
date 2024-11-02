@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.enchantment.custom.BiggerFireballEnchantment;
 import net.stedee.plushie_test.enchantment.custom.FireballAllAroundEnchantment;
+import net.stedee.plushie_test.enchantment.custom.SerratedEnchantment;
 import net.stedee.plushie_test.plushie_test;
 
 public class ModdedEnchantments {
@@ -23,6 +24,11 @@ public class ModdedEnchantments {
     public static RegistryObject<Enchantment> FIREBALL_ALL_AROUND =
             ENCHANTMENTS.register("fireball_all_around",
                     () -> new FireballAllAroundEnchantment(Enchantment.Rarity.RARE,
+                            EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+
+    public static RegistryObject<Enchantment> SERRATED =
+            ENCHANTMENTS.register("serrated",
+                    () -> new SerratedEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 
     public static void register(IEventBus eventBus) {
