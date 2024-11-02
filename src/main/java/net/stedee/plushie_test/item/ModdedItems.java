@@ -87,10 +87,10 @@ public class ModdedItems {
                     ,true));
 
     public static final RegistryObject<CleaverItem> CLEAVER = ITEMS.register("cleaver",
-            () -> new CleaverItem(Tiers.IRON, 6.5F, -2.4F, null, (new Item.Properties()).defaultDurability(508).rarity(Rarity.UNCOMMON), false));
+            () -> new CleaverItem(Tiers.IRON, 3F, -3F, null, (new Item.Properties()).defaultDurability(508).rarity(Rarity.UNCOMMON), false));
 
     public static final RegistryObject<CleaverItem> WORN_CLEAVER = ITEMS.register("worn_cleaver",
-            () -> new CleaverItem(Tiers.DIAMOND, 6.0F, -2.4F, null, (new Item.Properties()).defaultDurability(762).rarity(Rarity.RARE), true));
+            () -> new CleaverItem(Tiers.DIAMOND, 5F, -2.4F, null, (new Item.Properties()).defaultDurability(762).rarity(Rarity.RARE), true));
 
     public static final RegistryObject<CleaverItem> GODLY_CLEAVER = ITEMS.register("godly_cleaver",
             () -> new CleaverItem(Tiers.NETHERITE, 6.0F, -2.4F, MobEffects.HUNGER, (new Item.Properties()).defaultDurability(1016).rarity(Rarity.EPIC), true));
