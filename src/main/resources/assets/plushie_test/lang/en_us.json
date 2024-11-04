@@ -60,9 +60,9 @@
     "item.plushie_test.mask_espeon.tooltip": "Grant §7slow falling §rwhen worn",
     "item.plushie_test.mask_flareon.tooltip": "Grant §4fire resistance §rwhen worn",
     "item.plushie_test.mask_glaceon.tooltip": "Grant §2jump boost §rwhen worn",
-    "item.plushie_test.mask_leafeon.tooltip": "Grant §bhaste §rwhen worn",
-    "item.plushie_test.mask_sylveon.tooltip": "Grant §bregeneration §rwhen worn",
-    "item.plushie_test.mask_umbreon.tooltip": "Grant §bnight vision §rwhen worn",
+    "item.plushie_test.mask_leafeon.tooltip": "Grant §3haste §rwhen worn",
+    "item.plushie_test.mask_sylveon.tooltip": "Grant §cregeneration §rwhen worn",
+    "item.plushie_test.mask_umbreon.tooltip": "Grant §9night vision §rwhen worn",
     "item.plushie_test.mask_jolteon.tooltip": "Grant §bspeed §rwhen worn",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
