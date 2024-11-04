@@ -9,11 +9,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.effect.ModdedEffects;
-import net.stedee.plushie_test.item.custom.MoonStaffItem;
+import net.stedee.plushie_test.item.custom.*;
 import net.stedee.plushie_test.plushie_test;
-import net.stedee.plushie_test.item.custom.CleaverItem;
-import net.stedee.plushie_test.item.custom.MaskItem;
-import net.stedee.plushie_test.item.custom.PlushiesItem;
 import net.stedee.plushie_test.item.custom_armor_materials.CustomMaskMaterial;
 
 public class ModdedItems {
@@ -98,6 +95,9 @@ public class ModdedItems {
 
     public static final RegistryObject<MoonStaffItem> MOON_STAFF = ITEMS.register("moon_staff",
             () -> new MoonStaffItem(Tiers.NETHERITE, 5, -2.4F, (new Item.Properties()).defaultDurability(753).rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<BlasphemyItem> BLASPHEMY = ITEMS.register("blasphemy",
+            () -> new BlasphemyItem(Tiers.DIAMOND, 5, -2.4F, (new Item.Properties().defaultDurability(762).rarity(Rarity.RARE))));
 
     public static final RegistryObject<PlushiesItem> PLUSH_NETH = ITEMS.register("plush_neth",
                 () -> new PlushiesItem(new Item.Properties()

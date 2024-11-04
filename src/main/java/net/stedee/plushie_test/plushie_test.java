@@ -23,6 +23,7 @@ import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.config.ClientConfig;
 import net.stedee.plushie_test.effect.ModdedEffects;
 import net.stedee.plushie_test.enchantment.ModdedEnchantments;
+import net.stedee.plushie_test.entity.ModdedEntities;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
@@ -53,6 +54,7 @@ public class plushie_test {
 
         ModdedItems.register(modEventBus);
         ModdedBlocks.register(modEventBus);
+        ModdedEntities.register(modEventBus);
 
         ModdedBlockEntities.register(modEventBus);
         ModdedMenuTypes.register(modEventBus);
@@ -107,6 +109,7 @@ public class plushie_test {
             event.accept(ModdedItems.WORN_CLEAVER);
             event.accept(ModdedItems.GODLY_CLEAVER);
             event.accept(ModdedItems.MOON_STAFF);
+            event.accept(ModdedItems.BLASPHEMY);
         }
     }
 
