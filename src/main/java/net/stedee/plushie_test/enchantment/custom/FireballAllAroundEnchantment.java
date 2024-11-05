@@ -26,4 +26,9 @@ public class FireballAllAroundEnchantment extends Enchantment {
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
         return super.checkCompatibility(pOther) && !(pOther instanceof BiggerFireballEnchantment);
     }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack pStack) {
+        return pStack.is(ModdedItems.MOON_STAFF.get());
+    }
 }

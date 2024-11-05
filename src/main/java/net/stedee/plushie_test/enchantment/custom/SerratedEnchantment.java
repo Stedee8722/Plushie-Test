@@ -20,4 +20,9 @@ public class SerratedEnchantment extends Enchantment {
     public boolean canEnchant(ItemStack pStack) {
         return pStack.is(ModdedItems.GODLY_CLEAVER.get());
     }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack pStack) {
+        return pStack.is(ModdedItems.GODLY_CLEAVER.get());
+    }
 }
