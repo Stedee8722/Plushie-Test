@@ -1,0 +1,160 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:mask_eevee"
+    },
+    "title": {
+      "translate": "advancements.masks.collect_all_masks.title"
+    },
+    "description": {
+      "translate": "advancements.masks.collect_all_masks.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:masks/make_a_mask",
+  "criteria": {
+    "obtain_eevee_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:eevee_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_vaporeon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:vaporeon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_espeon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:espeon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_flareon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:flareon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_glaceon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:glaceon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_leafeon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:leafeon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_jolteon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:jolteon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_umbreon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:umbreon_mask"
+            ]
+          }
+        ]
+      }
+    },
+    "obtain_sylveon_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:sylveon_mask"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_eevee_mask"
+    ],
+    [
+      "obtain_vaporeon_mask"
+    ],
+    [
+      "obtain_espeon_mask"
+    ],
+    [
+      "obtain_flareon_mask"
+    ],
+    [
+      "obtain_glaceon_mask"
+    ],
+    [
+      "obtain_leafeon_mask"
+    ],
+    [
+      "obtain_jolteon_mask"
+    ],
+    [
+      "obtain_sylveon_mask"
+    ],
+    [
+      "obtain_umbreon_mask"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}
