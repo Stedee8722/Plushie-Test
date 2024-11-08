@@ -136,5 +136,7 @@
     "enchantment.plushie_test.serrated": "Răng cưa",
     "enchantment.plushie_test.blasphemy_damage": "Sát thương Vật thể",
 
-    "effect.plushie_test.bloodloss": "Chảy máu"
+    "effect.plushie_test.bloodloss": "Chảy máu",
+
+    "death.attack.blasphemy_projectile": "%2$s đã cho %1$s thấy được sức mạnh của Gungeon"
 }

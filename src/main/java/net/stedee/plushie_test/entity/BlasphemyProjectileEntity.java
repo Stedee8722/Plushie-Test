@@ -1,5 +1,6 @@
 package net.stedee.plushie_test.entity;
 
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
+import net.stedee.plushie_test.damage_type.ModdedDamageTypes;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
@@ -197,7 +199,7 @@ public class BlasphemyProjectileEntity extends Projectile {
         if (!this.level().isClientSide) {
             Entity pTarget = pResult.getEntity();
             Entity pAttacker = this.getOwner();
-            pTarget.hurt(this.level().damageSources().indirectMagic(this, pAttacker), this.pDamage);
+            pTarget.hurt(ModdedDamageTypes.BlasphemyProjectile(pAttacker != null ? pAttacker.level().registryAccess() : RegistryAccess.EMPTY, pAttacker, pTarget), this.pDamage);
             if (pAttacker instanceof LivingEntity) {
                 this.doEnchantDamageEffects((LivingEntity) pAttacker, pTarget);
             }

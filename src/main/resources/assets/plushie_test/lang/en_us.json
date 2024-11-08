@@ -136,5 +136,7 @@
     "enchantment.plushie_test.serrated": "Serrated",
     "enchantment.plushie_test.blasphemy_damage": "Blasphemy Damage",
 
-    "effect.plushie_test.bloodloss": "Bloodloss"
+    "effect.plushie_test.bloodloss": "Bloodloss",
+
+    "death.attack.blasphemy_projectile": "%1$s was shown the might of the gungeon by %2$s"
 }
