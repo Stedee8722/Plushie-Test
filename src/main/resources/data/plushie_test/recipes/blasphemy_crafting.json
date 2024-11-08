@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iFi",
+    "iIi",
+    "iCi"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "F": {
+      "item": "minecraft:ender_eye"
+    },
+    "I": {
+      "item": "minecraft:iron_sword"
+    },
+    "C": {
+      "item": "minecraft:crossbow"
+    }
+  },
+  "result": {
+    "item": "plushie_test:blasphemy",
+    "count": 1
+  },
+  "category": "equipment"
+}

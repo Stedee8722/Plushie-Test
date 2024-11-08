@@ -22,6 +22,7 @@
     "item.plushie_test.worn_cleaver": "Dao phay mòn",
     "item.plushie_test.godly_cleaver": "Dao phay thần thoại",
     "item.plushie_test.moon_staff": "Trượng Mặt Trăng",
+    "item.plushie_test.blasphemy": "Blasphemy",
     "item.plushie_test.mask_vaporeon": "Mặt nạ Vaporeon",
     "item.plushie_test.mask_eevee": "Mặt nạ Eevee",
     "item.plushie_test.mask_espeon": "Mặt nạ Espeon",
@@ -55,6 +56,7 @@
     "item.plushie_test.worn_cleaver.tooltip": "Dao phay của §4Tội đồ §6Tham ăn§r, trao §3nạn đói, §rđổi §c§lmạng",
     "item.plushie_test.godly_cleaver.tooltip": "Dao phay của §4Tội đồ §6Tham ăn§r, trao §3nạn đói, §rđổi §c§lmạng",
     "item.plushie_test.moon_staff.tooltip": "§kdễ thương §rCây trượng hình lưỡi liềm của §4Aym, con trai thứ hai §rcủa §7Forneus§r §r§kdễ thương",
+    "item.plushie_test.blasphemy.tooltip": "Không nhiều lời, không tiết lộ bí mật, §4đồ phản bội§r!",
     "item.plushie_test.mask_vaporeon.tooltip": "Có mùi gì đó hơi §btanh§r, Mặt nạ của một §6Kỵ sĩ cưỡi Rồng",
     "item.plushie_test.mask_eevee.tooltip": "Dùng để chế tạo và sửa chữa những §6mặt nạ §rkhác",
     "item.plushie_test.mask_espeon.tooltip": "Nhận §7hiệu ứng rơi chậm §rkhi đeo",
@@ -72,6 +74,8 @@
     "block.plushie_test.seamstress_table.tooltip": "Bàn may vá §athần thoại§r, được dùng để §akết hợp §rnhiều thú bông thành một",
     "block.plushie_test.alchemical_table.tooltip": "Bàn tách rời §athần thoại§r, được dùng để §atách rời §r những cặp thú bông.",
     "block.plushie_test.uhh_block.tooltip": "§mĐừng hỏi tại sao cái này ở đây",
+
+    "entity.plushie_test.blasphemy_projectile": "Đạn blasphemy",
 
     "sounds.plushie_test.plushie_use": "Thú bông kêu chít",
 

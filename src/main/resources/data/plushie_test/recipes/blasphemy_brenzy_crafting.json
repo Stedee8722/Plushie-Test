@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#E#",
+    "CIC",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:copper_block"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "C": {
+      "item": "minecraft:crossbow"
+    },
+    "I": {
+      "item": "minecraft:blasphemy"
+    }
+  },
+  "result": {
+    "item": "plushie_test:blasphemy_brenzy",
+    "count": 1
+  },
+  "category": "equipment"
+}
