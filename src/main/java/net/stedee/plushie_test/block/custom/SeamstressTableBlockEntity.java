@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
@@ -54,7 +55,16 @@ public class SeamstressTableBlockEntity extends BlockEntity implements MenuProvi
     public void load(CompoundTag tag) {
         CompoundTag invTag = tag.getCompound("seamstress_inv");
         this.inventory.deserializeNBT(invTag);
+        this.setChanged();
         super.load(tag);
+    }
+
+    @Override
+    public void setChanged() {
+        super.setChanged();
+        if (this.level != null) {
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
+        }
     }
 
     @Override
