@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.stedee.plushie_test.entity.custom.BlasphemyBrenzyProjectile;
 import net.stedee.plushie_test.entity.custom.BlasphemyProjectile;
 import net.stedee.plushie_test.plushie_test;
 
@@ -16,6 +17,10 @@ public class ModdedEntities {
     public static final RegistryObject<EntityType<BlasphemyProjectile>> BLASPHEMY_PROJECTILE =
             ENTITY_TYPES.register("blasphemy_projectile", () -> EntityType.Builder.<BlasphemyProjectile>of(BlasphemyProjectile::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F).build("blasphemy_projectile"));
+
+    public static final RegistryObject<EntityType<BlasphemyBrenzyProjectile>> BLASPHEMY_BRENZY_PROJECTILE =
+            ENTITY_TYPES.register("blasphemy_brenzy_projectile", () -> EntityType.Builder.<BlasphemyBrenzyProjectile>of(BlasphemyBrenzyProjectile::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F).build("blasphemy_brenzy_projectile"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

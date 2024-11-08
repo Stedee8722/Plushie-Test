@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.enchantment.custom.BiggerFireballEnchantment;
+import net.stedee.plushie_test.enchantment.custom.BlasphemyDamageEnchantment;
 import net.stedee.plushie_test.enchantment.custom.FireballAllAroundEnchantment;
 import net.stedee.plushie_test.enchantment.custom.SerratedEnchantment;
 import net.stedee.plushie_test.plushie_test;
@@ -29,6 +30,11 @@ public class ModdedEnchantments {
     public static RegistryObject<Enchantment> SERRATED =
             ENCHANTMENTS.register("serrated",
                     () -> new SerratedEnchantment(Enchantment.Rarity.RARE,
+                            EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+
+    public static RegistryObject<Enchantment> BLASPHEMY_DAMAGE =
+            ENCHANTMENTS.register("blasphemy_damage",
+                    () -> new BlasphemyDamageEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 
     public static void register(IEventBus eventBus) {

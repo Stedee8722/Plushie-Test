@@ -110,6 +110,7 @@ public class plushie_test {
             event.accept(ModdedItems.GODLY_CLEAVER);
             event.accept(ModdedItems.MOON_STAFF);
             event.accept(ModdedItems.BLASPHEMY);
+            event.accept(ModdedItems.BLASPHEMY_BRENZY);
         }
     }
 

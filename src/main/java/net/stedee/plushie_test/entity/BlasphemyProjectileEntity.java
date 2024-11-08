@@ -27,6 +27,8 @@ public class BlasphemyProjectileEntity extends Projectile {
     public double yPower;
     public double zPower;
     private int age = 0;
+    float pDamage;
+
     private static final EntityDataAccessor<Vector3f> DIRECTION =
             SynchedEntityData.defineId(BlasphemyProjectileEntity.class, EntityDataSerializers.VECTOR3);
 
@@ -46,10 +48,11 @@ public class BlasphemyProjectileEntity extends Projectile {
         }
     }
 
-    public BlasphemyProjectileEntity(EntityType<? extends BlasphemyProjectileEntity> pEntityType, LivingEntity pShooter, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel) {
+    public BlasphemyProjectileEntity(EntityType<? extends BlasphemyProjectileEntity> pEntityType, LivingEntity pShooter, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel, float pDamage) {
         this(pEntityType, pShooter.getX(), pShooter.getY(), pShooter.getZ(), pOffsetX, pOffsetY, pOffsetZ, pLevel);
         this.setOwner(pShooter);
         this.setRot(pShooter.getYRot(), pShooter.getXRot());
+        this.pDamage = pDamage;
     }
 
     @Override
@@ -186,6 +189,27 @@ public class BlasphemyProjectileEntity extends Projectile {
             this.xPower = d0 / d3 * 0.1D;
             this.yPower = d1 / d3 * 0.1D;
             this.zPower = d2 / d3 * 0.1D;
+        }
+    }
+
+    @Override
+    protected void onHitEntity(@NotNull EntityHitResult pResult) {
+        if (!this.level().isClientSide) {
+            Entity pTarget = pResult.getEntity();
+            Entity pAttacker = this.getOwner();
+            pTarget.hurt(this.level().damageSources().indirectMagic(this, pAttacker), this.pDamage);
+            if (pAttacker instanceof LivingEntity) {
+                this.doEnchantDamageEffects((LivingEntity) pAttacker, pTarget);
+            }
+        }
+        super.onHitEntity(pResult);
+    }
+
+    @Override
+    protected void onHit(@NotNull HitResult pResult) {
+        super.onHit(pResult);
+        if (!this.level().isClientSide) {
+            this.discard();
         }
     }
 }

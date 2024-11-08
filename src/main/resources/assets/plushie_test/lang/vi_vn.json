@@ -23,6 +23,7 @@
     "item.plushie_test.godly_cleaver": "Dao phay thần thoại",
     "item.plushie_test.moon_staff": "Trượng Mặt Trăng",
     "item.plushie_test.blasphemy": "Blasphemy",
+    "item.plushie_test.blasphemy_brenzy": "Blasphemy",
     "item.plushie_test.mask_vaporeon": "Mặt nạ Vaporeon",
     "item.plushie_test.mask_eevee": "Mặt nạ Eevee",
     "item.plushie_test.mask_espeon": "Mặt nạ Espeon",
@@ -57,6 +58,7 @@
     "item.plushie_test.godly_cleaver.tooltip": "Dao phay của §4Tội đồ §6Tham ăn§r, trao §3nạn đói, §rđổi §c§lmạng",
     "item.plushie_test.moon_staff.tooltip": "§kdễ thương §rCây trượng hình lưỡi liềm của §4Aym, con trai thứ hai §rcủa §7Forneus§r §r§kdễ thương",
     "item.plushie_test.blasphemy.tooltip": "Không nhiều lời, không tiết lộ bí mật, §4đồ phản bội§r!",
+    "item.plushie_test.blasphemy_brenzy.tooltip": "Không nhiều lời, không tiết lộ bí mật, §4đồ phản bội§r!",
     "item.plushie_test.mask_vaporeon.tooltip": "Có mùi gì đó hơi §btanh§r, Mặt nạ của một §6Kỵ sĩ cưỡi Rồng",
     "item.plushie_test.mask_eevee.tooltip": "Dùng để chế tạo và sửa chữa những §6mặt nạ §rkhác",
     "item.plushie_test.mask_espeon.tooltip": "Nhận §7hiệu ứng rơi chậm §rkhi đeo",
@@ -76,6 +78,7 @@
     "block.plushie_test.uhh_block.tooltip": "§mĐừng hỏi tại sao cái này ở đây",
 
     "entity.plushie_test.blasphemy_projectile": "Đạn blasphemy",
+    "entity.plushie_test.blasphemy_brenzy_projectile": "Đạn BB",
 
     "sounds.plushie_test.plushie_use": "Thú bông kêu chít",
 
@@ -131,6 +134,7 @@
     "enchantment.plushie_test.bigger_fireball": "Cầu lửa To",
     "enchantment.plushie_test.fireball_all_around": "Vòng tròn Cầu lửa",
     "enchantment.plushie_test.serrated": "Răng cưa",
+    "enchantment.plushie_test.blasphemy_damage": "Sát thương Vật thể",
 
     "effect.plushie_test.bloodloss": "Chảy máu"
 }

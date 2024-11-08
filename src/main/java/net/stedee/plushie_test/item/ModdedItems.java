@@ -99,6 +99,9 @@ public class ModdedItems {
     public static final RegistryObject<BlasphemyItem> BLASPHEMY = ITEMS.register("blasphemy",
             () -> new BlasphemyItem(Tiers.DIAMOND, 5, -2.4F, (new Item.Properties().defaultDurability(762).rarity(Rarity.RARE))));
 
+    public static final RegistryObject<BlasphemyBrenzyItem> BLASPHEMY_BRENZY = ITEMS.register("blasphemy_brenzy",
+            () -> new BlasphemyBrenzyItem(Tiers.NETHERITE, 9, -3F, (new Item.Properties().defaultDurability(762).rarity(Rarity.EPIC))));
+
     public static final RegistryObject<PlushiesItem> PLUSH_NETH = ITEMS.register("plush_neth",
                 () -> new PlushiesItem(new Item.Properties()
                     .stacksTo(1)
