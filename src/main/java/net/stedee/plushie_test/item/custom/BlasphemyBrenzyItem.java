@@ -61,9 +61,10 @@ public class BlasphemyBrenzyItem extends BlasphemyItem {
             pStack.addTagElement("Unbreakable", IntTag.valueOf(1));
         }
         if (pEntity instanceof LivingEntity) {
+            double reach = 1;
 
-            AttributeModifier eModifier = new AttributeModifier(UUID.fromString("06c477b9-d96b-4197-b3ef-d8b6fa78872b"), "blasphemy_brenzy_reach", 3, AttributeModifier.Operation.ADDITION);
-            AttributeModifier bModifier = new AttributeModifier(UUID.fromString("d26de641-c527-42e0-a1f9-c0e6b03b76a8"), "blasphemy_brenzy_reach", 3, AttributeModifier.Operation.ADDITION);
+            AttributeModifier eModifier = new AttributeModifier(UUID.fromString("06c477b9-d96b-4197-b3ef-d8b6fa78872b"), "blasphemy_brenzy_reach", reach, AttributeModifier.Operation.ADDITION);
+            AttributeModifier bModifier = new AttributeModifier(UUID.fromString("d26de641-c527-42e0-a1f9-c0e6b03b76a8"), "blasphemy_brenzy_reach", reach, AttributeModifier.Operation.ADDITION);
 
             if (pIsSelected) {
                 if (!Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.ENTITY_REACH.get())).hasModifier(eModifier)) {
