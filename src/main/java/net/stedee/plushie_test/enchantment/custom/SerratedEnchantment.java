@@ -5,6 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.stedee.plushie_test.item.ModdedItems;
+import org.jetbrains.annotations.NotNull;
 
 public class SerratedEnchantment extends Enchantment {
     public SerratedEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot... pApplicableSlots) {
@@ -19,6 +20,11 @@ public class SerratedEnchantment extends Enchantment {
     @Override
     public boolean canEnchant(ItemStack pStack) {
         return pStack.is(ModdedItems.GODLY_CLEAVER.get());
+    }
+
+    @Override
+    protected boolean checkCompatibility(@NotNull Enchantment pOther) {
+        return super.checkCompatibility(pOther) && !(pOther instanceof FireballAllAroundEnchantment);
     }
 
     @Override

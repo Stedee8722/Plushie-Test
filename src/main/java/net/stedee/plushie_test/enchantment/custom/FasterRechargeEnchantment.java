@@ -7,14 +7,14 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.stedee.plushie_test.item.ModdedItems;
 import org.jetbrains.annotations.NotNull;
 
-public class BiggerFireballEnchantment extends Enchantment {
-    public BiggerFireballEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot... pApplicableSlots) {
+public class FasterRechargeEnchantment extends Enchantment {
+    public FasterRechargeEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot... pApplicableSlots) {
         super(pRarity, pCategory, pApplicableSlots);
     }
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class BiggerFireballEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment pOther) {
-        return super.checkCompatibility(pOther) && !(pOther instanceof FireballAllAroundEnchantment);
+        return super.checkCompatibility(pOther);
     }
 
     @Override

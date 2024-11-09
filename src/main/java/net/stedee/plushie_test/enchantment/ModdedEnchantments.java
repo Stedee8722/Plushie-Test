@@ -7,10 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.stedee.plushie_test.enchantment.custom.BiggerFireballEnchantment;
-import net.stedee.plushie_test.enchantment.custom.BlasphemyDamageEnchantment;
-import net.stedee.plushie_test.enchantment.custom.FireballAllAroundEnchantment;
-import net.stedee.plushie_test.enchantment.custom.SerratedEnchantment;
+import net.stedee.plushie_test.enchantment.custom.*;
 import net.stedee.plushie_test.plushie_test;
 
 public class ModdedEnchantments {
@@ -25,6 +22,11 @@ public class ModdedEnchantments {
     public static RegistryObject<Enchantment> FIREBALL_ALL_AROUND =
             ENCHANTMENTS.register("fireball_all_around",
                     () -> new FireballAllAroundEnchantment(Enchantment.Rarity.RARE,
+                            EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+
+    public static RegistryObject<Enchantment> FASTER_RECHARGE =
+            ENCHANTMENTS.register("faster_recharge",
+                    () -> new FasterRechargeEnchantment(Enchantment.Rarity.RARE,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 
     public static RegistryObject<Enchantment> SERRATED =
