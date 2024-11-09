@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#P#",
+    "KBM",
+    "LGA"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_nugget"
+    },
+    "P": {
+      "item": "minecraft:purple_dye"
+    },
+    "K": {
+      "item": "minecraft:purple_wool"
+    },
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "M": {
+      "item": "minecraft:magenta_wool"
+    },
+    "L": {
+      "item": "minecraft:lily_of_the_valley"
+    },
+    "G": {
+      "item": "minecraft:glass_bottle"
+    },
+    "A": {
+      "item": "minecraft:allium"
+    }
+  },
+  "result": {
+    "item": "plushie_test:plush_acid",
+    "count": 1
+  }
+}
