@@ -6,6 +6,7 @@
   "mixins": [
     "AnvilMenuMixin",
     "ItemEntityMixin",
+    "ItemMixin",
     "PlayerMixin"
   ],
   "client": [],

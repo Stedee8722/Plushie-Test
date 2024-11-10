@@ -21,22 +21,18 @@
     "burn_a_plushie": {
       "trigger": "plushie_test:dropped_item",
       "conditions": {
-        "items": [
-          {
-            "tags": "plushie_test:plushies"
-          }
-        ],
+        "items": {
+          "tag": "plushie_test:plushies"
+        },
         "damage_type": "infire"
       }
     },
     "burn_a_loaf_plushie": {
       "trigger": "plushie_test:dropped_item",
       "conditions": {
-        "items": [
-          {
-            "tags": "plushie_test:loaf_plushies"
-          }
-        ],
+        "items": {
+          "tag": "plushie_test:loaf_plushies"
+        },
         "damage_type": "infire"
       }
     }

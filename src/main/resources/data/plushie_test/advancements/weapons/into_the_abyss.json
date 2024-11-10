@@ -19,9 +19,11 @@
     "into_the_abyss": {
       "trigger": "plushie_test:dropped_item",
       "conditions": {
-        "items": [
-          "minecraft:nether_star"
-        ],
+        "items": {
+          "items": [
+            "minecraft:nether_star"
+          ]
+        },
         "dimension": "minecraft:the_end",
         "damage_type": "outofworld"
       }

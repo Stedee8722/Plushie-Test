@@ -32,9 +32,11 @@
     "sacrifice": {
       "trigger": "plushie_test:dropped_item",
       "conditions": {
-        "items": [
-          "plushie_test:plush_aym"
-        ],
+        "items": {
+          "items": [
+            "plushie_test:plush_aym"
+          ]
+        },
         "damage_type": "infire"
       }
     }

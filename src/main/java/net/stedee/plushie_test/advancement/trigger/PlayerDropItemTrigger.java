@@ -20,7 +20,7 @@ public class PlayerDropItemTrigger extends SimpleCriterionTrigger<PlayerDropItem
 
     @Override
     protected @NotNull TriggerInstance createInstance(JsonObject pJson, @NotNull ContextAwarePredicate predicate, @NotNull DeserializationContext deserializationContext) {
-        ItemPredicate droppedItem = ItemPredicate.fromJson(pJson.get("item"));
+        ItemPredicate droppedItem = ItemPredicate.fromJson(pJson.get("items"));
         ResourceLocation damageType = new ResourceLocation(GsonHelper.getAsString(pJson, "damage_type"));
         ResourceKey<Level> level = pJson.has("dimension") ? ResourceKey.create(Registries.DIMENSION, new ResourceLocation(GsonHelper.getAsString(pJson, "dimension"))) : null;
         return new TriggerInstance(droppedItem, damageType, level);
