@@ -19,7 +19,7 @@ public class BloodlossEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier) {
-        float maxHealth = (float) (pLivingEntity.getAttributeBaseValue(Attributes.MAX_HEALTH)-3*(pAmplifier + 1));
+        float maxHealth = (float) (pLivingEntity.getAttributeBaseValue(Attributes.MAX_HEALTH)-((pLivingEntity.getAttributeBaseValue(Attributes.MAX_HEALTH)*15/100)*(pAmplifier + 1)));
         if (!pLivingEntity.level().isClientSide()) {
             if (maxHealth < 2) {maxHealth = 2;}
             if (pLivingEntity.getHealth() > maxHealth) {
@@ -28,7 +28,7 @@ public class BloodlossEffect extends MobEffect {
                 float amount = 0.05F + (float) pAmplifier / 8;
                 pLivingEntity.hurt(pLivingEntity.damageSources().magic(), amount);
             } else {
-                AttributeModifier modifier = new AttributeModifier(UUID.fromString("7d8cb6e3-213f-42c9-b905-706eeebeabb0"), "bloodloss_effect",  -3 * (pAmplifier + 1), AttributeModifier.Operation.ADDITION);
+                AttributeModifier modifier = new AttributeModifier(UUID.fromString("7d8cb6e3-213f-42c9-b905-706eeebeabb0"), "bloodloss_effect",  maxHealth - pLivingEntity.getAttributeBaseValue(Attributes.MAX_HEALTH), AttributeModifier.Operation.ADDITION);
                 if (!pLivingEntity.getAttribute(Attributes.MAX_HEALTH).hasModifier(modifier)) {
                     Objects.requireNonNull(pLivingEntity.getAttribute(Attributes.MAX_HEALTH)).addPermanentModifier(modifier);
                 }
