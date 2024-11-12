@@ -1,6 +1,8 @@
 package net.stedee.plushie_test.item.custom;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -65,6 +67,7 @@ public class BlasphemyItem extends SwordItem {
             Entity blasphemy = makeProjectile(new BlasphemyProjectile(entity.level(), entity, 0, 0, 0, pDamage * ((Player)entity).getAttackStrengthScale(0)), entity, look);
 
             entity.level().addFreshEntity(blasphemy);
+            entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1F, 1F);
             stack.hurtAndBreak(1, entity, (pOnBroken) -> pOnBroken.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         }
         return false;
