@@ -6,5 +6,181 @@
             "plushie_test:squeak2",
             "plushie_test:squeak3"
         ]
+    },
+    "start_a_cult": {
+        "sounds": [
+            {
+                "name": "plushie_test:start_a_cult",
+                "stream": true
+            }
+        ]
+    },
+    "sacrifice": {
+        "sounds": [
+            {
+                "name": "plushie_test:sacrifice",
+                "stream": true
+            }
+        ]
+    },
+    "second_son_aym": {
+        "sounds": [
+            {
+                "name": "plushie_test:second_son_aym",
+                "stream": true
+            }
+        ]
+    },
+    "first_son_baal": {
+        "sounds": [
+            {
+                "name": "plushie_test:first_son_baal",
+                "stream": true
+            }
+        ]
+    },
+    "the_one_who_waits": {
+        "sounds": [
+            {
+                "name": "plushie_test:the_one_who_waits",
+                "stream": true
+            }
+        ]
+    },
+    "leshy": {
+        "sounds": [
+            {
+                "name": "plushie_test:leshy",
+                "stream": true
+            }
+        ]
+    },
+    "heket": {
+        "sounds": [
+            {
+                "name": "plushie_test:heket",
+                "stream": true
+            }
+        ]
+    },
+    "kallamar": {
+        "sounds": [
+            {
+                "name": "plushie_test:kallamar",
+                "stream": true
+            }
+        ]
+    },
+    "shamura": {
+        "sounds": [
+            {
+                "name": "plushie_test:shamura",
+                "stream": true
+            }
+        ]
+    },
+    "eligos": {
+        "sounds": [
+            {
+                "name": "plushie_test:eligos",
+                "stream": true
+            }
+        ]
+    },
+    "amdusias": {
+        "sounds": [
+            {
+                "name": "plushie_test:amdusias",
+                "stream": true
+            }
+        ]
+    },
+    "saleos": {
+        "sounds": [
+            {
+                "name": "plushie_test:saleos",
+                "stream": true
+            }
+        ]
+    },
+    "vephar": {
+        "sounds": [
+            {
+                "name": "plushie_test:vephar",
+                "stream": true
+            }
+        ]
+    },
+    "darkwood": {
+        "sounds": [
+            {
+                "name": "plushie_test:darkwood",
+                "stream": true
+            }
+        ]
+    },
+    "anura": {
+        "sounds": [
+            {
+                "name": "plushie_test:anura",
+                "stream": true
+            }
+        ]
+    },
+    "anchordeep": {
+        "sounds": [
+            {
+                "name": "plushie_test:anchordeep",
+                "stream": true
+            }
+        ]
+    },
+    "silk_cradle": {
+        "sounds": [
+            {
+                "name": "plushie_test:silk_cradle",
+                "stream": true
+            }
+        ]
+    },
+    "gluttony_of_cannibals": {
+        "sounds": [
+            {
+                "name": "plushie_test:gluttony_of_cannibals",
+                "stream": true
+            }
+        ]
+    },
+    "saviour": {
+        "sounds": [
+            {
+                "name": "plushie_test:saviour",
+                "stream": true
+            }
+        ]
+    },
+    "chemach": {
+        "sounds": [
+            {
+                "name": "plushie_test:chemach",
+                "stream": true
+            }
+        ]
+    },
+    "plimbo": {
+        "sounds": [
+            {
+                "name": "plushie_test:plimbo",
+                "stream": true
+            }
+        ]
+    },
+    "writings_of_the_fanatic": {
+        "sounds": [
+            {
+                "name": "plushie_test:writings_of_the_fanatic",
+                "stream": true
+            }
+        ]
     }
 }

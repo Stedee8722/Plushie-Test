@@ -3,6 +3,7 @@ package net.stedee.plushie_test.item;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,6 +13,7 @@ import net.stedee.plushie_test.effect.ModdedEffects;
 import net.stedee.plushie_test.item.custom.*;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.item.custom_armor_materials.CustomMaskMaterial;
+import net.stedee.plushie_test.sound.ModdedSounds;
 
 public class ModdedItems {
     public static final DeferredRegister<Item> ITEMS = 
@@ -204,6 +206,118 @@ public class ModdedItems {
                     .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_UMBREON_MATS, MobEffects.NIGHT_VISION,220, 0, true));
+
+    public static final RegistryObject<Item> DISC_START_A_CULT = ITEMS.register("disc_start_a_cult",
+            () -> new RecordItem(6, ModdedSounds.START_A_CULT, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 6000));
+
+    public static final RegistryObject<Item> DISC_SACRIFICE = ITEMS.register("disc_sacrifice",
+            () -> new RecordItem(6, ModdedSounds.SACRIFICE, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 5075));
+
+    public static final RegistryObject<Item> DISC_FIRST_SON_BAAL = ITEMS.register("disc_first_son_baal",
+            () -> new RecordItem(12, ModdedSounds.FIRST_SON_BAAL, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), 1960));
+
+    public static final RegistryObject<Item> DISC_SECOND_SON_AYM = ITEMS.register("disc_second_son_aym",
+            () -> new RecordItem(13, ModdedSounds.SECOND_SON_AYM, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), 1041));
+
+    public static final RegistryObject<Item> DISC_LESHY = ITEMS.register("disc_leshy",
+            () -> new RecordItem(0, ModdedSounds.LESHY, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 2271));
+
+    public static final RegistryObject<Item> DISC_HEKET = ITEMS.register("disc_heket",
+            () -> new RecordItem(1, ModdedSounds.HEKET, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1810));
+
+    public static final RegistryObject<Item> DISC_KALLAMAR = ITEMS.register("disc_kallamar",
+            () -> new RecordItem(2, ModdedSounds.KALLAMAR, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 2580));
+
+    public static final RegistryObject<Item> DISC_SHAMURA = ITEMS.register("disc_shamura",
+            () -> new RecordItem(3, ModdedSounds.SHAMURA, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 3110));
+
+    public static final RegistryObject<Item> DISC_THE_ONE_WHO_WAITS = ITEMS.register("disc_the_one_who_waits",
+            () -> new RecordItem(4, ModdedSounds.THE_ONE_WHO_WAITS, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 2138));
+
+    public static final RegistryObject<Item> DISC_AMDUSIAS = ITEMS.register("disc_amdusias",
+            () -> new RecordItem(0, ModdedSounds.AMDUSIAS, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1540));
+
+    public static final RegistryObject<Item> DISC_ELIGOS = ITEMS.register("disc_eligos",
+            () -> new RecordItem(1, ModdedSounds.ELIGOS, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 2160));
+
+    public static final RegistryObject<Item> DISC_SALEOS = ITEMS.register("disc_saleos",
+            () -> new RecordItem(2, ModdedSounds.SALEOS, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1600));
+
+    public static final RegistryObject<Item> DISC_VEPHAR = ITEMS.register("disc_vephar",
+            () -> new RecordItem(3, ModdedSounds.VEPHAR, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 2260));
+
+    public static final RegistryObject<Item> DISC_GLUTTONY_OF_CANNIBALS = ITEMS.register("disc_gluttony_of_cannibals",
+            () -> new RecordItem(6, ModdedSounds.GLUTTONY_OF_CANNIBALS, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 724));
+
+    public static final RegistryObject<Item> DISC_SAVIOUR = ITEMS.register("disc_saviour",
+            () -> new RecordItem(6, ModdedSounds.SAVIOUR, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1534));
+
+    public static final RegistryObject<Item> DISC_CHEMACH = ITEMS.register("disc_chemach",
+            () -> new RecordItem(5, ModdedSounds.CHEMACH, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1942));
+
+    public static final RegistryObject<Item> DISC_PLIMBO = ITEMS.register("disc_plimbo",
+            () -> new RecordItem(7, ModdedSounds.PLIMBO, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1430));
+
+    public static final RegistryObject<Item> DISC_WRITINGS_OF_THE_FANATIC = ITEMS.register("disc_writings_of_the_fanatic",
+            () -> new RecordItem(6, ModdedSounds.WRITINGS_OF_THE_FANATIC, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1272));
+
+    public static final RegistryObject<Item> DISC_DARKWOOD = ITEMS.register("disc_darkwood",
+            () -> new RecordItem(8, ModdedSounds.DARKWOOD, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 1680));
+
+    public static final RegistryObject<Item> DISC_ANURA = ITEMS.register("disc_anura",
+            () -> new RecordItem(9, ModdedSounds.ANURA, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 2700));
+
+    public static final RegistryObject<Item> DISC_ANCHORDEEP = ITEMS.register("disc_anchordeep",
+            () -> new RecordItem(10, ModdedSounds.ANCHORDEEP, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 4160));
+
+    public static final RegistryObject<Item> DISC_SILK_CRADLE = ITEMS.register("disc_silk_cradle",
+            () -> new RecordItem(11, ModdedSounds.SILK_CRADLE, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 4980));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -12,13 +12,35 @@ public class ModdedSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = 
         DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, plushie_test.MOD_ID);
 
-    public static final RegistryObject<SoundEvent> PLUSHIE_USE = registerSoundEvents();
+    public static final RegistryObject<SoundEvent> PLUSHIE_USE = registerSoundEvents("plushie_use");
+    public static final RegistryObject<SoundEvent> START_A_CULT = registerSoundEvents("start_a_cult");
+    public static final RegistryObject<SoundEvent> SACRIFICE = registerSoundEvents("sacrifice");
+    public static final RegistryObject<SoundEvent> GLUTTONY_OF_CANNIBALS = registerSoundEvents("gluttony_of_cannibals");
+    public static final RegistryObject<SoundEvent> FIRST_SON_BAAL = registerSoundEvents("first_son_baal");
+    public static final RegistryObject<SoundEvent> SECOND_SON_AYM = registerSoundEvents("second_son_aym");
+    public static final RegistryObject<SoundEvent> THE_ONE_WHO_WAITS = registerSoundEvents("the_one_who_waits");
+    public static final RegistryObject<SoundEvent> LESHY = registerSoundEvents("leshy");
+    public static final RegistryObject<SoundEvent> HEKET = registerSoundEvents("heket");
+    public static final RegistryObject<SoundEvent> KALLAMAR = registerSoundEvents("kallamar");
+    public static final RegistryObject<SoundEvent> SHAMURA = registerSoundEvents("shamura");
+    public static final RegistryObject<SoundEvent> AMDUSIAS = registerSoundEvents("amdusias");
+    public static final RegistryObject<SoundEvent> ELIGOS = registerSoundEvents("eligos");
+    public static final RegistryObject<SoundEvent> SALEOS = registerSoundEvents("saleos");
+    public static final RegistryObject<SoundEvent> VEPHAR = registerSoundEvents("vephar");
+    public static final RegistryObject<SoundEvent> DARKWOOD = registerSoundEvents("darkwood");
+    public static final RegistryObject<SoundEvent> ANURA = registerSoundEvents("anura");
+    public static final RegistryObject<SoundEvent> ANCHORDEEP = registerSoundEvents("anchordeep");
+    public static final RegistryObject<SoundEvent> SILK_CRADLE = registerSoundEvents("silk_cradle");
+    public static final RegistryObject<SoundEvent> SAVIOUR = registerSoundEvents("saviour");
+    public static final RegistryObject<SoundEvent> CHEMACH = registerSoundEvents("chemach");
+    public static final RegistryObject<SoundEvent> PLIMBO = registerSoundEvents("plimbo");
+    public static final RegistryObject<SoundEvent> WRITINGS_OF_THE_FANATIC = registerSoundEvents("writings_of_the_fanatic");
 
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }
 
-    private static RegistryObject<SoundEvent> registerSoundEvents() {
-        return SOUND_EVENTS.register("plushie_use", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(plushie_test.MOD_ID, "plushie_use")));
+    private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(plushie_test.MOD_ID, name)));
     }
 }

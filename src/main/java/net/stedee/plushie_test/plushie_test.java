@@ -112,6 +112,30 @@ public class plushie_test {
             event.accept(ModdedItems.BLASPHEMY);
             event.accept(ModdedItems.BLASPHEMY_BRENZY);
         }
+        else if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModdedItems.DISC_START_A_CULT);
+            event.accept(ModdedItems.DISC_SACRIFICE);
+            event.accept(ModdedItems.DISC_SAVIOUR);
+            event.accept(ModdedItems.DISC_GLUTTONY_OF_CANNIBALS);
+            event.accept(ModdedItems.DISC_WRITINGS_OF_THE_FANATIC);
+            event.accept(ModdedItems.DISC_LESHY);
+            event.accept(ModdedItems.DISC_HEKET);
+            event.accept(ModdedItems.DISC_KALLAMAR);
+            event.accept(ModdedItems.DISC_SHAMURA);
+            event.accept(ModdedItems.DISC_FIRST_SON_BAAL);
+            event.accept(ModdedItems.DISC_SECOND_SON_AYM);
+            event.accept(ModdedItems.DISC_THE_ONE_WHO_WAITS);
+            event.accept(ModdedItems.DISC_AMDUSIAS);
+            event.accept(ModdedItems.DISC_ELIGOS);
+            event.accept(ModdedItems.DISC_SALEOS);
+            event.accept(ModdedItems.DISC_VEPHAR);
+            event.accept(ModdedItems.DISC_CHEMACH);
+            event.accept(ModdedItems.DISC_PLIMBO);
+            event.accept(ModdedItems.DISC_DARKWOOD);
+            event.accept(ModdedItems.DISC_ANURA);
+            event.accept(ModdedItems.DISC_ANCHORDEEP);
+            event.accept(ModdedItems.DISC_SILK_CRADLE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

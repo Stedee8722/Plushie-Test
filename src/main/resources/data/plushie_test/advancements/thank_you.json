@@ -74,6 +74,16 @@
           }
         ]
       }
+    },
+    "have_music_discs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:music_discs"
+          }
+        ]
+      }
     }
   },
   "requirements": [
@@ -83,7 +93,8 @@
       "have_masks",
       "have_modded_blocks",
       "have_plushies",
-      "have_weapons"
+      "have_weapons",
+      "have_music_discs"
     ]
   ],
   "sends_telemetry_event": false
