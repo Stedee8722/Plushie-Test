@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/template_music_disc",
+  "display": {
+    "gui": {
+      "translation": [ 0.5, 0, 0 ]
+    }
+  }
+}
