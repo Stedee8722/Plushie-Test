@@ -1,0 +1,10 @@
+{
+  "type": "plushie_test:add_discs",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/buried_treasure"
+    }
+  ],
+  "loot_table": "plushie_test:chests/discs"
+}

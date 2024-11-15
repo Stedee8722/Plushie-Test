@@ -1,6 +1,10 @@
 {
   "entries": [
-    "plushie_test:add_discs"
+    "plushie_test:add_discs_ancient_city",
+    "plushie_test:add_discs_simple_dungeon",
+    "plushie_test:add_discs_woodland_mansion",
+    "plushie_test:add_discs_bastion_treasure",
+    "plushie_test:add_discs_buried_treasure"
   ],
   "replace": false
 }
