@@ -1,6 +1,6 @@
 {
   "parent": "plushie_test:item/centered_music_disc",
   "textures": {
-    "layer0": "plushie_test:item/disc_anura"
+    "layer0": "plushie_test:item/discs/disc_anura"
   }
 }

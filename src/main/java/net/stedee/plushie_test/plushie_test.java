@@ -27,6 +27,7 @@ import net.stedee.plushie_test.entity.ModdedEntities;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
+import net.stedee.plushie_test.loot.ModdedLootModifiers;
 import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.painting.ModdedPaintings;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
@@ -64,6 +65,8 @@ public class plushie_test {
         ModdedRecipes.register(modEventBus);
 
         ModdedPaintings.register(modEventBus);
+
+        ModdedLootModifiers.register(modEventBus);
 
         ModdedEnchantments.register(modEventBus);
         ModdedEffects.register(modEventBus);
