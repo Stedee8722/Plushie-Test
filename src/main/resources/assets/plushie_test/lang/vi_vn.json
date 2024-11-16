@@ -84,6 +84,8 @@
     "item.plushie_test.disc_in_the_end.desc": "Linkin Park - In The End",
     "item.plushie_test.disc_enter_the_gungeon": "Enter the Gungeon",
     "item.plushie_test.disc_enter_the_gungeon.desc": "Enter the Gungeon - Enter the Gungeon",
+    "item.plushie_test.disc_infinite_amethyst": "Infinite Amethyst",
+    "item.plushie_test.disc_infinite_amethyst.desc": "Lena Raine - Infinite Amethyst",
 
     "item.plushie_test.plush_aym.tooltip": "§4Con trai thứ hai §rcủa §7Forneus§r, §mDễ thương :3",
     "item.plushie_test.nova_ears.tooltip": "Đôi tai của §4Tội đồ §6Tham ăn",
@@ -155,6 +157,8 @@
     "advancements.collector.gluttonous_outfitting.description": "Bạn đã sưu tập tất cả các kỷ vật của Chuột? Bạn hẳn là một fan cuồng nhiệt rồi!",
     "advancements.collector.gluttonous_armaments.title": "Vũ khí Phàm ăn",
     "advancements.collector.gluttonous_armaments.description": "Nơi bắt đầu của sự gian ác",
+    "advancements.plushies.collect_all_discs.title": "Người thu thập đĩa nhạc",
+    "advancements.collector.collect_all_discs.description": "Nói thật đi, có phải là bạn tìm thấy thật không, hay là gian lận?",
     "advancements.masks.make_a_mask.title": "Làm một cái mặt nạ",
     "advancements.masks.make_a_mask.description": "\"No one cared about who I was until I put on the mask\" /ref",
     "advancements.plushies.obtain_tealet.title": "Thú bông sống",

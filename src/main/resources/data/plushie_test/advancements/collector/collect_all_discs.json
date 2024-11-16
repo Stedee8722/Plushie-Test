@@ -1,0 +1,375 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:plush_rat"
+    },
+    "title": {
+      "translate": "advancements.collector.collect_all_discs.title"
+    },
+    "description": {
+      "translate": "advancements.collector.collect_all_discs.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "parent": "plushie_test:thank_you",
+  "criteria": {
+    "obtain_disc_start_a_cult": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_start_a_cult"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_first_son_baal": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_first_son_baal"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_second_son_aym": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_second_son_aym"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_leshy": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_leshy"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_heket": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_heket"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_kallamar": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_kallamar"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_shamura": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_shamura"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_the_one_who_waits": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_the_one_who_waits"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_sacrifice": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_sacrifice"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_amdusias": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_amdusias"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_eligos": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_eligos"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_saleos": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_saleos"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_vephar": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_vephar"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_gluttony_of_cannibals": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_gluttony_of_cannibals"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_saviour": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_saviour"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_chemach": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_chemach"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_plimbo": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_plimbo"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_darkwood": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_darkwood"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_anura": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_anura"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_anchordeep": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_anchordeep"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_silk_cradle": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_silk_cradle"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_in_the_end": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_in_the_end"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_champion_battle_music": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_champion_battle_music"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_enter_the_gungeon": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_enter_the_gungeon"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "obtain_disc_infinite_amethyst": [
+      {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": [
+                "plushie_test:disc_infinite_amethyst"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "requirements": [["obtain_disc_start_a_cult"], ["obtain_disc_first_son_baal"], ["obtain_disc_second_son_aym"], ["obtain_disc_leshy"], ["obtain_disc_heket"], ["obtain_disc_kallamar"], ["obtain_disc_shamura"], ["obtain_disc_the_one_who_waits"], ["obtain_disc_sacrifice"], ["obtain_disc_amdusias"], ["obtain_disc_eligos"], ["obtain_disc_saleos"], ["obtain_disc_vephar"], ["obtain_disc_gluttony_of_cannibals"], ["obtain_disc_saviour"], ["obtain_disc_chemach"], ["obtain_disc_plimbo"], ["obtain_disc_darkwood"], ["obtain_disc_anura"], ["obtain_disc_anchordeep"], ["obtain_disc_silk_cradle"], ["obtain_disc_in_the_end"], ["obtain_disc_champion_battle_music"], ["obtain_disc_enter_the_gungeon"], ["obtain_disc_infinite_amethyst"]],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}
