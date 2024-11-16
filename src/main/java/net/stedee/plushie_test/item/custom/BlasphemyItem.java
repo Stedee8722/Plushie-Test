@@ -56,7 +56,7 @@ public class BlasphemyItem extends SwordItem {
         // see if can reach blocks
         double blockReachDistance = ((Player)entity).getBlockReach();
         Vec3 to = from.add(look.x * blockReachDistance, look.y * blockReachDistance, look.z * blockReachDistance);
-        BlockHitResult blockhitresult = entity.level().clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity));
+        BlockHitResult blockhitresult = entity.level().clip(new ClipContext(from, to, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity));
 
         if ((blockhitresult.getType() != HitResult.Type.MISS) || (entityhitresult != null ? entityhitresult.getType() != HitResult.Type.MISS : false)) {
             return super.onEntitySwing(stack, entity);
