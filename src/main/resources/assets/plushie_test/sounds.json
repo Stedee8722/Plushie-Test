@@ -182,5 +182,37 @@
                 "stream": true
             }
         ]
+    },
+    "bruh_wtf_is_this_did_you_even_tested_the_file": {
+        "sounds": [
+            {
+                "name": "plushie_test:bruh_wtf_is_this_did_you_even_tested_the_file",
+                "stream": true
+            }
+        ]
+    },
+    "champion_battle_music": {
+        "sounds": [
+            {
+                "name": "plushie_test:champion_battle_music",
+                "stream": true
+            }
+        ]
+    },
+    "enter_the_gungeon": {
+        "sounds": [
+            {
+                "name": "plushie_test:enter_the_gungeon",
+                "stream": true
+            }
+        ]
+    },
+    "infinite_amethyst": {
+        "sounds": [
+            {
+                "name": "plushie_test:infinite_amethyst",
+                "stream": true
+            }
+        ]
     }
 }

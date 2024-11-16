@@ -6,12 +6,19 @@
       "entries": [
         {
           "type": "minecraft:tag",
-          "name": "plushie_test:music_discs",
+          "name": "plushie_test:music_discs_cotl_ost",
           "expand": true,
           "weight": 2
         },
         {
-          "type": "minecraft:empty"
+          "type": "minecraft:empty",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:tag",
+          "name": "plushie_test:music_discs_random",
+          "expand": true,
+          "weight": 2
         }
       ]
     }

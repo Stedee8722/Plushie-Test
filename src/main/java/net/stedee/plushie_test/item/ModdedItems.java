@@ -319,6 +319,26 @@ public class ModdedItems {
                     .stacksTo(1)
                     .rarity(Rarity.EPIC), 4980));
 
+    public static final RegistryObject<Item> DISC_CHAMPION_BATTLE_MUSIC = ITEMS.register("disc_champion_battle_music",
+            () -> new RecordItem(0, ModdedSounds.CHAMPION_BATTLE_MUSIC, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 3580));
+
+    public static final RegistryObject<Item> DISC_ENTER_THE_GUNGEON = ITEMS.register("disc_enter_the_gungeon",
+            () -> new RecordItem(0, ModdedSounds.ENTER_THE_GUNGEON, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 5200));
+
+    public static final RegistryObject<Item> DISC_IN_THE_END = ITEMS.register("disc_in_the_end",
+            () -> new RecordItem(0, ModdedSounds.IN_THE_END, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 4340));
+
+    public static final RegistryObject<Item> DISC_INFINITE_AMETHYST = ITEMS.register("disc_infinite_amethyst",
+            () -> new RecordItem(15, ModdedSounds.INFINITE_AMETHYST, new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC), 5420));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

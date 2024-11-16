@@ -138,6 +138,10 @@ public class plushie_test {
             event.accept(ModdedItems.DISC_ANURA);
             event.accept(ModdedItems.DISC_ANCHORDEEP);
             event.accept(ModdedItems.DISC_SILK_CRADLE);
+            event.accept(ModdedItems.DISC_IN_THE_END);
+            event.accept(ModdedItems.DISC_CHAMPION_BATTLE_MUSIC);
+            event.accept(ModdedItems.DISC_ENTER_THE_GUNGEON);
+            event.accept(ModdedItems.DISC_INFINITE_AMETHYST);
         }
     }
 

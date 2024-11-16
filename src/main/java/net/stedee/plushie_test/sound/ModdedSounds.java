@@ -35,6 +35,10 @@ public class ModdedSounds {
     public static final RegistryObject<SoundEvent> CHEMACH = registerSoundEvents("chemach");
     public static final RegistryObject<SoundEvent> PLIMBO = registerSoundEvents("plimbo");
     public static final RegistryObject<SoundEvent> WRITINGS_OF_THE_FANATIC = registerSoundEvents("writings_of_the_fanatic");
+    public static final RegistryObject<SoundEvent> IN_THE_END = registerSoundEvents("bruh_wtf_is_this_did_you_even_tested_the_file");
+    public static final RegistryObject<SoundEvent> CHAMPION_BATTLE_MUSIC = registerSoundEvents("champion_battle_music");
+    public static final RegistryObject<SoundEvent> ENTER_THE_GUNGEON = registerSoundEvents("enter_the_gungeon");
+    public static final RegistryObject<SoundEvent> INFINITE_AMETHYST = registerSoundEvents("infinite_amethyst");
 
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
