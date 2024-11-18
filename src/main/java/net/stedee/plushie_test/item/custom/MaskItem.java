@@ -28,10 +28,10 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class MaskItem extends ArmorItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private final MobEffect effect;
-    private final int dur;
-    private final int amp;
-    private final boolean applyConstantly;
+    public final MobEffect effect;
+    public final int dur;
+    public final int amp;
+    public final boolean applyConstantly;
 
     public MaskItem(Properties pProperties, CustomMaskMaterial mats, MobEffect effect, int dur, int amp, boolean applyConstantly) {
         super(mats, net.minecraft.world.item.ArmorItem.Type.HELMET, pProperties);

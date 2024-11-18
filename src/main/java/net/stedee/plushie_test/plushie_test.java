@@ -24,6 +24,7 @@ import net.stedee.plushie_test.config.ClientConfig;
 import net.stedee.plushie_test.effect.ModdedEffects;
 import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import net.stedee.plushie_test.entity.ModdedEntities;
+import net.stedee.plushie_test.init.ModCompat;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
@@ -75,7 +76,7 @@ public class plushie_test {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
-        
+
         initConfig();
 
         //ModLoadingContext.get().registerConfig(Type.CLIENT, PlushieTestClientConfig.SPEC, MOD_ID + "-client.toml");
@@ -92,6 +93,8 @@ public class plushie_test {
     private void commonSetup(final FMLCommonSetupEvent event) {
         PacketHandler.registerMessages(MOD_ID);
         ModdedAdvancements.init();
+        ModCompat.initCompats();
+        ModCompat.setupCompats();
     }
 
     private static void initConfig() {
@@ -99,7 +102,6 @@ public class plushie_test {
         // Intuitive way to load a config
         CONFIG = AutoConfig.getConfigHolder(ClientConfig.class).getConfig();
     }
-    
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
