@@ -344,7 +344,36 @@ public class ModdedItems {
             () -> new CrownItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomCrownMaterial.CROWN_GREEN_MATS));
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), CustomCrownMaterial.CROWN_MATS));
+
+    public static final RegistryObject<CrownItem> CROWN_YELLOW = ITEMS.register("crown_yellow",
+            () -> new CrownItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), CustomCrownMaterial.CROWN_MATS));
+
+    public static final RegistryObject<CrownItem> CROWN_BLUE = ITEMS.register("crown_blue",
+            () -> new CrownItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), CustomCrownMaterial.CROWN_MATS));
+
+    public static final RegistryObject<CrownItem> CROWN_PURPLE = ITEMS.register("crown_purple",
+            () -> new CrownItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), CustomCrownMaterial.CROWN_MATS));
+
+    public static final RegistryObject<CrownItem> CROWN_RED = ITEMS.register("crown_red",
+            () -> new CrownItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant(), CustomCrownMaterial.CROWN_MATS));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

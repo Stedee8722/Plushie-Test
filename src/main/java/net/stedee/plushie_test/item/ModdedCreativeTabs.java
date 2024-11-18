@@ -60,6 +60,10 @@ public class ModdedCreativeTabs {
                     .title(Component.translatable("creativetab.plushie_test.crowns.text"))
                     .displayItems((pParameter, pOutput) -> {
                         pOutput.accept(ModdedItems.CROWN_GREEN.get());
+                        pOutput.accept(ModdedItems.CROWN_YELLOW.get());
+                        pOutput.accept(ModdedItems.CROWN_BLUE.get());
+                        pOutput.accept(ModdedItems.CROWN_PURPLE.get());
+                        pOutput.accept(ModdedItems.CROWN_RED.get());
                     })
                     .build());
 

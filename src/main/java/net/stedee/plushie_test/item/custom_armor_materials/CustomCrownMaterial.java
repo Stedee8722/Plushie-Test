@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 public enum CustomCrownMaterial implements ArmorMaterial {
 
-    CROWN_GREEN_MATS("crown_green_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
+    CROWN_MATS("crown_mats", 15, new int[]{ 2, 5, 6, 2 }, 9,
         SoundEvents.ARMOR_EQUIP_GENERIC, 0f, 0f, () -> Ingredient.of(Items.IRON_INGOT));
 
     private final String name;
