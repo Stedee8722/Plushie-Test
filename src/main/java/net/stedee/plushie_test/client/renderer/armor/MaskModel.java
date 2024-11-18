@@ -6,15 +6,14 @@ import net.stedee.plushie_test.plushie_test;
 import software.bernie.geckolib.model.GeoModel;
 
 public class MaskModel extends GeoModel<MaskItem> {
-
     @Override
     public ResourceLocation getModelResource(MaskItem maskItem) {
-        return new ResourceLocation(plushie_test.MOD_ID, "geo/mask/" + maskItem.asItem() + ".geo.json");
+        return new ResourceLocation(plushie_test.MOD_ID, "geo/masks/" + maskItem.asItem() + ".geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(MaskItem maskItem) {
-        return new ResourceLocation(plushie_test.MOD_ID, "textures/item/" + maskItem.asItem() + ".png");
+        return new ResourceLocation(plushie_test.MOD_ID, "textures/item/masks/" + maskItem.asItem() + ".png");
     }
 
     @Override
