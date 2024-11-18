@@ -84,6 +84,16 @@
           }
         ]
       }
+    },
+    "have_crowns": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "plushie_test:crowns"
+          }
+        ]
+      }
     }
   },
   "requirements": [
@@ -94,7 +104,8 @@
       "have_blocks",
       "have_plushies",
       "have_weapons",
-      "have_music_discs"
+      "have_music_discs",
+      "have_crowns"
     ]
   ],
   "sends_telemetry_event": false

@@ -55,6 +55,14 @@ public class ModdedCreativeTabs {
             })
             .build());
 
+    public static final RegistryObject<CreativeModeTab> CROWNS_TAB = CREATIVE_TABS.register("crowns",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.CROWN_GREEN.get()))
+                    .title(Component.translatable("creativetab.plushie_test.crowns.text"))
+                    .displayItems((pParameter, pOutput) -> {
+                        pOutput.accept(ModdedItems.CROWN_GREEN.get());
+                    })
+                    .build());
+
     public static void register(IEventBus eventBus) {
         CREATIVE_TABS.register(eventBus);
     }

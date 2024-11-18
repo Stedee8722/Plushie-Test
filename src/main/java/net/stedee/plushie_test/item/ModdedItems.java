@@ -11,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.effect.ModdedEffects;
 import net.stedee.plushie_test.item.custom.*;
+import net.stedee.plushie_test.item.custom_armor_materials.CustomCrownMaterial;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.item.custom_armor_materials.CustomMaskMaterial;
 import net.stedee.plushie_test.sound.ModdedSounds;
@@ -199,7 +200,7 @@ public class ModdedItems {
                 () -> new MaskItem(new Item.Properties()
                     .stacksTo(1)
                     .defaultDurability(275)
-                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_SYLVEON_MATS, MobEffects.REGENERATION,40, 1, false));
+                    .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_SYLVEON_MATS, MobEffects.REGENERATION,80, 1, false));
 
     public static final RegistryObject<MaskItem> MASK_UMBREON = ITEMS.register("mask_umbreon",
                 () -> new MaskItem(new Item.Properties()
@@ -338,6 +339,12 @@ public class ModdedItems {
             () -> new RecordItem(15, ModdedSounds.INFINITE_AMETHYST, new Item.Properties()
                     .stacksTo(1)
                     .rarity(Rarity.EPIC), 5420));
+
+    public static final RegistryObject<CrownItem> CROWN_GREEN = ITEMS.register("crown_green",
+            () -> new CrownItem(new Item.Properties()
+                    .stacksTo(1)
+                    .defaultDurability(275)
+                    .rarity(Rarity.EPIC), CustomCrownMaterial.CROWN_GREEN_MATS));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
