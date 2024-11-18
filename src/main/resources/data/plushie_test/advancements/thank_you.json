@@ -45,12 +45,12 @@
         ]
       }
     },
-    "have_modded_blocks": {
+    "have_blocks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "plushie_test:modded_blocks"
+            "tag": "plushie_test:blocks"
           }
         ]
       }
@@ -91,7 +91,7 @@
       "have_ears",
       "have_loaf_plushies",
       "have_masks",
-      "have_modded_blocks",
+      "have_blocks",
       "have_plushies",
       "have_weapons",
       "have_music_discs"
