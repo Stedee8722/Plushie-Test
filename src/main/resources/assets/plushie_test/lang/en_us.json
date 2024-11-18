@@ -146,8 +146,8 @@
     "painting.plushie_test.tea.title": "Is it looking back at me?!",
     "painting.plushie_test.tea.author": "Unknown",
     
-    "text.autoconfig.plushie_test.option.displayitemsintable": "Display item in table?",
-    "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Display item on the seamstress and alchemical table while crafting",
+    "text.autoconfig.plushie_test.option.display_items_in_table": "Display item in table?",
+    "text.autoconfig.plushie_test.option.display_items_in_table.@Tooltip": "Display item on the seamstress and alchemical table while crafting",
 
     "text.autoconfig.plushie_test.title": "Plushie Test's configs",
 

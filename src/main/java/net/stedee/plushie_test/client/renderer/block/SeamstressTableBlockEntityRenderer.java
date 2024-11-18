@@ -42,7 +42,7 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
         //} catch(IOException err)
         //{System.out.println(err);}
 
-        if (!config.displayitemsintable || blockEntity.inventory.isEmpty())
+        if (!config.display_items_in_table || blockEntity.inventory.isEmpty())
             return;
 
         ItemStack stack1 = blockEntity.getInventory().getStackInSlot(0);
