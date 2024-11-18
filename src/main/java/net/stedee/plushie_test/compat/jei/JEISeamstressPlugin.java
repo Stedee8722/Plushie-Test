@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.compat;
+package net.stedee.plushie_test.compat.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;

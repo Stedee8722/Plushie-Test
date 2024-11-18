@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.compat;
+package net.stedee.plushie_test.compat.jei;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
