@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:crown_red"
+    },
+    "title": {
+      "translate": "advancements.crowns.obtain_crown_red.title"
+    },
+    "description": {
+      "translate": "advancements.crowns.obtain_crown_red.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:crowns/peace",
+  "criteria": {
+    "obtain_crown_red": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:crown_red"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_crown_red"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

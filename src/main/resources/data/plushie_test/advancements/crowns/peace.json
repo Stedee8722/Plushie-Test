@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:crown_purple"
+    },
+    "title": {
+      "translate": "advancements.crowns.obtain_crown_purple.title"
+    },
+    "description": {
+      "translate": "advancements.crowns.obtain_crown_purple.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:crowns/cure",
+  "criteria": {
+    "obtain_crown_purple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:crown_purple"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_crown_purple"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

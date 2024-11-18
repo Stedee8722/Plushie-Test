@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:crown_green"
+    },
+    "title": {
+      "translate": "advancements.crowns.obtain_crown_green.title"
+    },
+    "description": {
+      "translate": "advancements.crowns.obtain_crown_green.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:thank_you",
+  "criteria": {
+    "obtain_crown_green": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:crown_green"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_crown_green"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

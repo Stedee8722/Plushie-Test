@@ -74,5 +74,9 @@ public class CuriosCompat implements ICompat {
         CuriosRendererRegistry.register(ModdedItems.MASK_VAPOREON.get(), CuriosMaskRenderer::new);
 
         CuriosRendererRegistry.register(ModdedItems.CROWN_GREEN.get(), CuriosCrownRenderer::new);
+        CuriosRendererRegistry.register(ModdedItems.CROWN_YELLOW.get(), CuriosCrownRenderer::new);
+        CuriosRendererRegistry.register(ModdedItems.CROWN_BLUE.get(), CuriosCrownRenderer::new);
+        CuriosRendererRegistry.register(ModdedItems.CROWN_PURPLE.get(), CuriosCrownRenderer::new);
+        CuriosRendererRegistry.register(ModdedItems.CROWN_RED.get(), CuriosCrownRenderer::new);
     }
 }

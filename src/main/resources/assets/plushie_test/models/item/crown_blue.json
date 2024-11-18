@@ -137,7 +137,7 @@
 		},
 		"gui": {
 			"rotation": [0, 169, 0],
-			"translation": [0, 3.25, 0],
+			"translation": [0, 3.75, 0],
 			"scale": [1.6, 1.6, 0.5]
 		},
 		"head": {

@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "plushie_test:crown_blue"
+    },
+    "title": {
+      "translate": "advancements.crowns.obtain_crown_blue.title"
+    },
+    "description": {
+      "translate": "advancements.crowns.obtain_crown_blue.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "plushie_test:crowns/sate",
+  "criteria": {
+    "obtain_crown_blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "plushie_test:crown_blue"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_crown_blue"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

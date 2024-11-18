@@ -1,5 +1,9 @@
 {
   "values": [
-    "plushie_test:crown_green"
+    "plushie_test:crown_green",
+    "plushie_test:crown_yellow",
+    "plushie_test:crown_blue",
+    "plushie_test:crown_purple",
+    "plushie_test:crown_red"
   ]
 }
