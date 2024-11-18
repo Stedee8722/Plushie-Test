@@ -5,7 +5,7 @@
 		"0": "plushie_test:item/loaf_pyla",
 		"1": "plushie_test:item/loaf_mono",
 		"2": "plushie_test:item/loaf_bren",
-		"particle": "block/loaf_mono"
+		"particle": "plushie_test:item/loaf_mono"
 	},
 	"elements": [
 		{
