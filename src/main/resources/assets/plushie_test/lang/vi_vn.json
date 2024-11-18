@@ -33,6 +33,11 @@
     "item.plushie_test.mask_sylveon": "Mặt nạ Sylveon",
     "item.plushie_test.mask_umbreon": "Mặt nạ Umbreon",
     "item.plushie_test.mask_jolteon": "Mặt nạ Jolteon",
+    "item.plushie_test.crown_green": "Vương miện Xanh",
+    "item.plushie_test.crown_yellow": "Vương miện Vàng",
+    "item.plushie_test.crown_blue": "Vương miện Xanh dương",
+    "item.plushie_test.crown_purple": "Vương miện Tím",
+    "item.plushie_test.crown_red": "Vương miện Đỏ",
 
     "item.plushie_test.disc_start_a_cult": "Start a Cult",
     "item.plushie_test.disc_start_a_cult.desc": "River Boy - Start a Cult",
@@ -121,6 +126,11 @@
     "item.plushie_test.mask_sylveon.tooltip": "Nhận §chiệu ứng hồi máu §rkhi đeo",
     "item.plushie_test.mask_umbreon.tooltip": "Nhận §9hiệu ứng nhìn đêm §rkhi đeo",
     "item.plushie_test.mask_jolteon.tooltip": "Nhận §bhiệu ứng tốc độ §rkhi đeo",
+    "item.plushie_test.crown_green.tooltip": "Vương miện của sự §2hỗn loạn",
+    "item.plushie_test.crown_yellow.tooltip": "Vương miện của §eNạn đói",
+    "item.plushie_test.crown_blue.tooltip": "Vương miện của sự §bDịch bệnh",
+    "item.plushie_test.crown_purple.tooltip": "Vương miện của §5Chiến tranh",
+    "item.plushie_test.crown_red.tooltip": "Vương miện của §4Tử thần",
 
     "block.plushie_test.seamstress_table": "Bàn may vá",
     "block.plushie_test.alchemical_table": "Bàn tách rời",
@@ -140,14 +150,15 @@
 
     "creativetab.plushie_test.plushies.text": "Thú bông",
     "creativetab.plushie_test.masks.text": "Mặt nạ",
+    "creativetab.plushie_test.crowns.text": "Vương miện",
 
     "painting.plushie_test.creature.title": "BeelzTBH",
     "painting.plushie_test.creature.author": "Rat Beelz",
     "painting.plushie_test.tea.title": "Nó đang nhìn tôi à?!",
     "painting.plushie_test.tea.author": "Không biết",
 
-    "text.autoconfig.plushie_test.option.displayitemsintable": "Hiện vật phẩm trên bàn?",
-    "text.autoconfig.plushie_test.option.displayitemsintable.@Tooltip": "Hiện vật phẩm trên bàn chế tạo thú bông khi đang chế tạo",
+    "text.autoconfig.plushie_test.option.display_items_in_table": "Hiện vật phẩm trên bàn?",
+    "text.autoconfig.plushie_test.option.display_items_in_table.@Tooltip": "Hiện vật phẩm trên bàn chế tạo thú bông khi đang chế tạo",
 
     "text.autoconfig.plushie_test.title": "Cài đặt mod",
 

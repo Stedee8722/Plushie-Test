@@ -34,6 +34,10 @@
     "item.plushie_test.mask_umbreon": "Umbreon Mask",
     "item.plushie_test.mask_jolteon": "Jolteon Mask",
     "item.plushie_test.crown_green": "Green Crown",
+    "item.plushie_test.crown_yellow": "Yellow Crown",
+    "item.plushie_test.crown_blue": "Blue Crown",
+    "item.plushie_test.crown_purple": "Purple Crown",
+    "item.plushie_test.crown_red": "Red Crown",
 
     "item.plushie_test.disc_start_a_cult": "Start a Cult",
     "item.plushie_test.disc_start_a_cult.desc": "River Boy - Start a Cult",
@@ -123,6 +127,10 @@
     "item.plushie_test.mask_umbreon.tooltip": "Grant §9night vision §rwhen worn",
     "item.plushie_test.mask_jolteon.tooltip": "Grant §bspeed §rwhen worn",
     "item.plushie_test.crown_green.tooltip": "The Crown of §2Chaos",
+    "item.plushie_test.crown_yellow.tooltip": "The Crown of §eFamine",
+    "item.plushie_test.crown_blue.tooltip": "The Crown of §bPestilence",
+    "item.plushie_test.crown_purple.tooltip": "The Crown of §5War",
+    "item.plushie_test.crown_red.tooltip": "The Crown of §4Death",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
     "block.plushie_test.alchemical_table": "Alchemical Table",
