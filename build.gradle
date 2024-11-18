@@ -210,7 +210,7 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description, mod_credits: mod_credits, mod_display_url: mod_display_url,
-            geckolib_version: geckolib_version, cloth_config_version: cloth_config_version
+            geckolib_version: geckolib_version, cloth_config_version: cloth_config_version, jei_version: jei_version
     ]
     inputs.properties replaceProperties
 
