@@ -217,5 +217,7 @@
 
     "effect.plushie_test.bloodloss": "Bloodloss",
 
-    "death.attack.blasphemy_projectile": "%1$s was shown the might of the gungeon by %2$s"
+    "death.attack.blasphemy_projectile": "%1$s was shown the might of the gungeon by %2$s",
+
+    "curios.identifier.ears": "Ears"
 }

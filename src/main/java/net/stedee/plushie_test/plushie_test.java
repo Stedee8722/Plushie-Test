@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
@@ -47,6 +49,8 @@ public class plushie_test {
     public static final Logger LOGGER = LogUtils.getLogger();
     
     public static ClientConfig CONFIG = new ClientConfig();
+
+    public static ItemRenderer ITEM_RENDERER;
 
     public plushie_test() {
 
@@ -160,6 +164,7 @@ public class plushie_test {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ITEM_RENDERER = Minecraft.getInstance().getItemRenderer();
 
             // Some client setup code
             //LOGGER.info("HELLO FROM CLIENT SETUP");

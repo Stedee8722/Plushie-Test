@@ -12,6 +12,7 @@ import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stedee.plushie_test.client.renderer.armor.CuriosCrownRenderer;
+import net.stedee.plushie_test.client.renderer.armor.CuriosEarRenderer;
 import net.stedee.plushie_test.client.renderer.armor.CuriosMaskRenderer;
 import net.stedee.plushie_test.init.ICompat;
 import net.stedee.plushie_test.item.ModdedItems;
@@ -78,5 +79,9 @@ public class CuriosCompat implements ICompat {
         CuriosRendererRegistry.register(ModdedItems.CROWN_BLUE.get(), CuriosCrownRenderer::new);
         CuriosRendererRegistry.register(ModdedItems.CROWN_PURPLE.get(), CuriosCrownRenderer::new);
         CuriosRendererRegistry.register(ModdedItems.CROWN_RED.get(), CuriosCrownRenderer::new);
+
+        CuriosRendererRegistry.register(ModdedItems.AYM_EARS.get(), CuriosEarRenderer::new);
+        CuriosRendererRegistry.register(ModdedItems.NOVA_EARS.get(), CuriosEarRenderer::new);
+        CuriosRendererRegistry.register(ModdedItems.HYPNO_NOVA_EARS.get(), CuriosEarRenderer::new);
     }
 }
