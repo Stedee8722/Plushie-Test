@@ -8,10 +8,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.stedee.plushie_test.client.renderer.entity.BlasphemyBrenzyEntityModel;
-import net.stedee.plushie_test.client.renderer.entity.BlasphemyBrenzyEntityRenderer;
-import net.stedee.plushie_test.client.renderer.entity.BlasphemyEntityModel;
-import net.stedee.plushie_test.client.renderer.entity.BlasphemyEntityRenderer;
+import net.stedee.plushie_test.client.renderer.entity.*;
 import net.stedee.plushie_test.entity.ModdedEntities;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
@@ -32,6 +29,7 @@ public class ClientModHandler {
             BlockEntityRenderers.register(ModdedBlockEntities.ALCHEMICAL_TABLE_BLOCK_ENTITY.get(), AlchemicalTableBlockEntityRenderer::new);
             EntityRenderers.register(ModdedEntities.BLASPHEMY_PROJECTILE.get(), BlasphemyEntityRenderer::new);
             EntityRenderers.register(ModdedEntities.BLASPHEMY_BRENZY_PROJECTILE.get(), BlasphemyBrenzyEntityRenderer::new);
+            EntityRenderers.register(ModdedEntities.ELECTROSTORM_GLAIVE_PROJECTILE.get(), ElectrostormGlaiveRenderer::new);
         });
     }
 
@@ -39,5 +37,6 @@ public class ClientModHandler {
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(BlasphemyEntityModel.LAYER_LOCATION, BlasphemyEntityModel::createBodyLayer);
         event.registerLayerDefinition(BlasphemyBrenzyEntityModel.LAYER_LOCATION, BlasphemyBrenzyEntityModel::createBodyLayer);
+        event.registerLayerDefinition(ElectrostormGlaiveModel.LAYER_LOCATION, ElectrostormGlaiveModel::createBodyLayer);
     }
 }

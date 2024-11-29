@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
-import net.stedee.plushie_test.entity.BlasphemyProjectileEntity;
+import net.stedee.plushie_test.entity.custom.BlasphemyProjectileEntity;
 import net.stedee.plushie_test.plushie_test;
 import org.jetbrains.annotations.NotNull;
 

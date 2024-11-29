@@ -38,6 +38,7 @@
     "item.plushie_test.crown_blue": "Blue Crown",
     "item.plushie_test.crown_purple": "Purple Crown",
     "item.plushie_test.crown_red": "Red Crown",
+    "item.plushie_test.electrostorm_glaive": "Electrostorm Glaive",
 
     "item.plushie_test.disc_start_a_cult": "Start a Cult",
     "item.plushie_test.disc_start_a_cult.desc": "River Boy - Start a Cult",
@@ -131,6 +132,7 @@
     "item.plushie_test.crown_blue.tooltip": "The Crown of §bPestilence",
     "item.plushie_test.crown_purple.tooltip": "The Crown of §5War",
     "item.plushie_test.crown_red.tooltip": "The Crown of §4Death",
+    "item.plushie_test.electrostorm_glaive.tooltip": "It Crackles with Dormant Storms",
 
     "block.plushie_test.seamstress_table": "Seamstress Table",
     "block.plushie_test.alchemical_table": "Alchemical Table",
@@ -218,6 +220,7 @@
     "effect.plushie_test.bloodloss": "Bloodloss",
 
     "death.attack.blasphemy_projectile": "%1$s was shown the might of the gungeon by %2$s",
+    "death.attack.glaive_projectile": "%1$s was turned into an ohmic sausage",
 
     "curios.identifier.ears": "Ears"
 }

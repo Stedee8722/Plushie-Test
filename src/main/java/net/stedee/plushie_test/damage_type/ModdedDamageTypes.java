@@ -13,8 +13,16 @@ public class ModdedDamageTypes {
     public static final ResourceKey<DamageType> BLASPHEMY_PROJECTILE =
             ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(plushie_test.MOD_ID, "blasphemy_projectile"));
 
+    public static final ResourceKey<DamageType> GLAIVE_PROJECTILE =
+            ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(plushie_test.MOD_ID, "glaive_projectile"));
+
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     public static DamageSource BlasphemyProjectile(RegistryAccess registryAccess, Entity pAttacker, Entity pTarget) {
         return new DamageSource(registryAccess.registry(Registries.DAMAGE_TYPE).get().getHolderOrThrow(BLASPHEMY_PROJECTILE), pTarget, pAttacker, null);
+    }
+
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
+    public static DamageSource GlaiveProjectile(RegistryAccess registryAccess, Entity pTarget) {
+        return new DamageSource(registryAccess.registry(Registries.DAMAGE_TYPE).get().getHolderOrThrow(GLAIVE_PROJECTILE), pTarget, null, null);
     }
 }

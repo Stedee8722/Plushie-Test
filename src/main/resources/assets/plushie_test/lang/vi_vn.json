@@ -38,6 +38,7 @@
     "item.plushie_test.crown_blue": "Vương miện Xanh dương",
     "item.plushie_test.crown_purple": "Vương miện Tím",
     "item.plushie_test.crown_red": "Vương miện Đỏ",
+    "item.plushie_test.electrostorm_glaive": "Liêm đao Bão điện",
 
     "item.plushie_test.disc_start_a_cult": "Start a Cult",
     "item.plushie_test.disc_start_a_cult.desc": "River Boy - Start a Cult",
@@ -131,6 +132,7 @@
     "item.plushie_test.crown_blue.tooltip": "Vương miện của sự §bDịch bệnh",
     "item.plushie_test.crown_purple.tooltip": "Vương miện của §5Chiến tranh",
     "item.plushie_test.crown_red.tooltip": "Vương miện của §4Tử thần",
+    "item.plushie_test.electrostorm_glaive.tooltip": "Cơn bão tiềm tàng kêu lách tách",
 
     "block.plushie_test.seamstress_table": "Bàn may vá",
     "block.plushie_test.alchemical_table": "Bàn tách rời",
@@ -218,6 +220,7 @@
     "effect.plushie_test.bloodloss": "Chảy máu",
 
     "death.attack.blasphemy_projectile": "%2$s đã cho %1$s thấy được sức mạnh của Gungeon",
+    "death.attack.glaive_projectile": "%1$s bị biến thành xúc xích nướng",
 
     "curios.identifier.ears": "Đôi tai"
 }

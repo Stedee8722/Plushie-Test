@@ -1,10 +1,7 @@
 package net.stedee.plushie_test.item;
 
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -155,56 +152,47 @@ public class ModdedItems {
 
     public static final RegistryObject<MaskItem> MASK_VAPOREON = ITEMS.register("mask_vaporeon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_VAPOREON_MATS, MobEffects.WATER_BREATHING, 40, 0, true));
 
     public static final RegistryObject<MaskItem> MASK_EEVEE = ITEMS.register("mask_eevee",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.RARE), CustomMaskMaterial.MASK_EEVEE_MATS, null, 0, 0, true));
 
     public static final RegistryObject<MaskItem> MASK_ESPEON = ITEMS.register("mask_espeon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_ESPEON_MATS, MobEffects.SLOW_FALLING,100,0, true));
 
     public static final RegistryObject<MaskItem> MASK_FLAREON = ITEMS.register("mask_flareon",
                 () -> new MaskItem(new Item.Properties()
                     .fireResistant()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_FLAREON_MATS, MobEffects.FIRE_RESISTANCE,200, 0, true));
 
     public static final RegistryObject<MaskItem> MASK_GLACEON = ITEMS.register("mask_glaceon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_GLACEON_MATS, MobEffects.JUMP,40, 1, true));
 
     public static final RegistryObject<MaskItem> MASK_LEAFEON = ITEMS.register("mask_leafeon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_LEAFEON_MATS, MobEffects.DIG_SPEED,40, 0, true));
 
     public static final RegistryObject<MaskItem> MASK_JOLTEON = ITEMS.register("mask_jolteon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_JOLTEON_MATS, MobEffects.MOVEMENT_SPEED,40, 1, true));
 
     public static final RegistryObject<MaskItem> MASK_SYLVEON = ITEMS.register("mask_sylveon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_SYLVEON_MATS, MobEffects.REGENERATION,80, 1, false));
 
     public static final RegistryObject<MaskItem> MASK_UMBREON = ITEMS.register("mask_umbreon",
                 () -> new MaskItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC), CustomMaskMaterial.MASK_UMBREON_MATS, MobEffects.NIGHT_VISION,220, 0, true));
 
@@ -342,38 +330,38 @@ public class ModdedItems {
 
     public static final RegistryObject<CrownItem> CROWN_GREEN = ITEMS.register("crown_green",
             () -> new CrownItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC)
                     .fireResistant(), CustomCrownMaterial.CROWN_MATS));
 
     public static final RegistryObject<CrownItem> CROWN_YELLOW = ITEMS.register("crown_yellow",
             () -> new CrownItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC)
                     .fireResistant(), CustomCrownMaterial.CROWN_MATS));
 
     public static final RegistryObject<CrownItem> CROWN_BLUE = ITEMS.register("crown_blue",
             () -> new CrownItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC)
                     .fireResistant(), CustomCrownMaterial.CROWN_MATS));
 
     public static final RegistryObject<CrownItem> CROWN_PURPLE = ITEMS.register("crown_purple",
             () -> new CrownItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC)
                     .fireResistant(), CustomCrownMaterial.CROWN_MATS));
 
     public static final RegistryObject<CrownItem> CROWN_RED = ITEMS.register("crown_red",
             () -> new CrownItem(new Item.Properties()
-                    .stacksTo(1)
                     .defaultDurability(275)
                     .rarity(Rarity.EPIC)
                     .fireResistant(), CustomCrownMaterial.CROWN_MATS));
+
+    public static final RegistryObject<GlaiveItem> ELECTROSTORM_GLAIVE = ITEMS.register("electrostorm_glaive",
+            () -> new GlaiveItem(new Item.Properties()
+                    .defaultDurability(250)
+                    .rarity(Rarity.EPIC)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

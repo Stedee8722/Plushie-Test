@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.entity;
+package net.stedee.plushie_test.entity.custom;
 
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.particles.ParticleOptions;

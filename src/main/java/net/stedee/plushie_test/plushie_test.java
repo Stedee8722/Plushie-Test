@@ -120,6 +120,7 @@ public class plushie_test {
             event.accept(ModdedItems.MOON_STAFF);
             event.accept(ModdedItems.BLASPHEMY);
             event.accept(ModdedItems.BLASPHEMY_BRENZY);
+            event.accept(ModdedItems.ELECTROSTORM_GLAIVE);
         }
         else if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModdedItems.DISC_START_A_CULT);

@@ -3,7 +3,6 @@ package net.stedee.plushie_test.entity.custom;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.stedee.plushie_test.entity.BlasphemyProjectileEntity;
 import net.stedee.plushie_test.entity.ModdedEntities;
 
 public class BlasphemyBrenzyProjectile extends BlasphemyProjectileEntity {
