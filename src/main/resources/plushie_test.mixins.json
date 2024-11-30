@@ -7,6 +7,7 @@
     "AnvilMenuMixin",
     "ItemEntityMixin",
     "ItemMixin",
+    "ITridentAccessor",
     "LightningBoltMixin",
     "PlayerMixin"
   ],

@@ -1,12 +1,17 @@
 package net.stedee.plushie_test.event;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.stedee.plushie_test.mixin.ITridentAccessor;
+import net.stedee.plushie_test.entity.custom.ThrownGlaive;
 import net.stedee.plushie_test.item.ModdedItems;
 
 import static net.stedee.plushie_test.plushie_test.MOD_ID;
@@ -26,6 +31,16 @@ public class GlaiveReplaceTridentEvent {
                     inventory.setItem(i, newItem);
                 }
             }
+        }
+        if (event.getEntity() instanceof ThrownTrident trident) {
+            ItemStack newItem = new ItemStack(ModdedItems.ELECTROSTORM_GLAIVE.get(), 1);
+            CompoundTag tag = ((ITridentAccessor) trident).getTridentItem().getTag();
+            assert tag != null;
+            newItem.setTag(tag.copy());
+            ThrownGlaive entity = new ThrownGlaive(trident.level(), (LivingEntity) trident.getOwner(), newItem);
+            entity.copyPosition(trident);
+            trident.level().addFreshEntity(entity);
+            trident.discard();
         }
     }
 }
