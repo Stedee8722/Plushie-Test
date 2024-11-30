@@ -1,6 +1,7 @@
 package net.stedee.plushie_test.event;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -28,6 +29,14 @@ public class GlaiveReplaceTridentEvent {
                     ItemStack newItem = new ItemStack(ModdedItems.ELECTROSTORM_GLAIVE.get(), 1);
                     assert item.getTag() != null;
                     newItem.setTag(item.getTag().copy());
+                    ListTag enchantmentTags = newItem.getEnchantmentTags();
+                    for (int j = 0; j < enchantmentTags.size(); j++) {
+                        CompoundTag enchantmentTag = enchantmentTags.getCompound(j);
+                        if (enchantmentTag.getString("id").contains("channeling")) {
+                            enchantmentTags.remove(j);
+                            break;
+                        }
+                    }
                     inventory.setItem(i, newItem);
                 }
             }
@@ -37,6 +46,13 @@ public class GlaiveReplaceTridentEvent {
             CompoundTag tag = ((ITridentAccessor) trident).getTridentItem().getTag();
             assert tag != null;
             newItem.setTag(tag.copy());
+            ListTag enchantmentTags = newItem.getEnchantmentTags();
+            for (int i = 0; i < enchantmentTags.size(); i++) {
+                CompoundTag enchantmentTag = enchantmentTags.getCompound(i);
+                if (enchantmentTag.getString("id").contains("channeling")) {
+                    return;
+                }
+            }
             ThrownGlaive entity = new ThrownGlaive(trident.level(), (LivingEntity) trident.getOwner(), newItem);
             entity.copyPosition(trident);
             trident.level().addFreshEntity(entity);
