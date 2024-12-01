@@ -25,7 +25,7 @@ public class ModdedEntities {
 
     public static final RegistryObject<EntityType<ThrownGlaive>> ELECTROSTORM_GLAIVE_PROJECTILE =
             ENTITY_TYPES.register("electrostorm_glaive_projectile", () -> EntityType.Builder.<ThrownGlaive>of(ThrownGlaive::new, MobCategory.MISC)
-                    .sized(0.5F, 0.5F).build("electrostorm_glaive_projectile"));
+                    .sized(0.7F, 0.7F).build("electrostorm_glaive_projectile"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -148,16 +148,14 @@ public class ThrownGlaive extends AbstractArrow {
         float $$8 = 1.0F;
         if (this.level() instanceof ServerLevel) {
             BlockPos $$9 = $$1.blockPosition();
-            if (this.level().canSeeSky($$9)) {
-                LightningBolt $$10 = EntityType.LIGHTNING_BOLT.create(this.level());
-                if ($$10 != null) {
-                    $$10.moveTo(Vec3.atBottomCenterOf($$9));
-                    $$10.setCause($$4 instanceof ServerPlayer ? (ServerPlayer)$$4 : null);
-                    ((IThunderBolt) $$10).plushieTest$setCauseItem(this.glaiveItem);
-                    this.level().addFreshEntity($$10);
-                    $$6 = SoundEvents.TRIDENT_THUNDER;
-                    $$8 = 5.0F;
-                }
+            LightningBolt $$10 = EntityType.LIGHTNING_BOLT.create(this.level());
+            if ($$10 != null) {
+                $$10.moveTo(Vec3.atBottomCenterOf($$9));
+                $$10.setCause($$4 instanceof ServerPlayer ? (ServerPlayer)$$4 : null);
+                ((IThunderBolt) $$10).plushieTest$setCauseItem(this.glaiveItem);
+                this.level().addFreshEntity($$10);
+                $$6 = SoundEvents.TRIDENT_THUNDER;
+                $$8 = 5.0F;
             }
         }
 
