@@ -50,7 +50,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         ItemStack stack_out1 = result.get(0);
         ItemStack stack_out2 = result.get(1);
 
-        if (stack.isEmpty() && stack_out1.isEmpty())
+        if (stack.isEmpty() && stack_out1.isEmpty() && stack_out2.isEmpty())
             return;
 
         Level level = blockEntity.getLevel();
