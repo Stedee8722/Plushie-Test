@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.inventory.custom.Alchemical;
+package net.stedee.plushie_test.inventory.custom.alchemical;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;

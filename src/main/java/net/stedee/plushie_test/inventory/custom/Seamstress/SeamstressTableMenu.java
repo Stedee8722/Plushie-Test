@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.inventory.custom.Seamstress;
+package net.stedee.plushie_test.inventory.custom.seamstress;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -64,8 +64,6 @@ public class SeamstressTableMenu extends AbstractContainerMenu implements Contai
                 this.container.setItem(this.getContainerSlot(), pStack);
                 this.setChanged();
                 slotsChanged(inventory);
-                broadcastChanges();
-                broadcastFullState();
             }
 
             @Override

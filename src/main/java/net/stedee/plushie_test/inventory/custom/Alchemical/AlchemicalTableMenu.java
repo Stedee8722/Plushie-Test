@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.inventory.custom.Alchemical;
+package net.stedee.plushie_test.inventory.custom.alchemical;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -353,6 +353,12 @@ public class AlchemicalTableMenu extends AbstractContainerMenu implements Contai
                 }
 
                 this.setCarried(ItemStack.EMPTY);
+            }
+            if (!resultSlots.getItem(0).isEmpty() && resultSlots.getItem(1).isEmpty()) {
+                this.quickMoveStack(player, 37);
+            }
+            if (resultSlots.getItem(0).isEmpty() && !resultSlots.getItem(1).isEmpty()) {
+                this.quickMoveStack(player, 38);
             }
         }
     }

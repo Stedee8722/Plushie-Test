@@ -1,5 +1,6 @@
 package net.stedee.plushie_test.block.custom;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -173,7 +174,7 @@ public class AlchemicalTableBlock extends Block implements SimpleWaterloggedBloc
                 if (alchemicalTableBlock.inventory.isEmpty()) {
                     dropItems(alchemicalTableBlock.getLastResult(), pLevel, pPos);
                 }
-                dropItems(alchemicalTableBlock.inventory, pLevel, pPos);
+                dropItems(Collections.singletonList(alchemicalTableBlock.inventory), pLevel, pPos);
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
             }
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);

@@ -1,4 +1,4 @@
-package net.stedee.plushie_test.inventory.custom.Seamstress;
+package net.stedee.plushie_test.inventory.custom.seamstress;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AbstractContainerMenu;

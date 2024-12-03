@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
@@ -17,13 +16,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
-import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
+import net.stedee.plushie_test.inventory.custom.alchemical.AlchemicalTableMenu;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
 public class AlchemicalTableBlockEntity extends BaseContainerBlockEntity {
-    public final NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
+    public ItemStack inventory = ItemStack.EMPTY;
     private NonNullList<ItemStack> lastResult = NonNullList.withSize(2, ItemStack.EMPTY);
 
     public AlchemicalTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
@@ -45,37 +44,19 @@ public class AlchemicalTableBlockEntity extends BaseContainerBlockEntity {
     @Override
     public void saveAdditional(@NotNull CompoundTag tag) {
         super.saveAdditional(tag);
-        ContainerHelper.saveAllItems(tag, this.inventory, true);
-        ListTag $$3 = new ListTag();
-
-        for(int $$4 = 0; $$4 < this.lastResult.size(); ++$$4) {
-            ItemStack $$5 = this.lastResult.get($$4);
-            if (!$$5.isEmpty()) {
-                CompoundTag $$6 = new CompoundTag();
-                $$6.putByte("Slot", (byte)$$4);
-                $$5.save($$6);
-                $$3.add($$6);
-            }
-        }
-        tag.put("LastResults", $$3);
-
+        ContainerHelper.saveAllItems(tag, this.lastResult, true);
+        CompoundTag compoundTag = new CompoundTag();
+        this.inventory.save(compoundTag);
+        tag.put("Inventory", compoundTag);
     }
 
     @SuppressWarnings("null")
     @Override
     public void load(@NotNull CompoundTag tag) {
         super.load(tag);
-        this.inventory.clear();
-        ContainerHelper.loadAllItems(tag, this.inventory);
-        ListTag $$2 = tag.getList("LastResults", 10);
-
-        for(int $$3 = 0; $$3 < $$2.size(); ++$$3) {
-            CompoundTag $$4 = $$2.getCompound($$3);
-            int $$5 = $$4.getByte("Slot") & 255;
-            if ($$5 < this.lastResult.size()) {
-                this.lastResult.set($$5, ItemStack.of($$4));
-            }
-        }
+        this.lastResult.clear();
+        this.inventory = tag.contains("Inventory") ? ItemStack.of(tag.getCompound("Inventory")) : ItemStack.EMPTY;
+        ContainerHelper.loadAllItems(tag, this.lastResult);
     }
 
     @Override
@@ -91,27 +72,22 @@ public class AlchemicalTableBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     public int getContainerSize() {
-        return this.inventory.size();
+        return 1;
     }
 
     @Override
     public boolean isEmpty() {
-        for (ItemStack itemstack : this.inventory) {
-            if (!itemstack.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
+        return inventory.isEmpty();
     }
 
     @Override
     public @NotNull ItemStack getItem(int index) {
-        return index >= 0 && index < this.inventory.size() ? this.inventory.get(index) : ItemStack.EMPTY;
+        return index == 0 ? this.inventory : ItemStack.EMPTY;
     }
 
     @Override
     public @NotNull ItemStack removeItem(int index, int count) {
-        ItemStack itemStack = ContainerHelper.removeItem(this.inventory, index, count);
+        ItemStack itemStack = index == 0 && !this.inventory.isEmpty() && count > 0 ? this.inventory.split(count) : ItemStack.EMPTY;
         if (!itemStack.isEmpty()) {
             // vanilla is fine, but crafting tweaks mod doesn't update the client properly without this
             this.setChanged();
@@ -121,7 +97,7 @@ public class AlchemicalTableBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     public @NotNull ItemStack removeItemNoUpdate(int index) {
-        ItemStack itemStack = ContainerHelper.takeItem(this.inventory, index);
+        ItemStack itemStack = index == 0 ? this.inventory = ItemStack.EMPTY : ItemStack.EMPTY;
         if (!itemStack.isEmpty()) {
             // vanilla is fine, but crafting tweaks mod doesn't update the client properly without this
             this.setChanged();
@@ -131,8 +107,8 @@ public class AlchemicalTableBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     public void setItem(int index, @NotNull ItemStack stack) {
-        if (index >= 0 && index < this.inventory.size()) {
-            this.inventory.set(index, stack);
+        if (index == 0) {
+            this.inventory = stack;
             // vanilla is fine, but crafting tweaks mod doesn't update the client properly without this
             this.setChanged();
         }
@@ -149,7 +125,7 @@ public class AlchemicalTableBlockEntity extends BaseContainerBlockEntity {
 
     @Override
     public void clearContent() {
-        this.inventory.clear();
+        this.inventory = ItemStack.EMPTY;
     }
 
     public NonNullList<ItemStack> getLastResult() {

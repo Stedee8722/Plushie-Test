@@ -8,12 +8,13 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.stedee.plushie_test.plushie_test;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
-import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
+import net.stedee.plushie_test.inventory.custom.seamstress.SeamstressTableMenu;
+import org.jetbrains.annotations.NotNull;
 
 public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTableMenu> {
 
     private final ResourceLocation GUI = new ResourceLocation(plushie_test.MOD_ID, "textures/gui/seamstress_table_gui.png");
-    private SeamstressTableMenu pMenu;
+    private final SeamstressTableMenu pMenu;
     private SeamstressTableBlockEntity blockEntity;
 
     public SeamstressTableScreen(SeamstressTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
@@ -37,11 +38,10 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
         this.topPos = (this.height - this.imageHeight) / 2;
 
         BlockEntity be = this.pMenu.tileEntity;
-        if(be instanceof SeamstressTableBlockEntity blockEntity) {
-            this.blockEntity = blockEntity;
+        if(be instanceof SeamstressTableBlockEntity tileEntity) {
+            this.blockEntity = tileEntity;
         } else {
-            plushie_test.LOGGER.error("BlockEntity at %s is not of type!\n", this.blockEntity.getBlockPos()); // debug
-            return;
+            plushie_test.LOGGER.error("BlockEntity at {} is not of type!\n", this.blockEntity.getBlockPos()); // debug
         }
     }
 
@@ -53,7 +53,7 @@ public class SeamstressTableScreen extends AbstractContainerScreen<SeamstressTab
 
     @SuppressWarnings("null")
     @Override
-    public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
+    public void render(@NotNull GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
         renderBackground(pGuiGraphics); // background first
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         renderTooltip(pGuiGraphics, pMouseX, pMouseY);

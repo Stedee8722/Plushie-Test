@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
-import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
+import net.stedee.plushie_test.inventory.custom.seamstress.SeamstressTableMenu;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -48,7 +48,7 @@ public class SeamstressTableBlockEntity extends BaseContainerBlockEntity {
         if (!this.lastResult.isEmpty()) {
             CompoundTag compoundTag = new CompoundTag();
             this.lastResult.save(compoundTag);
-            tag.put("last_result", compoundTag);
+            tag.put("LastResult", compoundTag);
         }
     }
 
@@ -58,8 +58,8 @@ public class SeamstressTableBlockEntity extends BaseContainerBlockEntity {
         super.load(tag);
         this.inventory.clear();
         ContainerHelper.loadAllItems(tag, this.inventory);
-        if (tag.contains("last_result")) {
-            this.lastResult = ItemStack.of(tag.getCompound("last_result"));
+        if (tag.contains("LastResult")) {
+            this.lastResult = ItemStack.of(tag.getCompound("LastResult"));
         } else {
             this.lastResult = ItemStack.EMPTY;
         }

@@ -7,8 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stedee.plushie_test.plushie_test;
-import net.stedee.plushie_test.inventory.custom.Alchemical.AlchemicalTableMenu;
-import net.stedee.plushie_test.inventory.custom.Seamstress.SeamstressTableMenu;
+import net.stedee.plushie_test.inventory.custom.alchemical.AlchemicalTableMenu;
+import net.stedee.plushie_test.inventory.custom.seamstress.SeamstressTableMenu;
 
 public class ModdedMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = 
