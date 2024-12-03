@@ -95,6 +95,9 @@ public class AlchemicalTableMenu extends AbstractContainerMenu implements Contai
         this.addSlot(new AlchemicalOutputSlot(this, this.craftSlots, this.resultSlots, 0, 55, 59, player));
         this.addSlot(new AlchemicalOutputSlot(this, this.craftSlots, this.resultSlots, 1, 104, 59, player));
 
+        this.resultSlots.setItem(0, tileEntity.getLastResult().get(0));
+        this.resultSlots.setItem(1, tileEntity.getLastResult().get(1));
+
         this.addSlotListener(this);
         slotsChanged(inventory);
     }
@@ -354,12 +357,12 @@ public class AlchemicalTableMenu extends AbstractContainerMenu implements Contai
 
                 this.setCarried(ItemStack.EMPTY);
             }
-            if (!resultSlots.getItem(0).isEmpty() && resultSlots.getItem(1).isEmpty()) {
-                this.quickMoveStack(player, 37);
-            }
-            if (resultSlots.getItem(0).isEmpty() && !resultSlots.getItem(1).isEmpty()) {
-                this.quickMoveStack(player, 38);
-            }
+            //if (!resultSlots.getItem(0).isEmpty() && resultSlots.getItem(1).isEmpty()) {
+            //    this.quickMoveStack(player, 37);
+            //}
+            //if (resultSlots.getItem(0).isEmpty() && !resultSlots.getItem(1).isEmpty()) {
+            //    this.quickMoveStack(player, 38);
+            //}
         }
     }
 }
