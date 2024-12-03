@@ -1,65 +1,61 @@
 package net.stedee.plushie_test.inventory.custom.Alchemical;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.CraftingContainer;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.NetworkDirection;
-import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.inventory.custom.MultipleResultItemContainer;
-import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
+import net.stedee.plushie_test.inventory.custom.container.StationContainer;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
-import net.stedee.plushie_test.network.PacketHandler;
-import net.stedee.plushie_test.network.S2CLastRecipePacket;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AlchemicalTableMenu extends AbstractContainerMenu {
-
-    private final MultipleResultItemContainer craftResult;
+public class AlchemicalTableMenu extends AbstractContainerMenu implements ContainerListener {
+    private final StationContainer craftSlots;
+    private final MultipleResultItemContainer resultSlots;
     private final ContainerLevelAccess access;
     private final Player player;
-    public SeamstressRecipe lastRecipe;
-    private final Level world;
+    private final Consumer<NonNullList<ItemStack>> containerData;
     public AlchemicalTableBlockEntity tileEntity;
-    public final TableInventoryPersistent craftMatrix;
-    protected SeamstressRecipe lastLastRecipe;
 
-    public AlchemicalTableMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+    public AlchemicalTableMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+        this(i, inventory, inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
     }
 
-    @SuppressWarnings("null")
-    public AlchemicalTableMenu(int id, Inventory inv, BlockEntity entity) {
+    public AlchemicalTableMenu(int id, Inventory inventory, BlockEntity entity) {
+        this(id, entity, inventory, new SimpleContainer(2), ContainerLevelAccess.NULL, stack -> {});
+    }
+
+    public AlchemicalTableMenu(int id, BlockEntity entity, Inventory inventory, Container container, ContainerLevelAccess access, Consumer<NonNullList<ItemStack>> containerData) {
         super(ModdedMenuTypes.ALCHEMICAL_MENU_TYPE.get(), id);
-        this.player = inv.player;
-        this.world = player.level();
+        this.craftSlots = new StationContainer(container, this);
+        this.resultSlots = new MultipleResultItemContainer();
+        this.access = access;
+        this.player = inventory.player;
+        this.containerData = containerData;
+
         if (entity instanceof AlchemicalTableBlockEntity be) {
             this.tileEntity = be;
         }
@@ -67,22 +63,18 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Incorrect block entity class (%s) passed into AlchemicalTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 1, 1);
-        this.craftResult = tileEntity.craftResult;
-        this.access = ContainerLevelAccess.create(Objects.requireNonNull(tileEntity.getLevel()), tileEntity.getBlockPos());
-
         layoutPlayerInventorySlots(player.getInventory(), 8, 94);
 
-        this.addSlot(new Slot(craftMatrix, 0, 80, 19) {
+        this.addSlot(new Slot(craftSlots, 0, 80, 19) {
             @Override
             public void setChanged() {
-                slotsChanged(inv);
+                slotsChanged(inventory);
                 super.setChanged();
             }
 
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                if (!craftResult.isEmpty() && craftMatrix.isEmpty()) {
+                if (!resultSlots.isEmpty() && !(!resultSlots.getItem(0).isEmpty() && !resultSlots.getItem(1).isEmpty())) {
                     quickMoveStack(player, 37);
                     quickMoveStack(player, 38);
                 }
@@ -100,9 +92,11 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         //        return true;
         //    }
         //});
-        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, this.craftResult, 0, 55, 59, player));
-        this.addSlot(new AlchemicalOutputSlot(this, this.craftMatrix, this.craftResult, 1, 104, 59, player));
-        slotsChanged(craftMatrix);
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftSlots, this.resultSlots, 0, 55, 59, player));
+        this.addSlot(new AlchemicalOutputSlot(this, this.craftSlots, this.resultSlots, 1, 104, 59, player));
+
+        this.addSlotListener(this);
+        slotsChanged(inventory);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -122,6 +116,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
 
     // THIS YOU HAVE TO DEFINE!
     private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+
     @SuppressWarnings("null")
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
@@ -143,7 +138,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
                 return ItemStack.EMPTY;
             }
         } else {
-            System.out.println("Invalid slotIndex: " + pIndex + "\n check 1 " + (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) + "\ncheck 2 " + (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT));
+            System.out.println("Invalid slotIndex: " + pIndex);
             return ItemStack.EMPTY;
         }
         // If stack size == 0 (the entire stack was moved) set slot contents to null
@@ -159,7 +154,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return stillValid(this.access, player, ModdedBlocks.ALCHEMICAL_TABLE.get());
+        return this.craftSlots.stillValid(player);
     }
 
     private int addSlotRange(Container playerInventory, int index, int x, int y, int amount, int dx) {
@@ -188,85 +183,58 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
     }
 
     @SuppressWarnings("null")
+    public static Recipe<?> searchRecipe(ItemStack input, RecipeManager recipeManager) {
+        Item inputItem = input.getItem();
+        Optional<Recipe<?>> optionalRecipe = recipeManager.getRecipes().stream()
+                .filter(recipe -> recipe.getType().equals(ModdedRecipes.SEAMSTRESS_RECIPE.get()))
+                .filter(recipe -> recipe.getResultItem(RegistryAccess.EMPTY).getItem() == inputItem
+                        && !recipe.getIngredients().isEmpty())
+                .findAny();
+        return optionalRecipe.orElse(null);
+    }
+
     @Override
-    public void slotsChanged(@NotNull Container pContainer) {
-        world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
-        tileEntity.setChanged();
-        this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
+    public void slotsChanged(@NotNull Container pInventory) {
+        this.access.execute((p_39386_, p_39387_) -> {
+            slotChangedCraftingGrid(this, p_39386_, this.player, this.craftSlots, this.resultSlots);
+            NonNullList<ItemStack> list = NonNullList.withSize(2, ItemStack.EMPTY);
+            list.set(0, this.resultSlots.getItem(0));
+            list.set(1, this.resultSlots.getItem(1));
+            this.containerData.accept(list);
+        });
+        if (tileEntity.getLevel() != null) {
+            tileEntity.getLevel().sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 3);
+        }
     }
 
-
-    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, Container result) {
-        ItemStack itemstack_1 = ItemStack.EMPTY;
-        ItemStack itemstack_2 = ItemStack.EMPTY;
-
-        // if the recipe is no longer valid, update it
-        if (lastRecipe == null || !lastRecipe.getResultItem(RegistryAccess.EMPTY).is(inv.getItem(0).getItem())) {
-            lastRecipe = (SeamstressRecipe) searchRecipe(inv.getItem(0), world.getRecipeManager());
-        }
-
-        // if we have a recipe, fetch its result
-        if (lastRecipe != null) {
-            itemstack_1 = lastRecipe.getInputItem(0);
-            itemstack_2 = lastRecipe.getInputItem(1);
-            this.craftResult.setRecipeUsed(lastRecipe);
-        }
-        // set the slot on both sides, client is for display/so the client knows about the recipe
-        result.setItem(0, itemstack_1);
-        result.setItem(1, itemstack_2);
-
-        // update recipe on server
-        if (!world.isClientSide) {
-            ServerPlayer entityplayermp = (ServerPlayer) player;
-
-            // we need to sync to all players currently in the inventory
-            List<ServerPlayer> relevantPlayers = getAllPlayersWithThisContainerOpen(this, entityplayermp.serverLevel());
-
-            // sync result to all serverside inventories to prevent duplications/recipes being blocked
-            // need to do this every time as otherwise taking items of the result causes desync
-            syncResultToAllOpenWindows(itemstack_1, itemstack_2, relevantPlayers);
-
-            // if the recipe changed, update clients last recipe
-            // this also updates the client side display when the recipe is added
-            if (lastLastRecipe != lastRecipe) {
-                syncRecipeToAllOpenWindows(lastRecipe, relevantPlayers);
-                lastLastRecipe = lastRecipe;
+    protected void slotChangedCraftingGrid(AbstractContainerMenu pMenu, @NotNull Level pLevel, Player pPlayer, StationContainer pContainer, MultipleResultItemContainer pResult) {
+        if (!pLevel.isClientSide) {
+            ServerPlayer $$5 = (ServerPlayer)pPlayer;
+            ItemStack $$6 = !resultSlots.getItem(0).isEmpty() && resultSlots.getItem(1).isEmpty() ? resultSlots.getItem(0) : ItemStack.EMPTY;
+            ItemStack $$8 = !resultSlots.getItem(1).isEmpty() && !resultSlots.getItem(0).isEmpty() ? resultSlots.getItem(1) : ItemStack.EMPTY;
+            SeamstressRecipe $$7 = (SeamstressRecipe) searchRecipe(pContainer.getItem(0), pLevel.getRecipeManager());
+            if ($$7 != null) {
+                if (pResult.setRecipeUsed(pLevel, $$5, $$7)) {
+                    ItemStack $$9 = $$7.getInputItem(0);
+                    if ($$9.isItemEnabled(pLevel.enabledFeatures())) {
+                        $$6 = $$9;
+                    }
+                }if (pResult.setRecipeUsed(pLevel, $$5, $$7)) {
+                    ItemStack $$10 = $$7.getInputItem(1);
+                    if ($$10.isItemEnabled(pLevel.enabledFeatures())) {
+                        $$8 = $$10;
+                    }
+                }
             }
+
+            pResult.setItem(0, $$6);
+            pMenu.setRemoteSlot(37, $$6);
+            $$5.connection.send(new ClientboundContainerSetSlotPacket(pMenu.containerId, pMenu.incrementStateId(), 37, $$6));
+
+            pResult.setItem(1, $$8);
+            pMenu.setRemoteSlot(38, $$8);
+            $$5.connection.send(new ClientboundContainerSetSlotPacket(pMenu.containerId, pMenu.incrementStateId(), 38, $$8));
         }
-    }
-    
-    private void syncRecipeToAllOpenWindows(final SeamstressRecipe lastRecipe, List<ServerPlayer> players) {
-        players.forEach(otherPlayer -> {
-            // safe cast since hasSameContainerOpen does class checks
-            ((AlchemicalTableMenu) otherPlayer.containerMenu).lastRecipe = lastRecipe;
-            PacketHandler.INSTANCE.sendTo(new S2CLastRecipePacket(lastRecipe), otherPlayer.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-        });
-    }
-
-    private void syncResultToAllOpenWindows(final ItemStack stack_1, final ItemStack stack_2, List<ServerPlayer> players) {
-        this.craftMatrix.setDoNotCallUpdates(true);
-        players.forEach(otherPlayer -> {
-            otherPlayer.containerMenu.setItem(37, this.getStateId(), stack_1);
-            otherPlayer.containerMenu.setItem(38, this.getStateId(), stack_2);
-            //otherPlayer.connection.sendPacket(new SPacketSetSlot(otherPlayer.openContainer.windowId, SLOT_RESULT, stack));
-        });
-        this.craftMatrix.setDoNotCallUpdates(false);
-    }
-
-    public List<ServerPlayer> getAllPlayersWithThisContainerOpen(AlchemicalTableMenu container, ServerLevel server) {
-        return server.players().stream()
-                .filter(player -> hasSameContainerOpen(container, player))
-                .collect(Collectors.toList());
-    }
-
-    private boolean hasSameContainerOpen(AlchemicalTableMenu container, ServerPlayer playerToCheck) {
-        return playerToCheck instanceof ServerPlayer &&
-                playerToCheck.containerMenu.getClass().isAssignableFrom(container.getClass()) &&
-                this.sameGui((AlchemicalTableMenu) playerToCheck.containerMenu);
-    }
-
-    public boolean sameGui(AlchemicalTableMenu otherContainer) {
-        return this.tileEntity == otherContainer.tileEntity;
     }
 
     @Override
@@ -345,28 +313,47 @@ public class AlchemicalTableMenu extends AbstractContainerMenu {
         return didSomething;
     }
 
+    @Override
+    public @NotNull MenuType<?> getType() {
+        return ModdedMenuTypes.ALCHEMICAL_MENU_TYPE.get();
+    }
+
     @SuppressWarnings("null")
     @Override
     public boolean canTakeItemForPickAll(@NotNull ItemStack stack, Slot slot) {
-        return slot.container != craftResult && super.canTakeItemForPickAll(stack, slot);
+        return slot.container != resultSlots && super.canTakeItemForPickAll(stack, slot);
     }
 
-    public void updateLastRecipeFromServer(SeamstressRecipe r) {
-        lastRecipe = r;
-        // if no recipe, set to empty to prevent ghost outputs when another player grabs the result
-        this.craftResult.setItem(0, r != null ? r.getInputItem(0) : ItemStack.EMPTY);
-        this.craftResult.setItem(1, r != null ? r.getInputItem(1) : ItemStack.EMPTY);
+    @Override
+    public void slotChanged(@NotNull AbstractContainerMenu abstractContainerMenu, int i, @NotNull ItemStack itemStack) {
+        if (abstractContainerMenu == this) {
+            this.access.execute((Level level, BlockPos blockPos) -> {
+                if (i >= 1 && i < 10) {
+                    this.slotsChanged(this.craftSlots);
+                }
+            });
+        }
     }
 
-    @SuppressWarnings("null")
-    @Nullable
-	public static Recipe<?> searchRecipe(ItemStack input, RecipeManager recipeManager) {
-		Item inputItem = input.getItem();
-		Optional<Recipe<?>> optionalRecipe = recipeManager.getRecipes().stream()
-				.filter(recipe -> recipe.getType().equals(ModdedRecipes.SEAMSTRESS_RECIPE.get()))
-				.filter(recipe -> recipe.getResultItem(RegistryAccess.EMPTY).getItem() == inputItem
-						&& !recipe.getIngredients().isEmpty())
-				.findAny();
-		return optionalRecipe.orElse(null);
-	}
+    @Override
+    public void dataChanged(@NotNull AbstractContainerMenu abstractContainerMenu, int i, int i1) {
+
+    }
+
+    @Override
+    public void removed(@NotNull Player player) {
+        // copied from container base class
+        if (player instanceof ServerPlayer) {
+            ItemStack itemstack = this.getCarried();
+            if (!itemstack.isEmpty()) {
+                if (player.isAlive() && !((ServerPlayer) player).hasDisconnected()) {
+                    player.getInventory().placeItemBackInInventory(itemstack);
+                } else {
+                    player.drop(itemstack, false);
+                }
+
+                this.setCarried(ItemStack.EMPTY);
+            }
+        }
+    }
 }

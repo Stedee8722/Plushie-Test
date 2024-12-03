@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import java.util.stream.IntStream;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -40,11 +38,11 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraft.world.Containers;
-import org.jetbrains.annotations.NotNull;;
+import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("deprecation")
 public class SeamstressTableBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
 
     public static final Component CONTAINER_TITLE = Component.translatable("container.plushie_test.seamstress_table");
@@ -61,7 +59,7 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
     @SuppressWarnings("null")
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip,
-            TooltipFlag pFlag) {
+                                @NotNull TooltipFlag pFlag) {
         pTooltip.add(Component.translatable(pStack.getDescriptionId() + ".tooltip"));
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }
@@ -84,19 +82,19 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
     
     @SuppressWarnings("null")
     @Override
-    public boolean useShapeForLightOcclusion(BlockState pState) {
+    public boolean useShapeForLightOcclusion(@NotNull BlockState pState) {
         return true;
     }
 
     @SuppressWarnings("null")
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return SEAMSTRESS_TABLE_SHAPE;
     }
 
     @SuppressWarnings("null")
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
         return RenderShape.MODEL;
     }
 
@@ -119,12 +117,12 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
 
     @SuppressWarnings({ "deprecation", "null" })
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState,
-            LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+    public @NotNull BlockState updateShape(@NotNull BlockState pState, @NotNull Direction pDirection, @NotNull BlockState pNeighborState,
+                                           @NotNull LevelAccessor pLevel, @NotNull BlockPos pCurrentPos, @NotNull BlockPos pNeighborPos) {
         if ((pDirection == Direction.DOWN) && !this.canSurvive(pState, pLevel, pCurrentPos)) {
             return Blocks.AIR.defaultBlockState();
         } else {
-            if ((boolean) pState.getValue(WATERLOGGED)) {
+            if (pState.getValue(WATERLOGGED)) {
                 pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
             }
 
@@ -134,21 +132,21 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
 
     @SuppressWarnings("null")
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+    public boolean canSurvive(@NotNull BlockState pState, @NotNull LevelReader pLevel, BlockPos pPos) {
         return canSupportCenter(pLevel, pPos.below(), Direction.UP);
     }
 
     @SuppressWarnings("null")
     @Override
     @Nullable
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new SeamstressTableBlockEntity(pPos, pState);
     }
 
     @SuppressWarnings("null")
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
-            BlockHitResult pHit) {
+    public @NotNull InteractionResult use(@NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer, @NotNull InteractionHand pHand,
+                                          @NotNull BlockHitResult pHit) {
         if (!pLevel.isClientSide) {
             BlockEntity tEntity = pLevel.getBlockEntity(pPos);
             if (tEntity instanceof MenuProvider) {
@@ -161,14 +159,14 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
     @SuppressWarnings("null")
     @Override
     @Nullable
-    public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
+    public MenuProvider getMenuProvider(@NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos) {
         BlockEntity be = pLevel.getBlockEntity(pPos);
         return be instanceof SeamstressTableBlockEntity ? (MenuProvider) be : null;
     }
 
     @SuppressWarnings({ "null", "deprecation" })
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+    public void onRemove(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof SeamstressTableBlockEntity seamstressTableBlock) {
@@ -179,13 +177,11 @@ public class SeamstressTableBlock extends Block implements SimpleWaterloggedBloc
         }
     }
 
-    public static void dropItems(IItemHandler inv, Level pLevel, BlockPos pos) {
-        IntStream.range(0, 2).mapToObj(inv::getStackInSlot).filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
+    public static void dropItems(List<ItemStack> inv, Level pLevel, BlockPos pos) {
+        inv.stream().filter(s -> !s.isEmpty()).forEach(stack -> Containers.dropItemStack(pLevel, pos.getX(), pos.getY(), pos.getZ(), stack));
     }
 
     public @NotNull FluidState getFluidState(BlockState $$0) {
-        return (Boolean)$$0.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState($$0);
+        return $$0.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState($$0);
     }
-
-    //inv.getSlots()
 }

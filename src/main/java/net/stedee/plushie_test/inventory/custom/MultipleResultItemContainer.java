@@ -39,7 +39,9 @@ public class MultipleResultItemContainer implements Container, RecipeHolder {
 
     @Override
     public @NotNull ItemStack removeItem(int pSlot, int pAmount) {
-        return ContainerHelper.takeItem(this.itemStacks, pSlot);
+        ItemStack item = ContainerHelper.takeItem(this.itemStacks, pSlot);
+        this.setChanged();
+        return item;
     }
 
     @Override
@@ -50,11 +52,11 @@ public class MultipleResultItemContainer implements Container, RecipeHolder {
     @Override
     public void setItem(int pSlot, @NotNull ItemStack pStack) {
         this.itemStacks.set(pSlot, pStack);
+        this.setChanged();
     }
 
     @Override
     public void setChanged() {
-
     }
 
     @Override

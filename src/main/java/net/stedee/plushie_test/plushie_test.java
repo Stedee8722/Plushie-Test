@@ -31,7 +31,6 @@ import net.stedee.plushie_test.inventory.ModdedMenuTypes;
 import net.stedee.plushie_test.item.ModdedCreativeTabs;
 import net.stedee.plushie_test.item.ModdedItems;
 import net.stedee.plushie_test.loot.ModdedLootModifiers;
-import net.stedee.plushie_test.network.PacketHandler;
 import net.stedee.plushie_test.painting.ModdedPaintings;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.sound.ModdedSounds;
@@ -95,7 +94,6 @@ public class plushie_test {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        PacketHandler.registerMessages(MOD_ID);
         ModdedAdvancements.init();
         ModCompat.initCompats();
         ModCompat.setupCompats();

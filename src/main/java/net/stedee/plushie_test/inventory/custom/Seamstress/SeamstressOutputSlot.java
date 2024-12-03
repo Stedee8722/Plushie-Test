@@ -3,7 +3,7 @@ package net.stedee.plushie_test.inventory.custom.Seamstress;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.RecipeHolder;
-import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
+import net.stedee.plushie_test.inventory.custom.container.StationContainer;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,20 +13,19 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 public class SeamstressOutputSlot extends Slot {
-
     private final Player player;
-    private final TableInventoryPersistent craftSlots;
-    private final AbstractContainerMenu container;
+    private final StationContainer craftSlots;
+    public final AbstractContainerMenu container;
     private int removeCount;
     private final Container resultContainer;
 
-    public SeamstressOutputSlot(AbstractContainerMenu container, TableInventoryPersistent tableInventoryPersistent, Container resultContainer, int slotIndex, int xPosition, int yPosition, Player player) {
+    public SeamstressOutputSlot(AbstractContainerMenu container, StationContainer stationContainer, Container resultContainer, int slotIndex, int xPosition, int yPosition, Player player) {
         //remove player if not needed
         super(resultContainer, slotIndex, xPosition, yPosition);
         this.container = container;
         this.resultContainer = resultContainer;
         this.player = player;
-        this.craftSlots = tableInventoryPersistent;
+        this.craftSlots = stationContainer;
     }
 
     @Override
@@ -53,7 +52,6 @@ public class SeamstressOutputSlot extends Slot {
         net.minecraftforge.common.ForgeHooks.setCraftingPlayer(null);
     
         // note: craftMatrixPersistent and this.craftSlots are the same object!
-        craftSlots.setDoNotCallUpdates(true);
     
         for (int i = 0; i < nonnulllist.size(); ++i) {
             ItemStack stackInSlot = this.craftSlots.getItem(i);
@@ -75,8 +73,7 @@ public class SeamstressOutputSlot extends Slot {
                 }
             }
         }
-    
-        craftSlots.setDoNotCallUpdates(false);
+
         container.slotsChanged(craftSlots);
 
         //return craftingResult;
@@ -86,5 +83,25 @@ public class SeamstressOutputSlot extends Slot {
     @Override
     public boolean mayPlace(@NotNull ItemStack stack) {
         return false;
+    }
+
+    @Override
+    public @NotNull ItemStack remove(int $$0) {
+        if (this.hasItem()) {
+            this.removeCount += Math.min($$0, this.getItem().getCount());
+        }
+
+        return super.remove($$0);
+    }
+
+    @Override
+    protected void onQuickCraft(@NotNull ItemStack $$0, int $$1) {
+        this.removeCount += $$1;
+        this.checkTakeAchievements($$0);
+    }
+
+    @Override
+    protected void onSwapCraft(int $$0) {
+        this.removeCount += $$0;
     }
 }

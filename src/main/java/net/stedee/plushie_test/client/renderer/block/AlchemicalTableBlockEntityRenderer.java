@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -43,11 +44,13 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         if (!config.display_items_in_table || blockEntity.inventory.isEmpty())
             return;
 
-        ItemStack stack1 = blockEntity.getInventory().getStackInSlot(0);
-        ItemStack stack_out1 = blockEntity.getOutputs().getItem(0);
-        ItemStack stack_out2 = blockEntity.getOutputs().getItem(1);
 
-        if (stack1.isEmpty() && stack_out1.isEmpty())
+        ItemStack stack = blockEntity.getItem(0);
+        NonNullList<ItemStack> result = blockEntity.getLastResult();
+        ItemStack stack_out1 = result.get(0);
+        ItemStack stack_out2 = result.get(1);
+
+        if (stack.isEmpty() && stack_out1.isEmpty())
             return;
 
         Level level = blockEntity.getLevel();
@@ -66,7 +69,7 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
         matrixStack.mulPose(Axis.XP.rotationDegrees(90));
         matrixStack.mulPose(Axis.ZP.rotationDegrees(180));
         this.context.getItemRenderer().renderStatic(
-                stack1,
+                stack,
                 ItemDisplayContext.FIXED,
                 LightTexture.pack(
                         level.getBrightness(LightLayer.BLOCK, pos),

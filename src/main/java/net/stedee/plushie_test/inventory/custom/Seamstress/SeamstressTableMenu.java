@@ -1,59 +1,54 @@
 package net.stedee.plushie_test.inventory.custom.Seamstress;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.CraftingContainer;
-import net.minecraft.world.inventory.ResultContainer;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.NetworkDirection;
-import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
 import net.stedee.plushie_test.inventory.ModdedMenuTypes;
-import net.stedee.plushie_test.inventory.custom.TableInventoryPersistent;
+import net.stedee.plushie_test.inventory.custom.container.StationContainer;
 import net.stedee.plushie_test.item.custom.PlushiesItem;
-import net.stedee.plushie_test.network.PacketHandler;
-import net.stedee.plushie_test.network.S2CLastRecipePacket;
 import net.stedee.plushie_test.recipe.ModdedRecipes;
 import net.stedee.plushie_test.recipe.custom.SeamstressRecipe;
 
-import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
-import java.util.List;
-
 import org.jetbrains.annotations.NotNull;
 
-public class SeamstressTableMenu extends AbstractContainerMenu {
-
-    private final ResultContainer craftResult;
+public class SeamstressTableMenu extends AbstractContainerMenu implements ContainerListener {
+    private final StationContainer craftSlots;
+    private final ResultContainer resultSlots;
     private final ContainerLevelAccess access;
     private final Player player;
-    public SeamstressRecipe lastRecipe;
-    private final Level world;
+    private final Consumer<ItemStack> containerData;
     public SeamstressTableBlockEntity tileEntity;
-    public final TableInventoryPersistent craftMatrix;
-    protected SeamstressRecipe lastLastRecipe;
 
-    public SeamstressTableMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+    public SeamstressTableMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+        this(i, inventory, inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()));
     }
 
-    @SuppressWarnings("null")
-    public SeamstressTableMenu(int id, Inventory inv, BlockEntity entity) {
+    public SeamstressTableMenu(int id, Inventory inventory, BlockEntity entity) {
+        this(id, entity, inventory, new SimpleContainer(2), ContainerLevelAccess.NULL, stack -> {});
+    }
+
+    public SeamstressTableMenu(int id, BlockEntity entity, Inventory inventory, Container container, ContainerLevelAccess access, Consumer<ItemStack> containerData) {
         super(ModdedMenuTypes.SEAMSTRESS_MENU_TYPE.get(), id);
-        this.player = inv.player;
-        this.world = player.level();
+        this.craftSlots = new StationContainer(container, this);
+        this.resultSlots = new ResultContainer();
+        this.access = access;
+        this.player = inventory.player;
+        this.containerData = containerData;
+
         if (entity instanceof SeamstressTableBlockEntity be) {
             this.tileEntity = be;
         }
@@ -61,17 +56,16 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
             throw new IllegalStateException("Incorrect block entity class (%s) passed into SeamstressTableMenu".formatted(entity.getClass().getCanonicalName()));
         }
 
-        this.craftMatrix = new TableInventoryPersistent(this, tileEntity.inventory, 2, 1);
-        this.craftResult = tileEntity.craftResult;
-        this.access = ContainerLevelAccess.create(Objects.requireNonNull(tileEntity.getLevel()), tileEntity.getBlockPos());
-
         layoutPlayerInventorySlots(player.getInventory(), 8, 94);
 
-        this.addSlot(new Slot(craftMatrix, 0, 55, 19) {
+        this.addSlot(new Slot(this.craftSlots, 0, 55, 19) {
             @Override
-            public void setChanged() {
-                slotsChanged(inv);
-                super.setChanged();
+            public void set(@NotNull ItemStack pStack) {
+                this.container.setItem(this.getContainerSlot(), pStack);
+                this.setChanged();
+                slotsChanged(inventory);
+                broadcastChanges();
+                broadcastFullState();
             }
 
             @Override
@@ -79,11 +73,12 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
                 return stack.getItem() instanceof PlushiesItem;
             }
         });
-        this.addSlot(new Slot(craftMatrix, 1, 104, 19){
+        this.addSlot(new Slot(this.craftSlots, 1, 104, 19){
             @Override
-            public void setChanged() {
-                slotsChanged(inv);
-                super.setChanged();
+            public void set(@NotNull ItemStack pStack) {
+                this.container.setItem(this.getContainerSlot(), pStack);
+                this.setChanged();
+                slotsChanged(inventory);
             }
 
             @Override
@@ -91,8 +86,10 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
                 return stack.getItem() instanceof PlushiesItem;
             }
         });
-        this.addSlot(new SeamstressOutputSlot(this, this.craftMatrix, this.craftResult, 0, 80, 59, player));
-        slotsChanged(craftMatrix);
+        this.addSlot(new SeamstressOutputSlot(this, this.craftSlots, this.resultSlots, 0, 80, 59, player));
+
+        this.addSlotListener(this);
+        slotsChanged(inventory);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -112,6 +109,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
 
     // THIS YOU HAVE TO DEFINE!
     private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+
     @SuppressWarnings("null")
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
@@ -149,7 +147,7 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
     @SuppressWarnings("null")
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return stillValid(this.access, player, ModdedBlocks.SEAMSTRESS_TABLE.get());
+        return this.craftSlots.stillValid(player);
     }
 
     private int addSlotRange(Container playerInventory, int index, int x, int y, int amount, int dx) {
@@ -177,85 +175,39 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
     }
 
-    public static SeamstressRecipe findRecipe(SeamstressTableMenu menu, CraftingContainer inv, Level world, Player player) {
+    public static SeamstressRecipe findRecipe(Container inv, Level world) {
         return world.getRecipeManager().getRecipeFor(ModdedRecipes.SEAMSTRESS_RECIPE.get(),inv,world).stream().findFirst().orElse(null);
     }
 
-    @SuppressWarnings("null")
     @Override
-    public void slotsChanged(@NotNull Container pContainer) {
-        world.sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 2);
-        tileEntity.setChanged();
-        this.slotChangedCraftingGrid(world, player, craftMatrix, craftResult);
+    public void slotsChanged(@NotNull Container pInventory) {
+        this.access.execute((p_39386_, p_39387_) -> {
+            slotChangedCraftingGrid(this, p_39386_, this.player, this.craftSlots, this.resultSlots);
+            this.containerData.accept(this.resultSlots.getItem(0));
+        });
+        if (tileEntity.getLevel() != null) {
+            tileEntity.getLevel().sendBlockUpdated(tileEntity.getBlockPos(), tileEntity.getBlockState(), tileEntity.getBlockState(), 3);
+        }
     }
 
-
-    protected void slotChangedCraftingGrid(Level world, Player player, CraftingContainer inv, ResultContainer result) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        // if the recipe is no longer valid, update it
-        if (lastRecipe == null || !lastRecipe.matches(inv, world)) {
-            lastRecipe = findRecipe(this, inv, world, player);
-        }
-
-        // if we have a recipe, fetch its result
-        if (lastRecipe != null) {
-            itemstack = lastRecipe.assemble(inv,world.registryAccess());
-            this.craftResult.setRecipeUsed(lastRecipe);
-        }
-        // set the slot on both sides, client is for display/so the client knows about the recipe
-        result.setItem(0, itemstack);
-
-        // update recipe on server
-        if (!world.isClientSide) {
-            ServerPlayer entityplayermp = (ServerPlayer) player;
-
-            // we need to sync to all players currently in the inventory
-            List<ServerPlayer> relevantPlayers = getAllPlayersWithThisContainerOpen(this, entityplayermp.serverLevel());
-
-            // sync result to all serverside inventories to prevent duplications/recipes being blocked
-            // need to do this every time as otherwise taking items of the result causes desync
-            syncResultToAllOpenWindows(itemstack, relevantPlayers);
-
-            // if the recipe changed, update clients last recipe
-            // this also updates the client side display when the recipe is added
-            if (lastLastRecipe != lastRecipe) {
-                syncRecipeToAllOpenWindows(lastRecipe, relevantPlayers);
-                lastLastRecipe = lastRecipe;
+    protected void slotChangedCraftingGrid(AbstractContainerMenu pMenu, @NotNull Level pLevel, Player pPlayer, StationContainer pContainer, ResultContainer pResult) {
+        if (!pLevel.isClientSide) {
+            ServerPlayer $$5 = (ServerPlayer)pPlayer;
+            ItemStack $$6 = ItemStack.EMPTY;
+            SeamstressRecipe $$7 = findRecipe(pContainer, pLevel);
+            if ($$7 != null) {
+                if (pResult.setRecipeUsed(pLevel, $$5, $$7)) {
+                    ItemStack $$9 = $$7.assemble(pContainer, pLevel.registryAccess());
+                    if ($$9.isItemEnabled(pLevel.enabledFeatures())) {
+                        $$6 = $$9;
+                    }
+                }
             }
+
+            pResult.setItem(0, $$6);
+            pMenu.setRemoteSlot(38, $$6);
+            $$5.connection.send(new ClientboundContainerSetSlotPacket(pMenu.containerId, pMenu.incrementStateId(), 38, $$6));
         }
-    }
-    
-    private void syncRecipeToAllOpenWindows(final SeamstressRecipe lastRecipe, List<ServerPlayer> players) {
-        players.forEach(otherPlayer -> {
-            // safe cast since hasSameContainerOpen does class checks
-            ((SeamstressTableMenu) otherPlayer.containerMenu).lastRecipe = lastRecipe;
-            PacketHandler.INSTANCE.sendTo(new S2CLastRecipePacket(lastRecipe), otherPlayer.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-        });
-    }
-
-    private void syncResultToAllOpenWindows(final ItemStack stack, List<ServerPlayer> players) {
-        this.craftMatrix.setDoNotCallUpdates(true);
-        players.forEach(otherPlayer -> {
-            otherPlayer.containerMenu.setItem(38,this.getStateId(), stack);
-            //otherPlayer.connection.sendPacket(new SPacketSetSlot(otherPlayer.openContainer.windowId, SLOT_RESULT, stack));
-        });
-        this.craftMatrix.setDoNotCallUpdates(false);
-    }
-
-    public List<ServerPlayer> getAllPlayersWithThisContainerOpen(SeamstressTableMenu container, ServerLevel server) {
-        return server.players().stream()
-                .filter(player -> hasSameContainerOpen(container, player))
-                .collect(Collectors.toList());
-    }
-
-    private boolean hasSameContainerOpen(SeamstressTableMenu container, ServerPlayer playerToCheck) {
-        return playerToCheck instanceof ServerPlayer &&
-                playerToCheck.containerMenu.getClass().isAssignableFrom(container.getClass()) &&
-                this.sameGui((SeamstressTableMenu) playerToCheck.containerMenu);
-    }
-
-    public boolean sameGui(SeamstressTableMenu otherContainer) {
-        return this.tileEntity == otherContainer.tileEntity;
     }
 
     @Override
@@ -334,15 +286,47 @@ public class SeamstressTableMenu extends AbstractContainerMenu {
         return didSomething;
     }
 
+    @Override
+    public @NotNull MenuType<?> getType() {
+        return ModdedMenuTypes.SEAMSTRESS_MENU_TYPE.get();
+    }
+
     @SuppressWarnings("null")
     @Override
     public boolean canTakeItemForPickAll(@NotNull ItemStack stack, Slot slot) {
-        return slot.container != craftResult && super.canTakeItemForPickAll(stack, slot);
+        return slot.container != resultSlots && super.canTakeItemForPickAll(stack, slot);
     }
 
-    public void updateLastRecipeFromServer(SeamstressRecipe r) {
-        this.lastRecipe = r;
-        // if no recipe, set to empty to prevent ghost outputs when another player grabs the result
-        this.craftResult.setItem(0, r != null ? r.assemble(craftMatrix, world.registryAccess()) : ItemStack.EMPTY);
+    @Override
+    public void slotChanged(@NotNull AbstractContainerMenu abstractContainerMenu, int i, @NotNull ItemStack itemStack) {
+        if (abstractContainerMenu == this) {
+            this.access.execute((Level level, BlockPos blockPos) -> {
+                if (i >= 1 && i < 10) {
+                    this.slotsChanged(this.craftSlots);
+                }
+            });
+        }
+    }
+
+    @Override
+    public void dataChanged(@NotNull AbstractContainerMenu abstractContainerMenu, int i, int i1) {
+
+    }
+
+    @Override
+    public void removed(@NotNull Player player) {
+        // copied from container base class
+        if (player instanceof ServerPlayer) {
+            ItemStack itemstack = this.getCarried();
+            if (!itemstack.isEmpty()) {
+                if (player.isAlive() && !((ServerPlayer) player).hasDisconnected()) {
+                    player.getInventory().placeItemBackInInventory(itemstack);
+                } else {
+                    player.drop(itemstack, false);
+                }
+
+                this.setCarried(ItemStack.EMPTY);
+            }
+        }
     }
 }
