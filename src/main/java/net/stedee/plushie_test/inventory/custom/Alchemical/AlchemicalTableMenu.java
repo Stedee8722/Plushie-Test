@@ -214,7 +214,7 @@ public class AlchemicalTableMenu extends AbstractContainerMenu implements Contai
         if (!pLevel.isClientSide) {
             ServerPlayer $$5 = (ServerPlayer)pPlayer;
             ItemStack $$6 = !resultSlots.getItem(0).isEmpty() && resultSlots.getItem(1).isEmpty() ? resultSlots.getItem(0) : ItemStack.EMPTY;
-            ItemStack $$8 = !resultSlots.getItem(1).isEmpty() && !resultSlots.getItem(0).isEmpty() ? resultSlots.getItem(1) : ItemStack.EMPTY;
+            ItemStack $$8 = !resultSlots.getItem(1).isEmpty() && resultSlots.getItem(0).isEmpty() ? resultSlots.getItem(1) : ItemStack.EMPTY;
             SeamstressRecipe $$7 = (SeamstressRecipe) searchRecipe(pContainer.getItem(0), pLevel.getRecipeManager());
             if ($$7 != null) {
                 if (pResult.setRecipeUsed(pLevel, $$5, $$7)) {
