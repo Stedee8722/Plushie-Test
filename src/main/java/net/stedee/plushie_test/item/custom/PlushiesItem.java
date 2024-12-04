@@ -45,7 +45,7 @@ public class PlushiesItem extends Item implements Equipable {
         ItemStack pItem = pPlayer.getItemInHand(pUsedHand);
         if (this.canSqueak) {
             if (!this.squeakUsed && !pLevel.isClientSide) {
-                pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModdedSounds.PLUSHIE_USE.get(), SoundSource.NEUTRAL, 1f, 1f);
+                pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModdedSounds.PLUSHIE_USE.get(), SoundSource.PLAYERS, 1f, 1f);
                 this.squeakUsed = true;
                 pPlayer.startUsingItem(pUsedHand);
                 return InteractionResultHolder.consume(pItem);
