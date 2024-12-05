@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#R#",
+    "BLB"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gray_wool"
+    },
+    "R": {
+      "item": "minecraft:red_wool"
+    },
+    "B": {
+      "item": "minecraft:black_wool"
+    },
+    "L": {
+      "item": "minecraft:light_gray_wool"
+    }
+  },
+  "result": {
+    "item": "plushie_test:aym_ears",
+    "count": 1
+  },
+  "category": "misc"
+}
