@@ -4,6 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.ItemStack;
@@ -25,20 +26,21 @@ public class GlaiveReplaceTridentEvent {
             Inventory inventory = player.getInventory();
             for (int i = 0; i < 41; ++i) {
                 ItemStack item = inventory.getItem(i);
-                if (item.is(Items.TRIDENT)) {
-                    ItemStack newItem = new ItemStack(ModdedItems.ELECTROSTORM_GLAIVE.get(), 1);
-                    assert item.getTag() != null;
-                    newItem.setTag(item.getTag().copy());
-                    ListTag enchantmentTags = newItem.getEnchantmentTags();
-                    for (int j = 0; j < enchantmentTags.size(); j++) {
-                        CompoundTag enchantmentTag = enchantmentTags.getCompound(j);
-                        if (enchantmentTag.getString("id").contains("channeling")) {
-                            enchantmentTags.remove(j);
-                            break;
-                        }
-                    }
-                    inventory.setItem(i, newItem);
+                if (!item.is(Items.TRIDENT)) {
+                    continue;
                 }
+                ItemStack newItem = new ItemStack(ModdedItems.ELECTROSTORM_GLAIVE.get(), item.getCount());
+                assert item.getTag() != null;
+                newItem.setTag(item.getTag().copy());
+                ListTag enchantmentTags = newItem.getEnchantmentTags();
+                for (int j = 0; j < enchantmentTags.size(); j++) {
+                    CompoundTag enchantmentTag = enchantmentTags.getCompound(j);
+                    if (enchantmentTag.getString("id").contains("channeling")) {
+                        enchantmentTags.remove(j);
+                        break;
+                    }
+                }
+                inventory.setItem(i, newItem);
             }
         }
         if (event.getEntity() instanceof ThrownTrident trident) {
@@ -50,13 +52,38 @@ public class GlaiveReplaceTridentEvent {
             for (int i = 0; i < enchantmentTags.size(); i++) {
                 CompoundTag enchantmentTag = enchantmentTags.getCompound(i);
                 if (enchantmentTag.getString("id").contains("channeling")) {
-                    return;
+                    enchantmentTags.remove(i);
+                    break;
                 }
             }
             ThrownGlaive entity = new ThrownGlaive(trident.level(), (LivingEntity) trident.getOwner(), newItem);
             entity.copyPosition(trident);
             trident.level().addFreshEntity(entity);
             trident.discard();
+        }
+        if (event.getEntity() instanceof ItemEntity entity) {
+            if (!entity.getItem().is(Items.TRIDENT)) {
+                return;
+            }
+            ItemStack item = entity.getItem();
+            ItemStack newItem = new ItemStack(ModdedItems.ELECTROSTORM_GLAIVE.get(), item.getCount());
+            assert item.getTag() != null;
+            newItem.setTag(item.getTag().copy());
+            ListTag enchantmentTags = newItem.getEnchantmentTags();
+            for (int i = 0; i < enchantmentTags.size(); i++) {
+                CompoundTag enchantmentTag = enchantmentTags.getCompound(i);
+                if (enchantmentTag.getString("id").contains("channeling")) {
+                    enchantmentTags.remove(i);
+                    break;
+                }
+            }
+            ItemEntity newEntity = new ItemEntity(entity.level(), entity.getX(), entity.getY(), entity.getZ() , newItem);
+            if (entity.getOwner() != null) {
+                newEntity.setThrower(entity.getOwner().getUUID());
+            }
+            newEntity.setInvulnerable(true);
+            entity.level().addFreshEntity(newEntity);
+            entity.discard();
         }
     }
 }
