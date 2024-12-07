@@ -95,6 +95,7 @@ public class plushie_test {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         ModdedAdvancements.init();
+
         ModCompat.initCompats();
         ModCompat.setupCompats();
     }
