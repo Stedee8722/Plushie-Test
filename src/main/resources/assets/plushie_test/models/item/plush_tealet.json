@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "plushie_test:item/plush_tealet",
-		"particle": "plushie_test:item/plush_tealet"
+		"0": "plushie_test:item/plushies/plush_tealet",
+		"particle": "plushie_test:item/plushies/plush_tealet"
 	},
 	"gui_light": "front",
 	"elements": [

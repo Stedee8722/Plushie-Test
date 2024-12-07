@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "plushie_test:item/plush_acid",
-		"1": "plushie_test:item/plush_rat",
-		"particle": "plushie_test:item/plush_acid"
+		"0": "plushie_test:item/plushies/plush_acid",
+		"1": "plushie_test:item/plushies/plush_rat",
+		"particle": "plushie_test:item/plushies/plush_acid"
 	},
 	"elements": [
 		{

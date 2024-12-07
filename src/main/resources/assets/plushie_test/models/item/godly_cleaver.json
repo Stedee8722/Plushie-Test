@@ -2,10 +2,10 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "plushie_test:item/godly_cleaver_3",
-		"1": "plushie_test:item/godly_cleaver_2",
-		"2": "plushie_test:item/godly_cleaver_1",
-		"particle": "plushie_test:item/godly_cleaver_3"
+		"0": "plushie_test:item/weapons/godly_cleaver_3",
+		"1": "plushie_test:item/weapons/godly_cleaver_2",
+		"2": "plushie_test:item/weapons/godly_cleaver_1",
+		"particle": "plushie_test:item/weapons/godly_cleaver_3"
 	},
 	"elements": [
 		{

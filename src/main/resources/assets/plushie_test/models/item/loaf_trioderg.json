@@ -2,10 +2,10 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "plushie_test:item/loaf_pyla",
-		"1": "plushie_test:item/loaf_mono",
-		"2": "plushie_test:item/loaf_bren",
-		"particle": "plushie_test:item/loaf_mono"
+		"0": "plushie_test:item/loafs/loaf_pyla",
+		"1": "plushie_test:item/loafs/loaf_mono",
+		"2": "plushie_test:item/loafs/loaf_bren",
+		"particle": "plushie_test:item/loafs/loaf_mono"
 	},
 	"elements": [
 		{
