@@ -56,16 +56,16 @@ public class ModdedCreativeTabs {
             .build());
 
     public static final RegistryObject<CreativeModeTab> CROWNS_TAB = CREATIVE_TABS.register("crowns",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.CROWN_GREEN.get()))
-                    .title(Component.translatable("creativetab.plushie_test.crowns.text"))
-                    .displayItems((pParameter, pOutput) -> {
-                        pOutput.accept(ModdedItems.CROWN_GREEN.get());
-                        pOutput.accept(ModdedItems.CROWN_YELLOW.get());
-                        pOutput.accept(ModdedItems.CROWN_BLUE.get());
-                        pOutput.accept(ModdedItems.CROWN_PURPLE.get());
-                        pOutput.accept(ModdedItems.CROWN_RED.get());
-                    })
-                    .build());
+        () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModdedItems.CROWN_GREEN.get()))
+            .title(Component.translatable("creativetab.plushie_test.crowns.text"))
+            .displayItems((pParameter, pOutput) -> {
+                pOutput.accept(ModdedItems.CROWN_GREEN.get());
+                pOutput.accept(ModdedItems.CROWN_YELLOW.get());
+                pOutput.accept(ModdedItems.CROWN_BLUE.get());
+                pOutput.accept(ModdedItems.CROWN_PURPLE.get());
+                pOutput.accept(ModdedItems.CROWN_RED.get());
+            })
+            .build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_TABS.register(eventBus);

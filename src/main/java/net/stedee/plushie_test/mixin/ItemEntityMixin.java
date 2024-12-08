@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin extends Entity {
-
     public ItemEntityMixin(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }

@@ -31,10 +31,10 @@ public abstract class LightningBoltMixin implements IThunderBolt {
 
     @Redirect(method = "tick()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;thunderHit(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LightningBolt;)V", ordinal = 0))
     public void moddedTick(Entity pEntity, ServerLevel pLevel, LightningBolt pLightning) {
-        LightningBolt lightningBolt = (LightningBolt) (Object) this;
-        ServerPlayer player = lightningBolt.getCause();
+        ServerPlayer player = pLightning.getCause();
         if ((pEntity instanceof ServerPlayer) && pEntity == player && plushieTest$getCauseItem() != null && plushieTest$getCauseItem().is(ModdedItems.ELECTROSTORM_GLAIVE.get())) {
             return;
         }
-        pEntity.thunderHit(pLevel, pLightning);    }
+        pEntity.thunderHit(pLevel, pLightning);
+    }
 }

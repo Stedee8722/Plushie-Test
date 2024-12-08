@@ -11,12 +11,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin {
-
     @Shadow public abstract Inventory getInventory();
 
     @Redirect(method = "isInvulnerableTo(Lnet/minecraft/world/damagesource/DamageSource;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z", ordinal = 3))
     public boolean moddedIsVulnerableto(GameRules instance, GameRules.Key<GameRules.BooleanValue> pKey) {
-        PlayerMixin player = (PlayerMixin) (Object) this;
-        return instance.getBoolean(pKey) && !player.getInventory().getArmor(3).is(ModdedItems.MASK_GLACEON.get());
+        return instance.getBoolean(pKey) && !this.getInventory().getArmor(3).is(ModdedItems.MASK_GLACEON.get());
     }
 }

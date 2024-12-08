@@ -13,6 +13,7 @@ public class ModdedSounds {
         DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, plushie_test.MOD_ID);
 
     public static final RegistryObject<SoundEvent> PLUSHIE_USE = registerSoundEvents("plushie_use");
+
     public static final RegistryObject<SoundEvent> START_A_CULT = registerSoundEvents("start_a_cult");
     public static final RegistryObject<SoundEvent> SACRIFICE = registerSoundEvents("sacrifice");
     public static final RegistryObject<SoundEvent> GLUTTONY_OF_CANNIBALS = registerSoundEvents("gluttony_of_cannibals");

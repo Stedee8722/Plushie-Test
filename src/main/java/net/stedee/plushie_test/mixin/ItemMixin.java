@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(Item.class)
 public abstract class ItemMixin implements IForgeItem {
-
     @SuppressWarnings("deprecation")
     @Override
     public void onDestroyed(ItemEntity pItemEntity, DamageSource damageSource) {
