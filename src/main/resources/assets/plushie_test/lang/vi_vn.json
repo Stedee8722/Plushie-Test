@@ -160,8 +160,11 @@
     "painting.plushie_test.tea.title": "Nó đang nhìn tôi à?!",
     "painting.plushie_test.tea.author": "Không biết",
 
-    "text.autoconfig.plushie_test.option.display_items_in_table": "Hiện vật phẩm trên bàn?",
-    "text.autoconfig.plushie_test.option.display_items_in_table.@Tooltip": "Hiện vật phẩm trên bàn chế tạo thú bông khi đang chế tạo",
+    "text.autoconfig.plushie_test.option.clientConfig.display_items_in_table": "Hiện vật phẩm trên bàn?",
+    "text.autoconfig.plushie_test.option.clientConfig.display_items_in_table.@Tooltip": "Hiện vật phẩm trên bàn chế tạo thú bông khi đang chế tạo",
+
+    "text.autoconfig.plushie_test.category.client": "Client",
+    "text.autoconfig.plushie_test.category.server": "Server",
 
     "text.autoconfig.plushie_test.title": "Cài đặt mod",
 
@@ -223,5 +226,7 @@
     "death.attack.blasphemy_projectile": "%2$s đã cho %1$s thấy được sức mạnh của Gungeon",
     "death.attack.glaive_projectile": "%1$s bị biến thành xúc xích nướng",
 
-    "curios.identifier.ears": "Đôi tai"
+    "curios.identifier.ears": "Đôi tai",
+
+    "attribute.plushie_test.name.blasphemy.projectile_damage": "Sát thương Đạn"
 }

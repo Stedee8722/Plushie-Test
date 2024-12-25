@@ -24,7 +24,7 @@ import net.stedee.plushie_test.damage_type.ModdedDamageTypes;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
-public class BlasphemyProjectileEntity extends Projectile {
+public class BlasphemyAbstractProjectile extends Projectile {
     public double xPower;
     public double yPower;
     public double zPower;
@@ -32,13 +32,13 @@ public class BlasphemyProjectileEntity extends Projectile {
     float pDamage;
 
     private static final EntityDataAccessor<Vector3f> DIRECTION =
-            SynchedEntityData.defineId(BlasphemyProjectileEntity.class, EntityDataSerializers.VECTOR3);
+            SynchedEntityData.defineId(BlasphemyAbstractProjectile.class, EntityDataSerializers.VECTOR3);
 
-    protected BlasphemyProjectileEntity(EntityType<? extends BlasphemyProjectileEntity> pEntityType, Level pLevel) {
+    protected BlasphemyAbstractProjectile(EntityType<? extends BlasphemyAbstractProjectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    public BlasphemyProjectileEntity(EntityType<? extends BlasphemyProjectileEntity> pEntityType, double pX, double pY, double pZ, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel) {
+    public BlasphemyAbstractProjectile(EntityType<? extends BlasphemyAbstractProjectile> pEntityType, double pX, double pY, double pZ, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel) {
         this(pEntityType, pLevel);
         this.moveTo(pX, pY, pZ, this.getYRot(), this.getXRot());
         this.reapplyPosition();
@@ -50,7 +50,7 @@ public class BlasphemyProjectileEntity extends Projectile {
         }
     }
 
-    public BlasphemyProjectileEntity(EntityType<? extends BlasphemyProjectileEntity> pEntityType, LivingEntity pShooter, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel, float pDamage) {
+    public BlasphemyAbstractProjectile(EntityType<? extends BlasphemyAbstractProjectile> pEntityType, LivingEntity pShooter, double pOffsetX, double pOffsetY, double pOffsetZ, Level pLevel, float pDamage) {
         this(pEntityType, pShooter.getX(), pShooter.getY(), pShooter.getZ(), pOffsetX, pOffsetY, pOffsetZ, pLevel);
         this.setOwner(pShooter);
         this.setRot(pShooter.getYRot(), pShooter.getXRot());

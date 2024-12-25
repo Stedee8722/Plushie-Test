@@ -3,6 +3,7 @@ package net.stedee.plushie_test;
 import com.mojang.logging.LogUtils;
 
 import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -20,9 +21,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stedee.plushie_test.advancement.ModdedAdvancements;
+import net.stedee.plushie_test.attribute.ModdedAttributes;
 import net.stedee.plushie_test.block.ModdedBlockEntities;
 import net.stedee.plushie_test.block.ModdedBlocks;
 import net.stedee.plushie_test.config.ClientConfig;
+import net.stedee.plushie_test.config.ModdedConfig;
+import net.stedee.plushie_test.config.ServerConfig;
 import net.stedee.plushie_test.effect.ModdedEffects;
 import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import net.stedee.plushie_test.entity.ModdedEntities;
@@ -47,7 +51,7 @@ public class plushie_test {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
     
-    public static ClientConfig CONFIG = new ClientConfig();
+    public static ModdedConfig CONFIG = new ModdedConfig();
 
     public static ItemRenderer ITEM_RENDERER;
 
@@ -75,6 +79,8 @@ public class plushie_test {
         ModdedEnchantments.register(modEventBus);
         ModdedEffects.register(modEventBus);
 
+        ModdedAttributes.register(modEventBus);
+
         GeckoLib.initialize();
 
         modEventBus.addListener(this::commonSetup);
@@ -86,7 +92,7 @@ public class plushie_test {
         ModLoadingContext.get().registerExtensionPoint(
             ConfigScreenHandler.ConfigScreenFactory.class,
                 () -> new ConfigScreenHandler.ConfigScreenFactory(
-                    (minecraft, screen) -> AutoConfig.getConfigScreen(ClientConfig.class, screen).get()
+                    (minecraft, screen) -> AutoConfig.getConfigScreen(ModdedConfig.class, screen).get()
                 )
         );
 
@@ -102,8 +108,10 @@ public class plushie_test {
 
     private static void initConfig() {
         AutoConfig.register(ClientConfig.class, Toml4jConfigSerializer::new);
+        AutoConfig.register(ServerConfig.class, Toml4jConfigSerializer::new);
+        AutoConfig.register(ModdedConfig.class, PartitioningSerializer.wrap(Toml4jConfigSerializer::new));
         // Intuitive way to load a config
-        CONFIG = AutoConfig.getConfigHolder(ClientConfig.class).getConfig();
+        CONFIG = AutoConfig.getConfigHolder(ModdedConfig.class).getConfig();
     }
 
     // Add the example block item to the building blocks tab

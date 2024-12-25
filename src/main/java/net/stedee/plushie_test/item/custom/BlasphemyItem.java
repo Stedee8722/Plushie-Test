@@ -1,5 +1,7 @@
 package net.stedee.plushie_test.item.custom;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -7,6 +9,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.*;
@@ -15,6 +20,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
+import net.stedee.plushie_test.attribute.ModdedAttributes;
 import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import net.stedee.plushie_test.entity.custom.BlasphemyProjectile;
 import net.stedee.plushie_test.item.ModdedItems;
@@ -22,16 +28,22 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.UUID;
 
 public class BlasphemyItem extends SwordItem {
-    float eDamage = 3;
-    public BlasphemyItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, float eDamage) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-        this.eDamage = eDamage;
-    }
+    float eDamage = 7;
+    public Multimap<Attribute, AttributeModifier> defaultModifiers;
+
+    private static final UUID PROJECTILE_DAMAGE_UUID = UUID.fromString("8cda51c5-5d59-4f3c-b0ca-895d9957fc32");
 
     public BlasphemyItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        float attackDamage = (float) pAttackDamageModifier + pTier.getAttackDamageBonus();
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", attackDamage, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
+        builder.put(ModdedAttributes.PROJECTILE_DAMAGE.get(), new AttributeModifier(PROJECTILE_DAMAGE_UUID, "blasphemy_brenzy_projectile_damage", eDamage, AttributeModifier.Operation.ADDITION));
+        this.defaultModifiers = builder.build();
     }
 
     @Override
@@ -58,7 +70,9 @@ public class BlasphemyItem extends SwordItem {
         Vec3 to = from.add(look.x * blockReachDistance, look.y * blockReachDistance, look.z * blockReachDistance);
         BlockHitResult blockhitresult = entity.level().clip(new ClipContext(from, to, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity));
 
-        if ((blockhitresult.getType() != HitResult.Type.MISS) || (entityhitresult != null ? entityhitresult.getType() != HitResult.Type.MISS : false)) {
+        ((Player) entity).sweepAttack();
+
+        if ((blockhitresult.getType() != HitResult.Type.MISS) || (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS)) {
             return super.onEntitySwing(stack, entity);
         }
         if (!entity.level().isClientSide() && stack.is(ModdedItems.BLASPHEMY.get()) && (entity.getHealth() == entity.getMaxHealth() || ((Player)entity).isCreative())) {
@@ -104,5 +118,10 @@ public class BlasphemyItem extends SwordItem {
     @Override
     public boolean isValidRepairItem(@NotNull ItemStack pToRepair, @NotNull ItemStack pRepair) {
         return Ingredient.of(Items.IRON_INGOT).test(pRepair);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
+        return (slot == EquipmentSlot.MAINHAND) ? this.defaultModifiers : super.getAttributeModifiers(slot, stack);
     }
 }

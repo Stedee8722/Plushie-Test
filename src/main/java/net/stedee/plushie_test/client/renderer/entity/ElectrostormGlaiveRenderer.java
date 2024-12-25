@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("rawtypes")
 public class ElectrostormGlaiveRenderer extends EntityRenderer<ThrownGlaive> {
-    public static final ResourceLocation ELECTROSTORM_GLAIVE_LOCATION = new ResourceLocation(plushie_test.MOD_ID, "textures/item/electrostorm_glaive.png");
+    public static final ResourceLocation ELECTROSTORM_GLAIVE_LOCATION = new ResourceLocation(plushie_test.MOD_ID, "textures/item/weapons/electrostorm_glaive.png");
     private final ElectrostormGlaiveModel model;
 
     public ElectrostormGlaiveRenderer(EntityRendererProvider.Context $$0) {

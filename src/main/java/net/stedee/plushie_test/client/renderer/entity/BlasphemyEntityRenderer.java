@@ -11,12 +11,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
-import net.stedee.plushie_test.entity.custom.BlasphemyProjectileEntity;
+import net.stedee.plushie_test.entity.custom.BlasphemyAbstractProjectile;
 import net.stedee.plushie_test.plushie_test;
 import org.jetbrains.annotations.NotNull;
 
-public class BlasphemyEntityRenderer extends EntityRenderer<BlasphemyProjectileEntity> {
-    protected EntityModel<BlasphemyProjectileEntity> model;
+public class BlasphemyEntityRenderer extends EntityRenderer<BlasphemyAbstractProjectile> {
+    protected EntityModel<BlasphemyAbstractProjectile> model;
     protected EntityRendererProvider.Context pContext;
     ResourceLocation TEXTURE = new ResourceLocation(plushie_test.MOD_ID, "textures/entity/blasphemy_layer.png");
 
@@ -27,12 +27,12 @@ public class BlasphemyEntityRenderer extends EntityRenderer<BlasphemyProjectileE
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull BlasphemyProjectileEntity pEntity) {
+    public @NotNull ResourceLocation getTextureLocation(@NotNull BlasphemyAbstractProjectile pEntity) {
         return TEXTURE;
     }
 
     @Override
-    public void render(BlasphemyProjectileEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
+    public void render(BlasphemyAbstractProjectile pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         pPoseStack.pushPose();
 
         pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTick, pEntity.yRotO, pEntity.getYRot()) + 90F));

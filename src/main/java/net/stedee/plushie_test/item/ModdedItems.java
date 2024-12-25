@@ -85,22 +85,22 @@ public class ModdedItems {
                     ,true));
 
     public static final RegistryObject<CleaverItem> CLEAVER = ITEMS.register("cleaver",
-            () -> new CleaverItem(Tiers.IRON, 3F, -3F, (new Item.Properties()).defaultDurability(508).rarity(Rarity.UNCOMMON), false));
+            () -> new CleaverItem(Tiers.IRON, 4F, -3F, (new Item.Properties()).defaultDurability(508).rarity(Rarity.UNCOMMON), false));
 
     public static final RegistryObject<CleaverItem> WORN_CLEAVER = ITEMS.register("worn_cleaver",
-            () -> new CleaverItem(Tiers.DIAMOND, 5F, -2.4F, (new Item.Properties()).defaultDurability(762).rarity(Rarity.RARE), true, MobEffects.HUNGER));
+            () -> new CleaverItem(Tiers.DIAMOND, 9F, -2.4F, (new Item.Properties()).defaultDurability(762).rarity(Rarity.RARE), true, MobEffects.HUNGER));
 
     public static final RegistryObject<CleaverItem> GODLY_CLEAVER = ITEMS.register("godly_cleaver",
-            () -> new CleaverItem(Tiers.NETHERITE, 5F, -2.4F, (new Item.Properties()).defaultDurability(1016).rarity(Rarity.EPIC), true, MobEffects.HUNGER, ModdedEffects.BLOODLOSS.get()));
+            () -> new CleaverItem(Tiers.NETHERITE, 10F, -2.4F, (new Item.Properties()).defaultDurability(1016).rarity(Rarity.EPIC), true, MobEffects.HUNGER, ModdedEffects.BLOODLOSS.get()));
 
     public static final RegistryObject<MoonStaffItem> MOON_STAFF = ITEMS.register("moon_staff",
-            () -> new MoonStaffItem(Tiers.NETHERITE, 5, -2.4F, (new Item.Properties()).defaultDurability(753).rarity(Rarity.EPIC)));
+            () -> new MoonStaffItem(Tiers.NETHERITE, 10, -2.4F, (new Item.Properties()).defaultDurability(753).rarity(Rarity.EPIC)));
 
     public static final RegistryObject<BlasphemyItem> BLASPHEMY = ITEMS.register("blasphemy",
-            () -> new BlasphemyItem(Tiers.DIAMOND, 4, -2.4F, (new Item.Properties().defaultDurability(762).rarity(Rarity.RARE))));
+            () -> new BlasphemyItem(Tiers.DIAMOND, 6, -2.4F, (new Item.Properties().defaultDurability(762).rarity(Rarity.RARE))));
 
     public static final RegistryObject<BlasphemyBrenzyItem> BLASPHEMY_BRENZY = ITEMS.register("blasphemy_brenzy",
-            () -> new BlasphemyBrenzyItem(Tiers.NETHERITE, 5, -3F, (new Item.Properties().defaultDurability(762).rarity(Rarity.EPIC))));
+            () -> new BlasphemyBrenzyItem(Tiers.NETHERITE, 8, -3F, (new Item.Properties().defaultDurability(762).rarity(Rarity.EPIC))));
 
     public static final RegistryObject<PlushiesItem> PLUSH_NETH = ITEMS.register("plush_neth",
                 () -> new PlushiesItem(new Item.Properties()

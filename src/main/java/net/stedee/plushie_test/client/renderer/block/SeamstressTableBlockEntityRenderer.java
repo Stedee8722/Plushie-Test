@@ -5,12 +5,13 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import net.stedee.plushie_test.config.ModdedConfig;
+import net.stedee.plushie_test.plushie_test;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -20,7 +21,6 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlock;
 import net.stedee.plushie_test.block.custom.SeamstressTableBlockEntity;
-import net.stedee.plushie_test.config.ClientConfig;
 
 public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<SeamstressTableBlockEntity> {
 
@@ -36,13 +36,13 @@ public class SeamstressTableBlockEntityRenderer implements BlockEntityRenderer<S
     @Override
     public void render(@NotNull SeamstressTableBlockEntity blockEntity, float pPartialTick, @NotNull PoseStack matrixStack,
                        @NotNull MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        ClientConfig config = AutoConfig.getConfigHolder(ClientConfig.class).getConfig();
+        ModdedConfig config = plushie_test.CONFIG;
         //try(Level level = blockEntity.getLevel()) {
         //    isClient = level.isClientSide;
         //} catch(IOException err)
         //{System.out.println(err);}
 
-        if (!config.display_items_in_table || blockEntity.inventory.isEmpty())
+        if (!config.clientConfig.display_items_in_table || blockEntity.inventory.isEmpty())
             return;
 
         ItemStack stack1 = blockEntity.getItem(0);

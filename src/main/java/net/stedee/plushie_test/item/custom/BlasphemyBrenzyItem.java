@@ -1,5 +1,6 @@
 package net.stedee.plushie_test.item.custom;
 
+import com.google.common.collect.ImmutableMultimap;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -9,7 +10,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.ItemStack;
@@ -19,20 +22,33 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
 import net.minecraftforge.common.ForgeMod;
+import net.stedee.plushie_test.attribute.ModdedAttributes;
 import net.stedee.plushie_test.enchantment.ModdedEnchantments;
 import net.stedee.plushie_test.entity.custom.BlasphemyBrenzyProjectile;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class BlasphemyBrenzyItem extends BlasphemyItem {
     private static final ResourceLocation ALT_FONT = new ResourceLocation("minecraft", "alt");
     private static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
-    private static final float eDamage = 4;
+    final float eDamage = 10;
+    private static final double REACH = 1.5;
+
+    private static final UUID ENTITY_REACH_UUID = UUID.fromString("06c477b9-d96b-4197-b3ef-d8b6fa78872b");
+    private static final UUID BLOCK_REACH_UUID = UUID.fromString("d26de641-c527-42e0-a1f9-c0e6b03b76a8");
+    private static final UUID PROJECTILE_DAMAGE_UUID = UUID.fromString("8cda51c5-5d59-4f3c-b0ca-895d9957fc32");
 
     public BlasphemyBrenzyItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties, eDamage);
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        float attackDamage = (float) pAttackDamageModifier + pTier.getAttackDamageBonus();
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", attackDamage, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
+        builder.put(ModdedAttributes.PROJECTILE_DAMAGE.get(), new AttributeModifier(PROJECTILE_DAMAGE_UUID, "blasphemy_brenzy_projectile_damage", eDamage, AttributeModifier.Operation.ADDITION));
+        builder.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(BLOCK_REACH_UUID, "blasphemy_brenzy_reach", REACH, AttributeModifier.Operation.ADDITION));
+        builder.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(ENTITY_REACH_UUID, "blasphemy_brenzy_reach", REACH, AttributeModifier.Operation.ADDITION));
+        this.defaultModifiers = builder.build();
     }
 
     @Override
@@ -64,7 +80,9 @@ public class BlasphemyBrenzyItem extends BlasphemyItem {
         Vec3 to = from.add(look.x * blockReachDistance, look.y * blockReachDistance, look.z * blockReachDistance);
         BlockHitResult blockhitresult = entity.level().clip(new ClipContext(from, to, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity));
 
-        if ((blockhitresult.getType() != HitResult.Type.MISS) || (entityhitresult != null ? entityhitresult.getType() != HitResult.Type.MISS : false)) {
+        ((Player) entity).sweepAttack();
+
+        if ((blockhitresult.getType() != HitResult.Type.MISS) || (entityhitresult != null && entityhitresult.getType() != HitResult.Type.MISS)) {
             return super.onEntitySwing(stack, entity);
         }
         if (!entity.level().isClientSide()) {
@@ -84,24 +102,7 @@ public class BlasphemyBrenzyItem extends BlasphemyItem {
         if (pStack.getTag() != null && !pStack.getTag().contains("Unbreakable")) {
             pStack.addTagElement("Unbreakable", IntTag.valueOf(1));
         }
-        if (pEntity instanceof LivingEntity) {
-            double reach = 1;
 
-            AttributeModifier eModifier = new AttributeModifier(UUID.fromString("06c477b9-d96b-4197-b3ef-d8b6fa78872b"), "blasphemy_brenzy_reach", reach, AttributeModifier.Operation.ADDITION);
-            AttributeModifier bModifier = new AttributeModifier(UUID.fromString("d26de641-c527-42e0-a1f9-c0e6b03b76a8"), "blasphemy_brenzy_reach", reach, AttributeModifier.Operation.ADDITION);
-
-            if (pIsSelected) {
-                if (!Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.ENTITY_REACH.get())).hasModifier(eModifier)) {
-                    Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.ENTITY_REACH.get())).addPermanentModifier(eModifier);
-                }
-                if (!Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.BLOCK_REACH.get())).hasModifier(bModifier)) {
-                    Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.BLOCK_REACH.get())).addPermanentModifier(bModifier);
-                }
-            } else {
-                Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.ENTITY_REACH.get())).removePermanentModifier(UUID.fromString("06c477b9-d96b-4197-b3ef-d8b6fa78872b"));
-                Objects.requireNonNull(((LivingEntity) pEntity).getAttribute(ForgeMod.BLOCK_REACH.get())).removePermanentModifier(UUID.fromString("d26de641-c527-42e0-a1f9-c0e6b03b76a8"));
-            }
-        }
         super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
     }
 }

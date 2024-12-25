@@ -5,7 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.stedee.plushie_test.entity.ModdedEntities;
 
-public class BlasphemyProjectile extends BlasphemyProjectileEntity {
+public class BlasphemyProjectile extends BlasphemyAbstractProjectile {
     public BlasphemyProjectile(EntityType<? extends BlasphemyProjectile> entityType, Level pLevel) {
         super(entityType, pLevel);
     }

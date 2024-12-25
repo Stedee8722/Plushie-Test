@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import org.jetbrains.annotations.NotNull;
 
 public class UhhBlock extends HorizontalDirectionalBlock {
 
@@ -21,16 +22,16 @@ public class UhhBlock extends HorizontalDirectionalBlock {
         super(pProperties);
     }
 
-    @SuppressWarnings("null")
+    @SuppressWarnings({"null", "deprecation"})
     @Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+	public int getLightBlock(@NotNull BlockState state, @NotNull BlockGetter worldIn, @NotNull BlockPos pos) {
 		return 15;
 	}
 
     @SuppressWarnings("null")
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip,
-            TooltipFlag pFlag) {
+                                @NotNull TooltipFlag pFlag) {
         pTooltip.add(Component.translatable(pStack.getDescriptionId() + ".tooltip"));
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }

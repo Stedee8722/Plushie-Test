@@ -160,10 +160,13 @@
     "painting.plushie_test.tea.title": "Is it looking back at me?!",
     "painting.plushie_test.tea.author": "Unknown",
     
-    "text.autoconfig.plushie_test.option.display_items_in_table": "Display item in table?",
-    "text.autoconfig.plushie_test.option.display_items_in_table.@Tooltip": "Display item on the seamstress and alchemical table while crafting",
+    "text.autoconfig.plushie_test.option.clientConfig.display_items_in_table": "Display item in table?",
+    "text.autoconfig.plushie_test.option.clientConfig.display_items_in_table.@Tooltip": "Display item on the seamstress and alchemical table while crafting",
 
     "text.autoconfig.plushie_test.title": "Plushie Test's configs",
+
+    "text.autoconfig.plushie_test.category.client": "Client",
+    "text.autoconfig.plushie_test.category.server": "Server",
 
     "advancements.blocks.obtain_uhh_block.title": "wHaT?!",
     "advancements.blocks.obtain_uhh_block.description": "Where did you get that? You're not supposed to have it.",
@@ -223,5 +226,7 @@
     "death.attack.blasphemy_projectile": "%1$s was shown the might of the gungeon by %2$s",
     "death.attack.glaive_projectile": "%1$s was turned into an ohmic sausage",
 
-    "curios.identifier.ears": "Ears"
+    "curios.identifier.ears": "Ears",
+
+    "attribute.plushie_test.name.blasphemy.projectile_damage": "Projectile Damage"
 }

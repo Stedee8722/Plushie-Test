@@ -2,7 +2,6 @@ package net.stedee.plushie_test.client.renderer.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -17,7 +16,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.stedee.plushie_test.block.custom.AlchemicalTableBlock;
 import net.stedee.plushie_test.block.custom.AlchemicalTableBlockEntity;
-import net.stedee.plushie_test.config.ClientConfig;
+import net.stedee.plushie_test.config.ModdedConfig;
+import net.stedee.plushie_test.plushie_test;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 
@@ -35,13 +35,13 @@ public class AlchemicalTableBlockEntityRenderer implements BlockEntityRenderer<A
     @Override
     public void render(@NotNull AlchemicalTableBlockEntity blockEntity, float pPartialTick, @NotNull PoseStack matrixStack,
                        @NotNull MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        ClientConfig config = AutoConfig.getConfigHolder(ClientConfig.class).getConfig();
+        ModdedConfig config = plushie_test.CONFIG;
         //try(Level level = blockEntity.getLevel()) {
         //    isClient = level.isClientSide;
         //} catch(IOException err)
         //{System.out.println(err);}
 
-        if (!config.display_items_in_table || (blockEntity.inventory.isEmpty() && blockEntity.getLastResult().isEmpty()))
+        if (!config.clientConfig.display_items_in_table || (blockEntity.inventory.isEmpty() && blockEntity.getLastResult().isEmpty()))
             return;
 
 
