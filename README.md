@@ -10,7 +10,7 @@ Install Minecraft Forge 1.20.1, download the latest release, and drop the jar fi
 
 ## Dependencies
 
-This mod uses Cloth Config API and Geckolib4 so make sure you have them installed as well
+This mod uses [Cloth Config API](https://modrinth.com/mod/cloth-config) and [Geckolib4](https://modrinth.com/mod/geckolib) so make sure you have them installed as well
 
 ## Contributing
 
